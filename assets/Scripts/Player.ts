@@ -1,18 +1,26 @@
-import { Component, Vec2, Vec3, _decorator } from "cc";
+import { BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator } from "cc";
 import { VirtualJoystic } from "./VirtualJoystic";
 import { Weapon } from "./Weapon";
 const { ccclass, property } = _decorator;
 
 @ccclass("Player")
 export class Player extends Component {
-    private virtualJoystic: VirtualJoystic;
     @property private speed = 0;
+    @property(BoxCollider2D) private collider: BoxCollider2D;
 
-    @property(Weapon) private weapon: Weapon;
+    private virtualJoystic: VirtualJoystic;
+    private weapon: Weapon;
 
-    public init(virtualJoystic: VirtualJoystic, strikeDelay: number): void {
+    public init(virtualJoystic: VirtualJoystic, weapon: Weapon): void {
         this.virtualJoystic = virtualJoystic;
-        this.weapon.init(strikeDelay);
+        this.weapon = weapon;
+
+        this.weapon.node.parent = this.node;
+        this.weapon.node.setPosition(new Vec3());
+    }
+
+    public get Collider(): Collider2D {
+        return this.collider;
     }
 
     public gameTick(deltaTime: number): void {
