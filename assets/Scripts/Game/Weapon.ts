@@ -1,4 +1,5 @@
 import { Animation, BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator } from "cc";
+import { GameTimer } from "../Services/GameTimer";
 const { ccclass, property } = _decorator;
 
 @ccclass("Weapon")
@@ -6,23 +7,25 @@ export class Weapon extends Component {
     @property(Animation) private weaponAnimation: Animation;
     @property(BoxCollider2D) private collider: BoxCollider2D;
 
-    private strikeDelay: number;
-    private currentDelay = 0;
+    private strikeTimer: GameTimer;
 
     public init(strikeDelay: number): void {
-        this.strikeDelay = strikeDelay;
+        this.strikeTimer = new GameTimer(strikeDelay);
     }
 
     public gameTick(deltaTime: number, movement: Vec2): void {
-        this.currentDelay += deltaTime;
-        if (this.strikeDelay / 4 <= this.currentDelay) {
-            this.currentDelay = 0;
+        this.strikeTimer.gameTick(deltaTime);
+        if (this.strikeTimer.tryFinishPeriod()) {
             this.strike(movement);
         }
     }
 
     public get Collider(): Collider2D {
         return this.collider;
+    }
+
+    public get Damage(): number {
+        return 5;
     }
 
     private strike(movement: Vec2): void {

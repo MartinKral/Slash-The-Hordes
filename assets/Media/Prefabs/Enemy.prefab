@@ -147,7 +147,7 @@
       "__id__": 7
     },
     "tag": 0,
-    "_group": 1,
+    "_group": 4,
     "_density": 1,
     "_sensor": false,
     "_friction": 0.2,
@@ -178,6 +178,9 @@
     "_enabled": true,
     "__prefab": {
       "__id__": 9
+    },
+    "collider": {
+      "__id__": 6
     },
     "_id": ""
   },
