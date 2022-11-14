@@ -1,3 +1,5 @@
+// Need to capture *this*
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ISignal } from "./ISignal";
 
 export class Signal<T> implements ISignal<T> {
@@ -9,14 +11,12 @@ export class Signal<T> implements ISignal<T> {
         this.thisArgs.push(thisArg);
     }
     public off(handler: (data: T) => void): void {
-        console.log("[OFF] " + this.handlers.length);
-        this.handlers = this.handlers.filter((h) => h !== handler);
-        console.log("[OFF] >> " + this.handlers.length);
+        const index: number = this.handlers.indexOf(handler);
+        this.handlers.splice(index, 1);
+        this.thisArgs.splice(index, 1);
     }
 
     public trigger(data: T): void {
-        //[...this.handlers].forEach((handler) => handler(data));
-
         for (let i = 0; i < this.handlers.length; i++) {
             this.handlers[i].call(this.thisArgs[i], data);
         }

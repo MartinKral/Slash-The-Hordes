@@ -1,8 +1,9 @@
 import { _decorator, Component, Node, Vec3, input, Input, EventMouse, Vec2, EventTouch } from "cc";
+import { IInput } from "./IInput";
 const { ccclass, property } = _decorator;
 
 @ccclass("VirtualJoystic")
-export class VirtualJoystic extends Component {
+export class VirtualJoystic extends Component implements IInput {
     @property(Number) private maxDistance = 10;
     @property(Node) private knob: Node;
 

@@ -1,4 +1,4 @@
-import { BoxCollider2D, Component, _decorator } from "cc";
+import { BoxCollider2D, Component, Vec2, Vec3, _decorator } from "cc";
 import { ISignal } from "../../Services/EventSystem/ISignal";
 import { Signal } from "../../Services/EventSystem/Signal";
 import { UnitHealth } from "../Player/UnitHealth";
@@ -37,6 +37,14 @@ export class Enemy extends Component implements IDamageDealing {
         if (!this.health.IsAlive) {
             this.deathEvent.trigger(this);
         }
+    }
+
+    public moveBy(move: Vec3): void {
+        const newPosition: Vec3 = this.node.worldPosition;
+        newPosition.x += move.x;
+        newPosition.y += move.y;
+
+        this.node.setWorldPosition(newPosition);
     }
 }
 

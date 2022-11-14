@@ -1,8 +1,8 @@
 import { BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator } from "cc";
-import { VirtualJoystic } from "../Input/VirtualJoystic";
+import { IInput } from "../Input/IInput";
 import { Weapon } from "../Weapon";
-import { UnitHealth } from "./UnitHealth";
 import { PlayerUI } from "./PlayerUI/PlayerUI";
+import { UnitHealth } from "./UnitHealth";
 const { ccclass, property } = _decorator;
 
 @ccclass("Player")
@@ -11,12 +11,12 @@ export class Player extends Component {
     @property(BoxCollider2D) private collider: BoxCollider2D;
     @property(PlayerUI) private playerUI: PlayerUI;
 
-    private virtualJoystic: VirtualJoystic;
+    private input: IInput;
     private weapon: Weapon;
     private health: UnitHealth;
 
-    public init(virtualJoystic: VirtualJoystic, weapon: Weapon, maxHp: number): void {
-        this.virtualJoystic = virtualJoystic;
+    public init(input: IInput, weapon: Weapon, maxHp: number): void {
+        this.input = input;
         this.weapon = weapon;
         this.health = new UnitHealth(maxHp);
 
@@ -35,7 +35,7 @@ export class Player extends Component {
     }
 
     public gameTick(deltaTime: number): void {
-        const movement: Vec2 = this.virtualJoystic.getAxis();
+        const movement: Vec2 = this.input.getAxis();
         movement.x *= deltaTime * this.speed;
         movement.y *= deltaTime * this.speed;
 
