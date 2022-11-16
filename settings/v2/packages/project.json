@@ -12,13 +12,25 @@
       {
         "index": 3,
         "name": "WEAPON"
+      },
+      {
+        "index": 4,
+        "name": "XP"
       }
     ],
     "collisionMatrix": {
       "0": 0,
-      "1": 4,
+      "1": 20,
       "2": 10,
-      "3": 4
+      "3": 4,
+      "4": 2
+    }
+  },
+  "general": {
+    "designResolution": {
+      "width": 640,
+      "height": 960,
+      "fitHeight": true
     }
   }
 }

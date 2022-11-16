@@ -1,4 +1,4 @@
-import { BoxCollider2D, Component, Vec2, Vec3, _decorator } from "cc";
+import { BoxCollider2D, Component, randomRange, Vec3, _decorator } from "cc";
 import { ISignal } from "../../Services/EventSystem/ISignal";
 import { Signal } from "../../Services/EventSystem/Signal";
 import { UnitHealth } from "../Player/UnitHealth";
@@ -10,10 +10,13 @@ export class Enemy extends Component implements IDamageDealing {
 
     private health: UnitHealth = new UnitHealth(1);
     private deathEvent: Signal<Enemy> = new Signal<Enemy>();
+    private speed: number;
 
-    public setup(): void {
-        this.node.active = true;
+    public setup(position: Vec3): void {
         this.health = new UnitHealth(1);
+        this.speed = randomRange(0.5, 1);
+        this.node.setWorldPosition(position);
+        this.node.active = true;
     }
 
     public get Collider(): BoxCollider2D {
@@ -41,8 +44,8 @@ export class Enemy extends Component implements IDamageDealing {
 
     public moveBy(move: Vec3): void {
         const newPosition: Vec3 = this.node.worldPosition;
-        newPosition.x += move.x;
-        newPosition.y += move.y;
+        newPosition.x += move.x * this.speed;
+        newPosition.y += move.y * this.speed;
 
         this.node.setWorldPosition(newPosition);
     }

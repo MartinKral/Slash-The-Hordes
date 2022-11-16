@@ -1,13 +1,12 @@
-import { Component, KeyCode, _decorator } from "cc";
+import { Camera, CCFloat, Component, KeyCode, _decorator } from "cc";
 import { PlayerCollisionSystem } from "./Collision/PlayerCollisionSystem";
 import { WeaponCollisionSystem } from "./Collision/WeaponCollisionSystem";
-import { EnemySpawner } from "./Enemy/EnemySpawner";
+import { EnemyManager } from "./Enemy/EnemyManager";
+import { KeyboardInput } from "./Input/KeyboardInput";
 import { MultiInput } from "./Input/MultiInput";
 import { VirtualJoystic } from "./Input/VirtualJoystic";
-import { KeyboardInput } from "./Input/KeyboardInput";
 import { Player } from "./Player/Player";
 import { Weapon } from "./Weapon";
-import { EnemyMover } from "./Enemy/EnemyMover";
 const { ccclass, property } = _decorator;
 
 @ccclass("GameBootstrapper")
@@ -15,9 +14,10 @@ export class GameBootstrapper extends Component {
     @property(VirtualJoystic) private virtualJoystic: VirtualJoystic;
     @property(Player) private player: Player;
     @property(Weapon) private weapon: Weapon;
-    @property(EnemySpawner) private enemySpawner: EnemySpawner;
-    @property(Number) private strikeDelay = 0;
-    @property(Number) private collisionDelay = 0;
+    @property(EnemyManager) private enemyManager: EnemyManager;
+    @property(CCFloat) private strikeDelay = 0;
+    @property(CCFloat) private collisionDelay = 0;
+    @property(Camera) private camera: Camera;
     private playerCollisionSystem: PlayerCollisionSystem;
 
     public start(): void {
@@ -28,15 +28,17 @@ export class GameBootstrapper extends Component {
         const dualInput: MultiInput = new MultiInput([this.virtualJoystic, wasd, arrowKeys]);
         this.player.init(dualInput, this.weapon, 50);
 
-        const enemyMover = new EnemyMover(this.player.node);
-        this.enemySpawner.init(enemyMover);
         this.playerCollisionSystem = new PlayerCollisionSystem(this.player, this.collisionDelay);
         new WeaponCollisionSystem(this.weapon);
+
+        this.enemyManager.init(this.player.node);
     }
 
     public update(deltaTime: number): void {
         this.player.gameTick(deltaTime);
         this.playerCollisionSystem.gameTick(deltaTime);
-        this.enemySpawner.gameTick(deltaTime);
+        this.enemyManager.gameTick(deltaTime);
+
+        this.camera.node.worldPosition = this.player.node.worldPosition;
     }
 }

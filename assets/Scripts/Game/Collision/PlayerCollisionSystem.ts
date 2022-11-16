@@ -3,6 +3,7 @@ import { GroupType } from "../GroupType";
 import { Player } from "../Player/Player";
 import { GameTimer } from "../../Services/GameTimer";
 import { Enemy } from "../Enemy/Enemy";
+import { XP } from "../XP/XP";
 
 export class PlayerCollisionSystem {
     private playerContacts: Collider2D[] = [];
@@ -20,6 +21,7 @@ export class PlayerCollisionSystem {
         this.collisionTimer = new GameTimer(collisionDelay);
 
         this.groupToResolver.set(GroupType.ENEMY, this.resolveEnemyContact.bind(this));
+        this.groupToResolver.set(GroupType.XP, this.resolveXpContact.bind(this));
     }
 
     public gameTick(deltaTime: number): void {
@@ -59,5 +61,13 @@ export class PlayerCollisionSystem {
         const damage: number = enemyCollider.node.getComponent(Enemy).Damage;
         console.log("Collided with enemy: Damage: " + damage);
         this.player.Health.damage(damage);
+    }
+
+    private resolveXpContact(xpCollider: Collider2D): void {
+        const xp: XP = xpCollider.node.getComponent(XP);
+        this.player.addXp(xp.Value);
+        xp.pickup();
+
+        console.log("Collided with xp: " + xp);
     }
 }

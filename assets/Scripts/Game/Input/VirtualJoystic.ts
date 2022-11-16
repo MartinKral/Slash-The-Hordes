@@ -1,10 +1,10 @@
-import { _decorator, Component, Node, Vec3, input, Input, EventMouse, Vec2, EventTouch } from "cc";
+import { _decorator, Component, Node, Vec3, input, Input, EventMouse, Vec2, EventTouch, CCFloat } from "cc";
 import { IInput } from "./IInput";
 const { ccclass, property } = _decorator;
 
 @ccclass("VirtualJoystic")
 export class VirtualJoystic extends Component implements IInput {
-    @property(Number) private maxDistance = 10;
+    @property(CCFloat) private maxDistance = 10;
     @property(Node) private knob: Node;
 
     #isUsingJoystic = false;
@@ -35,6 +35,7 @@ export class VirtualJoystic extends Component implements IInput {
     }
 
     private activateMouseJoystic(e: EventMouse): void {
+        console.log(e.getUILocation());
         this.activateJoystic(e.getUILocation());
     }
 
@@ -43,7 +44,7 @@ export class VirtualJoystic extends Component implements IInput {
         this.node.active = true;
         this.#defaultPosition = location;
 
-        this.node.setWorldPosition(new Vec3(this.#defaultPosition.x, this.#defaultPosition.y, 0));
+        this.node.setPosition(new Vec3(this.#defaultPosition.x, this.#defaultPosition.y, 0));
         this.knob.position = new Vec3();
     }
 

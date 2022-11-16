@@ -4,5 +4,6 @@ export enum GroupType {
     DEFAULT = 1 << 0,
     PLAYER = 1 << 1,
     ENEMY = 1 << 2,
-    WEAPON = 1 << 3
+    WEAPON = 1 << 3,
+    XP = 1 << 4
 }

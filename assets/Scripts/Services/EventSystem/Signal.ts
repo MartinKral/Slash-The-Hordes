@@ -17,8 +17,12 @@ export class Signal<T> implements ISignal<T> {
     }
 
     public trigger(data: T): void {
-        for (let i = 0; i < this.handlers.length; i++) {
-            this.handlers[i].call(this.thisArgs[i], data);
+        // protect from trigger >> off
+        const handlers: ((data: T) => void)[] = [...this.handlers];
+        const thisArgs: any[] = [...this.thisArgs];
+
+        for (let i = 0; i < handlers.length; i++) {
+            handlers[i].call(thisArgs[i], data);
         }
     }
 }

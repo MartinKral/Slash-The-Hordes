@@ -4,12 +4,12 @@ export class ObjectPool<T extends Component> {
     private prefab: Prefab;
     private parent: Node;
     private pooledObjects: PooledObject<T>[] = [];
-    private componentType: { new (): T };
+    private componentName: string;
 
-    public constructor(prefab: Prefab, parent: Node, defaultPoolCount: number, componentType: { new (): T }) {
+    public constructor(prefab: Prefab, parent: Node, defaultPoolCount: number, componentName: string) {
         this.prefab = prefab;
         this.parent = parent;
-        this.componentType = componentType;
+        this.componentName = componentName;
 
         for (let i = 0; i < defaultPoolCount; i++) {
             this.pooledObjects.push(this.createNew());
@@ -35,7 +35,7 @@ export class ObjectPool<T extends Component> {
     }
 
     private createNew(): PooledObject<T> {
-        const newPooledObject: PooledObject<T> = new PooledObject(this.prefab, this.parent, this.componentType);
+        const newPooledObject: PooledObject<T> = new PooledObject(this.prefab, this.parent, this.componentName);
         this.pooledObjects.push(newPooledObject);
 
         return newPooledObject;
@@ -48,13 +48,13 @@ class PooledObject<T extends Component> {
     private instancedNode: Node;
     private instancedComponent: T;
 
-    public constructor(prefab: Prefab, defaultParent: Node, componentType: { new (): T }) {
+    public constructor(prefab: Prefab, defaultParent: Node, componentName: string) {
         this.defaultParent = defaultParent;
 
         this.instancedNode = instantiate(prefab);
-        this.instancedComponent = <T>this.instancedNode.getComponent(componentType.name);
+        this.instancedComponent = <T>this.instancedNode.getComponent(componentName);
         if (this.instancedComponent == null) {
-            throw new Error("Object " + prefab.name + " does not have component " + componentType.name);
+            console.log("Object " + prefab.name + " does not have component " + componentName);
         }
 
         this.clear();

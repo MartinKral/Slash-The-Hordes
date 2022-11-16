@@ -1,4 +1,4 @@
-import { BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator } from "cc";
+import { BoxCollider2D, Collider2D, Component, PointToPointConstraint, Vec2, Vec3, _decorator } from "cc";
 import { IInput } from "../Input/IInput";
 import { Weapon } from "../Weapon";
 import { PlayerUI } from "./PlayerUI/PlayerUI";
@@ -14,6 +14,8 @@ export class Player extends Component {
     private input: IInput;
     private weapon: Weapon;
     private health: UnitHealth;
+
+    private xp: number;
 
     public init(input: IInput, weapon: Weapon, maxHp: number): void {
         this.input = input;
@@ -34,6 +36,10 @@ export class Player extends Component {
         return this.collider;
     }
 
+    public addXp(points: number): void {
+        this.xp += points;
+    }
+
     public gameTick(deltaTime: number): void {
         const movement: Vec2 = this.input.getAxis();
         movement.x *= deltaTime * this.speed;
@@ -45,6 +51,6 @@ export class Player extends Component {
 
         this.node.setWorldPosition(newPosition);
 
-        this.weapon.gameTick(deltaTime, movement);
+        this.weapon.gameTick(deltaTime);
     }
 }
