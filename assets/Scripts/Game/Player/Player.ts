@@ -3,6 +3,7 @@ import { IInput } from "../Input/IInput";
 import { Weapon } from "../Weapon";
 import { PlayerUI } from "./PlayerUI/PlayerUI";
 import { UnitHealth } from "./UnitHealth";
+import { UnitLevel } from "./UnitLevel";
 const { ccclass, property } = _decorator;
 
 @ccclass("Player")
@@ -14,13 +15,15 @@ export class Player extends Component {
     private input: IInput;
     private weapon: Weapon;
     private health: UnitHealth;
+    private level: UnitLevel;
 
     private xp: number;
 
-    public init(input: IInput, weapon: Weapon, maxHp: number): void {
+    public init(input: IInput, weapon: Weapon, maxHp: number, requiredLevelXps: number[]): void {
         this.input = input;
         this.weapon = weapon;
         this.health = new UnitHealth(maxHp);
+        this.level = new UnitLevel(requiredLevelXps);
 
         this.weapon.node.parent = this.node;
         this.weapon.node.setPosition(new Vec3());
@@ -32,12 +35,12 @@ export class Player extends Component {
         return this.health;
     }
 
-    public get Collider(): Collider2D {
-        return this.collider;
+    public get Level(): UnitLevel {
+        return this.level;
     }
 
-    public addXp(points: number): void {
-        this.xp += points;
+    public get Collider(): Collider2D {
+        return this.collider;
     }
 
     public gameTick(deltaTime: number): void {

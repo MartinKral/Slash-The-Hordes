@@ -65,7 +65,7 @@ export class PlayerCollisionSystem {
 
     private resolveXpContact(xpCollider: Collider2D): void {
         const xp: XP = xpCollider.node.getComponent(XP);
-        this.player.addXp(xp.Value);
+        this.player.Level.addXp(xp.Value);
         xp.pickup();
 
         console.log("Collided with xp: " + xp);

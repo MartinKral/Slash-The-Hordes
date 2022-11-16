@@ -15,7 +15,7 @@ export class EnemyManager extends Component {
     public init(targetNode: Node): void {
         this.enemyMover = new EnemyMover(targetNode);
 
-        this.enemySpawner.init();
+        this.enemySpawner.init(targetNode);
         this.enemySpawner.EnemyAddedEvent.on(this.onEnemyAdded, this);
 
         this.xpSpawner.init();
