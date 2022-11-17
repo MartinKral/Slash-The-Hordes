@@ -1,4 +1,5 @@
-import { Camera, CCFloat, CCInteger, Component, KeyCode, _decorator } from "cc";
+import { Camera, CCFloat, CCInteger, Component, director, KeyCode, _decorator } from "cc";
+import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
 import { PlayerCollisionSystem } from "./Collision/PlayerCollisionSystem";
 import { WeaponCollisionSystem } from "./Collision/WeaponCollisionSystem";
 import { EnemyManager } from "./Enemy/EnemyManager";
@@ -21,6 +22,8 @@ export class GameBootstrapper extends Component {
     @property(Camera) private camera: Camera;
     @property(GameUI) private gameUI: GameUI;
     @property(Number) private requiredLevelXps: number[] = [];
+    @property(ModalWindowManager) private modalWindowManager: ModalWindowManager;
+
     private playerCollisionSystem: PlayerCollisionSystem;
 
     public start(): void {
@@ -37,6 +40,8 @@ export class GameBootstrapper extends Component {
         this.enemyManager.init(this.player.node);
 
         this.gameUI.init(this.player);
+
+        this.showModal();
     }
 
     public update(deltaTime: number): void {
@@ -45,5 +50,10 @@ export class GameBootstrapper extends Component {
         this.enemyManager.gameTick(deltaTime);
 
         this.camera.node.worldPosition = this.player.node.worldPosition;
+    }
+
+    private async showModal(): Promise<void> {
+        const result: string = await this.modalWindowManager.showModal<string, string>("LevelUpModalWindow", "test params");
+        console.log("Result: " + result);
     }
 }
