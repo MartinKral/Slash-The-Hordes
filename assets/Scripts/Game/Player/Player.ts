@@ -17,8 +17,6 @@ export class Player extends Component {
     private health: UnitHealth;
     private level: UnitLevel;
 
-    private xp: number;
-
     public init(input: IInput, weapon: Weapon, maxHp: number, requiredLevelXps: number[]): void {
         this.input = input;
         this.weapon = weapon;
@@ -37,6 +35,10 @@ export class Player extends Component {
 
     public get Level(): UnitLevel {
         return this.level;
+    }
+
+    public get Weapon(): Weapon {
+        return this.weapon;
     }
 
     public get Collider(): Collider2D {

@@ -26,6 +26,8 @@ export class GameBootstrapper extends Component {
 
     private playerCollisionSystem: PlayerCollisionSystem;
 
+    private isPaused = false;
+
     public start(): void {
         this.virtualJoystic.init();
         this.weapon.init(this.strikeDelay);
@@ -45,6 +47,8 @@ export class GameBootstrapper extends Component {
     }
 
     public update(deltaTime: number): void {
+        if (this.isPaused) return;
+
         this.player.gameTick(deltaTime);
         this.playerCollisionSystem.gameTick(deltaTime);
         this.enemyManager.gameTick(deltaTime);
@@ -53,7 +57,9 @@ export class GameBootstrapper extends Component {
     }
 
     private async showModal(): Promise<void> {
+        this.isPaused = true;
         const result: string = await this.modalWindowManager.showModal<string, string>("LevelUpModalWindow", "test params");
+        this.isPaused = false;
         console.log("Result: " + result);
     }
 }

@@ -34,6 +34,9 @@ export class Weapon extends Component {
         return 5;
     }
 
+    public upgradeWeaponDamage(): void {}
+    public upgradeWeaponLength(): void {}
+
     private strike(): void {
         this.node.active = true;
         this.weaponAnimation.play(this.strikeState.name);
