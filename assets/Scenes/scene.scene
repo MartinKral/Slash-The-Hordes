@@ -1070,7 +1070,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "EnemySpawner",
+    "_name": "XPSpawner",
     "_objFlags": 0,
     "_parent": {
       "__id__": 32
@@ -1109,10 +1109,10 @@
       "y": 0,
       "z": 0
     },
-    "_id": "936Vpv3ydL8JZMvakVgAP5"
+    "_id": "b7cM/vyZtNY6PANwPA4aXG"
   },
   {
-    "__type__": "8aa2aOTzVFLtKl5CV5vzpWp",
+    "__type__": "ab9e2Br8RpBfIFLB9KcWe1u",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1120,17 +1120,15 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "enemies": [
-      {
-        "__uuid__": "fc9a455d-1b5f-460e-96eb-7c0ebf07d3d0",
-        "__expectedType__": "cc.Prefab"
-      }
-    ],
-    "_id": "0bYOmE6uFKe6bZiYUsXVFn"
+    "xpPrefab": {
+      "__uuid__": "b83dbe32-6b43-4ea9-b0e2-5f96c09f459d",
+      "__expectedType__": "cc.Prefab"
+    },
+    "_id": "cbPY3r6KtPXJ5MuqA3BqfN"
   },
   {
     "__type__": "cc.Node",
-    "_name": "XPSpawner",
+    "_name": "EnemySpawner",
     "_objFlags": 0,
     "_parent": {
       "__id__": 32
@@ -1169,10 +1167,10 @@
       "y": 0,
       "z": 0
     },
-    "_id": "b7cM/vyZtNY6PANwPA4aXG"
+    "_id": "936Vpv3ydL8JZMvakVgAP5"
   },
   {
-    "__type__": "ab9e2Br8RpBfIFLB9KcWe1u",
+    "__type__": "8aa2aOTzVFLtKl5CV5vzpWp",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1180,11 +1178,13 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "xpPrefab": {
-      "__uuid__": "b83dbe32-6b43-4ea9-b0e2-5f96c09f459d",
-      "__expectedType__": "cc.Prefab"
-    },
-    "_id": "cbPY3r6KtPXJ5MuqA3BqfN"
+    "enemies": [
+      {
+        "__uuid__": "fc9a455d-1b5f-460e-96eb-7c0ebf07d3d0",
+        "__expectedType__": "cc.Prefab"
+      }
+    ],
+    "_id": "0bYOmE6uFKe6bZiYUsXVFn"
   },
   {
     "__type__": "c5416rtZLFCbpWbvH1cdF52",
@@ -1196,10 +1196,10 @@
     "_enabled": true,
     "__prefab": null,
     "enemySpawner": {
-      "__id__": 34
+      "__id__": 36
     },
     "xpSpawner": {
-      "__id__": 36
+      "__id__": 34
     },
     "_id": "389jvXDeVHmanyKnmtceKg"
   },
@@ -2835,6 +2835,10 @@
     ],
     "modalWindowManager": {
       "__id__": 75
+    },
+    "settingsAsset": {
+      "__uuid__": "6828fb79-0a56-437e-b718-9f43bf234fbc",
+      "__expectedType__": "cc.JsonAsset"
     },
     "_id": "3a9z1bqlFCGL4/WyDwU4L5"
   },

@@ -5,16 +5,13 @@ export class Upgrader {
     private player: Player;
     private typeToAction: Map<UpgradeType, () => void> = new Map<UpgradeType, () => void>();
     private typeToLevel: Map<UpgradeType, number> = new Map<UpgradeType, number>();
+    private typeToMaxLevel: Map<UpgradeType, number> = new Map<UpgradeType, number>();
 
     public constructor(player: Player) {
         this.player = player;
 
-        this.typeToAction.set(UpgradeType.MaxHP, this.upgradeMaxHp);
-        this.typeToAction.set(UpgradeType.WeaponLength, this.upgradeWeaponLength);
-        this.typeToAction.set(UpgradeType.WeaponDamage, this.upgradeWeaponDamage);
-
-        this.typeToLevel.set(UpgradeType.MaxHP, 0);
-        this.typeToLevel.set(UpgradeType.WeaponLength, 0);
+        this.setTypeMaps(UpgradeType.WeaponLength, this.upgradeWeaponLength, 5);
+        this.setTypeMaps(UpgradeType.WeaponDamage, this.upgradeWeaponDamage, 5);
     }
 
     public upgradeSkill(type: UpgradeType): void {
@@ -22,11 +19,10 @@ export class Upgrader {
         this.typeToAction.get(type)();
     }
 
-    private upgradeMaxHp(): void {
-        const healthIncrease = 5;
-        const currentMax: number = this.player.Health.MaxHealthPoints;
-        this.player.Health.setMaxHealth(currentMax + healthIncrease);
-        this.player.Health.heal(healthIncrease);
+    private setTypeMaps(upgradeType: UpgradeType, action: () => void, maxLevel: number): void {
+        this.typeToAction.set(upgradeType, action);
+        this.typeToLevel.set(upgradeType, 0);
+        this.typeToMaxLevel.set(upgradeType, maxLevel);
     }
 
     private upgradeWeaponLength(): void {

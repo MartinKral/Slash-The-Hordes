@@ -1,12 +1,13 @@
-import { CCString, instantiate, Node, Prefab, Vec3, _decorator } from "cc";
+import { instantiate, Node, Prefab, Vec3, _decorator } from "cc";
 import { ModalWindow } from "../../../Services/ModalWindowSystem/ModalWindow";
 import { delay } from "../../../Services/Utils/AsyncUtils";
+import { UpgradeType } from "../../Upgrades/UpgradeType";
 import { LevelUpSkill } from "./LevelUpSkill";
 
 const { ccclass, property } = _decorator;
 
 @ccclass("LevelUpModalWindow")
-export class LevelUpModalWindow extends ModalWindow<string, string> {
+export class LevelUpModalWindow extends ModalWindow<string, UpgradeType> {
     @property(Prefab) private skillPrefab: Prefab;
     @property(Node) private skillParent: Node;
 
@@ -24,6 +25,6 @@ export class LevelUpModalWindow extends ModalWindow<string, string> {
     }
 
     private chooseSkill(skill: LevelUpSkill): void {
-        this.dismiss("FInishedSuccessfuly");
+        this.dismiss(UpgradeType.WeaponDamage);
     }
 }
