@@ -12,4 +12,6 @@ function regenerateGameSettings(): void {
 
     const result: GameSettings = merge(blankSettings, savedSettings);
     writeFileSync(settingsPath, JSON.stringify(result));
+
+    console.log("Game settings regenerated");
 }
