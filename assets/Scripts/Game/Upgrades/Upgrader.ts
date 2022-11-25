@@ -16,7 +16,20 @@ export class Upgrader {
 
     public upgradeSkill(type: UpgradeType): void {
         if (!this.typeToAction.has(type)) throw new Error("Upgrade does not have " + type);
+        if (this.isMaxLevel(type)) throw new Error("Upgrade is already at max level" + type);
+
         this.typeToAction.get(type)();
+    }
+
+    public getAvailableUpgrades(): Set<UpgradeType> {
+        const availableUpgrades: Set<UpgradeType> = new Set<UpgradeType>();
+        for (const key of this.typeToAction.keys()) {
+            if (!this.isMaxLevel(key)) {
+                availableUpgrades.add(key);
+            }
+        }
+
+        return availableUpgrades;
     }
 
     private setTypeMaps(upgradeType: UpgradeType, action: () => void, maxLevel: number): void {
@@ -31,5 +44,9 @@ export class Upgrader {
 
     private upgradeWeaponDamage(): void {
         this.player.Weapon.upgradeWeaponDamage();
+    }
+
+    private isMaxLevel(type: UpgradeType): boolean {
+        return this.typeToMaxLevel.get(type) <= this.typeToLevel.get(type);
     }
 }

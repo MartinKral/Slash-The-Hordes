@@ -1,18 +1,24 @@
 {
     "playerSettings": {
-        "defaultHP": 0,
+        "defaultHP": 50,
         "requiredXP": [
-            0,
-            0,
-            0,
-            0
+            5,
+            5,
+            5,
+            10,
+            10,
+            10,
+            20,
+            20,
+            20,
+            20
         ],
-        "collisionDelay": 0,
+        "collisionDelay": 0.5,
         "testSettings": {
             "test": 0
         }
     },
     "weaponSettings": {
-        "strikeDelay": 0
+        "strikeDelay": 2
     }
 }
