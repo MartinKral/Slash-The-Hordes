@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { readFileSync, writeFileSync } from "fs";
 import { merge, unset } from "lodash";
 import { GameSettings } from "../assets/Scripts/Game/Data/GameSettings";
