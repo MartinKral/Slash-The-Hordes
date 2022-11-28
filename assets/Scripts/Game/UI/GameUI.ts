@@ -1,6 +1,6 @@
 import { Component, ProgressBar, _decorator } from "cc";
-import { Player } from "../Player/Player";
-import { UnitLevel } from "../Player/UnitLevel";
+import { Player } from "../Unit/Player/Player";
+import { UnitLevel } from "../Unit/Player/UnitLevel";
 const { ccclass, property } = _decorator;
 
 @ccclass("GameUI")

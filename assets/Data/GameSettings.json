@@ -1,5 +1,5 @@
 {
-    "playerSettings": {
+    "player": {
         "defaultHP": 50,
         "requiredXP": [
             5,
@@ -13,12 +13,16 @@
             20,
             20
         ],
-        "collisionDelay": 0.5,
-        "testSettings": {
-            "test": 0
-        }
+        "collisionDelay": 0.5
     },
-    "weaponSettings": {
+    "weapon": {
         "strikeDelay": 2
+    },
+    "upgrades": {
+        "maxWeaponLengthUpgrades": 5,
+        "maxWeaponDamageUpgrades": 5,
+        "maxHorizontalProjectileUpgrades": 0,
+        "maxVerticalProjectileUpgrades": 0,
+        "maxRegenerationUpgrades": 0
     }
 }

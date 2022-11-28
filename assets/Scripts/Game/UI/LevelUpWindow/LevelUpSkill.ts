@@ -7,17 +7,20 @@ const { ccclass, property } = _decorator;
 @ccclass("LevelUpSkill")
 export class LevelUpSkill extends Component {
     @property(Label) private skillTitle: Label;
-    private chooseSkillEvent: Signal<LevelUpSkill> = new Signal<LevelUpSkill>();
+    private chooseSkillEvent: Signal<UpgradeType> = new Signal<UpgradeType>();
+    private skillType: UpgradeType;
+
     public init(skillType: UpgradeType): void {
+        this.skillType = skillType;
         this.skillTitle.string = `Skill ${skillType}`;
         this.node.on(NodeEventType.MOUSE_DOWN, this.chooseSkill, this);
     }
 
-    public get ChooseSkillEvent(): ISignal<LevelUpSkill> {
+    public get ChooseSkillEvent(): ISignal<UpgradeType> {
         return this.chooseSkillEvent;
     }
 
     private chooseSkill(): void {
-        this.chooseSkillEvent.trigger(this);
+        this.chooseSkillEvent.trigger(this.skillType);
     }
 }

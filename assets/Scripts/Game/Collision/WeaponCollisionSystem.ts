@@ -1,15 +1,15 @@
-import { Collider2D, Contact2DType } from "cc";
+import { Collider2D } from "cc";
 import { Enemy } from "../Enemy/Enemy";
-import { Weapon } from "../Weapon";
+import { Weapon } from "../Unit/Player/Weapon/Weapon";
 
 export class WeaponCollisionSystem {
     private weapon: Weapon;
     public constructor(weapon: Weapon) {
         this.weapon = weapon;
-        weapon.Collider.on(Contact2DType.BEGIN_CONTACT, this.onWeaponContactBegin, this);
+        weapon.Collider.ContactBeginEvent.on(this.onWeaponContactBegin, this);
     }
 
-    private onWeaponContactBegin(_selfCollider: Collider2D, otherCollider: Collider2D): void {
+    private onWeaponContactBegin(otherCollider: Collider2D): void {
         otherCollider.getComponent(Enemy).dealDamage(this.weapon.Damage);
     }
 }

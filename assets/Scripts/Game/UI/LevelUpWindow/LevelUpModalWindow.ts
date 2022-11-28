@@ -31,7 +31,7 @@ export class LevelUpModalWindow extends ModalWindow<UpgradeType[], UpgradeType> 
         }
     }
 
-    private chooseSkill(skill: LevelUpSkill): void {
-        this.dismiss(UpgradeType.WeaponDamage);
+    private chooseSkill(upgradeType: UpgradeType): void {
+        this.dismiss(upgradeType);
     }
 }

@@ -1,6 +1,6 @@
 import { ModalWindowManager } from "../../Services/ModalWindowSystem/ModalWindowManager";
 import { Pauser } from "../Pauser";
-import { Player } from "../Player/Player";
+import { Player } from "../Unit/Player/Player";
 import { Upgrader } from "../Upgrades/Upgrader";
 import { UpgradeType } from "../Upgrades/UpgradeType";
 import { GameModalWindowTypes } from "./GameModalWindowTypes";

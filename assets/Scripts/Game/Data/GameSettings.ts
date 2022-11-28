@@ -1,6 +1,7 @@
 export class GameSettings {
-    public playerSettings: PlayerSettings = new PlayerSettings();
-    public weaponSettings: WeaponSettings = new WeaponSettings();
+    public player: PlayerSettings = new PlayerSettings();
+    public weapon: WeaponSettings = new WeaponSettings();
+    public upgrades: UpgradeSettings = new UpgradeSettings();
 }
 
 export class PlayerSettings {
@@ -11,4 +12,13 @@ export class PlayerSettings {
 
 export class WeaponSettings {
     public strikeDelay = 0;
+    public damage = 0;
+}
+
+export class UpgradeSettings {
+    public maxWeaponLengthUpgrades = 0;
+    public maxWeaponDamageUpgrades = 0;
+    public maxHorizontalProjectileUpgrades = 0;
+    public maxVerticalProjectileUpgrades = 0;
+    public maxRegenerationUpgrades = 0;
 }

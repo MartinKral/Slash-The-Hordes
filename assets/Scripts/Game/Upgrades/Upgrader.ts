@@ -1,4 +1,5 @@
-import { Player } from "../Player/Player";
+import { UpgradeSettings } from "../Data/GameSettings";
+import { Player } from "../Unit/Player/Player";
 import { UpgradeType } from "./UpgradeType";
 
 export class Upgrader {
@@ -7,18 +8,20 @@ export class Upgrader {
     private typeToLevel: Map<UpgradeType, number> = new Map<UpgradeType, number>();
     private typeToMaxLevel: Map<UpgradeType, number> = new Map<UpgradeType, number>();
 
-    public constructor(player: Player) {
+    public constructor(player: Player, settings: UpgradeSettings) {
         this.player = player;
 
-        this.setTypeMaps(UpgradeType.WeaponLength, this.upgradeWeaponLength, 5);
-        this.setTypeMaps(UpgradeType.WeaponDamage, this.upgradeWeaponDamage, 5);
+        this.setTypeMaps(UpgradeType.WeaponLength, this.upgradeWeaponLength.bind(this), settings.maxWeaponLengthUpgrades);
+        this.setTypeMaps(UpgradeType.WeaponDamage, this.upgradeWeaponDamage, settings.maxWeaponDamageUpgrades);
     }
 
     public upgradeSkill(type: UpgradeType): void {
         if (!this.typeToAction.has(type)) throw new Error("Upgrade does not have " + type);
-        if (this.isMaxLevel(type)) throw new Error("Upgrade is already at max level" + type);
+        if (this.isMaxLevel(type)) throw new Error("Upgrade is already at max level " + type);
 
         this.typeToAction.get(type)();
+        const level: number = this.typeToLevel.get(type);
+        this.typeToLevel.set(type, level + 1);
     }
 
     public getAvailableUpgrades(): Set<UpgradeType> {
