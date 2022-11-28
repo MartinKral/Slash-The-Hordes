@@ -1,7 +1,9 @@
 import { BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator } from "cc";
+import { PlayerSettings } from "../../Data/GameSettings";
 import { IInput } from "../../Input/IInput";
 import { UnitHealth } from "../UnitHealth";
 import { UnitLevel } from "../UnitLevel";
+import { PlayerRegeneration } from "./PlayerRegeneration";
 import { PlayerUI } from "./PlayerUI/PlayerUI";
 import { Weapon } from "./Weapon/Weapon";
 
@@ -17,12 +19,14 @@ export class Player extends Component {
     private weapon: Weapon;
     private health: UnitHealth;
     private level: UnitLevel;
+    private regeneration: PlayerRegeneration;
 
-    public init(input: IInput, weapon: Weapon, maxHp: number, requiredLevelXps: number[]): void {
+    public init(input: IInput, weapon: Weapon, settings: PlayerSettings): void {
         this.input = input;
         this.weapon = weapon;
-        this.health = new UnitHealth(maxHp);
-        this.level = new UnitLevel(requiredLevelXps);
+        this.health = new UnitHealth(settings.defaultHP);
+        this.level = new UnitLevel(settings.requiredXP);
+        this.regeneration = new PlayerRegeneration(this.health, settings.regenerationDelay);
 
         this.weapon.node.parent = this.node;
         this.weapon.node.setPosition(new Vec3());
@@ -42,6 +46,10 @@ export class Player extends Component {
         return this.weapon;
     }
 
+    public get Regeneration(): PlayerRegeneration {
+        return this.regeneration;
+    }
+
     public get Collider(): Collider2D {
         return this.collider;
     }
@@ -58,5 +66,6 @@ export class Player extends Component {
         this.node.setWorldPosition(newPosition);
 
         this.weapon.gameTick(deltaTime);
+        this.regeneration.gameTick(deltaTime);
     }
 }

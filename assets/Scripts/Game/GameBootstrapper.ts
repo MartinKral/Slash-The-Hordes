@@ -39,7 +39,7 @@ export class GameBootstrapper extends Component {
         const wasd = new KeyboardInput(KeyCode.KEY_W, KeyCode.KEY_S, KeyCode.KEY_A, KeyCode.KEY_D);
         const arrowKeys = new KeyboardInput(KeyCode.ARROW_UP, KeyCode.ARROW_DOWN, KeyCode.ARROW_LEFT, KeyCode.ARROW_RIGHT);
         const dualInput: MultiInput = new MultiInput([this.virtualJoystic, wasd, arrowKeys]);
-        this.player.init(dualInput, this.weapon, settings.player.defaultHP, settings.player.requiredXP);
+        this.player.init(dualInput, this.weapon, settings.player);
 
         this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay);
         new WeaponCollisionSystem(this.weapon);

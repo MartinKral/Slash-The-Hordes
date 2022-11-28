@@ -7,6 +7,7 @@ export class GameSettings {
 export class PlayerSettings {
     public defaultHP = 0;
     public requiredXP: number[] = [];
+    public regenerationDelay = 0;
     public collisionDelay = 0;
 }
 

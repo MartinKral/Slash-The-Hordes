@@ -12,7 +12,8 @@ export class Upgrader {
         this.player = player;
 
         this.setTypeMaps(UpgradeType.WeaponLength, this.upgradeWeaponLength.bind(this), settings.maxWeaponLengthUpgrades);
-        this.setTypeMaps(UpgradeType.WeaponDamage, this.upgradeWeaponDamage, settings.maxWeaponDamageUpgrades);
+        this.setTypeMaps(UpgradeType.WeaponDamage, this.upgradeWeaponDamage.bind(this), settings.maxWeaponDamageUpgrades);
+        this.setTypeMaps(UpgradeType.Regeneration, this.upgradeRegeneration.bind(this), settings.maxRegenerationUpgrades);
     }
 
     public upgradeSkill(type: UpgradeType): void {
@@ -47,6 +48,10 @@ export class Upgrader {
 
     private upgradeWeaponDamage(): void {
         this.player.Weapon.upgradeWeaponDamage();
+    }
+
+    private upgradeRegeneration(): void {
+        this.player.Regeneration.upgrade();
     }
 
     private isMaxLevel(type: UpgradeType): boolean {
