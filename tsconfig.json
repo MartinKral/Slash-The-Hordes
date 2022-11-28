@@ -8,6 +8,10 @@
         "module": "CommonJS",
         "allowSyntheticDefaultImports": true,
         "types": ["jest", "node"],
-        "strictNullChecks": false
+        "strictNullChecks": false,
+        "moduleResolution": "node",
+        "paths": {
+            // "@services/*": ["./assets/Scripts/Services/*"]
+        }
     }
 }
