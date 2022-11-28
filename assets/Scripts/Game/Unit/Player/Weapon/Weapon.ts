@@ -1,6 +1,6 @@
 import { Animation, AnimationState, Component, _decorator } from "cc";
-import { GameTimer } from "../../../Services/GameTimer";
-import { WeaponSettings } from "../../Data/GameSettings";
+import { GameTimer } from "../../../../Services/GameTimer";
+import { WeaponSettings } from "../../../Data/GameSettings";
 
 import { UpgradableCollider } from "./UpgradableCollider";
 const { ccclass, property } = _decorator;

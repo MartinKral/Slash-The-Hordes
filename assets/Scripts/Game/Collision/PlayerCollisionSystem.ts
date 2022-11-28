@@ -2,8 +2,8 @@ import { Collider2D, Contact2DType } from "cc";
 import { GroupType } from "../GroupType";
 import { Player } from "../Unit/Player/Player";
 import { GameTimer } from "../../Services/GameTimer";
-import { Enemy } from "../Enemy/Enemy";
 import { XP } from "../XP/XP";
+import { Enemy } from "../Unit/Enemy/Enemy";
 
 export class PlayerCollisionSystem {
     private playerContacts: Collider2D[] = [];

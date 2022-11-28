@@ -1,7 +1,8 @@
 import { BoxCollider2D, Component, randomRange, Vec3, _decorator } from "cc";
-import { ISignal } from "../../Services/EventSystem/ISignal";
-import { Signal } from "../../Services/EventSystem/Signal";
-import { UnitHealth } from "../Player/UnitHealth";
+import { ISignal } from "../../../Services/EventSystem/ISignal";
+import { Signal } from "../../../Services/EventSystem/Signal";
+import { UnitHealth } from "../UnitHealth";
+
 const { ccclass, property } = _decorator;
 
 @ccclass("Enemy")

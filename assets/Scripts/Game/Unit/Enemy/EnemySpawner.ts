@@ -1,8 +1,9 @@
 import { Component, Prefab, randomRange, Vec3, _decorator, Node } from "cc";
-import { ISignal } from "../../Services/EventSystem/ISignal";
-import { Signal } from "../../Services/EventSystem/Signal";
-import { GameTimer } from "../../Services/GameTimer";
-import { ObjectPool } from "../../Services/ObjectPool";
+import { ISignal } from "../../../Services/EventSystem/ISignal";
+import { Signal } from "../../../Services/EventSystem/Signal";
+import { GameTimer } from "../../../Services/GameTimer";
+import { ObjectPool } from "../../../Services/ObjectPool";
+
 import { Enemy } from "./Enemy";
 const { ccclass, property } = _decorator;
 

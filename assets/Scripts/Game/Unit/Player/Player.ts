@@ -1,9 +1,10 @@
-import { BoxCollider2D, Collider2D, Component, PointToPointConstraint, Vec2, Vec3, _decorator } from "cc";
-import { IInput } from "../Input/IInput";
-import { Weapon } from "../Weapon";
+import { BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator } from "cc";
+import { IInput } from "../../Input/IInput";
+import { UnitHealth } from "../UnitHealth";
+import { UnitLevel } from "../UnitLevel";
 import { PlayerUI } from "./PlayerUI/PlayerUI";
-import { UnitHealth } from "./UnitHealth";
-import { UnitLevel } from "./UnitLevel";
+import { Weapon } from "./Weapon/Weapon";
+
 const { ccclass, property } = _decorator;
 
 @ccclass("Player")

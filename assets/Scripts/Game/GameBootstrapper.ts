@@ -3,15 +3,15 @@ import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowMan
 import { PlayerCollisionSystem } from "./Collision/PlayerCollisionSystem";
 import { WeaponCollisionSystem } from "./Collision/WeaponCollisionSystem";
 import { GameSettings } from "./Data/GameSettings";
-import { EnemyManager } from "./Enemy/EnemyManager";
 import { KeyboardInput } from "./Input/KeyboardInput";
 import { MultiInput } from "./Input/MultiInput";
 import { VirtualJoystic } from "./Input/VirtualJoystic";
 import { GameModalLauncher } from "./ModalWIndows/GameModalLauncher";
 import { Pauser } from "./Pauser";
-import { Player } from "./Player/Player";
-import { Weapon } from "./Player/Weapon/Weapon";
 import { GameUI } from "./UI/GameUI";
+import { EnemyManager } from "./Unit/Enemy/EnemyManager";
+import { Player } from "./Unit/Player/Player";
+import { Weapon } from "./Unit/Player/Weapon/Weapon";
 import { Upgrader } from "./Upgrades/Upgrader";
 
 const { ccclass, property } = _decorator;

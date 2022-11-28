@@ -1,6 +1,6 @@
 import { BoxCollider2D, Collider2D, Component, Contact2DType, _decorator } from "cc";
-import { ISignal } from "../../../Services/EventSystem/ISignal";
-import { Signal } from "../../../Services/EventSystem/Signal";
+import { ISignal } from "../../../../Services/EventSystem/ISignal";
+import { Signal } from "../../../../Services/EventSystem/Signal";
 
 const { ccclass, property } = _decorator;
 

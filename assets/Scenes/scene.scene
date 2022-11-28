@@ -1633,6 +1633,9 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "healthUI": {
+      "__id__": 46
+    },
     "_id": "49hVDAypRMuoVp+F+IPkXM"
   },
   {
@@ -1707,7 +1710,9 @@
     "collider": {
       "__id__": 52
     },
-    "playerUI": null,
+    "playerUI": {
+      "__id__": 48
+    },
     "_id": "5aDEGDNWpIaL+U2iIxK4vA"
   },
   {

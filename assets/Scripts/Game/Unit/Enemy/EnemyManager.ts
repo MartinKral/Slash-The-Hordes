@@ -1,5 +1,5 @@
 import { Component, Node, _decorator } from "cc";
-import { XPSpawner } from "../XP/XPSpawner";
+import { XPSpawner } from "../../XP/XPSpawner";
 import { Enemy } from "./Enemy";
 import { EnemyMover } from "./EnemyMover";
 import { EnemySpawner } from "./EnemySpawner";

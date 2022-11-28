@@ -1,5 +1,5 @@
 import { Collider2D } from "cc";
-import { Enemy } from "../Enemy/Enemy";
+import { Enemy } from "../Unit/Enemy/Enemy";
 import { Weapon } from "../Unit/Player/Weapon/Weapon";
 
 export class WeaponCollisionSystem {
