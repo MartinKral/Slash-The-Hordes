@@ -14,22 +14,20 @@ export class Player extends Component {
     @property private speed = 0;
     @property(BoxCollider2D) private collider: BoxCollider2D;
     @property(PlayerUI) private playerUI: PlayerUI;
+    @property(Weapon) private weapon: Weapon;
 
     private input: IInput;
-    private weapon: Weapon;
     private health: UnitHealth;
     private level: UnitLevel;
     private regeneration: PlayerRegeneration;
 
-    public init(input: IInput, weapon: Weapon, settings: PlayerSettings): void {
+    public init(input: IInput, settings: PlayerSettings): void {
         this.input = input;
-        this.weapon = weapon;
         this.health = new UnitHealth(settings.defaultHP);
         this.level = new UnitLevel(settings.requiredXP);
         this.regeneration = new PlayerRegeneration(this.health, settings.regenerationDelay);
 
-        this.weapon.node.parent = this.node;
-        this.weapon.node.setPosition(new Vec3());
+        this.weapon.init(settings.weapon);
 
         this.playerUI.init(this.health);
     }

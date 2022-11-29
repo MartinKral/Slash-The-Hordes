@@ -10,8 +10,9 @@ import { GameModalLauncher } from "./ModalWIndows/GameModalLauncher";
 import { Pauser } from "./Pauser";
 import { GameUI } from "./UI/GameUI";
 import { EnemyManager } from "./Unit/Enemy/EnemyManager";
+import { HaloProjectileLauncher } from "./Unit/Player/Halo/HaloProjectileLauncher";
 import { Player } from "./Unit/Player/Player";
-import { Weapon } from "./Unit/Player/Weapon/Weapon";
+
 import { Upgrader } from "./Upgrades/Upgrader";
 
 const { ccclass, property } = _decorator;
@@ -20,7 +21,7 @@ const { ccclass, property } = _decorator;
 export class GameBootstrapper extends Component {
     @property(VirtualJoystic) private virtualJoystic: VirtualJoystic;
     @property(Player) private player: Player;
-    @property(Weapon) private weapon: Weapon;
+    @property(HaloProjectileLauncher) private haloProjectiles: HaloProjectileLauncher;
     @property(EnemyManager) private enemyManager: EnemyManager;
     @property(Camera) private camera: Camera;
     @property(GameUI) private gameUI: GameUI;
@@ -35,19 +36,22 @@ export class GameBootstrapper extends Component {
         const settings: GameSettings = <GameSettings>this.settingsAsset.json;
 
         this.virtualJoystic.init();
-        this.weapon.init(settings.weapon);
+
         const wasd = new KeyboardInput(KeyCode.KEY_W, KeyCode.KEY_S, KeyCode.KEY_A, KeyCode.KEY_D);
         const arrowKeys = new KeyboardInput(KeyCode.ARROW_UP, KeyCode.ARROW_DOWN, KeyCode.ARROW_LEFT, KeyCode.ARROW_RIGHT);
         const dualInput: MultiInput = new MultiInput([this.virtualJoystic, wasd, arrowKeys]);
-        this.player.init(dualInput, this.weapon, settings.player);
+        this.player.init(dualInput, settings.player);
 
         this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay);
-        new WeaponCollisionSystem(this.weapon);
+        new WeaponCollisionSystem(this.player.Weapon);
 
         const upgrader = new Upgrader(this.player, settings.upgrades);
         new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader);
 
         this.enemyManager.init(this.player.node);
+
+        this.haloProjectiles.init(this.player.node, settings.player.haloLauncher);
+        this.haloProjectiles.upgrade();
 
         this.gameUI.init(this.player);
     }
@@ -58,6 +62,7 @@ export class GameBootstrapper extends Component {
         this.player.gameTick(deltaTime);
         this.playerCollisionSystem.gameTick(deltaTime);
         this.enemyManager.gameTick(deltaTime);
+        this.haloProjectiles.gameTick(deltaTime);
 
         this.camera.node.worldPosition = this.player.node.worldPosition;
     }

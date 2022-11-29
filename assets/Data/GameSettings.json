@@ -14,17 +14,24 @@
             20
         ],
         "regenerationDelay": 5,
-        "collisionDelay": 0.5
-    },
-    "weapon": {
-        "strikeDelay": 2,
-        "damage": 1
+        "collisionDelay": 0.5,
+        "weapon": {
+            "strikeDelay": 2,
+            "damage": 1
+        },
+        "haloLauncher": {
+            "projectileLifetime": 2,
+            "projectileSpeed": 150,
+            "projectilesToSpawn": 24,
+            "cooldown": 10
+        }
     },
     "upgrades": {
         "maxWeaponLengthUpgrades": 5,
         "maxWeaponDamageUpgrades": 5,
         "maxHorizontalProjectileUpgrades": 0,
         "maxVerticalProjectileUpgrades": 0,
+        "maxHaloProjectileUpgrades": 5,
         "maxRegenerationUpgrades": 5
     }
 }
