@@ -141,7 +141,7 @@
     "_id": "61KOckV1dET5kaFFrJFLGb"
   },
   {
-    "__type__": "422b4bsPhVDfZf8f0Sid8O+",
+    "__type__": "e3d066A8exFBaWWn2gx4c4j",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -153,7 +153,7 @@
       "__uuid__": "ff0be112-7028-424c-87b8-fc54a106015a",
       "__expectedType__": "cc.Prefab"
     },
-    "_id": "02VMV6hX5L5pm3W9sOTjZt"
+    "_id": "59iUbnanhI5rTJrAOksLEe"
   },
   {
     "__type__": "cc.Node",
@@ -3656,10 +3656,10 @@
     "player": {
       "__id__": 55
     },
-    "haloProjectiles": {
+    "haloProjectileLauncherComponent": {
       "__id__": 4
     },
-    "verticalProjectileLauncher": {
+    "verticalProjectileLauncherComponent": {
       "__id__": 6
     },
     "enemyManager": {

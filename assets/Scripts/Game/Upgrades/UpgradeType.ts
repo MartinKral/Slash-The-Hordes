@@ -3,10 +3,12 @@ export enum UpgradeType {
     WeaponDamage,
     HorizontalProjectile,
     VerticalProjectile,
+    HaloProjectlie,
     Regeneration
 }
 
 export enum MetaUpgradeType {
     MaxHp,
-    OverallDamage
+    OverallDamage,
+    ProjectilePiercing
 }

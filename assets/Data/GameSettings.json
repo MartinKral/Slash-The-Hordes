@@ -21,12 +21,23 @@
         },
         "haloLauncher": {
             "projectilesToSpawn": 24,
+            "cooldownDivisorPerUpgrade": 1,
             "launcher": {
-                "projectileLifetime": 5,
+                "projectileLifetime": 2,
                 "projectileSpeed": 150,
                 "wavesToShoot": 1,
                 "wavesDelayMs": 0,
                 "cooldown": 10
+            }
+        },
+        "xyLaunchers": {
+            "wavesToShootPerUpgrade": 1,
+            "launcher": {
+                "projectileLifetime": 20,
+                "projectileSpeed": 300,
+                "wavesToShoot": 0,
+                "wavesDelayMs": 100,
+                "cooldown": 4
             }
         }
     },

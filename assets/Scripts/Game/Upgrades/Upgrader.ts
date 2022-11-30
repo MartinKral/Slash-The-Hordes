@@ -1,18 +1,24 @@
 import { UpgradeSettings } from "../Data/GameSettings";
 import { Player } from "../Unit/Player/Player";
+import { HaloProjectileLauncher } from "../Unit/Player/ProjectileLauncher/HaloProjectileLauncher";
+import { VerticalProjectileLauncher } from "../Unit/Player/ProjectileLauncher/VerticalProjectileLauncher";
 import { UpgradeType } from "./UpgradeType";
 
 export class Upgrader {
-    private player: Player;
     private typeToAction: Map<UpgradeType, () => void> = new Map<UpgradeType, () => void>();
     private typeToLevel: Map<UpgradeType, number> = new Map<UpgradeType, number>();
     private typeToMaxLevel: Map<UpgradeType, number> = new Map<UpgradeType, number>();
 
-    public constructor(player: Player, settings: UpgradeSettings) {
-        this.player = player;
-
+    public constructor(
+        private player: Player,
+        private verticalProjectileLauncher: VerticalProjectileLauncher,
+        private haloProjectileLauncher: HaloProjectileLauncher,
+        settings: UpgradeSettings
+    ) {
         this.setTypeMaps(UpgradeType.WeaponLength, this.upgradeWeaponLength.bind(this), settings.maxWeaponLengthUpgrades);
         this.setTypeMaps(UpgradeType.WeaponDamage, this.upgradeWeaponDamage.bind(this), settings.maxWeaponDamageUpgrades);
+        this.setTypeMaps(UpgradeType.VerticalProjectile, this.upgradeVerticalProjectileLauncher.bind(this), settings.maxVerticalProjectileUpgrades);
+        this.setTypeMaps(UpgradeType.HaloProjectlie, this.upgradeHaloProjectileLauncher.bind(this), settings.maxHaloProjectileUpgrades);
         this.setTypeMaps(UpgradeType.Regeneration, this.upgradeRegeneration.bind(this), settings.maxRegenerationUpgrades);
     }
 
@@ -48,6 +54,14 @@ export class Upgrader {
 
     private upgradeWeaponDamage(): void {
         this.player.Weapon.upgradeWeaponDamage();
+    }
+
+    private upgradeVerticalProjectileLauncher(): void {
+        this.verticalProjectileLauncher.upgrade();
+    }
+
+    private upgradeHaloProjectileLauncher(): void {
+        this.haloProjectileLauncher.upgrade();
     }
 
     private upgradeRegeneration(): void {

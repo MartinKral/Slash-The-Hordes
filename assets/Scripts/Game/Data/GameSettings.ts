@@ -10,6 +10,7 @@ export class PlayerSettings {
     public collisionDelay = 0;
     public weapon: WeaponSettings = new WeaponSettings();
     public haloLauncher: HaloLauncherSettings = new HaloLauncherSettings();
+    public xyLaunchers: WaveLauncherSettings = new WaveLauncherSettings();
 }
 
 export class WeaponSettings {
@@ -17,8 +18,14 @@ export class WeaponSettings {
     public damage = 0;
 }
 
+export class WaveLauncherSettings {
+    public wavesToShootPerUpgrade = 0;
+    public launcher = new ProjectileLauncherSettings();
+}
+
 export class HaloLauncherSettings {
     public projectilesToSpawn = 0;
+    public cooldownDivisorPerUpgrade = 0;
     public launcher = new ProjectileLauncherSettings();
 }
 
