@@ -1,6 +1,7 @@
 import { Camera, Component, JsonAsset, KeyCode, _decorator } from "cc";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
 import { PlayerCollisionSystem } from "./Collision/PlayerCollisionSystem";
+import { PlayerProjectileCollisionSystem } from "./Collision/PlayerProjectileCollisionSystem";
 import { WeaponCollisionSystem } from "./Collision/WeaponCollisionSystem";
 import { GameSettings } from "./Data/GameSettings";
 import { KeyboardInput } from "./Input/KeyboardInput";
@@ -10,9 +11,8 @@ import { GameModalLauncher } from "./ModalWIndows/GameModalLauncher";
 import { Pauser } from "./Pauser";
 import { GameUI } from "./UI/GameUI";
 import { EnemyManager } from "./Unit/Enemy/EnemyManager";
-import { HaloProjectileLauncher } from "./Unit/Player/Halo/HaloProjectileLauncher";
 import { Player } from "./Unit/Player/Player";
-
+import { HaloProjectileLauncher } from "./Unit/Player/ProjectileLauncher/Halo/HaloProjectileLauncher";
 import { Upgrader } from "./Upgrades/Upgrader";
 
 const { ccclass, property } = _decorator;
@@ -52,6 +52,8 @@ export class GameBootstrapper extends Component {
 
         this.haloProjectiles.init(this.player.node, settings.player.haloLauncher);
         this.haloProjectiles.upgrade();
+
+        new PlayerProjectileCollisionSystem(this.haloProjectiles);
 
         this.gameUI.init(this.player);
     }

@@ -1,9 +1,13 @@
-import { Component, Prefab, Vec2, Vec3, _decorator, Node } from "cc";
-import { GameTimer } from "../../../../Services/GameTimer";
-import { ObjectPool } from "../../../../Services/ObjectPool";
-import { roundToOneDecimal } from "../../../../Services/Utils/MathUtils";
-import { HaloLauncherSettings } from "../../../Data/GameSettings";
-import { PlayerProjectile } from "./PlayerProjectile";
+import { Component, Node, Prefab, Vec2, Vec3, _decorator } from "cc";
+import { ISignal } from "../../../../../Services/EventSystem/ISignal";
+import { Signal } from "../../../../../Services/EventSystem/Signal";
+import { GameTimer } from "../../../../../Services/GameTimer";
+import { ObjectPool } from "../../../../../Services/ObjectPool";
+import { roundToOneDecimal } from "../../../../../Services/Utils/MathUtils";
+import { HaloLauncherSettings } from "../../../../Data/GameSettings";
+import { Projectile } from "../../../../Projectile/Projectile";
+import { ProjectileCollision } from "../../../../Projectile/ProjectileCollision";
+
 const { ccclass, property } = _decorator;
 
 @ccclass("HaloProjectileLauncher")
@@ -18,16 +22,18 @@ export class HaloProjectileLauncher extends Component {
 
     private isFiring = false;
 
-    private projectilePool: ObjectPool<PlayerProjectile>;
-    private projectiles: PlayerProjectile[] = [];
+    private projectilePool: ObjectPool<Projectile>;
+    private projectiles: Projectile[] = [];
     private directions: Vec2[] = [];
 
     private playerNode: Node;
 
+    private projectileCollisionEvent: Signal<ProjectileCollision> = new Signal<ProjectileCollision>();
+
     public init(playerNode: Node, settings: HaloLauncherSettings): void {
         this.playerNode = playerNode;
         this.projectilesToSpawn = settings.projectilesToSpawn;
-        this.projectilePool = new ObjectPool<PlayerProjectile>(this.projectilePrefab, this.node, this.projectilesToSpawn, "PlayerProjectile");
+        this.projectilePool = new ObjectPool<Projectile>(this.projectilePrefab, this.node, this.projectilesToSpawn, "PlayerProjectile");
 
         this.speed = settings.projectileSpeed;
         this.defaultCooldown = settings.cooldown;
@@ -41,6 +47,10 @@ export class HaloProjectileLauncher extends Component {
             const y: number = roundToOneDecimal(Math.cos(angle * i));
             this.directions.push(new Vec2(x, y).normalize());
         }
+    }
+
+    public get ProjectileCollisionEvent(): ISignal<ProjectileCollision> {
+        return this.projectileCollisionEvent;
     }
 
     public upgrade(): void {
@@ -64,9 +74,11 @@ export class HaloProjectileLauncher extends Component {
 
     private fireProjectiles(): void {
         for (let index = 0; index < this.projectilesToSpawn; index++) {
-            const projectile: PlayerProjectile = this.projectilePool.borrow();
+            const projectile: Projectile = this.projectilePool.borrow();
+            projectile.tryInit();
             projectile.node.setWorldPosition(this.playerNode.worldPosition);
             projectile.node.active = true;
+            projectile.ContactBeginEvent.on(this.onProjectileCollision, this);
             this.projectiles.push(projectile);
         }
 
@@ -87,11 +99,16 @@ export class HaloProjectileLauncher extends Component {
         this.lifetimeTimer.gameTick(deltaTime);
         if (this.lifetimeTimer.tryFinishPeriod()) {
             for (const projectile of this.projectiles) {
+                projectile.ContactBeginEvent.off(this.onProjectileCollision);
                 this.projectilePool.return(projectile);
             }
 
             this.projectiles = [];
             this.isFiring = false;
         }
+    }
+
+    private onProjectileCollision(projectileCollision: ProjectileCollision): void {
+        this.projectileCollisionEvent.trigger(projectileCollision);
     }
 }
