@@ -18,9 +18,15 @@ export class WeaponSettings {
 }
 
 export class HaloLauncherSettings {
+    public projectilesToSpawn = 0;
+    public launcher = new ProjectileLauncherSettings();
+}
+
+export class ProjectileLauncherSettings {
     public projectileLifetime = 0;
     public projectileSpeed = 0;
-    public projectilesToSpawn = 0;
+    public wavesToShoot = 0;
+    public wavesDelayMs = 0;
     public cooldown = 0;
 }
 

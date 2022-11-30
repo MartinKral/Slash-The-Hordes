@@ -20,10 +20,14 @@
             "damage": 1
         },
         "haloLauncher": {
-            "projectileLifetime": 2,
-            "projectileSpeed": 150,
             "projectilesToSpawn": 24,
-            "cooldown": 10
+            "launcher": {
+                "projectileLifetime": 5,
+                "projectileSpeed": 150,
+                "wavesToShoot": 1,
+                "wavesDelayMs": 0,
+                "cooldown": 10
+            }
         }
     },
     "upgrades": {

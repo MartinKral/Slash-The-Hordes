@@ -1,4 +1,4 @@
-import { Camera, Component, JsonAsset, KeyCode, _decorator } from "cc";
+import { Camera, Component, JsonAsset, KeyCode, Vec2, _decorator } from "cc";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
 import { PlayerCollisionSystem } from "./Collision/PlayerCollisionSystem";
 import { PlayerProjectileCollisionSystem } from "./Collision/PlayerProjectileCollisionSystem";
@@ -13,6 +13,7 @@ import { GameUI } from "./UI/GameUI";
 import { EnemyManager } from "./Unit/Enemy/EnemyManager";
 import { Player } from "./Unit/Player/Player";
 import { HaloProjectileLauncher } from "./Unit/Player/ProjectileLauncher/Halo/HaloProjectileLauncher";
+import { ProjectileLauncher } from "./Unit/Player/ProjectileLauncher/ProjectileLauncher";
 import { Upgrader } from "./Upgrades/Upgrader";
 
 const { ccclass, property } = _decorator;
@@ -22,6 +23,7 @@ export class GameBootstrapper extends Component {
     @property(VirtualJoystic) private virtualJoystic: VirtualJoystic;
     @property(Player) private player: Player;
     @property(HaloProjectileLauncher) private haloProjectiles: HaloProjectileLauncher;
+    @property(ProjectileLauncher) private verticalProjectileLauncher: ProjectileLauncher;
     @property(EnemyManager) private enemyManager: EnemyManager;
     @property(Camera) private camera: Camera;
     @property(GameUI) private gameUI: GameUI;
@@ -53,6 +55,9 @@ export class GameBootstrapper extends Component {
         this.haloProjectiles.init(this.player.node, settings.player.haloLauncher);
         this.haloProjectiles.upgrade();
 
+        this.verticalProjectileLauncher.init(this.player.node, [new Vec2(-1, 0)]);
+        this.verticalProjectileLauncher.upgrade();
+
         new PlayerProjectileCollisionSystem(this.haloProjectiles);
 
         this.gameUI.init(this.player);
@@ -65,6 +70,7 @@ export class GameBootstrapper extends Component {
         this.playerCollisionSystem.gameTick(deltaTime);
         this.enemyManager.gameTick(deltaTime);
         this.haloProjectiles.gameTick(deltaTime);
+        this.verticalProjectileLauncher.gameTick(deltaTime);
 
         this.camera.node.worldPosition = this.player.node.worldPosition;
     }

@@ -33,11 +33,11 @@ export class HaloProjectileLauncher extends Component {
     public init(playerNode: Node, settings: HaloLauncherSettings): void {
         this.playerNode = playerNode;
         this.projectilesToSpawn = settings.projectilesToSpawn;
-        this.projectilePool = new ObjectPool<Projectile>(this.projectilePrefab, this.node, this.projectilesToSpawn, "PlayerProjectile");
+        this.projectilePool = new ObjectPool<Projectile>(this.projectilePrefab, this.node, this.projectilesToSpawn, "Projectile");
 
-        this.speed = settings.projectileSpeed;
-        this.defaultCooldown = settings.cooldown;
-        this.lifetimeTimer = new GameTimer(settings.projectileLifetime);
+        this.speed = settings.launcher.projectileSpeed;
+        this.defaultCooldown = settings.launcher.cooldown;
+        this.lifetimeTimer = new GameTimer(settings.launcher.projectileLifetime);
         this.fireTimer = new GameTimer(this.defaultCooldown);
 
         const angle: number = (2 * Math.PI) / this.projectilesToSpawn;
