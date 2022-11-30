@@ -41,7 +41,7 @@ export class UpgradeSettings {
     public maxWeaponLengthUpgrades = 0;
     public maxWeaponDamageUpgrades = 0;
     public maxHorizontalProjectileUpgrades = 0;
-    public maxVerticalProjectileUpgrades = 0;
+    public maxHorizontalProjectileUpgrades = 0;
     public maxHaloProjectileUpgrades = 0;
     public maxRegenerationUpgrades = 0;
 }

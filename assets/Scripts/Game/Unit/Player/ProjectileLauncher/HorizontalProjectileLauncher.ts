@@ -5,7 +5,7 @@ import { IProjectileCollisionSignaler } from "../../../Projectile/IProjectileCol
 import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
 import { ProjectileLauncher } from "./ProjectileLauncher";
 
-export class VerticalProjectileLauncher implements IProjectileCollisionSignaler {
+export class HorizontalProjectileLauncher implements IProjectileCollisionSignaler {
     private currentUpgrade = 0;
     private wavesToShootPerUpgrade = 0;
 

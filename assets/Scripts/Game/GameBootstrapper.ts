@@ -14,7 +14,7 @@ import { EnemyManager } from "./Unit/Enemy/EnemyManager";
 import { Player } from "./Unit/Player/Player";
 import { HaloProjectileLauncher } from "./Unit/Player/ProjectileLauncher/HaloProjectileLauncher";
 import { ProjectileLauncher } from "./Unit/Player/ProjectileLauncher/ProjectileLauncher";
-import { VerticalProjectileLauncher } from "./Unit/Player/ProjectileLauncher/VerticalProjectileLauncher";
+import { HorizontalProjectileLauncher } from "./Unit/Player/ProjectileLauncher/HorizontalProjectileLauncher";
 import { Upgrader } from "./Upgrades/Upgrader";
 
 const { ccclass, property } = _decorator;
@@ -33,7 +33,7 @@ export class GameBootstrapper extends Component {
 
     private playerCollisionSystem: PlayerCollisionSystem;
     private haloProjectileLauncher: HaloProjectileLauncher;
-    private verticalProjectileLauncher: VerticalProjectileLauncher;
+    private horizontalProjectileLauncher: HorizontalProjectileLauncher;
 
     private gamePauser: Pauser = new Pauser();
 
@@ -50,9 +50,6 @@ export class GameBootstrapper extends Component {
         this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay);
         new WeaponCollisionSystem(this.player.Weapon);
 
-        const upgrader = new Upgrader(this.player, settings.upgrades);
-        new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader);
-
         this.enemyManager.init(this.player.node);
 
         this.haloProjectileLauncher = new HaloProjectileLauncher(
@@ -62,14 +59,17 @@ export class GameBootstrapper extends Component {
         );
         this.haloProjectileLauncher.upgrade();
 
-        this.verticalProjectileLauncher = new VerticalProjectileLauncher(
+        this.horizontalProjectileLauncher = new HorizontalProjectileLauncher(
             this.verticalProjectileLauncherComponent,
             this.player.node,
             settings.player.xyLaunchers
         );
-        this.verticalProjectileLauncher.upgrade();
+        this.horizontalProjectileLauncher.upgrade();
 
-        new PlayerProjectileCollisionSystem([this.haloProjectileLauncher, this.verticalProjectileLauncher]);
+        new PlayerProjectileCollisionSystem([this.haloProjectileLauncher, this.horizontalProjectileLauncher]);
+
+        const upgrader = new Upgrader(this.player, this.horizontalProjectileLauncher, this.haloProjectileLauncher, settings.upgrades);
+        new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader);
 
         this.gameUI.init(this.player);
     }
@@ -81,7 +81,7 @@ export class GameBootstrapper extends Component {
         this.playerCollisionSystem.gameTick(deltaTime);
         this.enemyManager.gameTick(deltaTime);
         this.haloProjectileLauncher.gameTick(deltaTime);
-        this.verticalProjectileLauncher.gameTick(deltaTime);
+        this.horizontalProjectileLauncher.gameTick(deltaTime);
 
         this.camera.node.worldPosition = this.player.node.worldPosition;
     }

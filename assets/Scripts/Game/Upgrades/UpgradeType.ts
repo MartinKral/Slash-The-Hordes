@@ -2,7 +2,6 @@ export enum UpgradeType {
     WeaponLength,
     WeaponDamage,
     HorizontalProjectile,
-    VerticalProjectile,
     HaloProjectlie,
     Regeneration
 }

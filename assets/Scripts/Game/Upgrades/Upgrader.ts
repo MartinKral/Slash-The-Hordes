@@ -1,7 +1,7 @@
 import { UpgradeSettings } from "../Data/GameSettings";
 import { Player } from "../Unit/Player/Player";
 import { HaloProjectileLauncher } from "../Unit/Player/ProjectileLauncher/HaloProjectileLauncher";
-import { VerticalProjectileLauncher } from "../Unit/Player/ProjectileLauncher/VerticalProjectileLauncher";
+import { HorizontalProjectileLauncher } from "../Unit/Player/ProjectileLauncher/HorizontalProjectileLauncher";
 import { UpgradeType } from "./UpgradeType";
 
 export class Upgrader {
@@ -11,13 +11,17 @@ export class Upgrader {
 
     public constructor(
         private player: Player,
-        private verticalProjectileLauncher: VerticalProjectileLauncher,
+        private horizontalProjectileLauncher: HorizontalProjectileLauncher,
         private haloProjectileLauncher: HaloProjectileLauncher,
         settings: UpgradeSettings
     ) {
         this.setTypeMaps(UpgradeType.WeaponLength, this.upgradeWeaponLength.bind(this), settings.maxWeaponLengthUpgrades);
         this.setTypeMaps(UpgradeType.WeaponDamage, this.upgradeWeaponDamage.bind(this), settings.maxWeaponDamageUpgrades);
-        this.setTypeMaps(UpgradeType.VerticalProjectile, this.upgradeVerticalProjectileLauncher.bind(this), settings.maxVerticalProjectileUpgrades);
+        this.setTypeMaps(
+            UpgradeType.HorizontalProjectile,
+            this.upgradeHorizontalProjectileLauncher.bind(this),
+            settings.maxHorizontalProjectileUpgrades
+        );
         this.setTypeMaps(UpgradeType.HaloProjectlie, this.upgradeHaloProjectileLauncher.bind(this), settings.maxHaloProjectileUpgrades);
         this.setTypeMaps(UpgradeType.Regeneration, this.upgradeRegeneration.bind(this), settings.maxRegenerationUpgrades);
     }
@@ -56,8 +60,8 @@ export class Upgrader {
         this.player.Weapon.upgradeWeaponDamage();
     }
 
-    private upgradeVerticalProjectileLauncher(): void {
-        this.verticalProjectileLauncher.upgrade();
+    private upgradeHorizontalProjectileLauncher(): void {
+        this.horizontalProjectileLauncher.upgrade();
     }
 
     private upgradeHaloProjectileLauncher(): void {
