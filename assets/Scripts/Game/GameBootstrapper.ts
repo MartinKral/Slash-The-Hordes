@@ -14,7 +14,7 @@ import { EnemyManager } from "./Unit/Enemy/EnemyManager";
 import { Player } from "./Unit/Player/Player";
 import { HaloProjectileLauncher } from "./Unit/Player/ProjectileLauncher/HaloProjectileLauncher";
 import { ProjectileLauncher } from "./Unit/Player/ProjectileLauncher/ProjectileLauncher";
-import { HorizontalProjectileLauncher } from "./Unit/Player/ProjectileLauncher/HorizontalProjectileLauncher";
+import { WaveProjectileLauncher } from "./Unit/Player/ProjectileLauncher/WaveProjectileLauncher";
 import { Upgrader } from "./Upgrades/Upgrader";
 
 const { ccclass, property } = _decorator;
@@ -24,7 +24,8 @@ export class GameBootstrapper extends Component {
     @property(VirtualJoystic) private virtualJoystic: VirtualJoystic;
     @property(Player) private player: Player;
     @property(ProjectileLauncher) private haloProjectileLauncherComponent: ProjectileLauncher;
-    @property(ProjectileLauncher) private verticalProjectileLauncherComponent: ProjectileLauncher;
+    @property(ProjectileLauncher) private horizontalProjectileLauncherComponent: ProjectileLauncher;
+    @property(ProjectileLauncher) private diagonalProjectileLauncherComponent: ProjectileLauncher;
     @property(EnemyManager) private enemyManager: EnemyManager;
     @property(Camera) private camera: Camera;
     @property(GameUI) private gameUI: GameUI;
@@ -33,7 +34,8 @@ export class GameBootstrapper extends Component {
 
     private playerCollisionSystem: PlayerCollisionSystem;
     private haloProjectileLauncher: HaloProjectileLauncher;
-    private horizontalProjectileLauncher: HorizontalProjectileLauncher;
+    private horizontalProjectileLauncher: WaveProjectileLauncher;
+    private diagonalProjectileLauncher: WaveProjectileLauncher;
 
     private gamePauser: Pauser = new Pauser();
 
@@ -59,14 +61,23 @@ export class GameBootstrapper extends Component {
         );
         this.haloProjectileLauncher.upgrade();
 
-        this.horizontalProjectileLauncher = new HorizontalProjectileLauncher(
-            this.verticalProjectileLauncherComponent,
+        this.horizontalProjectileLauncher = new WaveProjectileLauncher(
+            this.horizontalProjectileLauncherComponent,
             this.player.node,
-            settings.player.xyLaunchers
+            [new Vec2(-1, 0), new Vec2(1, 0)],
+            settings.player.horizontalLauncher
         );
         this.horizontalProjectileLauncher.upgrade();
 
-        new PlayerProjectileCollisionSystem([this.haloProjectileLauncher, this.horizontalProjectileLauncher]);
+        this.diagonalProjectileLauncher = new WaveProjectileLauncher(
+            this.diagonalProjectileLauncherComponent,
+            this.player.node,
+            [new Vec2(-0.5, -0.5), new Vec2(0.5, -0.5)],
+            settings.player.diagonalLauncher
+        );
+        this.diagonalProjectileLauncher.upgrade();
+
+        new PlayerProjectileCollisionSystem([this.haloProjectileLauncher, this.horizontalProjectileLauncher, this.diagonalProjectileLauncher]);
 
         const upgrader = new Upgrader(this.player, this.horizontalProjectileLauncher, this.haloProjectileLauncher, settings.upgrades);
         new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader);
@@ -82,6 +93,7 @@ export class GameBootstrapper extends Component {
         this.enemyManager.gameTick(deltaTime);
         this.haloProjectileLauncher.gameTick(deltaTime);
         this.horizontalProjectileLauncher.gameTick(deltaTime);
+        this.diagonalProjectileLauncher.gameTick(deltaTime);
 
         this.camera.node.worldPosition = this.player.node.worldPosition;
     }

@@ -10,7 +10,8 @@ export class PlayerSettings {
     public collisionDelay = 0;
     public weapon: WeaponSettings = new WeaponSettings();
     public haloLauncher: HaloLauncherSettings = new HaloLauncherSettings();
-    public xyLaunchers: WaveLauncherSettings = new WaveLauncherSettings();
+    public horizontalLauncher: WaveLauncherSettings = new WaveLauncherSettings();
+    public diagonalLauncher: WaveLauncherSettings = new WaveLauncherSettings();
 }
 
 export class WeaponSettings {
@@ -41,7 +42,7 @@ export class UpgradeSettings {
     public maxWeaponLengthUpgrades = 0;
     public maxWeaponDamageUpgrades = 0;
     public maxHorizontalProjectileUpgrades = 0;
-    public maxHorizontalProjectileUpgrades = 0;
+    public maxDiagonalProjectileUpgrades = 0;
     public maxHaloProjectileUpgrades = 0;
     public maxRegenerationUpgrades = 0;
 }

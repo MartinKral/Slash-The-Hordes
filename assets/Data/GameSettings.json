@@ -30,7 +30,17 @@
                 "cooldown": 10
             }
         },
-        "xyLaunchers": {
+        "horizontalLauncher": {
+            "wavesToShootPerUpgrade": 1,
+            "launcher": {
+                "projectileLifetime": 3,
+                "projectileSpeed": 300,
+                "wavesToShoot": 0,
+                "wavesDelayMs": 100,
+                "cooldown": 4
+            }
+        },
+        "diagonalLauncher": {
             "wavesToShootPerUpgrade": 1,
             "launcher": {
                 "projectileLifetime": 20,
@@ -45,7 +55,7 @@
         "maxWeaponLengthUpgrades": 5,
         "maxWeaponDamageUpgrades": 5,
         "maxHorizontalProjectileUpgrades": 0,
-        "maxVerticalProjectileUpgrades": 0,
+        "maxDiagonalProjectileUpgrades": 0,
         "maxHaloProjectileUpgrades": 5,
         "maxRegenerationUpgrades": 5
     }

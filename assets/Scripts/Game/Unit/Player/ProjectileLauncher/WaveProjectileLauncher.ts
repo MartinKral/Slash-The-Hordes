@@ -5,13 +5,13 @@ import { IProjectileCollisionSignaler } from "../../../Projectile/IProjectileCol
 import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
 import { ProjectileLauncher } from "./ProjectileLauncher";
 
-export class HorizontalProjectileLauncher implements IProjectileCollisionSignaler {
+export class WaveProjectileLauncher implements IProjectileCollisionSignaler {
     private currentUpgrade = 0;
     private wavesToShootPerUpgrade = 0;
 
-    public constructor(private launcher: ProjectileLauncher, playerNode: Node, settings: WaveLauncherSettings) {
+    public constructor(private launcher: ProjectileLauncher, playerNode: Node, directions: Vec2[], settings: WaveLauncherSettings) {
         this.wavesToShootPerUpgrade = settings.wavesToShootPerUpgrade;
-        launcher.init(playerNode, [new Vec2(-1, 0), new Vec2(1, 0)], settings.launcher);
+        launcher.init(playerNode, directions, settings.launcher);
     }
 
     public get ProjectileCollisionEvent(): ISignal<ProjectileCollision> {

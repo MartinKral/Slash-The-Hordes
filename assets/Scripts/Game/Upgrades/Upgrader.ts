@@ -1,7 +1,7 @@
 import { UpgradeSettings } from "../Data/GameSettings";
 import { Player } from "../Unit/Player/Player";
 import { HaloProjectileLauncher } from "../Unit/Player/ProjectileLauncher/HaloProjectileLauncher";
-import { HorizontalProjectileLauncher } from "../Unit/Player/ProjectileLauncher/HorizontalProjectileLauncher";
+import { WaveProjectileLauncher } from "../Unit/Player/ProjectileLauncher/WaveProjectileLauncher";
 import { UpgradeType } from "./UpgradeType";
 
 export class Upgrader {
@@ -11,7 +11,7 @@ export class Upgrader {
 
     public constructor(
         private player: Player,
-        private horizontalProjectileLauncher: HorizontalProjectileLauncher,
+        private horizontalProjectileLauncher: WaveProjectileLauncher,
         private haloProjectileLauncher: HaloProjectileLauncher,
         settings: UpgradeSettings
     ) {
