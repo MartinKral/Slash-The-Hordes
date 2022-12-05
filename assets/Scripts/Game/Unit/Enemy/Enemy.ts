@@ -6,7 +6,7 @@ import { UnitHealth } from "../UnitHealth";
 const { ccclass, property } = _decorator;
 
 @ccclass("Enemy")
-export class Enemy extends Component implements IDamageDealing {
+export class Enemy extends Component {
     @property(BoxCollider2D) public collider: BoxCollider2D;
 
     private health: UnitHealth = new UnitHealth(1);
@@ -15,7 +15,7 @@ export class Enemy extends Component implements IDamageDealing {
 
     public setup(position: Vec3): void {
         this.health = new UnitHealth(1);
-        this.speed = randomRange(0.5, 1);
+        this.speed = randomRange(40, 90);
         this.node.setWorldPosition(position);
         this.node.active = true;
     }
@@ -50,8 +50,4 @@ export class Enemy extends Component implements IDamageDealing {
 
         this.node.setWorldPosition(newPosition);
     }
-}
-
-export interface IDamageDealing {
-    Damage: number;
 }

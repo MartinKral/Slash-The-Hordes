@@ -1,7 +1,6 @@
-import { Component, Prefab, randomRange, Vec3, _decorator, Node } from "cc";
+import { Component, Node, Prefab, Vec3, _decorator } from "cc";
 import { ISignal } from "../../../Services/EventSystem/ISignal";
 import { Signal } from "../../../Services/EventSystem/Signal";
-import { GameTimer } from "../../../Services/GameTimer";
 import { ObjectPool } from "../../../Services/ObjectPool";
 
 import { Enemy } from "./Enemy";
@@ -12,34 +11,30 @@ export class EnemySpawner extends Component {
     @property(Prefab) private enemies: Prefab[] = [];
 
     public enemyAddedEvent: Signal<Enemy> = new Signal<Enemy>();
+    public enemyRemovedEvent: Signal<Enemy> = new Signal<Enemy>();
 
     private enemyPool: ObjectPool<Enemy>;
-    private spawnTimer: GameTimer;
 
     private targetNode: Node;
 
     public init(targetNode: Node): void {
         this.targetNode = targetNode;
-        this.enemyPool = new ObjectPool(this.enemies[0], this.node, 5, "Enemy");
-        this.spawnTimer = new GameTimer(1);
-    }
-
-    public gameTick(deltaTime: number): void {
-        this.spawnTimer.gameTick(deltaTime);
-        if (this.spawnTimer.tryFinishPeriod()) {
-            this.spawnNewEnemy();
-        }
+        this.enemyPool = new ObjectPool(this.enemies[0], this.node, 50, "Enemy");
     }
 
     public get EnemyAddedEvent(): ISignal<Enemy> {
         return this.enemyAddedEvent;
     }
 
-    private spawnNewEnemy(): void {
+    public get EnemyRemovedEvent(): ISignal<Enemy> {
+        return this.enemyRemovedEvent;
+    }
+
+    public spawnNewEnemy(positionX: number, positionY: number): void {
         const enemy = this.enemyPool.borrow();
         const spawnPosition = new Vec3();
-        spawnPosition.x = this.targetNode.worldPosition.x + randomRange(-300, 300);
-        spawnPosition.y = this.targetNode.worldPosition.y + randomRange(-800, 800);
+        spawnPosition.x = this.targetNode.worldPosition.x + positionX;
+        spawnPosition.y = this.targetNode.worldPosition.y + positionY;
         enemy.setup(spawnPosition);
 
         enemy.DeathEvent.on(this.returnEnemyToPool, this);
@@ -50,5 +45,7 @@ export class EnemySpawner extends Component {
     private returnEnemyToPool(enemy: Enemy): void {
         enemy.DeathEvent.off(this.returnEnemyToPool);
         this.enemyPool.return(enemy);
+
+        this.enemyRemovedEvent.trigger(enemy);
     }
 }

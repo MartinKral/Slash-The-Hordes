@@ -59,7 +59,6 @@ export class GameBootstrapper extends Component {
             this.player.node,
             settings.player.haloLauncher
         );
-        this.haloProjectileLauncher.upgrade();
 
         this.horizontalProjectileLauncher = new WaveProjectileLauncher(
             this.horizontalProjectileLauncherComponent,
@@ -67,7 +66,6 @@ export class GameBootstrapper extends Component {
             [new Vec2(-1, 0), new Vec2(1, 0)],
             settings.player.horizontalLauncher
         );
-        this.horizontalProjectileLauncher.upgrade();
 
         this.diagonalProjectileLauncher = new WaveProjectileLauncher(
             this.diagonalProjectileLauncherComponent,
@@ -75,7 +73,6 @@ export class GameBootstrapper extends Component {
             [new Vec2(-0.5, -0.5), new Vec2(0.5, -0.5)],
             settings.player.diagonalLauncher
         );
-        this.diagonalProjectileLauncher.upgrade();
 
         new PlayerProjectileCollisionSystem([this.haloProjectileLauncher, this.horizontalProjectileLauncher, this.diagonalProjectileLauncher]);
 
