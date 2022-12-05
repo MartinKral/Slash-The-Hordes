@@ -2,6 +2,7 @@ import { BoxCollider2D, Component, randomRange, Vec3, _decorator } from "cc";
 import { ISignal } from "../../../Services/EventSystem/ISignal";
 import { Signal } from "../../../Services/EventSystem/Signal";
 import { UnitHealth } from "../UnitHealth";
+import { EnemyMovementType } from "./EnemyMovementType";
 
 const { ccclass, property } = _decorator;
 
@@ -9,15 +10,21 @@ const { ccclass, property } = _decorator;
 export class Enemy extends Component {
     @property(BoxCollider2D) public collider: BoxCollider2D;
 
+    private movementType: EnemyMovementType;
     private health: UnitHealth = new UnitHealth(1);
     private deathEvent: Signal<Enemy> = new Signal<Enemy>();
     private speed: number;
 
-    public setup(position: Vec3): void {
+    public setup(position: Vec3, movementType: EnemyMovementType): void {
+        this.movementType = movementType;
         this.health = new UnitHealth(1);
         this.speed = randomRange(40, 90);
         this.node.setWorldPosition(position);
         this.node.active = true;
+    }
+
+    public get MovementType(): EnemyMovementType {
+        return this.movementType;
     }
 
     public get Collider(): BoxCollider2D {
@@ -43,10 +50,10 @@ export class Enemy extends Component {
         }
     }
 
-    public moveBy(move: Vec3): void {
+    public moveBy(move: Vec3, deltaTime: number): void {
         const newPosition: Vec3 = this.node.worldPosition;
-        newPosition.x += move.x * this.speed;
-        newPosition.y += move.y * this.speed;
+        newPosition.x += move.x * this.speed * deltaTime;
+        newPosition.y += move.y * this.speed * deltaTime;
 
         this.node.setWorldPosition(newPosition);
     }

@@ -1,9 +1,10 @@
-import { Node, Vec3 } from "cc";
+import { Node } from "cc";
 import { Enemy } from "./Enemy";
 
-export class EnemyMover {
-    private targetNode: Node;
-    private enemies: Enemy[] = [];
+export abstract class EnemyMover {
+    protected targetNode: Node;
+    protected enemies: Enemy[] = [];
+
     public constructor(targetNode: Node) {
         this.targetNode = targetNode;
     }
@@ -18,11 +19,5 @@ export class EnemyMover {
         }
     }
 
-    public gameTick(deltaTime: number): void {
-        this.enemies.forEach((enemy) => {
-            let direction: Vec3 = new Vec3();
-            direction = Vec3.subtract(direction, this.targetNode.worldPosition, enemy.node.worldPosition);
-            enemy.moveBy(direction.normalize().multiplyScalar(deltaTime));
-        });
-    }
+    public abstract gameTick(deltaTime: number): void;
 }

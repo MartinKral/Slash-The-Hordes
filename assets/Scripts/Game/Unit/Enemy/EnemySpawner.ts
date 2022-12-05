@@ -4,6 +4,7 @@ import { Signal } from "../../../Services/EventSystem/Signal";
 import { ObjectPool } from "../../../Services/ObjectPool";
 
 import { Enemy } from "./Enemy";
+import { EnemyMovementType } from "./EnemyMovementType";
 const { ccclass, property } = _decorator;
 
 @ccclass("EnemySpawner")
@@ -30,20 +31,22 @@ export class EnemySpawner extends Component {
         return this.enemyRemovedEvent;
     }
 
-    public spawnNewEnemy(positionX: number, positionY: number): void {
+    public spawnNewEnemy(positionX: number, positionY: number, movementType: EnemyMovementType): Enemy {
         const enemy = this.enemyPool.borrow();
         const spawnPosition = new Vec3();
         spawnPosition.x = this.targetNode.worldPosition.x + positionX;
         spawnPosition.y = this.targetNode.worldPosition.y + positionY;
-        enemy.setup(spawnPosition);
+        enemy.setup(spawnPosition, movementType);
 
-        enemy.DeathEvent.on(this.returnEnemyToPool, this);
+        enemy.DeathEvent.on(this.returnEnemy, this);
 
         this.enemyAddedEvent.trigger(enemy);
+
+        return enemy;
     }
 
-    private returnEnemyToPool(enemy: Enemy): void {
-        enemy.DeathEvent.off(this.returnEnemyToPool);
+    public returnEnemy(enemy: Enemy): void {
+        enemy.DeathEvent.off(this.returnEnemy);
         this.enemyPool.return(enemy);
 
         this.enemyRemovedEvent.trigger(enemy);
