@@ -1,20 +1,26 @@
 import { randomRange } from "cc";
-import { GameTimer } from "../../../Services/GameTimer";
-import { randomPositiveOrNegative } from "../../../Services/Utils/MathUtils";
-import { Enemy } from "./Enemy";
-import { EnemyMovementType } from "./EnemyMovementType";
-import { EnemySpawner } from "./EnemySpawner";
-import { EnemyType } from "./EnemyType";
+import { GameTimer } from "../../../../Services/GameTimer";
+import { randomPositiveOrNegative } from "../../../../Services/Utils/MathUtils";
+import { WaveEnemySpawnerSettings } from "../../../Data/GameSettings";
+import { Enemy } from "../Enemy";
+import { EnemyMovementType } from "../EnemyMovementType";
+import { EnemySpawner } from "../EnemySpawner";
+import { EnemyType } from "../EnemyType";
 
 export class WaveEnemySpawner {
-    private spawnTimer: GameTimer = new GameTimer(5);
+    private enemiesPerWave: number;
+    private waveLifetime: number;
+    private enemyType: EnemyType;
+
+    private spawnTimer: GameTimer;
     private waves: EnemyWave[] = [];
-    public constructor(
-        private enemySpawner: EnemySpawner,
-        private enemiesToSpawn: number,
-        private enemyLifeTime: number,
-        private enemyType: EnemyType
-    ) {}
+
+    public constructor(private enemySpawner: EnemySpawner, settings: WaveEnemySpawnerSettings) {
+        this.spawnTimer = new GameTimer(settings.cooldown);
+        this.enemiesPerWave = settings.enemiesPerWave;
+        this.waveLifetime = settings.waveLifetime;
+        this.enemyType = <EnemyType>settings.enemyType;
+    }
 
     public gameTick(deltaTime: number): void {
         this.spawnTimer.gameTick(deltaTime);
@@ -27,9 +33,12 @@ export class WaveEnemySpawner {
         for (let i = this.waves.length - 1; 0 <= i; i--) {
             const wave: EnemyWave = this.waves[i];
             wave.lifeTimeLeft -= deltaTime;
+
             if (wave.lifeTimeLeft <= 0) {
                 for (const enemy of wave.enemies) {
-                    this.enemySpawner.returnEnemy(enemy);
+                    if (enemy.Health.IsAlive) {
+                        this.enemySpawner.returnEnemy(enemy);
+                    }
                 }
 
                 this.waves.splice(i, 1);
@@ -43,8 +52,8 @@ export class WaveEnemySpawner {
             const defaultPosY: number = 200 * randomPositiveOrNegative();
 
             const enemies: Enemy[] = [];
-            const side: number = Math.ceil(Math.sqrt(this.enemiesToSpawn));
-            for (let i = 0; i < this.enemiesToSpawn; i++) {
+            const side: number = Math.ceil(Math.sqrt(this.enemiesPerWave));
+            for (let i = 0; i < this.enemiesPerWave; i++) {
                 const randomOffsetX: number = randomRange(-20, 20);
                 const randomOffsetY: number = randomRange(-20, 20);
                 const posX: number = defaultPosX + randomOffsetX + 50 * (i % side);
@@ -53,7 +62,7 @@ export class WaveEnemySpawner {
                 enemies.push(enemy);
             }
 
-            this.waves.push({ enemies, lifeTimeLeft: this.enemyLifeTime });
+            this.waves.push({ enemies, lifeTimeLeft: this.waveLifetime });
         }
     }
 }

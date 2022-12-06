@@ -1,10 +1,10 @@
-import { Component, Node, Prefab, Vec3, _decorator } from "cc";
-import { ISignal } from "../../../Services/EventSystem/ISignal";
-import { Signal } from "../../../Services/EventSystem/Signal";
-import { ObjectPool } from "../../../Services/ObjectPool";
+import { _decorator, Component, Prefab, Vec3, Node } from "cc";
+import { ISignal } from "../../../../Services/EventSystem/ISignal";
+import { Signal } from "../../../../Services/EventSystem/Signal";
+import { ObjectPool } from "../../../../Services/ObjectPool";
+import { Enemy } from "../Enemy";
+import { EnemyMovementType } from "../EnemyMovementType";
 
-import { Enemy } from "./Enemy";
-import { EnemyMovementType } from "./EnemyMovementType";
 const { ccclass, property } = _decorator;
 
 @ccclass("EnemySpawner")

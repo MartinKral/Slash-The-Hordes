@@ -1,5 +1,5 @@
 import { Node } from "cc";
-import { Enemy } from "./Enemy";
+import { Enemy } from "../Enemy";
 
 export abstract class EnemyMover {
     protected targetNode: Node;

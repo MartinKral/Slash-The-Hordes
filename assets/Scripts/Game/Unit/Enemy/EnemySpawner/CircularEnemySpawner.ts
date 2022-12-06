@@ -1,8 +1,8 @@
-import { GameTimer } from "../../../Services/GameTimer";
-import { roundToOneDecimal } from "../../../Services/Utils/MathUtils";
-import { EnemyMovementType } from "./EnemyMovementType";
-import { EnemySpawner } from "./EnemySpawner";
-import { EnemyType } from "./EnemyType";
+import { GameTimer } from "../../../../Services/GameTimer";
+import { roundToOneDecimal } from "../../../../Services/Utils/MathUtils";
+import { EnemyMovementType } from "../EnemyMovementType";
+import { EnemySpawner } from "../EnemySpawner";
+import { EnemyType } from "../EnemyType";
 
 export class CircularEnemySpawner {
     private spawnTimer: GameTimer = new GameTimer(10);

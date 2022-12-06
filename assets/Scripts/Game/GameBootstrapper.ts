@@ -52,7 +52,7 @@ export class GameBootstrapper extends Component {
         this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay);
         new WeaponCollisionSystem(this.player.Weapon);
 
-        this.enemyManager.init(this.player.node);
+        this.enemyManager.init(this.player.node, settings.enemyManager);
 
         this.haloProjectileLauncher = new HaloProjectileLauncher(
             this.haloProjectileLauncherComponent,

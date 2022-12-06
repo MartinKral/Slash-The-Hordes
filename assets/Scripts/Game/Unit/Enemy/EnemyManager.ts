@@ -1,15 +1,17 @@
 import { Component, Node, _decorator } from "cc";
+import { EnemyManagerSettings } from "../../Data/GameSettings";
 import { XPSpawner } from "../../XP/XPSpawner";
-import { CircularEnemySpawner } from "./CircularEnemySpawner";
 import { Enemy } from "./Enemy";
 import { EnemyMovementType } from "./EnemyMovementType";
-import { EnemyMover } from "./EnemyMover";
-import { EnemySpawner } from "./EnemySpawner";
+import { EnemyMover } from "./EnemyMover/EnemyMover";
+import { FollowTargetEnemyMover } from "./EnemyMover/FollowTargetEnemyMover";
+import { WaveEnemyMover } from "./EnemyMover/WaveEnemyMover";
+import { CircularEnemySpawner } from "./EnemySpawner/CircularEnemySpawner";
+import { EnemySpawner } from "./EnemySpawner/EnemySpawner";
+import { IndividualEnemySpawner } from "./EnemySpawner/IndividualEnemySpawner";
+import { WaveEnemySpawner } from "./EnemySpawner/WaveEnemySpawner";
 import { EnemyType } from "./EnemyType";
-import { FollowTargetEnemyMover } from "./FollowTargetEnemyMover";
-import { InvididualEnemySpawner as IndividualEnemySpawner } from "./InvididualEnemySpawner";
-import { LaunchToTargetEnemyMover } from "./LaunchToTargetEnemyMover";
-import { WaveEnemySpawner } from "./WaveEnemySpawner";
+
 const { ccclass, property } = _decorator;
 
 @ccclass("EnemyManager")
@@ -23,24 +25,24 @@ export class EnemyManager extends Component {
     private circularEnemySpawner: CircularEnemySpawner;
     private waveEnemySpawner: WaveEnemySpawner;
 
-    public init(targetNode: Node): void {
+    public init(targetNode: Node, settings: EnemyManagerSettings): void {
         this.enemySpawner.init(targetNode);
         this.enemySpawner.EnemyAddedEvent.on(this.onEnemyAdded, this);
         this.enemySpawner.enemyRemovedEvent.on(this.onRemoveEnemy, this);
 
         this.individualEnemySpawner = new IndividualEnemySpawner(this.enemySpawner, EnemyType.Basic);
         this.circularEnemySpawner = new CircularEnemySpawner(this.enemySpawner, 30, EnemyType.Basic);
-        this.waveEnemySpawner = new WaveEnemySpawner(this.enemySpawner, 30, 10, EnemyType.Basic);
+        this.waveEnemySpawner = new WaveEnemySpawner(this.enemySpawner, settings.waveEnemySpawner);
 
         this.movementTypeToMover.set(EnemyMovementType.Follow, new FollowTargetEnemyMover(targetNode));
-        this.movementTypeToMover.set(EnemyMovementType.Launch, new LaunchToTargetEnemyMover(targetNode));
+        this.movementTypeToMover.set(EnemyMovementType.Launch, new WaveEnemyMover(targetNode));
 
         this.xpSpawner.init();
     }
 
     public gameTick(deltaTime: number): void {
-        //this.individualEnemySpawner.gameTick(deltaTime);
-        //this.circularEnemySpawner.gameTick(deltaTime);
+        this.individualEnemySpawner.gameTick(deltaTime);
+        this.circularEnemySpawner.gameTick(deltaTime);
         this.waveEnemySpawner.gameTick(deltaTime);
 
         for (const kvp of this.movementTypeToMover) {

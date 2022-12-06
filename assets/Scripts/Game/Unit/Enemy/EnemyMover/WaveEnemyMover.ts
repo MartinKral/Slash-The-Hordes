@@ -1,8 +1,8 @@
 import { Vec3 } from "cc";
-import { Enemy } from "./Enemy";
+import { Enemy } from "../Enemy";
 import { EnemyMover } from "./EnemyMover";
 
-export class LaunchToTargetEnemyMover extends EnemyMover {
+export class WaveEnemyMover extends EnemyMover {
     private enemyToDirection: Map<Enemy, Vec3> = new Map<Enemy, Vec3>();
     private lastTargetPosition: Vec3 = new Vec3();
     private lastDirection: Vec3 = new Vec3();

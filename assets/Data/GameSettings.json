@@ -58,5 +58,13 @@
         "maxDiagonalProjectileUpgrades": 0,
         "maxHaloProjectileUpgrades": 5,
         "maxRegenerationUpgrades": 5
+    },
+    "enemyManager": {
+        "waveEnemySpawner": {
+            "cooldown": 5,
+            "enemiesPerWave": 30,
+            "waveLifetime": 20,
+            "enemyType": "Basic"
+        }
     }
 }

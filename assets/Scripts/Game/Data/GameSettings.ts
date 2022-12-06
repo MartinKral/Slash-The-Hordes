@@ -1,6 +1,7 @@
 export class GameSettings {
     public player: PlayerSettings = new PlayerSettings();
     public upgrades: UpgradeSettings = new UpgradeSettings();
+    public enemyManager: EnemyManagerSettings = new EnemyManagerSettings();
 }
 
 export class PlayerSettings {
@@ -45,4 +46,15 @@ export class UpgradeSettings {
     public maxDiagonalProjectileUpgrades = 0;
     public maxHaloProjectileUpgrades = 0;
     public maxRegenerationUpgrades = 0;
+}
+
+export class EnemyManagerSettings {
+    public waveEnemySpawner = new WaveEnemySpawnerSettings();
+}
+
+export class WaveEnemySpawnerSettings {
+    public cooldown = 0;
+    public enemiesPerWave = 0;
+    public waveLifetime = 0;
+    public enemyType = "";
 }
