@@ -7,7 +7,9 @@ import { EnemyType } from "./EnemyType";
 
 export class InvididualEnemySpawner {
     private spawnTimer: GameTimer = new GameTimer(1);
-    public constructor(private enemySpawner: EnemySpawner, enemyType: EnemyType) {}
+
+    public constructor(private enemySpawner: EnemySpawner, private enemyType: EnemyType) {}
+
     public gameTick(deltaTime: number): void {
         this.spawnTimer.gameTick(deltaTime);
         if (this.spawnTimer.tryFinishPeriod()) {

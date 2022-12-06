@@ -30,7 +30,7 @@ export class EnemyManager extends Component {
 
         this.individualEnemySpawner = new IndividualEnemySpawner(this.enemySpawner, EnemyType.Basic);
         this.circularEnemySpawner = new CircularEnemySpawner(this.enemySpawner, 30, EnemyType.Basic);
-        this.waveEnemySpawner = new WaveEnemySpawner(this.enemySpawner, 30, EnemyType.Basic);
+        this.waveEnemySpawner = new WaveEnemySpawner(this.enemySpawner, 30, 10, EnemyType.Basic);
 
         this.movementTypeToMover.set(EnemyMovementType.Follow, new FollowTargetEnemyMover(targetNode));
         this.movementTypeToMover.set(EnemyMovementType.Launch, new LaunchToTargetEnemyMover(targetNode));
