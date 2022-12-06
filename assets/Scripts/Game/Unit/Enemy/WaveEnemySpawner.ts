@@ -8,7 +8,7 @@ import { EnemyType } from "./EnemyType";
 
 export class WaveEnemySpawner {
     private spawnTimer: GameTimer = new GameTimer(5);
-    private groups: EnemyGroupWithLifetime[] = [];
+    private waves: EnemyWave[] = [];
     public constructor(
         private enemySpawner: EnemySpawner,
         private enemiesToSpawn: number,
@@ -24,15 +24,15 @@ export class WaveEnemySpawner {
     }
 
     private tryRemoveExpiredEnemies(deltaTime: number): void {
-        for (let i = this.groups.length - 1; 0 <= i; i--) {
-            const group: EnemyGroupWithLifetime = this.groups[i];
-            group.lifeTimeLeft -= deltaTime;
-            if (group.lifeTimeLeft <= 0) {
-                for (const enemy of group.enemies) {
+        for (let i = this.waves.length - 1; 0 <= i; i--) {
+            const wave: EnemyWave = this.waves[i];
+            wave.lifeTimeLeft -= deltaTime;
+            if (wave.lifeTimeLeft <= 0) {
+                for (const enemy of wave.enemies) {
                     this.enemySpawner.returnEnemy(enemy);
                 }
 
-                this.groups.splice(i, 1);
+                this.waves.splice(i, 1);
             }
         }
     }
@@ -53,12 +53,12 @@ export class WaveEnemySpawner {
                 enemies.push(enemy);
             }
 
-            this.groups.push({ enemies, lifeTimeLeft: this.enemyLifeTime });
+            this.waves.push({ enemies, lifeTimeLeft: this.enemyLifeTime });
         }
     }
 }
 
-class EnemyGroupWithLifetime {
+class EnemyWave {
     public enemies: Enemy[];
     public lifeTimeLeft: number;
 }
