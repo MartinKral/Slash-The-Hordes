@@ -4,8 +4,8 @@ import { randomPositiveOrNegative } from "../../../../Services/Utils/MathUtils";
 import { WaveEnemySpawnerSettings } from "../../../Data/GameSettings";
 import { Enemy } from "../Enemy";
 import { EnemyMovementType } from "../EnemyMovementType";
-import { EnemySpawner } from "../EnemySpawner";
 import { EnemyType } from "../EnemyType";
+import { EnemySpawner } from "./EnemySpawner";
 
 export class WaveEnemySpawner {
     private enemiesPerWave: number;
