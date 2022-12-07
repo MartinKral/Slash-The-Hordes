@@ -13,12 +13,14 @@ export class Enemy extends Component {
     private movementType: EnemyMovementType;
     private health: UnitHealth = new UnitHealth(1);
     private deathEvent: Signal<Enemy> = new Signal<Enemy>();
-    private speed: number;
+    private speedX: number;
+    private speedY: number;
 
     public setup(position: Vec3, movementType: EnemyMovementType): void {
         this.movementType = movementType;
         this.health = new UnitHealth(1);
-        this.speed = randomRange(40, 90);
+        this.speedX = randomRange(40, 90);
+        this.speedY = randomRange(40, 90);
         this.node.setWorldPosition(position);
         this.node.active = true;
     }
@@ -52,8 +54,8 @@ export class Enemy extends Component {
 
     public moveBy(move: Vec3, deltaTime: number): void {
         const newPosition: Vec3 = this.node.worldPosition;
-        newPosition.x += move.x * this.speed * deltaTime;
-        newPosition.y += move.y * this.speed * deltaTime;
+        newPosition.x += move.x * this.speedX * deltaTime;
+        newPosition.y += move.y * this.speedY * deltaTime;
 
         this.node.setWorldPosition(newPosition);
     }

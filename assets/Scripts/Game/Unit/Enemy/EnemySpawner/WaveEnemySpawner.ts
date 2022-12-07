@@ -48,8 +48,8 @@ export class WaveEnemySpawner {
 
     private trySpawnNewGroup(): void {
         if (this.spawnTimer.tryFinishPeriod()) {
-            const defaultPosX: number = 200 * randomPositiveOrNegative();
-            const defaultPosY: number = 200 * randomPositiveOrNegative();
+            const defaultPosX: number = (500 + randomRange(0, 100)) * randomPositiveOrNegative();
+            const defaultPosY: number = randomRange(0, 500) * randomPositiveOrNegative();
 
             const enemies: Enemy[] = [];
             const side: number = Math.ceil(Math.sqrt(this.enemiesPerWave));

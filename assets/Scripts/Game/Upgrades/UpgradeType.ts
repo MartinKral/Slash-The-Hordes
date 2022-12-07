@@ -9,5 +9,6 @@ export enum UpgradeType {
 export enum MetaUpgradeType {
     MaxHp,
     OverallDamage,
-    ProjectilePiercing
+    ProjectilePiercing,
+    MovementSpeed
 }

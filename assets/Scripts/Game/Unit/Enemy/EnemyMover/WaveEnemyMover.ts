@@ -11,7 +11,7 @@ export class WaveEnemyMover extends EnemyMover {
         let direction: Vec3 = new Vec3();
 
         // if the enemy is added soon enough, move as a single group towards one direction
-        if (Vec3.distance(this.lastTargetPosition, this.targetNode.worldPosition) < 10) {
+        if (Vec3.equals(this.lastTargetPosition, this.targetNode.worldPosition)) {
             direction = this.lastDirection;
         } else {
             direction = Vec3.subtract(direction, this.targetNode.worldPosition, enemy.node.worldPosition);

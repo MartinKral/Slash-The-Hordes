@@ -1,5 +1,6 @@
 import { Camera, Component, JsonAsset, KeyCode, Vec2, _decorator } from "cc";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
+import { delay } from "../Services/Utils/AsyncUtils";
 import { PlayerCollisionSystem } from "./Collision/PlayerCollisionSystem";
 import { PlayerProjectileCollisionSystem } from "./Collision/PlayerProjectileCollisionSystem";
 import { WeaponCollisionSystem } from "./Collision/WeaponCollisionSystem";
@@ -19,8 +20,8 @@ import { Upgrader } from "./Upgrades/Upgrader";
 
 const { ccclass, property } = _decorator;
 
-@ccclass("GameBootstrapper")
-export class GameBootstrapper extends Component {
+@ccclass("Game")
+export class Game extends Component {
     @property(VirtualJoystic) private virtualJoystic: VirtualJoystic;
     @property(Player) private player: Player;
     @property(ProjectileLauncher) private haloProjectileLauncherComponent: ProjectileLauncher;
@@ -39,15 +40,26 @@ export class GameBootstrapper extends Component {
 
     private gamePauser: Pauser = new Pauser();
 
+    private static instance: Game;
+
+    public static get Instance(): Game {
+        return this.instance;
+    }
+
     public start(): void {
+        Game.instance = this;
+        this.gamePauser.pause();
+    }
+
+    public async playGame(): Promise<number> {
         const settings: GameSettings = <GameSettings>this.settingsAsset.json;
 
         this.virtualJoystic.init();
 
         const wasd = new KeyboardInput(KeyCode.KEY_W, KeyCode.KEY_S, KeyCode.KEY_A, KeyCode.KEY_D);
         const arrowKeys = new KeyboardInput(KeyCode.ARROW_UP, KeyCode.ARROW_DOWN, KeyCode.ARROW_LEFT, KeyCode.ARROW_RIGHT);
-        const dualInput: MultiInput = new MultiInput([this.virtualJoystic, wasd, arrowKeys]);
-        this.player.init(dualInput, settings.player);
+        const multiInput: MultiInput = new MultiInput([this.virtualJoystic, wasd, arrowKeys]);
+        this.player.init(multiInput, settings.player);
 
         this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay);
         new WeaponCollisionSystem(this.player.Weapon);
@@ -80,6 +92,12 @@ export class GameBootstrapper extends Component {
         new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader);
 
         this.gameUI.init(this.player);
+        this.gamePauser.resume();
+
+        await delay(10000);
+        this.gamePauser.pause();
+        Game.instance = null;
+        return 1;
     }
 
     public update(deltaTime: number): void {

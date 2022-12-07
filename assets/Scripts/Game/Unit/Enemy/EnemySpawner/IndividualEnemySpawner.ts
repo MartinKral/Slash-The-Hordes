@@ -15,7 +15,7 @@ export class IndividualEnemySpawner {
         if (this.spawnTimer.tryFinishPeriod()) {
             const posX: number = randomRange(300, 600) * randomPositiveOrNegative();
             const posY: number = randomRange(300, 600) * randomPositiveOrNegative();
-            this.enemySpawner.spawnNewEnemy(posX, posY, EnemyMovementType.Launch);
+            this.enemySpawner.spawnNewEnemy(posX, posY, EnemyMovementType.Follow);
         }
     }
 }
