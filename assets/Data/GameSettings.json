@@ -79,7 +79,7 @@
         "waveEnemySpawners": [
             {
                 "startDelay": 0,
-                "stopDelay": 100,
+                "stopDelay": 10000,
                 "cooldown": 5,
                 "enemiesPerWave": 30,
                 "waveLifetime": 20,

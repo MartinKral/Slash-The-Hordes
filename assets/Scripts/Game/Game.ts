@@ -95,7 +95,7 @@ export class Game extends Component {
         this.gamePauser.resume();
 
         // while not dead
-        await delay(100000);
+        await delay(1000000);
         this.gamePauser.pause();
         Game.instance = null;
         return 1;
