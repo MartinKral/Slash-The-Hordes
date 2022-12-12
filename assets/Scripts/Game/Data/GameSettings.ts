@@ -50,11 +50,12 @@ export class UpgradeSettings {
 
 export class EnemyManagerSettings {
     public enemies: EnemySettings[] = [new EnemySettings()];
-    public waveEnemySpawner = new WaveEnemySpawnerSettings();
     public waveEnemySpawners: WaveEnemySpawnerSettings[] = [new WaveEnemySpawnerSettings()];
 }
 
 export class WaveEnemySpawnerSettings {
+    public startDelay = 0;
+    public stopDelay = 0;
     public cooldown = 0;
     public enemiesPerWave = 0;
     public waveLifetime = 0;

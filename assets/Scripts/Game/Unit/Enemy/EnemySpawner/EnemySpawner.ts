@@ -4,7 +4,6 @@ import { Signal } from "../../../../Services/EventSystem/Signal";
 import { ObjectPool } from "../../../../Services/ObjectPool";
 import { EnemySettings } from "../../../Data/GameSettings";
 import { Enemy } from "../Enemy";
-import { EnemyMovementType } from "../EnemyMovementType";
 
 const { ccclass, property } = _decorator;
 

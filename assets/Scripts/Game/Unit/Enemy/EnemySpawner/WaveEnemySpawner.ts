@@ -3,9 +3,10 @@ import { GameTimer } from "../../../../Services/GameTimer";
 import { randomPositiveOrNegative } from "../../../../Services/Utils/MathUtils";
 import { WaveEnemySpawnerSettings } from "../../../Data/GameSettings";
 import { Enemy } from "../Enemy";
+import { DelayedEnemySpawner } from "./DelayedEnemySpawner";
 import { EnemySpawner } from "./EnemySpawner";
 
-export class WaveEnemySpawner {
+export class WaveEnemySpawner extends DelayedEnemySpawner {
     private enemiesPerWave: number;
     private waveLifetime: number;
     private enemyId: string;
@@ -14,13 +15,15 @@ export class WaveEnemySpawner {
     private waves: EnemyWave[] = [];
 
     public constructor(private enemySpawner: EnemySpawner, settings: WaveEnemySpawnerSettings) {
+        super(settings.startDelay, settings.stopDelay);
+
         this.spawnTimer = new GameTimer(settings.cooldown);
         this.enemiesPerWave = settings.enemiesPerWave;
         this.waveLifetime = settings.waveLifetime;
         this.enemyId = settings.enemyId;
     }
 
-    public gameTick(deltaTime: number): void {
+    public delayedGameTick(deltaTime: number): void {
         this.spawnTimer.gameTick(deltaTime);
 
         this.tryRemoveExpiredEnemies(deltaTime);

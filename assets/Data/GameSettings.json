@@ -67,22 +67,23 @@
                 "health": 1,
                 "damage": 1,
                 "speed": 50
+            },
+            {
+                "id": "Wave",
+                "moveType": "Launch",
+                "health": 1,
+                "damage": 1,
+                "speed": 100
             }
         ],
-        "waveEnemySpawner": {
-            "cooldown": 5,
-            "enemiesPerWave": 30,
-            "waveLifetime": 20,
-            "enemyId": "Basic"
-        },
         "waveEnemySpawners": [
             {
-                "cooldown": 0,
-                "enemiesPerWave": 0,
-                "waveLifetime": 0,
-                "enemyName": "",
-                "enemyMoveType": "",
-                "enemyType": ""
+                "startDelay": 0,
+                "stopDelay": 100,
+                "cooldown": 5,
+                "enemiesPerWave": 30,
+                "waveLifetime": 20,
+                "enemyId": "Wave"
             }
         ]
     }

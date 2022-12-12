@@ -8,6 +8,7 @@ import { FollowTargetEnemyMover } from "./EnemyMover/FollowTargetEnemyMover";
 import { PeriodicFollowTargetEnemyMover } from "./EnemyMover/PeriodicFollowTargetEnemyMover";
 import { WaveEnemyMover } from "./EnemyMover/WaveEnemyMover";
 import { CircularEnemySpawner } from "./EnemySpawner/CircularEnemySpawner";
+import { DelayedEnemySpawner } from "./EnemySpawner/DelayedEnemySpawner";
 import { EnemySpawner } from "./EnemySpawner/EnemySpawner";
 import { IndividualEnemySpawner } from "./EnemySpawner/IndividualEnemySpawner";
 import { WaveEnemySpawner } from "./EnemySpawner/WaveEnemySpawner";
@@ -21,18 +22,23 @@ export class EnemyManager extends Component {
 
     private movementTypeToMover: Map<EnemyMovementType, EnemyMover> = new Map<EnemyMovementType, EnemyMover>();
 
+    private spawners: DelayedEnemySpawner[] = [];
+
     private individualEnemySpawner: IndividualEnemySpawner;
     private circularEnemySpawner: CircularEnemySpawner;
-    private waveEnemySpawner: WaveEnemySpawner;
 
     public init(targetNode: Node, settings: EnemyManagerSettings): void {
         this.enemySpawner.init(targetNode, settings.enemies);
         this.enemySpawner.EnemyAddedEvent.on(this.onEnemyAdded, this);
         this.enemySpawner.enemyRemovedEvent.on(this.onRemoveEnemy, this);
 
-        this.individualEnemySpawner = new IndividualEnemySpawner(this.enemySpawner, "Basic");
-        this.circularEnemySpawner = new CircularEnemySpawner(this.enemySpawner, 30, "Basic");
-        this.waveEnemySpawner = new WaveEnemySpawner(this.enemySpawner, settings.waveEnemySpawner);
+        for (const waveSpawnerSettings of settings.waveEnemySpawners) {
+            const waveSpawner = new WaveEnemySpawner(this.enemySpawner, waveSpawnerSettings);
+            this.spawners.push(waveSpawner);
+        }
+
+        this.individualEnemySpawner = new IndividualEnemySpawner(this.enemySpawner, "Basic", 0);
+        this.circularEnemySpawner = new CircularEnemySpawner(this.enemySpawner, 30, "Basic", 5);
 
         this.movementTypeToMover.set(EnemyMovementType.Follow, new FollowTargetEnemyMover(targetNode));
         this.movementTypeToMover.set(EnemyMovementType.Launch, new WaveEnemyMover(targetNode));
@@ -44,7 +50,10 @@ export class EnemyManager extends Component {
     public gameTick(deltaTime: number): void {
         this.individualEnemySpawner.gameTick(deltaTime);
         this.circularEnemySpawner.gameTick(deltaTime);
-        this.waveEnemySpawner.gameTick(deltaTime);
+
+        for (const spawner of this.spawners) {
+            spawner.gameTick(deltaTime);
+        }
 
         for (const kvp of this.movementTypeToMover) {
             kvp[1].gameTick(deltaTime);
