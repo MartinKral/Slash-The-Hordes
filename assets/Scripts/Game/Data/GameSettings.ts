@@ -56,6 +56,6 @@ export class WaveEnemySpawnerSettings {
     public cooldown = 0;
     public enemiesPerWave = 0;
     public waveLifetime = 0;
-    public moveType = "";
+    public enemyMoveType = "";
     public enemyType = "";
 }

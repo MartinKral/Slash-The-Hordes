@@ -20,7 +20,7 @@ export class WaveEnemySpawner {
         this.spawnTimer = new GameTimer(settings.cooldown);
         this.enemiesPerWave = settings.enemiesPerWave;
         this.waveLifetime = settings.waveLifetime;
-        this.moveType = <EnemyMovementType>settings.moveType;
+        this.moveType = <EnemyMovementType>settings.enemyMoveType;
         this.enemyType = <EnemyType>settings.enemyType;
     }
 
@@ -60,7 +60,7 @@ export class WaveEnemySpawner {
                 const randomOffsetY: number = randomRange(-20, 20);
                 const posX: number = defaultPosX + randomOffsetX + 50 * (i % side);
                 const posY: number = defaultPosY + randomOffsetY + 50 * Math.floor(i / side);
-                const enemy = this.enemySpawner.spawnNewEnemy(posX, posY, EnemyMovementType.Launch);
+                const enemy = this.enemySpawner.spawnNewEnemy(posX, posY, this.moveType);
                 enemies.push(enemy);
             }
 

@@ -64,6 +64,7 @@
             "cooldown": 5,
             "enemiesPerWave": 30,
             "waveLifetime": 20,
+            "enemyMoveType": "Launch",
             "enemyType": "Basic"
         }
     }

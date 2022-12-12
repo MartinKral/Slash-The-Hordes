@@ -31,6 +31,8 @@ function deleteUnusedProperties(templateSettings: GameSettings, savedSettings: G
 }
 
 function getAllKeys(objectWithKeys: any, prefix = ""): string[] {
+    if (typeof objectWithKeys === "string") return [];
+
     const keys: string[] = [];
     const objectKeys: string[] = Object.keys(objectWithKeys);
 
