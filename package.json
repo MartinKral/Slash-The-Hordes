@@ -1,28 +1,28 @@
 {
-    "name": "VampSu",
-    "uuid": "44d41970-47e0-4ec4-84a9-e2884a9f7957",
-    "version": "3.6.1",
-    "creator": {
-        "version": "3.6.1"
-    },
-    "scripts": {
-        "prettier-format": "prettier --config .prettierrc.json assets/Scripts/*.ts --write",
-        "test": "jest",
-        "regenerate-settings": "ts-node utils/regenerateGameSettings.ts assets/Data/GameSettings.json"
-    },
-    "dependencies": {},
-    "devDependencies": {
-        "@types/jest": "^29.2.0",
-        "@types/node": "^18.11.6",
-        "@typescript-eslint/eslint-plugin": "^5.40.1",
-        "@types/lodash": "^4.14.190",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-prettier": "^4.2.1",
-        "eslint-plugin-react": "^7.31.10",
-        "prettier": "^2.7.1",
-        "eslint": "^8.25.0",
-        "jest": "^29.2.2",
-        "ts-jest": "^29.0.3",
-        "lodash": "^4.17.21"
-    }
+  "name": "VampSu",
+  "uuid": "44d41970-47e0-4ec4-84a9-e2884a9f7957",
+  "version": "3.6.2",
+  "creator": {
+    "version": "3.6.2"
+  },
+  "scripts": {
+    "prettier-format": "prettier --config .prettierrc.json assets/Scripts/*.ts --write",
+    "test": "jest",
+    "regenerate-settings": "ts-node utils/regenerateGameSettings.ts assets/Data/GameSettings.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^29.2.0",
+    "@types/node": "^18.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@types/lodash": "^4.14.190",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1",
+    "eslint": "^8.25.0",
+    "jest": "^29.2.2",
+    "ts-jest": "^29.0.3",
+    "lodash": "^4.17.21"
+  }
 }
