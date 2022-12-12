@@ -15,12 +15,12 @@ export class WaveEnemySpawner extends DelayedEnemySpawner {
     private waves: EnemyWave[] = [];
 
     public constructor(private enemySpawner: EnemySpawner, settings: WaveEnemySpawnerSettings) {
-        super(settings.startDelay, settings.stopDelay);
+        super(settings.common.startDelay, settings.common.stopDelay);
 
-        this.spawnTimer = new GameTimer(settings.cooldown);
-        this.enemiesPerWave = settings.enemiesPerWave;
+        this.spawnTimer = new GameTimer(settings.common.cooldown);
+        this.enemiesPerWave = settings.enemiesToSpawn;
         this.waveLifetime = settings.waveLifetime;
-        this.enemyId = settings.enemyId;
+        this.enemyId = settings.common.enemyId;
     }
 
     public delayedGameTick(deltaTime: number): void {

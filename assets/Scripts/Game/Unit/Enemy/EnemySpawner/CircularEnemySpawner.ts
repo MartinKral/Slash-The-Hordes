@@ -1,14 +1,21 @@
 import { GameTimer } from "../../../../Services/GameTimer";
 import { roundToOneDecimal } from "../../../../Services/Utils/MathUtils";
+import { CircularEnemySpawnerSettings } from "../../../Data/GameSettings";
 
 import { DelayedEnemySpawner } from "./DelayedEnemySpawner";
 import { EnemySpawner } from "./EnemySpawner";
 
 export class CircularEnemySpawner extends DelayedEnemySpawner {
-    private spawnTimer: GameTimer = new GameTimer(10);
+    private spawnTimer: GameTimer;
+    private enemyId: string;
+    private enemiesToSpawn: number;
 
-    public constructor(private enemySpawner: EnemySpawner, private enemiesToSpawn: number, private enemyId: string, startDelay = 0, stopDelay = 100) {
-        super(startDelay, stopDelay);
+    public constructor(private enemySpawner: EnemySpawner, settings: CircularEnemySpawnerSettings) {
+        super(settings.common.startDelay, settings.common.stopDelay);
+
+        this.spawnTimer = new GameTimer(settings.common.cooldown);
+        this.enemyId = settings.common.enemyId;
+        this.enemiesToSpawn = settings.enemiesToSpawn;
     }
 
     public delayedGameTick(deltaTime: number): void {

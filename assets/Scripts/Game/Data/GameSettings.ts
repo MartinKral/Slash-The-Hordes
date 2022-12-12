@@ -50,16 +50,31 @@ export class UpgradeSettings {
 
 export class EnemyManagerSettings {
     public enemies: EnemySettings[] = [new EnemySettings()];
+    public individualEnemySpawners: IndividualEnemySpawnerSettings[] = [new IndividualEnemySpawnerSettings()];
+    public circularEnemySpawners: CircularEnemySpawnerSettings[] = [new CircularEnemySpawnerSettings()];
     public waveEnemySpawners: WaveEnemySpawnerSettings[] = [new WaveEnemySpawnerSettings()];
 }
 
-export class WaveEnemySpawnerSettings {
+export class GeneralEnemySpawnerSettings {
+    public enemyId = "";
     public startDelay = 0;
     public stopDelay = 0;
     public cooldown = 0;
-    public enemiesPerWave = 0;
+}
+
+export class WaveEnemySpawnerSettings {
+    public common = new GeneralEnemySpawnerSettings();
+    public enemiesToSpawn = 0;
     public waveLifetime = 0;
-    public enemyId = "";
+}
+
+export class CircularEnemySpawnerSettings {
+    public common = new GeneralEnemySpawnerSettings();
+    public enemiesToSpawn = 0;
+}
+
+export class IndividualEnemySpawnerSettings {
+    public common = new GeneralEnemySpawnerSettings();
 }
 
 export class EnemySettings {

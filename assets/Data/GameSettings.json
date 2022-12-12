@@ -62,28 +62,51 @@
     "enemyManager": {
         "enemies": [
             {
-                "id": "Basic",
+                "id": "BasicEnemy",
                 "moveType": "Follow",
                 "health": 1,
                 "damage": 1,
                 "speed": 50
             },
             {
-                "id": "Wave",
+                "id": "WaveEnemy",
                 "moveType": "Launch",
                 "health": 1,
                 "damage": 1,
                 "speed": 100
             }
         ],
+        "individualEnemySpawners": [
+            {
+                "common": {
+                    "enemyId": "BasicEnemy",
+                    "startDelay": 0,
+                    "stopDelay": -1,
+                    "cooldown": 2
+                }
+            }
+        ],
+        "circularEnemySpawners": [
+            {
+                "common": {
+                    "enemyId": "BasicEnemy",
+                    "startDelay": 5,
+                    "stopDelay": -1,
+                    "cooldown": 10
+                },
+                "enemiesToSpawn": 50
+            }
+        ],
         "waveEnemySpawners": [
             {
-                "startDelay": 0,
-                "stopDelay": 10000,
-                "cooldown": 5,
-                "enemiesPerWave": 30,
-                "waveLifetime": 20,
-                "enemyId": "Wave"
+                "common": {
+                    "enemyId": "WaveEnemy",
+                    "startDelay": 5,
+                    "stopDelay": -1,
+                    "cooldown": 5
+                },
+                "enemiesToSpawn": 10,
+                "waveLifetime": 50
             }
         ]
     }
