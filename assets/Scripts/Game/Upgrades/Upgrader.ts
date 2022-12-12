@@ -13,6 +13,7 @@ export class Upgrader {
         private player: Player,
         private horizontalProjectileLauncher: WaveProjectileLauncher,
         private haloProjectileLauncher: HaloProjectileLauncher,
+        private diagonalProjectileLauncher: WaveProjectileLauncher,
         settings: UpgradeSettings
     ) {
         this.setTypeMaps(UpgradeType.WeaponLength, this.upgradeWeaponLength.bind(this), settings.maxWeaponLengthUpgrades);
@@ -22,6 +23,7 @@ export class Upgrader {
             this.upgradeHorizontalProjectileLauncher.bind(this),
             settings.maxHorizontalProjectileUpgrades
         );
+        this.setTypeMaps(UpgradeType.DiagonalProjectile, this.upgradeDiagonalProjectileLauncher.bind(this), settings.maxDiagonalProjectileUpgrades);
         this.setTypeMaps(UpgradeType.HaloProjectlie, this.upgradeHaloProjectileLauncher.bind(this), settings.maxHaloProjectileUpgrades);
         this.setTypeMaps(UpgradeType.Regeneration, this.upgradeRegeneration.bind(this), settings.maxRegenerationUpgrades);
     }
@@ -62,6 +64,10 @@ export class Upgrader {
 
     private upgradeHorizontalProjectileLauncher(): void {
         this.horizontalProjectileLauncher.upgrade();
+    }
+
+    private upgradeDiagonalProjectileLauncher(): void {
+        this.diagonalProjectileLauncher.upgrade();
     }
 
     private upgradeHaloProjectileLauncher(): void {
