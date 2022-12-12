@@ -1,6 +1,7 @@
 import { BoxCollider2D, Component, randomRange, Vec3, _decorator } from "cc";
 import { ISignal } from "../../../Services/EventSystem/ISignal";
 import { Signal } from "../../../Services/EventSystem/Signal";
+import { EnemySettings } from "../../Data/GameSettings";
 import { UnitHealth } from "../UnitHealth";
 import { EnemyMovementType } from "./EnemyMovementType";
 
@@ -10,17 +11,21 @@ const { ccclass, property } = _decorator;
 export class Enemy extends Component {
     @property(BoxCollider2D) public collider: BoxCollider2D;
 
+    private deathEvent: Signal<Enemy> = new Signal<Enemy>();
+
     private movementType: EnemyMovementType;
     private health: UnitHealth = new UnitHealth(1);
-    private deathEvent: Signal<Enemy> = new Signal<Enemy>();
+    private damage: number;
     private speedX: number;
     private speedY: number;
 
-    public setup(position: Vec3, movementType: EnemyMovementType): void {
-        this.movementType = movementType;
-        this.health = new UnitHealth(1);
-        this.speedX = randomRange(40, 90);
-        this.speedY = randomRange(40, 90);
+    public setup(position: Vec3, settings: EnemySettings): void {
+        this.movementType = <EnemyMovementType>settings.moveType;
+        this.health = new UnitHealth(settings.health);
+        this.damage = settings.damage;
+        this.speedX = randomRange(settings.speed / 2, settings.speed);
+        this.speedY = randomRange(settings.speed / 2, settings.speed);
+
         this.node.setWorldPosition(position);
         this.node.active = true;
     }
@@ -34,7 +39,7 @@ export class Enemy extends Component {
     }
 
     public get Damage(): number {
-        return 3;
+        return this.damage;
     }
 
     public get Health(): UnitHealth {

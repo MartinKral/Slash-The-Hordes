@@ -11,7 +11,6 @@ import { CircularEnemySpawner } from "./EnemySpawner/CircularEnemySpawner";
 import { EnemySpawner } from "./EnemySpawner/EnemySpawner";
 import { IndividualEnemySpawner } from "./EnemySpawner/IndividualEnemySpawner";
 import { WaveEnemySpawner } from "./EnemySpawner/WaveEnemySpawner";
-import { EnemyType } from "./EnemyType";
 
 const { ccclass, property } = _decorator;
 
@@ -27,12 +26,12 @@ export class EnemyManager extends Component {
     private waveEnemySpawner: WaveEnemySpawner;
 
     public init(targetNode: Node, settings: EnemyManagerSettings): void {
-        this.enemySpawner.init(targetNode);
+        this.enemySpawner.init(targetNode, settings.enemies);
         this.enemySpawner.EnemyAddedEvent.on(this.onEnemyAdded, this);
         this.enemySpawner.enemyRemovedEvent.on(this.onRemoveEnemy, this);
 
-        this.individualEnemySpawner = new IndividualEnemySpawner(this.enemySpawner, EnemyMovementType.Follow, EnemyType.Basic);
-        this.circularEnemySpawner = new CircularEnemySpawner(this.enemySpawner, 30, EnemyMovementType.Follow, EnemyType.Basic);
+        this.individualEnemySpawner = new IndividualEnemySpawner(this.enemySpawner, "Basic");
+        this.circularEnemySpawner = new CircularEnemySpawner(this.enemySpawner, 30, "Basic");
         this.waveEnemySpawner = new WaveEnemySpawner(this.enemySpawner, settings.waveEnemySpawner);
 
         this.movementTypeToMover.set(EnemyMovementType.Follow, new FollowTargetEnemyMover(targetNode));

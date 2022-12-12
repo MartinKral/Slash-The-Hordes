@@ -49,13 +49,22 @@ export class UpgradeSettings {
 }
 
 export class EnemyManagerSettings {
+    public enemies: EnemySettings[] = [new EnemySettings()];
     public waveEnemySpawner = new WaveEnemySpawnerSettings();
+    public waveEnemySpawners: WaveEnemySpawnerSettings[] = [new WaveEnemySpawnerSettings()];
 }
 
 export class WaveEnemySpawnerSettings {
     public cooldown = 0;
     public enemiesPerWave = 0;
     public waveLifetime = 0;
-    public enemyMoveType = "";
-    public enemyType = "";
+    public enemyId = "";
+}
+
+export class EnemySettings {
+    public id = "";
+    public moveType = "";
+    public health = 0;
+    public damage = 0;
+    public speed = 0;
 }

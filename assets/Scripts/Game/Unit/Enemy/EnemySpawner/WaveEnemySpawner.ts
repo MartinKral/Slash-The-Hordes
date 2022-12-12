@@ -3,15 +3,12 @@ import { GameTimer } from "../../../../Services/GameTimer";
 import { randomPositiveOrNegative } from "../../../../Services/Utils/MathUtils";
 import { WaveEnemySpawnerSettings } from "../../../Data/GameSettings";
 import { Enemy } from "../Enemy";
-import { EnemyMovementType } from "../EnemyMovementType";
-import { EnemyType } from "../EnemyType";
 import { EnemySpawner } from "./EnemySpawner";
 
 export class WaveEnemySpawner {
     private enemiesPerWave: number;
     private waveLifetime: number;
-    private moveType: EnemyMovementType;
-    private enemyType: EnemyType;
+    private enemyId: string;
 
     private spawnTimer: GameTimer;
     private waves: EnemyWave[] = [];
@@ -20,8 +17,7 @@ export class WaveEnemySpawner {
         this.spawnTimer = new GameTimer(settings.cooldown);
         this.enemiesPerWave = settings.enemiesPerWave;
         this.waveLifetime = settings.waveLifetime;
-        this.moveType = <EnemyMovementType>settings.enemyMoveType;
-        this.enemyType = <EnemyType>settings.enemyType;
+        this.enemyId = settings.enemyId;
     }
 
     public gameTick(deltaTime: number): void {
@@ -60,7 +56,7 @@ export class WaveEnemySpawner {
                 const randomOffsetY: number = randomRange(-20, 20);
                 const posX: number = defaultPosX + randomOffsetX + 50 * (i % side);
                 const posY: number = defaultPosY + randomOffsetY + 50 * Math.floor(i / side);
-                const enemy = this.enemySpawner.spawnNewEnemy(posX, posY, this.moveType);
+                const enemy = this.enemySpawner.spawnNewEnemy(posX, posY, this.enemyId);
                 enemies.push(enemy);
             }
 

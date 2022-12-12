@@ -60,12 +60,30 @@
         "maxRegenerationUpgrades": 5
     },
     "enemyManager": {
+        "enemies": [
+            {
+                "id": "Basic",
+                "moveType": "Follow",
+                "health": 1,
+                "damage": 1,
+                "speed": 50
+            }
+        ],
         "waveEnemySpawner": {
             "cooldown": 5,
             "enemiesPerWave": 30,
             "waveLifetime": 20,
-            "enemyMoveType": "Launch",
-            "enemyType": "Basic"
-        }
+            "enemyId": "Basic"
+        },
+        "waveEnemySpawners": [
+            {
+                "cooldown": 0,
+                "enemiesPerWave": 0,
+                "waveLifetime": 0,
+                "enemyName": "",
+                "enemyMoveType": "",
+                "enemyType": ""
+            }
+        ]
     }
 }
