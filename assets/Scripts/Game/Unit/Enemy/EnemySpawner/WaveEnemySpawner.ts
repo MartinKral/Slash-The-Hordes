@@ -10,6 +10,7 @@ import { EnemySpawner } from "./EnemySpawner";
 export class WaveEnemySpawner {
     private enemiesPerWave: number;
     private waveLifetime: number;
+    private moveType: EnemyMovementType;
     private enemyType: EnemyType;
 
     private spawnTimer: GameTimer;
@@ -19,6 +20,7 @@ export class WaveEnemySpawner {
         this.spawnTimer = new GameTimer(settings.cooldown);
         this.enemiesPerWave = settings.enemiesPerWave;
         this.waveLifetime = settings.waveLifetime;
+        this.moveType = <EnemyMovementType>settings.moveType;
         this.enemyType = <EnemyType>settings.enemyType;
     }
 

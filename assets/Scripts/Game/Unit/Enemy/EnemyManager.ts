@@ -5,6 +5,7 @@ import { Enemy } from "./Enemy";
 import { EnemyMovementType } from "./EnemyMovementType";
 import { EnemyMover } from "./EnemyMover/EnemyMover";
 import { FollowTargetEnemyMover } from "./EnemyMover/FollowTargetEnemyMover";
+import { PeriodicFollowTargetEnemyMover } from "./EnemyMover/PeriodicFollowTargetEnemyMover";
 import { WaveEnemyMover } from "./EnemyMover/WaveEnemyMover";
 import { CircularEnemySpawner } from "./EnemySpawner/CircularEnemySpawner";
 import { EnemySpawner } from "./EnemySpawner/EnemySpawner";
@@ -30,12 +31,13 @@ export class EnemyManager extends Component {
         this.enemySpawner.EnemyAddedEvent.on(this.onEnemyAdded, this);
         this.enemySpawner.enemyRemovedEvent.on(this.onRemoveEnemy, this);
 
-        this.individualEnemySpawner = new IndividualEnemySpawner(this.enemySpawner, EnemyType.Basic);
-        this.circularEnemySpawner = new CircularEnemySpawner(this.enemySpawner, 30, EnemyType.Basic);
+        this.individualEnemySpawner = new IndividualEnemySpawner(this.enemySpawner, EnemyMovementType.Follow, EnemyType.Basic);
+        this.circularEnemySpawner = new CircularEnemySpawner(this.enemySpawner, 30, EnemyMovementType.Follow, EnemyType.Basic);
         this.waveEnemySpawner = new WaveEnemySpawner(this.enemySpawner, settings.waveEnemySpawner);
 
         this.movementTypeToMover.set(EnemyMovementType.Follow, new FollowTargetEnemyMover(targetNode));
         this.movementTypeToMover.set(EnemyMovementType.Launch, new WaveEnemyMover(targetNode));
+        this.movementTypeToMover.set(EnemyMovementType.PeriodicFollow, new PeriodicFollowTargetEnemyMover(targetNode, 5, 5));
 
         this.xpSpawner.init();
     }
@@ -50,14 +52,14 @@ export class EnemyManager extends Component {
         }
     }
 
-    private onEnemyAdded(enemy: Enemy): void {
-        enemy.DeathEvent.on(this.onEnemyDied, this);
-        this.getEnemyMover(enemy).addEnemy(enemy);
-    }
-
     private onEnemyDied(enemy: Enemy): void {
         enemy.DeathEvent.off(this.onEnemyDied);
         this.xpSpawner.spawnXp(enemy.node.worldPosition, 1);
+    }
+
+    private onEnemyAdded(enemy: Enemy): void {
+        enemy.DeathEvent.on(this.onEnemyDied, this);
+        this.getEnemyMover(enemy).addEnemy(enemy);
     }
 
     private onRemoveEnemy(enemy: Enemy): void {

@@ -1,4 +1,5 @@
 export enum EnemyMovementType {
-    Follow,
-    Launch
+    Follow = "Follow",
+    PeriodicFollow = "PeriodicFollow",
+    Launch = "Launch"
 }
