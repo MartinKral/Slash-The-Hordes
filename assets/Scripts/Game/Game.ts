@@ -88,7 +88,13 @@ export class Game extends Component {
 
         new PlayerProjectileCollisionSystem([this.haloProjectileLauncher, this.horizontalProjectileLauncher, this.diagonalProjectileLauncher]);
 
-        const upgrader = new Upgrader(this.player, this.horizontalProjectileLauncher, this.haloProjectileLauncher, settings.upgrades);
+        const upgrader = new Upgrader(
+            this.player,
+            this.horizontalProjectileLauncher,
+            this.haloProjectileLauncher,
+            this.diagonalProjectileLauncher,
+            settings.upgrades
+        );
         new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader);
 
         this.gameUI.init(this.player);
