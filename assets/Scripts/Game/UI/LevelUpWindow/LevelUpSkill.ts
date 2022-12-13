@@ -1,6 +1,7 @@
 import { Component, Label, NodeEventType, _decorator } from "cc";
 import { ISignal } from "../../../Services/EventSystem/ISignal";
 import { Signal } from "../../../Services/EventSystem/Signal";
+import { TranslationData } from "../../Data/TranslationData";
 import { UpgradeType } from "../../Upgrades/UpgradeType";
 const { ccclass, property } = _decorator;
 
@@ -10,9 +11,9 @@ export class LevelUpSkill extends Component {
     private chooseSkillEvent: Signal<UpgradeType> = new Signal<UpgradeType>();
     private skillType: UpgradeType;
 
-    public init(skillType: UpgradeType): void {
+    public init(skillType: UpgradeType, translationData: TranslationData): void {
         this.skillType = skillType;
-        this.skillTitle.string = `${skillType}`;
+        this.skillTitle.string = `${translationData[`${skillType}_TITLE`]}`;
         this.node.on(NodeEventType.MOUSE_DOWN, this.chooseSkill, this);
     }
 

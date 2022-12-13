@@ -6,6 +6,7 @@ import { PlayerCollisionSystem } from "./Collision/PlayerCollisionSystem";
 import { PlayerProjectileCollisionSystem } from "./Collision/PlayerProjectileCollisionSystem";
 import { WeaponCollisionSystem } from "./Collision/WeaponCollisionSystem";
 import { GameSettings, PlayerSettings } from "./Data/GameSettings";
+import { TranslationData } from "./Data/TranslationData";
 import { UserData } from "./Data/UserData";
 import { KeyboardInput } from "./Input/KeyboardInput";
 import { MultiInput } from "./Input/MultiInput";
@@ -37,6 +38,7 @@ export class Game extends Component {
     @property(Background) private background: Background;
     @property(ModalWindowManager) private modalWindowManager: ModalWindowManager;
     @property(JsonAsset) private settingsAsset: JsonAsset;
+    @property(JsonAsset) private translationAsset: JsonAsset;
 
     private playerCollisionSystem: PlayerCollisionSystem;
     private haloProjectileLauncher: HaloProjectileLauncher;
@@ -57,7 +59,8 @@ export class Game extends Component {
     }
 
     public async playGame(userData: UserData): Promise<number> {
-        const settings: GameSettings = <GameSettings>this.settingsAsset.json;
+        const translationData = <TranslationData>this.translationAsset.json;
+        const settings = <GameSettings>this.settingsAsset.json;
         const metaUpgrades = new MetaUpgrades(userData.game.metaUpgrades, settings.metaUpgrades);
 
         this.virtualJoystic.init();
@@ -109,7 +112,7 @@ export class Game extends Component {
             this.diagonalProjectileLauncher,
             settings.upgrades
         );
-        new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader);
+        new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader, translationData);
 
         this.gameUI.init(this.player);
         this.background.init(this.player.node);
