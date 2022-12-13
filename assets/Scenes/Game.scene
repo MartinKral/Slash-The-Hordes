@@ -195,6 +195,12 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "maxHpLevel": 0,
+    "bonusDamageLevel": 5,
+    "projectilePiercingLevel": 0,
+    "movementSpeedLevel": 0,
+    "xpGathererLevel": 0,
+    "goldGathererLevel": 0,
     "_id": "35CwPVksdGoJPgBRCGSH6m"
   },
   {

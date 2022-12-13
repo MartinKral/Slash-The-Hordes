@@ -10,6 +10,7 @@ export class PlayerProjectileCollisionSystem {
     }
 
     private onProjectileCollision(projectileCollision: ProjectileCollision): void {
-        projectileCollision.otherCollider.getComponent(Enemy).dealDamage(1);
+        projectileCollision.otherCollider.getComponent(Enemy).dealDamage(projectileCollision.projectile.Damage);
+        projectileCollision.projectile.pierce();
     }
 }

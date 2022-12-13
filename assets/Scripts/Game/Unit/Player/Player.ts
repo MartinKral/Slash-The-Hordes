@@ -21,7 +21,7 @@ export class Player extends Component {
     private level: UnitLevel;
     private regeneration: PlayerRegeneration;
 
-    public init(input: IInput, settings: PlayerSettings): void {
+    public init(input: IInput, settings: PlayerData): void {
         this.input = input;
         this.health = new UnitHealth(settings.defaultHP);
         this.level = new UnitLevel(settings.requiredXP);
@@ -30,6 +30,8 @@ export class Player extends Component {
         this.weapon.init(settings.weapon);
 
         this.playerUI.init(this.health);
+
+        console.log("Bonus damage " + settings.bonusDamage);
     }
 
     public get Health(): UnitHealth {
@@ -66,4 +68,12 @@ export class Player extends Component {
         this.weapon.gameTick(deltaTime);
         this.regeneration.gameTick(deltaTime);
     }
+}
+
+export class PlayerData extends PlayerSettings {
+    public bonusDamage = 0;
+    public bonusHp = 0;
+    public bonusSpeed = 0;
+    public bonusXP = 0;
+    public bonusGold = 0;
 }

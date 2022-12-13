@@ -6,6 +6,7 @@ import { PlayerCollisionSystem } from "./Collision/PlayerCollisionSystem";
 import { PlayerProjectileCollisionSystem } from "./Collision/PlayerProjectileCollisionSystem";
 import { WeaponCollisionSystem } from "./Collision/WeaponCollisionSystem";
 import { GameSettings } from "./Data/GameSettings";
+import { UserData } from "./Data/UserData";
 import { KeyboardInput } from "./Input/KeyboardInput";
 import { MultiInput } from "./Input/MultiInput";
 import { VirtualJoystic } from "./Input/VirtualJoystic";
@@ -13,11 +14,13 @@ import { GameModalLauncher } from "./ModalWIndows/GameModalLauncher";
 import { Pauser } from "./Pauser";
 import { GameUI } from "./UI/GameUI";
 import { EnemyManager } from "./Unit/Enemy/EnemyManager";
-import { Player } from "./Unit/Player/Player";
+import { MetaUpgrades } from "./Unit/MetaUpgrades/MetaUpgrades";
+import { Player, PlayerData } from "./Unit/Player/Player";
 import { HaloProjectileLauncher } from "./Unit/Player/ProjectileLauncher/HaloProjectileLauncher";
-import { ProjectileLauncher } from "./Unit/Player/ProjectileLauncher/ProjectileLauncher";
+import { ProjectileData, ProjectileLauncher } from "./Unit/Player/ProjectileLauncher/ProjectileLauncher";
 import { WaveProjectileLauncher } from "./Unit/Player/ProjectileLauncher/WaveProjectileLauncher";
 import { Upgrader } from "./Upgrades/Upgrader";
+import { MetaUpgradeType } from "./Upgrades/UpgradeType";
 
 const { ccclass, property } = _decorator;
 
@@ -53,39 +56,54 @@ export class Game extends Component {
         this.gamePauser.pause();
     }
 
-    public async playGame(): Promise<number> {
+    public async playGame(userData: UserData): Promise<number> {
         const settings: GameSettings = <GameSettings>this.settingsAsset.json;
+        const metaUpgrades = new MetaUpgrades(userData.game.metaUpgrades, settings.metaUpgrades);
 
         this.virtualJoystic.init();
 
         const wasd = new KeyboardInput(KeyCode.KEY_W, KeyCode.KEY_S, KeyCode.KEY_A, KeyCode.KEY_D);
         const arrowKeys = new KeyboardInput(KeyCode.ARROW_UP, KeyCode.ARROW_DOWN, KeyCode.ARROW_LEFT, KeyCode.ARROW_RIGHT);
         const multiInput: MultiInput = new MultiInput([this.virtualJoystic, wasd, arrowKeys]);
-        this.player.init(multiInput, settings.player);
+
+        const playerData: PlayerData = Object.assign(new PlayerData(), settings.player);
+        playerData.bonusHp = metaUpgrades.getUpgradeValue(MetaUpgradeType.MaxHp);
+        playerData.bonusDamage = metaUpgrades.getUpgradeValue(MetaUpgradeType.OverallDamage);
+        playerData.bonusSpeed = metaUpgrades.getUpgradeValue(MetaUpgradeType.MovementSpeed);
+        playerData.bonusXP = metaUpgrades.getUpgradeValue(MetaUpgradeType.XPGatherer);
+        playerData.bonusGold = metaUpgrades.getUpgradeValue(MetaUpgradeType.GoldGatherer);
+        this.player.init(multiInput, playerData);
 
         this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay);
         new WeaponCollisionSystem(this.player.Weapon);
 
         this.enemyManager.init(this.player.node, settings.enemyManager);
 
+        const projectileData = new ProjectileData();
+        projectileData.damage = 1 + metaUpgrades.getUpgradeValue(MetaUpgradeType.OverallDamage);
+        projectileData.pierces = 1 + metaUpgrades.getUpgradeValue(MetaUpgradeType.ProjectilePiercing);
+
         this.haloProjectileLauncher = new HaloProjectileLauncher(
             this.haloProjectileLauncherComponent,
             this.player.node,
-            settings.player.haloLauncher
+            settings.player.haloLauncher,
+            projectileData
         );
 
         this.horizontalProjectileLauncher = new WaveProjectileLauncher(
             this.horizontalProjectileLauncherComponent,
             this.player.node,
             [new Vec2(-1, 0), new Vec2(1, 0)],
-            settings.player.horizontalLauncher
+            settings.player.horizontalLauncher,
+            projectileData
         );
 
         this.diagonalProjectileLauncher = new WaveProjectileLauncher(
             this.diagonalProjectileLauncherComponent,
             this.player.node,
             [new Vec2(-0.5, -0.5), new Vec2(0.5, -0.5)],
-            settings.player.diagonalLauncher
+            settings.player.diagonalLauncher,
+            projectileData
         );
 
         new PlayerProjectileCollisionSystem([this.haloProjectileLauncher, this.horizontalProjectileLauncher, this.diagonalProjectileLauncher]);

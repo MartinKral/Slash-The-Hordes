@@ -14,7 +14,7 @@ const { ccclass, property } = _decorator;
 export class ProjectileLauncher extends Component implements IProjectileCollisionSignaler {
     @property(Prefab) private projectilePrefab: Prefab;
     private projectileCollisionEvent: Signal<ProjectileCollision> = new Signal<ProjectileCollision>();
-
+    private projectileData: ProjectileData;
     private projectilePool: ObjectPool<Projectile>;
     private fireTimer: GameTimer;
     private projectileLifetime: number;
@@ -53,7 +53,8 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
         return this.projectileCollisionEvent;
     }
 
-    public init(playerNode: Node, fireDirections: Vec2[], settings: ProjectileLauncherSettings): void {
+    public init(playerNode: Node, fireDirections: Vec2[], settings: ProjectileLauncherSettings, projectileData: ProjectileData): void {
+        this.projectileData = projectileData;
         this.projectileLifetime = settings.projectileLifetime;
         this.speed = settings.projectileSpeed;
         this.wavesToShoot = settings.wavesToShoot;
@@ -89,10 +90,11 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
 
     private fireProjectile(direction: Vec2): void {
         const projectile: Projectile = this.projectilePool.borrow();
-        projectile.tryInit();
+        projectile.init(this.projectileData.damage, this.projectileData.pierces);
         projectile.node.setWorldPosition(this.playerNode.worldPosition);
         projectile.node.active = true;
         projectile.ContactBeginEvent.on(this.onProjectileCollision, this);
+        projectile.PiercesDepletedEvent.on(this.onPiercesDepleted, this);
 
         this.projectiles.push(projectile);
         this.directions.push(direction);
@@ -104,14 +106,29 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
             if (this.currentTime < this.expireTimes[i]) break; // the oldest particles are at the start of the array
 
             const projectile: Projectile = this.projectiles[i];
-            projectile.ContactBeginEvent.off(this.onProjectileCollision);
-            this.projectilePool.return(projectile);
-
-            this.projectiles.splice(i, 1);
-            this.directions.splice(i, 1);
-            this.expireTimes.splice(i, 1);
+            this.removeProjectile(projectile, i);
             i--; // Check the same index
         }
+    }
+
+    private onPiercesDepleted(projectile: Projectile): void {
+        const index = this.projectiles.indexOf(projectile);
+        if (index === -1) {
+            throw new Error("Projectile not found!");
+        }
+
+        this.removeProjectile(projectile, index);
+    }
+
+    private removeProjectile(projectile: Projectile, index: number): void {
+        projectile.ContactBeginEvent.off(this.onProjectileCollision);
+        projectile.PiercesDepletedEvent.off(this.onPiercesDepleted);
+
+        this.projectilePool.return(projectile);
+
+        this.projectiles.splice(index, 1);
+        this.directions.splice(index, 1);
+        this.expireTimes.splice(index, 1);
     }
 
     private moveAllProjectiles(deltaTime: number): void {
@@ -127,4 +144,9 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
     private onProjectileCollision(projectlieCollision: ProjectileCollision): void {
         this.projectileCollisionEvent.trigger(projectlieCollision);
     }
+}
+
+export class ProjectileData {
+    public pierces = 0;
+    public damage = 0;
 }

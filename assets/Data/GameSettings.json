@@ -59,6 +59,14 @@
         "maxHaloProjectileUpgrades": 5,
         "maxRegenerationUpgrades": 5
     },
+    "metaUpgrades": {
+        "healthPointsPerLevel": 0,
+        "bonusDamagePerLevel": 0,
+        "projectilePiercingPerLevel": 0,
+        "movementSpeedPerLevel": 0,
+        "xpBonusPerLevel": 0,
+        "goldBonusPerLevel": 0
+    },
     "enemyManager": {
         "enemies": [
             {
