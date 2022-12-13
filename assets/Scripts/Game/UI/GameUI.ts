@@ -1,4 +1,4 @@
-import { Component, ProgressBar, _decorator } from "cc";
+import { Component, Label, ProgressBar, _decorator } from "cc";
 import { Player } from "../Unit/Player/Player";
 import { UnitLevel } from "../Unit/UnitLevel";
 
@@ -7,6 +7,7 @@ const { ccclass, property } = _decorator;
 @ccclass("GameUI")
 export class GameUI extends Component {
     @property(ProgressBar) private xpBar: ProgressBar;
+    @property(Label) private timeAliveText: Label;
 
     private playerLevel: UnitLevel;
 
@@ -19,5 +20,9 @@ export class GameUI extends Component {
 
     private updateProgressBar(): void {
         this.xpBar.progress = this.playerLevel.XP / this.playerLevel.RequiredXP;
+    }
+
+    public updateTimeAlive(timeAlive: number): void {
+        this.timeAliveText.string = `${Math.floor(timeAlive)}`;
     }
 }

@@ -48,6 +48,7 @@ export class Game extends Component {
     private gamePauser: Pauser = new Pauser();
 
     private static instance: Game;
+    private timeAlive = 0;
 
     public static get Instance(): Game {
         return this.instance;
@@ -135,6 +136,9 @@ export class Game extends Component {
         this.horizontalProjectileLauncher.gameTick(deltaTime);
         this.diagonalProjectileLauncher.gameTick(deltaTime);
         this.background.gameTick();
+
+        this.timeAlive += deltaTime;
+        this.gameUI.updateTimeAlive(this.timeAlive);
 
         this.camera.node.worldPosition = this.player.node.worldPosition;
     }
