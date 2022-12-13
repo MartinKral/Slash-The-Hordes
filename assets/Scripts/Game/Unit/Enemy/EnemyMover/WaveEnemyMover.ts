@@ -30,7 +30,7 @@ export class WaveEnemyMover extends EnemyMover {
 
     public gameTick(deltaTime: number): void {
         for (const enemyAndDirection of this.enemyToDirection) {
-            enemyAndDirection[0].moveBy(enemyAndDirection[1], deltaTime);
+            enemyAndDirection[0].gameTick(enemyAndDirection[1], deltaTime);
         }
     }
 }

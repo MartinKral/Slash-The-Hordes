@@ -49,6 +49,7 @@ export class EnemySpawner extends Component {
         enemy.setup(spawnPosition, this.idToSettings.get(id));
 
         enemy.DeathEvent.on(this.returnEnemy, this);
+        enemy.LifetimeEndedEvent.on(this.returnEnemy, this);
 
         this.enemyAddedEvent.trigger(enemy);
 
@@ -57,6 +58,8 @@ export class EnemySpawner extends Component {
 
     public returnEnemy(enemy: Enemy): void {
         enemy.DeathEvent.off(this.returnEnemy);
+        enemy.LifetimeEndedEvent.off(this.returnEnemy);
+
         this.enemyPool.return(enemy);
 
         this.enemyRemovedEvent.trigger(enemy);

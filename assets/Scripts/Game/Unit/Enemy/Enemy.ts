@@ -1,4 +1,5 @@
 import { BoxCollider2D, Component, randomRange, Vec3, _decorator } from "cc";
+import { time } from "console";
 import { ISignal } from "../../../Services/EventSystem/ISignal";
 import { Signal } from "../../../Services/EventSystem/Signal";
 import { EnemySettings } from "../../Data/GameSettings";
@@ -12,12 +13,17 @@ export class Enemy extends Component {
     @property(BoxCollider2D) public collider: BoxCollider2D;
 
     private deathEvent: Signal<Enemy> = new Signal<Enemy>();
+    private lifetimeEndedEvent: Signal<Enemy> = new Signal<Enemy>();
 
     private movementType: EnemyMovementType;
-    private health: UnitHealth = new UnitHealth(1);
+    private health: UnitHealth;
     private damage: number;
     private speedX: number;
     private speedY: number;
+    private lifetimeLeft: number;
+
+    private xpReward: number;
+    private goldReward: number;
 
     public setup(position: Vec3, settings: EnemySettings): void {
         this.movementType = <EnemyMovementType>settings.moveType;
@@ -25,6 +31,10 @@ export class Enemy extends Component {
         this.damage = settings.damage;
         this.speedX = randomRange(settings.speed / 2, settings.speed);
         this.speedY = randomRange(settings.speed / 2, settings.speed);
+        this.lifetimeLeft = settings.lifetime;
+
+        this.xpReward = settings.xpReward;
+        this.goldReward = settings.goldReward;
 
         this.node.setWorldPosition(position);
         this.node.active = true;
@@ -50,6 +60,10 @@ export class Enemy extends Component {
         return this.deathEvent;
     }
 
+    public get LifetimeEndedEvent(): ISignal<Enemy> {
+        return this.lifetimeEndedEvent;
+    }
+
     public dealDamage(points: number): void {
         this.health.damage(points);
         if (!this.health.IsAlive) {
@@ -57,11 +71,18 @@ export class Enemy extends Component {
         }
     }
 
-    public moveBy(move: Vec3, deltaTime: number): void {
+    public gameTick(move: Vec3, deltaTime: number): void {
         const newPosition: Vec3 = this.node.worldPosition;
         newPosition.x += move.x * this.speedX * deltaTime;
         newPosition.y += move.y * this.speedY * deltaTime;
 
         this.node.setWorldPosition(newPosition);
+
+        if (0 < this.lifetimeLeft) {
+            this.lifetimeLeft -= deltaTime;
+            if (this.lifetimeLeft <= 0) {
+                this.lifetimeEndedEvent.trigger(this);
+            }
+        }
     }
 }

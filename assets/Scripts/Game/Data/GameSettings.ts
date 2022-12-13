@@ -76,7 +76,6 @@ export class GeneralEnemySpawnerSettings {
 export class WaveEnemySpawnerSettings {
     public common = new GeneralEnemySpawnerSettings();
     public enemiesToSpawn = 0;
-    public waveLifetime = 0;
 }
 
 export class CircularEnemySpawnerSettings {
@@ -94,4 +93,7 @@ export class EnemySettings {
     public health = 0;
     public damage = 0;
     public speed = 0;
+    public lifetime = 0;
+    public xpReward = 0;
+    public goldReward = 0;
 }

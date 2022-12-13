@@ -75,42 +75,60 @@
                 "moveType": "Follow",
                 "health": 3,
                 "damage": 1,
-                "speed": 60
+                "speed": 60,
+                "lifetime": -1,
+                "xpReward": 0,
+                "goldReward": 0
             },
             {
                 "id": "CircleEnemy",
                 "moveType": "Follow",
                 "health": 10,
                 "damage": 1,
-                "speed": 25
+                "speed": 25,
+                "lifetime": -1,
+                "xpReward": 0,
+                "goldReward": 0
             },
             {
                 "id": "WaveEnemy",
                 "moveType": "Launch",
                 "health": 1,
                 "damage": 2,
-                "speed": 390
+                "speed": 390,
+                "lifetime": -1,
+                "xpReward": 0,
+                "goldReward": 0
             },
             {
                 "id": "WaveEnemyArmor",
                 "moveType": "Launch",
                 "health": 7,
                 "damage": 3,
-                "speed": 70
+                "speed": 70,
+                "lifetime": -1,
+                "xpReward": 0,
+                "goldReward": 0
             },
             {
                 "id": "BasicBoss",
                 "moveType": "Follow",
                 "health": 12,
                 "damage": 2,
-                "speed": 65
+                "speed": 65,
+                "lifetime": -1,
+                "xpReward": 0,
+                "goldReward": 0
             },
             {
                 "id": "BasicCheetah",
                 "moveType": "PeriodicFollow",
                 "health": 5,
                 "damage": 2,
-                "speed": 140
+                "speed": 140,
+                "lifetime": -1,
+                "xpReward": 0,
+                "goldReward": 0
             }
         ],
         "individualEnemySpawners": [

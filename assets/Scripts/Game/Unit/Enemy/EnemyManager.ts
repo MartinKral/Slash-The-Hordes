@@ -63,11 +63,19 @@ export class EnemyManager extends Component {
 
     private onEnemyDied(enemy: Enemy): void {
         enemy.DeathEvent.off(this.onEnemyDied);
+        enemy.LifetimeEndedEvent.off(this.onEnemyLifetimeEnded);
         this.xpSpawner.spawnXp(enemy.node.worldPosition, 1);
+    }
+
+    private onEnemyLifetimeEnded(enemy: Enemy): void {
+        enemy.DeathEvent.off(this.onEnemyDied);
+        enemy.LifetimeEndedEvent.off(this.onEnemyLifetimeEnded);
     }
 
     private onEnemyAdded(enemy: Enemy): void {
         enemy.DeathEvent.on(this.onEnemyDied, this);
+        enemy.LifetimeEndedEvent.on(this.onEnemyLifetimeEnded, this);
+
         this.getEnemyMover(enemy).addEnemy(enemy);
     }
 

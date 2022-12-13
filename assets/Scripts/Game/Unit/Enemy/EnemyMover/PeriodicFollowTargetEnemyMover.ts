@@ -30,7 +30,7 @@ export class PeriodicFollowTargetEnemyMover extends EnemyMover {
                 if (this.enemyToFollowState.get(enemy) === EnemyFollowState.Follow) {
                     let direction: Vec3 = new Vec3();
                     direction = Vec3.subtract(direction, this.targetNode.worldPosition, enemy.node.worldPosition);
-                    enemy.moveBy(direction.normalize(), deltaTime);
+                    enemy.gameTick(direction.normalize(), deltaTime);
                 }
             }
         }
