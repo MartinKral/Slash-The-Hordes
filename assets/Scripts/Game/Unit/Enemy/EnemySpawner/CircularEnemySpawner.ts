@@ -25,8 +25,8 @@ export class CircularEnemySpawner extends DelayedEnemySpawner {
             const angle: number = (2 * Math.PI) / this.enemiesToSpawn;
 
             for (let i = 0; i < this.enemiesToSpawn; i++) {
-                const posX: number = roundToOneDecimal(Math.sin(angle * i)) * 500;
-                const posY: number = roundToOneDecimal(Math.cos(angle * i)) * 500;
+                const posX: number = roundToOneDecimal(Math.sin(angle * i)) * 700;
+                const posY: number = roundToOneDecimal(Math.cos(angle * i)) * 700;
                 this.enemySpawner.spawnNewEnemy(posX, posY, this.enemyId);
             }
         }
