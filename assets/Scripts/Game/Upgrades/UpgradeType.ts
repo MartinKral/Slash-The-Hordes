@@ -1,10 +1,10 @@
 export enum UpgradeType {
-    WeaponLength,
-    WeaponDamage,
-    HorizontalProjectile,
-    DiagonalProjectile,
-    HaloProjectlie,
-    Regeneration
+    WeaponLength = "WEAPON_LENGTH",
+    WeaponDamage = "WEAPON_DAMAGE",
+    HorizontalProjectile = "HORIZONTAL_PROJECTILE",
+    DiagonalProjectile = "DIAGONAL_PROJECTILE",
+    HaloProjectlie = "HALO_PROJECTILE",
+    Regeneration = "REGENERATION"
 }
 
 export enum MetaUpgradeType {

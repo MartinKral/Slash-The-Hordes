@@ -12,7 +12,7 @@ export class LevelUpSkill extends Component {
 
     public init(skillType: UpgradeType): void {
         this.skillType = skillType;
-        this.skillTitle.string = `Skill ${skillType}`;
+        this.skillTitle.string = `${skillType}`;
         this.node.on(NodeEventType.MOUSE_DOWN, this.chooseSkill, this);
     }
 
