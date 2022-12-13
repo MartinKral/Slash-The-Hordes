@@ -1,6 +1,7 @@
 import { Camera, Component, JsonAsset, KeyCode, Vec2, _decorator } from "cc";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
 import { delay } from "../Services/Utils/AsyncUtils";
+import { Background } from "./Background/Background";
 import { PlayerCollisionSystem } from "./Collision/PlayerCollisionSystem";
 import { PlayerProjectileCollisionSystem } from "./Collision/PlayerProjectileCollisionSystem";
 import { WeaponCollisionSystem } from "./Collision/WeaponCollisionSystem";
@@ -30,6 +31,7 @@ export class Game extends Component {
     @property(EnemyManager) private enemyManager: EnemyManager;
     @property(Camera) private camera: Camera;
     @property(GameUI) private gameUI: GameUI;
+    @property(Background) private background: Background;
     @property(ModalWindowManager) private modalWindowManager: ModalWindowManager;
     @property(JsonAsset) private settingsAsset: JsonAsset;
 
@@ -98,6 +100,7 @@ export class Game extends Component {
         new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader);
 
         this.gameUI.init(this.player);
+        this.background.init(this.player.node);
         this.gamePauser.resume();
 
         // while not dead
@@ -116,6 +119,7 @@ export class Game extends Component {
         this.haloProjectileLauncher.gameTick(deltaTime);
         this.horizontalProjectileLauncher.gameTick(deltaTime);
         this.diagonalProjectileLauncher.gameTick(deltaTime);
+        this.background.gameTick();
 
         this.camera.node.worldPosition = this.player.node.worldPosition;
     }
