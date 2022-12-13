@@ -1,7 +1,7 @@
 import { director } from "cc";
 import { AppRoot } from "../AppRoot/AppRoot";
 import { UserData } from "../Game/Data/UserData";
-import { Game } from "../Game/Game";
+import { Game, GameResult } from "../Game/Game";
 import { delay } from "../Services/Utils/AsyncUtils";
 
 export class GameRunner {
@@ -25,8 +25,12 @@ export class GameRunner {
         director.loadScene("Game");
         const userData: UserData = AppRoot.Instance.SaveSystem.load();
         while (Game.Instance == null) await delay(10);
-        const result: number = await Game.Instance.playGame();
-        userData.game.goldCoins += result;
+        const result: GameResult = await Game.Instance.playGame(userData);
+        userData.game.goldCoins += result.goldCoins;
+
+        if (userData.game.highscore < result.score) {
+            userData.game.highscore = result.score;
+        }
         AppRoot.Instance.SaveSystem.save(userData);
 
         console.log("Gold  coins: " + result);

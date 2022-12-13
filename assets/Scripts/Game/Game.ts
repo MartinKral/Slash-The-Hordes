@@ -59,7 +59,7 @@ export class Game extends Component {
         this.gamePauser.pause();
     }
 
-    public async playGame(userData: UserData): Promise<number> {
+    public async playGame(userData: UserData): Promise<GameResult> {
         const translationData = <TranslationData>this.translationAsset.json;
         const settings = <GameSettings>this.settingsAsset.json;
         const metaUpgrades = new MetaUpgrades(userData.game.metaUpgrades, settings.metaUpgrades);
@@ -123,7 +123,7 @@ export class Game extends Component {
         await delay(1000000);
         this.gamePauser.pause();
         Game.instance = null;
-        return 1;
+        return { goldCoins: 1, score: Math.floor(this.timeAlive) };
     }
 
     public update(deltaTime: number): void {
@@ -158,4 +158,9 @@ export class Game extends Component {
 
         return playerData;
     }
+}
+
+export class GameResult {
+    public goldCoins = 0;
+    public score = 0;
 }

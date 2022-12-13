@@ -7,6 +7,7 @@ export class UserData {
 export class GameData {
     public goldCoins = 0;
     public metaUpgrades = new MetaUpgradesData();
+    public highscore = 0;
 }
 
 export class MetaUpgradesData {
