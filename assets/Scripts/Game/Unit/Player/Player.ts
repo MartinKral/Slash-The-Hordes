@@ -1,5 +1,4 @@
 import { BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator } from "cc";
-import { PlayerSettings } from "../../Data/GameSettings";
 import { IInput } from "../../Input/IInput";
 import { UnitHealth } from "../UnitHealth";
 import { UnitLevel } from "../UnitLevel";
@@ -11,7 +10,6 @@ const { ccclass, property } = _decorator;
 
 @ccclass("Player")
 export class Player extends Component {
-    @property private speed = 0;
     @property(BoxCollider2D) private collider: BoxCollider2D;
     @property(PlayerUI) private playerUI: PlayerUI;
     @property(Weapon) private weapon: Weapon;
@@ -20,18 +18,18 @@ export class Player extends Component {
     private health: UnitHealth;
     private level: UnitLevel;
     private regeneration: PlayerRegeneration;
+    private speed: number;
 
-    public init(input: IInput, settings: PlayerData): void {
+    public init(input: IInput, data: PlayerData): void {
         this.input = input;
-        this.health = new UnitHealth(settings.defaultHP);
-        this.level = new UnitLevel(settings.requiredXP);
-        this.regeneration = new PlayerRegeneration(this.health, settings.regenerationDelay);
+        this.health = new UnitHealth(data.maxHp);
+        this.level = new UnitLevel(data.requiredXP, data.xpMultiplier);
+        this.regeneration = new PlayerRegeneration(this.health, data.regenerationDelay);
+        this.speed = data.speed;
 
-        this.weapon.init(settings.weapon);
+        this.weapon.init(data.strikeDelay, data.damage);
 
         this.playerUI.init(this.health);
-
-        console.log("Bonus damage " + settings.bonusDamage);
     }
 
     public get Health(): UnitHealth {
@@ -70,10 +68,15 @@ export class Player extends Component {
     }
 }
 
-export class PlayerData extends PlayerSettings {
-    public bonusDamage = 0;
-    public bonusHp = 0;
-    public bonusSpeed = 0;
-    public bonusXP = 0;
-    public bonusGold = 0;
+export class PlayerData {
+    public requiredXP: number[] = [];
+    public speed = 0;
+    public maxHp = 0;
+    public regenerationDelay = 0;
+    public xpMultiplier = 0;
+    public goldMultiplier = 0;
+
+    // Weapon
+    public strikeDelay = 0;
+    public damage = 0;
 }

@@ -8,6 +8,7 @@ export class GameSettings {
 export class PlayerSettings {
     public defaultHP = 0;
     public requiredXP: number[] = [];
+    public speed = 0;
     public regenerationDelay = 0;
     public collisionDelay = 0;
     public weapon: WeaponSettings = new WeaponSettings();

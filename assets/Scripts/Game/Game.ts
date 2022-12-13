@@ -5,7 +5,7 @@ import { Background } from "./Background/Background";
 import { PlayerCollisionSystem } from "./Collision/PlayerCollisionSystem";
 import { PlayerProjectileCollisionSystem } from "./Collision/PlayerProjectileCollisionSystem";
 import { WeaponCollisionSystem } from "./Collision/WeaponCollisionSystem";
-import { GameSettings } from "./Data/GameSettings";
+import { GameSettings, PlayerSettings } from "./Data/GameSettings";
 import { UserData } from "./Data/UserData";
 import { KeyboardInput } from "./Input/KeyboardInput";
 import { MultiInput } from "./Input/MultiInput";
@@ -66,13 +66,7 @@ export class Game extends Component {
         const arrowKeys = new KeyboardInput(KeyCode.ARROW_UP, KeyCode.ARROW_DOWN, KeyCode.ARROW_LEFT, KeyCode.ARROW_RIGHT);
         const multiInput: MultiInput = new MultiInput([this.virtualJoystic, wasd, arrowKeys]);
 
-        const playerData: PlayerData = Object.assign(new PlayerData(), settings.player);
-        playerData.bonusHp = metaUpgrades.getUpgradeValue(MetaUpgradeType.MaxHp);
-        playerData.bonusDamage = metaUpgrades.getUpgradeValue(MetaUpgradeType.OverallDamage);
-        playerData.bonusSpeed = metaUpgrades.getUpgradeValue(MetaUpgradeType.MovementSpeed);
-        playerData.bonusXP = metaUpgrades.getUpgradeValue(MetaUpgradeType.XPGatherer);
-        playerData.bonusGold = metaUpgrades.getUpgradeValue(MetaUpgradeType.GoldGatherer);
-        this.player.init(multiInput, playerData);
+        this.player.init(multiInput, this.createPlayerData(settings.player, metaUpgrades));
 
         this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay);
         new WeaponCollisionSystem(this.player.Weapon);
@@ -140,5 +134,21 @@ export class Game extends Component {
         this.background.gameTick();
 
         this.camera.node.worldPosition = this.player.node.worldPosition;
+    }
+
+    private createPlayerData(settings: PlayerSettings, metaUpgrades: MetaUpgrades): PlayerData {
+        const playerData: PlayerData = Object.assign(new PlayerData(), settings);
+
+        playerData.maxHp = metaUpgrades.getUpgradeValue(MetaUpgradeType.MaxHp) + settings.defaultHP;
+        playerData.requiredXP = settings.requiredXP;
+        playerData.speed = metaUpgrades.getUpgradeValue(MetaUpgradeType.MovementSpeed) + settings.speed;
+        playerData.regenerationDelay = settings.regenerationDelay;
+        playerData.xpMultiplier = metaUpgrades.getUpgradeValue(MetaUpgradeType.XPGatherer) + 1;
+        playerData.goldMultiplier = metaUpgrades.getUpgradeValue(MetaUpgradeType.GoldGatherer) + 1;
+
+        playerData.damage = metaUpgrades.getUpgradeValue(MetaUpgradeType.OverallDamage) + settings.weapon.damage;
+        playerData.strikeDelay = settings.weapon.strikeDelay;
+
+        return playerData;
     }
 }

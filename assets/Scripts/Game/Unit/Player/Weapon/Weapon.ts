@@ -14,9 +14,9 @@ export class Weapon extends Component {
     private strikeState: AnimationState;
     private damage: number;
 
-    public init(settings: WeaponSettings): void {
-        this.strikeTimer = new GameTimer(settings.strikeDelay);
-        this.damage = settings.damage;
+    public init(strikeDelay: number, damage: number): void {
+        this.strikeTimer = new GameTimer(strikeDelay);
+        this.damage = damage;
         this.node.active = false;
 
         this.weaponAnimation.on(Animation.EventType.FINISHED, this.endStrike, this);

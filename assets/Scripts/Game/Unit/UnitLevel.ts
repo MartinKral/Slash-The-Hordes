@@ -3,17 +3,15 @@ import { Signal } from "../../Services/EventSystem/Signal";
 
 export class UnitLevel {
     private xp = 0;
-    private requiredXPs: number[];
+
     private currentLevel = 0;
     private levelUpEvent: Signal<number> = new Signal<number>();
     private xpAddedEvent: Signal<number> = new Signal<number>();
 
-    public constructor(requiredXPs: number[]) {
-        this.requiredXPs = requiredXPs;
-    }
+    public constructor(private requiredXPs: number[], private xpMultiplier: number) {}
 
     public addXp(points: number): void {
-        this.xp += points;
+        this.xp += points * this.xpMultiplier;
         this.xpAddedEvent.trigger(this.xp);
         this.tryLevelUp();
     }
