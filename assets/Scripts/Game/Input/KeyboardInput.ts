@@ -27,16 +27,16 @@ export class KeyboardInput implements IInput {
     private onKeyDown(event: EventKeyboard): void {
         switch (event.keyCode) {
             case this.up:
-                this.yAxis += 1;
+                this.yAxis = 1;
                 break;
             case this.down:
-                this.yAxis += -1;
+                this.yAxis = -1;
                 break;
             case this.left:
-                this.xAxis += -1;
+                this.xAxis = -1;
                 break;
             case this.right:
-                this.xAxis += 1;
+                this.xAxis = 1;
                 break;
         }
     }
@@ -44,16 +44,16 @@ export class KeyboardInput implements IInput {
     private onKeyUp(event: EventKeyboard): void {
         switch (event.keyCode) {
             case this.up:
-                this.yAxis -= 1;
+                this.yAxis = this.yAxis === 1 ? 0 : this.yAxis;
                 break;
             case this.down:
-                this.yAxis -= -1;
+                this.yAxis = this.yAxis === -1 ? 0 : this.yAxis;
                 break;
             case this.left:
-                this.xAxis -= -1;
+                this.xAxis = this.xAxis === -1 ? 0 : this.xAxis;
                 break;
             case this.right:
-                this.xAxis -= 1;
+                this.xAxis = this.xAxis === 1 ? 0 : this.xAxis;
                 break;
         }
     }
