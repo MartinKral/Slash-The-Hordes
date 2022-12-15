@@ -1,4 +1,4 @@
-import { CircleCollider2D, Collider2D, Component, Contact2DType, _decorator } from "cc";
+import { Collider2D, Component, Contact2DType, Vec3, _decorator } from "cc";
 import { ISignal } from "../../Services/EventSystem/ISignal";
 import { Signal } from "../../Services/EventSystem/Signal";
 import { ProjectileCollision } from "./ProjectileCollision";
@@ -6,7 +6,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass("Projectile")
 export class Projectile extends Component {
-    @property(CircleCollider2D) private collider: CircleCollider2D;
+    @property(Collider2D) private collider: Collider2D;
     private contactBeginEvent = new Signal<ProjectileCollision>();
     private piercesDepletedEvent = new Signal<Projectile>();
 
@@ -15,7 +15,7 @@ export class Projectile extends Component {
     private piercesLeft = 0;
     private damage = 0;
 
-    public init(damage: number, pierces: number): void {
+    public init(damage: number, pierces: number, angle: number): void {
         this.piercesLeft = pierces;
         this.damage = damage;
 
@@ -23,6 +23,8 @@ export class Projectile extends Component {
             this.isContactListenerSet = true;
             this.collider.on(Contact2DType.BEGIN_CONTACT, this.onColliderContactBegin, this);
         }
+
+        this.node.setRotationFromEuler(new Vec3(0, 0, angle));
     }
 
     public pierce(): void {

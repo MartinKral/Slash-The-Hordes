@@ -4,6 +4,7 @@ import { Signal } from "../../../../Services/EventSystem/Signal";
 import { GameTimer } from "../../../../Services/GameTimer";
 import { ObjectPool } from "../../../../Services/ObjectPool";
 import { delay } from "../../../../Services/Utils/AsyncUtils";
+import { getDegreeAngleFromDirection } from "../../../../Services/Utils/MathUtils";
 import { ProjectileLauncherSettings } from "../../../Data/GameSettings";
 import { IProjectileCollisionSignaler } from "../../../Projectile/IProjectileCollisionSignaler";
 import { Projectile } from "../../../Projectile/Projectile";
@@ -90,7 +91,7 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
 
     private fireProjectile(direction: Vec2): void {
         const projectile: Projectile = this.projectilePool.borrow();
-        projectile.init(this.projectileData.damage, this.projectileData.pierces);
+        projectile.init(this.projectileData.damage, this.projectileData.pierces, getDegreeAngleFromDirection(direction.x, direction.y));
         projectile.node.setWorldPosition(this.playerNode.worldPosition);
         projectile.node.active = true;
         projectile.ContactBeginEvent.on(this.onProjectileCollision, this);
