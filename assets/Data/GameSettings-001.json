@@ -1,0 +1,403 @@
+{
+    "player": {
+        "defaultHP": 50,
+        "requiredXP": [
+            10,
+            20,
+            30,
+            40,
+            50,
+            60,
+            70,
+            80,
+            90,
+            100
+        ],
+        "speed": 100,
+        "regenerationDelay": 5,
+        "collisionDelay": 0.5,
+        "weapon": {
+            "strikeDelay": 2,
+            "damage": 2
+        },
+        "haloLauncher": {
+            "projectilesToSpawn": 24,
+            "cooldownDivisorPerUpgrade": 1,
+            "launcher": {
+                "projectileLifetime": 2,
+                "projectileSpeed": 150,
+                "wavesToShoot": 1,
+                "wavesDelayMs": 0,
+                "cooldown": 10
+            }
+        },
+        "horizontalLauncher": {
+            "wavesToShootPerUpgrade": 1,
+            "launcher": {
+                "projectileLifetime": 3,
+                "projectileSpeed": 300,
+                "wavesToShoot": 1,
+                "wavesDelayMs": 100,
+                "cooldown": 4
+            }
+        },
+        "diagonalLauncher": {
+            "wavesToShootPerUpgrade": 1,
+            "launcher": {
+                "projectileLifetime": 20,
+                "projectileSpeed": 300,
+                "wavesToShoot": 1,
+                "wavesDelayMs": 100,
+                "cooldown": 4
+            }
+        }
+    },
+    "upgrades": {
+        "maxWeaponLengthUpgrades": 5,
+        "maxWeaponDamageUpgrades": 10,
+        "maxHorizontalProjectileUpgrades": 0,
+        "maxDiagonalProjectileUpgrades": 0,
+        "maxHaloProjectileUpgrades": 5,
+        "maxRegenerationUpgrades": 5
+    },
+    "metaUpgrades": {
+        "healthPointsPerLevel": 0,
+        "bonusDamagePerLevel": 0,
+        "projectilePiercingPerLevel": 0,
+        "movementSpeedPerLevel": 0,
+        "xpBonusPerLevel": 0,
+        "goldBonusPerLevel": 0
+    },
+    "enemyManager": {
+      "enemies": [
+        {
+          "id": "BasicEnemy",
+          "moveType": "Follow",
+          "health": 2,
+          "damage": 1,
+          "speed": 60,
+          "lifetime": -1,
+          "xpReward": 0,
+          "goldReward": 0
+        },
+        {
+          "id": "StandardEnemy",
+          "moveType": "Follow",
+          "health": 3,
+          "damage": 2,
+          "speed": 65,
+          "lifetime": -1,
+          "xpReward": 0,
+          "goldReward": 0.1
+        },
+        {
+          "id": "FastEnemy",
+          "moveType": "Follow",
+          "health": 3,
+          "damage": 2,
+          "speed": 75,
+          "lifetime": -1,
+          "xpReward": 0,
+          "goldReward": 0.1
+        },
+        {
+          "id": "CircleEnemy",
+          "moveType": "Follow",
+          "health": 4,
+          "damage": 1,
+          "speed": 25,
+          "lifetime": 29,
+          "xpReward": 0,
+          "goldReward": 1
+        },
+        {
+          "id": "CircleEnemyStandard",
+          "moveType": "Follow",
+          "health": 7,
+          "damage": 2,
+          "speed": 35,
+          "lifetime": 27,
+          "xpReward": 0,
+          "goldReward": 2
+        },
+        {
+          "id": "WaveEnemy",
+          "moveType": "Launch",
+          "health": 1,
+          "damage": 2,
+          "speed": 390,
+          "lifetime": 20,
+          "xpReward": 0,
+          "goldReward": 0.2
+        },
+        {
+          "id": "WaveEnemyArmor",
+          "moveType": "Launch",
+          "health": 5,
+          "damage": 3,
+          "speed": 70,
+          "lifetime": 30,
+          "xpReward": 0,
+          "goldReward": 1
+        },
+        {
+          "id": "WaveEnemyArmorFast",
+          "moveType": "Launch",
+          "health": 5,
+          "damage": 3,
+          "speed": 320,
+          "lifetime": 30,
+          "xpReward": 0,
+          "goldReward": 1
+        },
+        {
+          "id": "BasicBoss",
+          "moveType": "Follow",
+          "health": 8,
+          "damage": 2,
+          "speed": 65,
+          "lifetime": -1,
+          "xpReward": 0,
+          "goldReward": 3
+        },
+        {
+          "id": "StandardBoss",
+          "moveType": "Follow",
+          "health": 12,
+          "damage": 3,
+          "speed": 75,
+          "lifetime": -1,
+          "xpReward": 2,
+          "goldReward": 5
+        },
+        {
+          "id": "BasicCheetah",
+          "moveType": "PeriodicFollow",
+          "health": 4,
+          "damage": 1,
+          "speed": 120,
+          "lifetime": -1,
+          "xpReward": 0,
+          "goldReward": 1
+        }
+      ],
+      "individualEnemySpawners": [
+        {
+          "common": {
+            "enemyId": "BasicEnemy",
+            "startDelay": 0,
+            "stopDelay": 59,
+            "cooldown": 1
+          }
+        },
+        {
+          "common": {
+            "enemyId": "BasicBoss",
+            "startDelay": 89,
+            "stopDelay": 90,
+            "cooldown": 0.9
+          }
+        },
+        {
+          "common": {
+            "enemyId": "BasicEnemy",
+            "startDelay": 61,
+            "stopDelay": 120,
+            "cooldown": 0.9
+          }
+        },
+        {
+          "common": {
+            "enemyId": "BasicEnemy",
+            "startDelay": 121,
+            "stopDelay": 190,
+            "cooldown": 0.8
+          }
+        },
+        {
+          "common": {
+            "enemyId": "StandardBoss",
+            "startDelay": 199,
+            "stopDelay": 200,
+            "cooldown": 0.9
+          }
+        },
+        {
+          "common": {
+            "enemyId": "BasicEnemy",
+            "startDelay": 191,
+            "stopDelay": 220,
+            "cooldown": 1.5
+          }
+        },
+        {
+          "common": {
+            "enemyId": "StandardEnemy",
+            "startDelay": 210,
+            "stopDelay": 250,
+            "cooldown": 0.9
+          }
+        },
+        {
+          "common": {
+            "enemyId": "BasicEnemy",
+            "startDelay": 290,
+            "stopDelay": 320,
+            "cooldown": 1
+          }
+        },
+        {
+          "common": {
+            "enemyId": "StandardEnemy",
+            "startDelay": 335,
+            "stopDelay": 420,
+            "cooldown": 0.7
+          }
+        },
+        {
+          "common": {
+            "enemyId": "StandardEnemy",
+            "startDelay": 421,
+            "stopDelay": 520,
+            "cooldown": 0.5
+          }
+        },
+        {
+          "common": {
+            "enemyId": "StandardEnemy",
+            "startDelay": 520,
+            "stopDelay": 600,
+            "cooldown": 0.3
+          }
+        },
+        {
+          "common": {
+            "enemyId": "FastEnemy",
+            "startDelay": 310,
+            "stopDelay": 340,
+            "cooldown": 0.5
+          }
+        },
+        {
+          "common": {
+            "enemyId": "FastEnemy",
+            "startDelay": 260,
+            "stopDelay": 300,
+            "cooldown": 0.8
+          }
+        }
+      ],
+      "circularEnemySpawners": [
+        {
+          "common": {
+            "enemyId": "CircleEnemy",
+            "startDelay": 1,
+            "stopDelay": 130,
+            "cooldown": 45
+          },
+          "enemiesToSpawn": 38
+        },
+        {
+          "common": {
+            "enemyId": "BasicEnemy",
+            "startDelay": 0,
+            "stopDelay": 122,
+            "cooldown": 60
+          },
+          "enemiesToSpawn": 10
+        },
+        {
+          "common": {
+            "enemyId": "CircleEnemyStandard",
+            "startDelay": 280,
+            "stopDelay": 520,
+            "cooldown": 50
+          },
+          "enemiesToSpawn": 44
+        },
+        {
+          "common": {
+            "enemyId": "CircleEnemyStandard",
+            "startDelay": 383,
+            "stopDelay": 390,
+            "cooldown": 3
+          },
+          "enemiesToSpawn": 44
+        },
+        {
+          "common": {
+            "enemyId": "BasicEnemy",
+            "startDelay": 245,
+            "stopDelay": 280,
+            "cooldown": 5
+          },
+          "enemiesToSpawn": 12
+        },
+        {
+          "common": {
+            "enemyId": "BasicEnemy",
+            "startDelay": 278,
+            "stopDelay": 291,
+            "cooldown": 3
+          },
+          "enemiesToSpawn": 30
+        },
+        {
+          "common": {
+            "enemyId": "BasicBoss",
+            "startDelay": 300,
+            "stopDelay": 303,
+            "cooldown": 2
+          },
+          "enemiesToSpawn": 8
+        },
+        {
+          "common": {
+            "enemyId": "BasicCheetah",
+            "startDelay": 139,
+            "stopDelay": 140,
+            "cooldown": 0.9
+          },
+          "enemiesToSpawn": 6
+        }
+      ],
+      "waveEnemySpawners": [
+        {
+          "common": {
+            "enemyId": "WaveEnemy",
+            "startDelay": 1,
+            "stopDelay": 201,
+            "cooldown": 25
+          },
+          "enemiesToSpawn": 12
+        },
+        {
+          "common": {
+            "enemyId": "WaveEnemy",
+            "startDelay": 420,
+            "stopDelay": 600,
+            "cooldown": 35
+          },
+          "enemiesToSpawn": 30
+        },
+        {
+          "common": {
+            "enemyId": "WaveEnemyArmor",
+            "startDelay": 1,
+            "stopDelay": 199,
+            "cooldown": 50
+          },
+          "enemiesToSpawn": 10
+        },
+        {
+          "common": {
+            "enemyId": "WaveEnemyArmorFast",
+            "startDelay": 200,
+            "stopDelay": 600,
+            "cooldown": 27
+          },
+          "enemiesToSpawn": 14
+        }
+      ]
+    }
+}
