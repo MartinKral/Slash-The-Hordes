@@ -54,7 +54,7 @@ CCProgram sprite-vs %{
     #if SAMPLE_FROM_RT
       CC_HANDLE_RT_SAMPLE_FLIP(uv0);
     #endif
-    color = vec4(1, 1, 1, 1);
+    color = a_color;
 
     return pos;
   }
@@ -80,8 +80,7 @@ CCProgram sprite-fs %{
       o *= CCSampleWithAlphaSeparated(cc_spriteTexture, uv0);
     #endif
 
-
-    ALPHA_TEST(o);
+    o = vec4(1,1,1, o.a);
     return o;
   }
 }%

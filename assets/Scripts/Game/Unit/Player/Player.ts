@@ -1,4 +1,4 @@
-import { Animation, Node, BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator } from "cc";
+import { Animation, Node, BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator, Details } from "cc";
 import { IInput } from "../../Input/IInput";
 import { UnitHealth } from "../UnitHealth";
 import { UnitLevel } from "../UnitLevel";
@@ -57,6 +57,12 @@ export class Player extends Component {
     }
 
     public gameTick(deltaTime: number): void {
+        this.move(deltaTime);
+        this.weapon.gameTick(deltaTime);
+        this.regeneration.gameTick(deltaTime);
+    }
+
+    private move(deltaTime: number): void {
         const movement: Vec2 = this.input.getAxis();
         if (!movement.equals(Vec2.ZERO)) {
             movement.x *= deltaTime * this.speed;
@@ -84,9 +90,6 @@ export class Player extends Component {
                 this.animation.play("Idle");
             }
         }
-
-        this.weapon.gameTick(deltaTime);
-        this.regeneration.gameTick(deltaTime);
     }
 }
 
