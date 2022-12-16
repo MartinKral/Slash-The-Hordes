@@ -39,15 +39,15 @@
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
-        "trimType": "auto",
+        "trimType": "none",
         "trimThreshold": 1,
         "rotated": false,
-        "offsetX": -1,
-        "offsetY": -0.5,
-        "trimX": 3,
-        "trimY": 5,
-        "width": 24,
-        "height": 31,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 32,
+        "height": 40,
         "rawWidth": 32,
         "rawHeight": 40,
         "borderTop": 0,
@@ -61,17 +61,17 @@
         "meshType": 0,
         "vertices": {
           "rawPosition": [
-            -12,
-            -15.5,
+            -16,
+            -20,
             0,
-            12,
-            -15.5,
+            16,
+            -20,
             0,
-            -12,
-            15.5,
+            -16,
+            20,
             0,
-            12,
-            15.5,
+            16,
+            20,
             0
           ],
           "indexes": [
@@ -83,33 +83,33 @@
             3
           ],
           "uv": [
-            3,
-            35,
-            27,
-            35,
-            3,
-            4,
-            27,
-            4
+            0,
+            40,
+            32,
+            40,
+            0,
+            0,
+            32,
+            0
           ],
           "nuv": [
-            0.09375,
-            0.1,
-            0.84375,
-            0.1,
-            0.09375,
-            0.875,
-            0.84375,
-            0.875
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1
           ],
           "minPos": [
-            -12,
-            -15.5,
+            -16,
+            -20,
             0
           ],
           "maxPos": [
-            12,
-            15.5,
+            16,
+            20,
             0
           ]
         },
@@ -129,6 +129,7 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "3d470257-0eba-4a39-8504-5420e4e28ca8@f9941"
+    "redirect": "3d470257-0eba-4a39-8504-5420e4e28ca8@f9941",
+    "flipVertical": false
   }
 }
