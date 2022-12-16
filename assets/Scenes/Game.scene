@@ -196,7 +196,7 @@
     "_enabled": true,
     "__prefab": null,
     "maxHpLevel": 0,
-    "bonusDamageLevel": 5,
+    "bonusDamageLevel": 0,
     "projectilePiercingLevel": 0,
     "movementSpeedLevel": 0,
     "xpGathererLevel": 0,
@@ -2583,14 +2583,6 @@
     },
     "modalWindowManager": {
       "__id__": 76
-    },
-    "settingsAsset": {
-      "__uuid__": "4a156ee8-535e-4443-8bf5-8b979a08d232",
-      "__expectedType__": "cc.JsonAsset"
-    },
-    "translationAsset": {
-      "__uuid__": "7d43843c-0765-427c-9161-2fd9030369c8",
-      "__expectedType__": "cc.JsonAsset"
     },
     "_id": "3a9z1bqlFCGL4/WyDwU4L5"
   },

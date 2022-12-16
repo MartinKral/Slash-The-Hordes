@@ -8,30 +8,6 @@
     ".png"
   ],
   "subMetas": {
-    "6c48a": {
-      "importer": "texture",
-      "uuid": "0ca53d61-de26-4d01-9770-eec0e3ac06ae@6c48a",
-      "displayName": "HealthBarFill",
-      "id": "6c48a",
-      "name": "texture",
-      "userData": {
-        "wrapModeS": "clamp-to-edge",
-        "wrapModeT": "clamp-to-edge",
-        "minfilter": "nearest",
-        "magfilter": "nearest",
-        "mipfilter": "none",
-        "anisotropy": 0,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "0ca53d61-de26-4d01-9770-eec0e3ac06ae",
-        "visible": false
-      },
-      "ver": "1.0.22",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {}
-    },
     "f9941": {
       "importer": "sprite-frame",
       "uuid": "0ca53d61-de26-4d01-9770-eec0e3ac06ae@f9941",
@@ -118,6 +94,30 @@
         "atlasUuid": ""
       },
       "ver": "1.0.11",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "0ca53d61-de26-4d01-9770-eec0e3ac06ae@6c48a",
+      "displayName": "HealthBarFill",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "clamp-to-edge",
+        "wrapModeT": "clamp-to-edge",
+        "minfilter": "nearest",
+        "magfilter": "nearest",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "0ca53d61-de26-4d01-9770-eec0e3ac06ae",
+        "visible": false
+      },
+      "ver": "1.0.22",
       "imported": true,
       "files": [
         ".json"

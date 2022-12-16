@@ -1,4 +1,4 @@
-import { BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator } from "cc";
+import { Animation, Node, BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator } from "cc";
 import { IInput } from "../../Input/IInput";
 import { UnitHealth } from "../UnitHealth";
 import { UnitLevel } from "../UnitLevel";
@@ -13,12 +13,16 @@ export class Player extends Component {
     @property(BoxCollider2D) private collider: BoxCollider2D;
     @property(PlayerUI) private playerUI: PlayerUI;
     @property(Weapon) private weapon: Weapon;
+    @property(Node) private playerGraphics: Node;
+    @property(Animation) private animation: Animation;
 
     private input: IInput;
     private health: UnitHealth;
     private level: UnitLevel;
     private regeneration: PlayerRegeneration;
     private speed: number;
+
+    private isMoveAnimationPlaying = false;
 
     public init(input: IInput, data: PlayerData): void {
         this.input = input;
@@ -54,14 +58,32 @@ export class Player extends Component {
 
     public gameTick(deltaTime: number): void {
         const movement: Vec2 = this.input.getAxis();
-        movement.x *= deltaTime * this.speed;
-        movement.y *= deltaTime * this.speed;
+        if (!movement.equals(Vec2.ZERO)) {
+            movement.x *= deltaTime * this.speed;
+            movement.y *= deltaTime * this.speed;
 
-        const newPosition: Vec3 = this.node.worldPosition;
-        newPosition.x += movement.x;
-        newPosition.y += movement.y;
+            const newPosition: Vec3 = this.node.worldPosition;
+            newPosition.x += movement.x;
+            newPosition.y += movement.y;
 
-        this.node.setWorldPosition(newPosition);
+            this.node.setWorldPosition(newPosition);
+
+            if (!this.isMoveAnimationPlaying) {
+                this.isMoveAnimationPlaying = true;
+                this.animation.play("Move");
+            }
+
+            if (movement.x <= 0) {
+                this.playerGraphics.setScale(new Vec3(1, 1, 1));
+            } else {
+                this.playerGraphics.setScale(new Vec3(-1, 1, 1));
+            }
+        } else {
+            if (this.isMoveAnimationPlaying) {
+                this.isMoveAnimationPlaying = false;
+                this.animation.play("Idle");
+            }
+        }
 
         this.weapon.gameTick(deltaTime);
         this.regeneration.gameTick(deltaTime);
