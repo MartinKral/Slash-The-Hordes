@@ -21,7 +21,7 @@ export class GameModalLauncher {
     private async showLevelUpModal(): Promise<void> {
         this.gamePauser.pause();
         const skillToUpgrade: UpgradeType = await this.modalWindowManager.showModal<LevelUpModalWindowParams, UpgradeType>(
-            GameModalWindowTypes.LevelUpModal,
+            GameModalWindowTypes.LevelUp,
             { availableUpgrades: Array.from(this.upgrader.getAvailableUpgrades()), translationData: this.translationData }
         );
         this.gamePauser.resume();
