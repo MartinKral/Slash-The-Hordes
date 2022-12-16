@@ -66,6 +66,14 @@
     "__prefab": {
       "__id__": 3
     },
+    "settingsAsset": {
+      "__uuid__": "4a156ee8-535e-4443-8bf5-8b979a08d232",
+      "__expectedType__": "cc.JsonAsset"
+    },
+    "engTranslationAsset": {
+      "__uuid__": "7d43843c-0765-427c-9161-2fd9030369c8",
+      "__expectedType__": "cc.JsonAsset"
+    },
     "_id": ""
   },
   {

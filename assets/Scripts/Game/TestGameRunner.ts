@@ -1,4 +1,5 @@
-import { CCInteger, Component, _decorator } from "cc";
+import { approx, CCInteger, Component, _decorator } from "cc";
+import { AppRoot } from "../AppRoot/AppRoot";
 import { GameRunner } from "../Menu/GameRunner";
 import { delay } from "../Services/Utils/AsyncUtils";
 import { UserData } from "./Data/UserData";
@@ -20,7 +21,7 @@ export class TestGameRunner extends Component {
     }
 
     public async playTestGameAsync(): Promise<void> {
-        while (Game.Instance == null) await delay(100);
+        while (Game.Instance == null || AppRoot.Instance == null) await delay(100);
 
         const testUserData = new UserData();
         testUserData.game.metaUpgrades.maxHpLevel = this.maxHpLevel;
@@ -29,6 +30,6 @@ export class TestGameRunner extends Component {
         testUserData.game.metaUpgrades.movementSpeedLevel = this.movementSpeedLevel;
         testUserData.game.metaUpgrades.xpGathererLevel = this.xpGathererLevel;
         testUserData.game.metaUpgrades.goldGathererLevel = this.goldGathererLevel;
-        Game.Instance.playGame(testUserData);
+        Game.Instance.playGame(testUserData, AppRoot.Instance.Settings, AppRoot.Instance.TranslationData);
     }
 }

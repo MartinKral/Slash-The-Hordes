@@ -1,4 +1,6 @@
-import { _decorator, Component, Node, director, AudioSource } from "cc";
+import { _decorator, Component, Node, director, AudioSource, JsonAsset } from "cc";
+import { GameSettings } from "../Game/Data/GameSettings";
+import { TranslationData } from "../Game/Data/TranslationData";
 import { SaveSystem } from "./SaveSystem";
 const { ccclass, property } = _decorator;
 
@@ -6,6 +8,8 @@ const { ccclass, property } = _decorator;
 export class AppRoot extends Component {
     @property(AudioSource) private soundSource: AudioSource;
     @property(AudioSource) private musicSource: AudioSource;
+    @property(JsonAsset) private settingsAsset: JsonAsset;
+    @property(JsonAsset) private engTranslationAsset: JsonAsset;
 
     private static instance: AppRoot;
     private saveSystem: SaveSystem;
@@ -16,6 +20,14 @@ export class AppRoot extends Component {
 
     public get SaveSystem(): SaveSystem {
         return this.saveSystem;
+    }
+
+    public get Settings(): GameSettings {
+        return <GameSettings>this.settingsAsset.json;
+    }
+
+    public get TranslationData(): TranslationData {
+        return <TranslationData>this.engTranslationAsset.json;
     }
 
     public start(): void {

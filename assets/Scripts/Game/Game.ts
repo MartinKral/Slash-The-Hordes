@@ -37,8 +37,6 @@ export class Game extends Component {
     @property(GameUI) private gameUI: GameUI;
     @property(Background) private background: Background;
     @property(ModalWindowManager) private modalWindowManager: ModalWindowManager;
-    @property(JsonAsset) private settingsAsset: JsonAsset;
-    @property(JsonAsset) private translationAsset: JsonAsset;
 
     private playerCollisionSystem: PlayerCollisionSystem;
     private haloProjectileLauncher: HaloProjectileLauncher;
@@ -59,9 +57,7 @@ export class Game extends Component {
         this.gamePauser.pause();
     }
 
-    public async playGame(userData: UserData): Promise<GameResult> {
-        const translationData = <TranslationData>this.translationAsset.json;
-        const settings = <GameSettings>this.settingsAsset.json;
+    public async playGame(userData: UserData, settings: GameSettings, translationData: TranslationData): Promise<GameResult> {
         const metaUpgrades = new MetaUpgrades(userData.game.metaUpgrades, settings.metaUpgrades);
 
         this.virtualJoystic.init();
