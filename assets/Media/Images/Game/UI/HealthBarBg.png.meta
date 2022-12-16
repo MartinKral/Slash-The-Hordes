@@ -15,17 +15,109 @@
       "id": "6c48a",
       "name": "texture",
       "userData": {
-        "wrapModeS": "repeat",
-        "wrapModeT": "repeat",
-        "minfilter": "linear",
-        "magfilter": "linear",
+        "wrapModeS": "clamp-to-edge",
+        "wrapModeT": "clamp-to-edge",
+        "minfilter": "nearest",
+        "magfilter": "nearest",
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
         "imageUuidOrDatabaseUri": "29bf4d7b-909b-472f-839a-bbb94136bab3",
-        "visible": true
+        "visible": false
       },
       "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f9941": {
+      "importer": "sprite-frame",
+      "uuid": "29bf4d7b-909b-472f-839a-bbb94136bab3@f9941",
+      "displayName": "HealthBarBg",
+      "id": "f9941",
+      "name": "spriteFrame",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 5,
+        "height": 5,
+        "rawWidth": 5,
+        "rawHeight": 5,
+        "borderTop": 2,
+        "borderBottom": 2,
+        "borderLeft": 2,
+        "borderRight": 2,
+        "packable": true,
+        "pixelsToUnit": 100,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "meshType": 0,
+        "vertices": {
+          "rawPosition": [
+            -2.5,
+            -2.5,
+            0,
+            2.5,
+            -2.5,
+            0,
+            -2.5,
+            2.5,
+            0,
+            2.5,
+            2.5,
+            0
+          ],
+          "indexes": [
+            0,
+            1,
+            2,
+            2,
+            1,
+            3
+          ],
+          "uv": [
+            0,
+            5,
+            5,
+            5,
+            0,
+            0,
+            5,
+            0
+          ],
+          "nuv": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "minPos": [
+            -2.5,
+            -2.5,
+            0
+          ],
+          "maxPos": [
+            2.5,
+            2.5,
+            0
+          ]
+        },
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "29bf4d7b-909b-472f-839a-bbb94136bab3@6c48a",
+        "atlasUuid": ""
+      },
+      "ver": "1.0.11",
       "imported": true,
       "files": [
         ".json"
@@ -34,9 +126,9 @@
     }
   },
   "userData": {
-    "type": "texture",
+    "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "29bf4d7b-909b-472f-839a-bbb94136bab3@6c48a"
+    "redirect": "29bf4d7b-909b-472f-839a-bbb94136bab3@f9941"
   }
 }

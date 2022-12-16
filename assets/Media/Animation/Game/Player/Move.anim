@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.AnimationClip",
-    "_name": "XP",
+    "_name": "Move",
     "_objFlags": 0,
     "__editorExtras__": {
       "embeddedPlayerGroups": []
@@ -11,7 +11,7 @@
     "speed": 1,
     "wrapMode": 2,
     "enableTrsBlending": false,
-    "_duration": 2.0166666666666666,
+    "_duration": 1,
     "_hash": 500763545,
     "_tracks": [
       {
@@ -57,55 +57,30 @@
     "__type__": "cc.ObjectCurve",
     "_times": [
       0,
-      0.16666666666666666,
-      0.3333333333333333,
+      0.25,
       0.5,
-      0.6666666666666666,
-      0.8333333333333334,
-      1,
-      1.1666666666666667,
-      1.3333333333333333,
-      2
+      0.75,
+      0.9833333333333333
     ],
     "_values": [
       {
-        "__uuid__": "7c2d6332-ec79-4c3a-956b-c6813fc002b1@f9941",
+        "__uuid__": "3d470257-0eba-4a39-8504-5420e4e28ca8@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "77e1fca8-5319-44a9-a85e-f11899bc8b14@f9941",
+        "__uuid__": "a90012ec-a814-40d9-b762-783f28a178f9@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "51a381da-a298-4e98-8232-874dd6e3629b@f9941",
+        "__uuid__": "95e93202-1072-40a8-ae22-3e5ee3678956@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "053f91cb-ca9b-4ac7-99e8-d91c896988ed@f9941",
+        "__uuid__": "b30d5701-543f-4f35-a6f8-bc94f6af437f@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "66fa7cbf-8d87-478e-814b-2b0c3b581c8b@f9941",
-        "__expectedType__": "cc.SpriteFrame"
-      },
-      {
-        "__uuid__": "d9e6d9f0-2600-4f99-b621-4c4bec5161f6@f9941",
-        "__expectedType__": "cc.SpriteFrame"
-      },
-      {
-        "__uuid__": "d69d4a23-1b6d-4d14-aaa1-0e9c5bab1db6@f9941",
-        "__expectedType__": "cc.SpriteFrame"
-      },
-      {
-        "__uuid__": "46d39d9a-415f-43d3-b88b-aa148218d438@f9941",
-        "__expectedType__": "cc.SpriteFrame"
-      },
-      {
-        "__uuid__": "7c2d6332-ec79-4c3a-956b-c6813fc002b1@f9941",
-        "__expectedType__": "cc.SpriteFrame"
-      },
-      {
-        "__uuid__": "7c2d6332-ec79-4c3a-956b-c6813fc002b1@f9941",
+        "__uuid__": "b30d5701-543f-4f35-a6f8-bc94f6af437f@f9941",
         "__expectedType__": "cc.SpriteFrame"
       }
     ]
