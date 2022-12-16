@@ -24,8 +24,8 @@ export class TestGameRunner extends Component {
         while (Game.Instance == null || AppRoot.Instance == null) await delay(100);
 
         const testUserData = new UserData();
-        testUserData.game.metaUpgrades.maxHpLevel = this.maxHpLevel;
-        testUserData.game.metaUpgrades.bonusDamageLevel = this.bonusDamageLevel;
+        testUserData.game.metaUpgrades.healthLevel = this.maxHpLevel;
+        testUserData.game.metaUpgrades.overallDamageLevel = this.bonusDamageLevel;
         testUserData.game.metaUpgrades.projectilePiercingLevel = this.projectilePiercingLevel;
         testUserData.game.metaUpgrades.movementSpeedLevel = this.movementSpeedLevel;
         testUserData.game.metaUpgrades.xpGathererLevel = this.xpGathererLevel;

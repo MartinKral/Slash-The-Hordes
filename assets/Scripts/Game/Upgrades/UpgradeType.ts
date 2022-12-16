@@ -8,10 +8,10 @@ export enum UpgradeType {
 }
 
 export enum MetaUpgradeType {
-    MaxHp,
-    OverallDamage,
-    ProjectilePiercing,
-    MovementSpeed,
-    XPGatherer,
-    GoldGatherer
+    Health = "META_HEALTH",
+    OverallDamage = "META_OVERALL_DAMAGE",
+    ProjectilePiercing = "META_PROJECTILE_PIERCING",
+    MovementSpeed = "META_MOVEMENT_SPEED",
+    XPGatherer = "META_XP_GATHERER",
+    GoldGatherer = "META_GOLD_GATHERER"
 }

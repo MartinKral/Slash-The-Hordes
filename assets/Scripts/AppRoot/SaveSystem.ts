@@ -2,7 +2,7 @@ import { sys } from "cc";
 import { UserData } from "../Game/Data/UserData";
 
 export class SaveSystem {
-    private userDataIdentifier = "user-dat";
+    private userDataIdentifier = "user-da";
     public save(userData: UserData): void {
         sys.localStorage.setItem(this.userDataIdentifier, JSON.stringify(userData));
     }

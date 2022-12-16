@@ -142,7 +142,7 @@ export class Game extends Component {
     private createPlayerData(settings: PlayerSettings, metaUpgrades: MetaUpgrades): PlayerData {
         const playerData: PlayerData = Object.assign(new PlayerData(), settings);
 
-        playerData.maxHp = metaUpgrades.getUpgradeValue(MetaUpgradeType.MaxHp) + settings.defaultHP;
+        playerData.maxHp = metaUpgrades.getUpgradeValue(MetaUpgradeType.Health) + settings.defaultHP;
         playerData.requiredXP = settings.requiredXP;
         playerData.speed = metaUpgrades.getUpgradeValue(MetaUpgradeType.MovementSpeed) + settings.speed;
         playerData.regenerationDelay = settings.regenerationDelay;

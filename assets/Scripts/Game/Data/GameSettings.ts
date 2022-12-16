@@ -1,7 +1,7 @@
 export class GameSettings {
     public player: PlayerSettings = new PlayerSettings();
     public upgrades: UpgradeSettings = new UpgradeSettings();
-    public metaUpgrades: MetaUpgradeSettings = new MetaUpgradeSettings();
+    public metaUpgrades: MetaUpgradesSettings = new MetaUpgradesSettings();
     public enemyManager: EnemyManagerSettings = new EnemyManagerSettings();
 }
 
@@ -50,13 +50,18 @@ export class UpgradeSettings {
     public maxRegenerationUpgrades = 0;
 }
 
+export class MetaUpgradesSettings {
+    public health = new MetaUpgradeSettings();
+    public overallDamage = new MetaUpgradeSettings();
+    public projectilePiercing = new MetaUpgradeSettings();
+    public movementSpeed = new MetaUpgradeSettings();
+    public xpGatherer = new MetaUpgradeSettings();
+    public goldGatherer = new MetaUpgradeSettings();
+}
+
 export class MetaUpgradeSettings {
-    public healthPointsPerLevel = 0;
-    public bonusDamagePerLevel = 0;
-    public projectilePiercingPerLevel = 0;
-    public movementSpeedPerLevel = 0;
-    public xpBonusPerLevel = 0;
-    public goldBonusPerLevel = 0;
+    public costs: number[] = [];
+    public bonuses: number[] = [];
 }
 
 export class EnemyManagerSettings {
