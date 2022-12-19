@@ -1,4 +1,4 @@
-import { BoxCollider2D, Component, Material, randomRange, Sprite, Vec3, _decorator } from "cc";
+import { BoxCollider2D, Color, Component, Material, randomRange, Sprite, Vec3, _decorator } from "cc";
 import { ISignal } from "../../../Services/EventSystem/ISignal";
 import { Signal } from "../../../Services/EventSystem/Signal";
 import { delay } from "../../../Services/Utils/AsyncUtils";
@@ -29,6 +29,8 @@ export class Enemy extends Component {
     private xpReward: number;
     private goldReward: number;
 
+    private endOfLifetimeTriggered = false;
+
     public setup(position: Vec3, settings: EnemySettings): void {
         this.defaultMaterial = this.sprite.material;
 
@@ -46,6 +48,7 @@ export class Enemy extends Component {
         this.node.active = true;
 
         this.health.HealthPointsChangeEvent.on(this.animateHurt, this);
+        this.endOfLifetimeTriggered = false;
     }
 
     public get MovementType(): EnemyMovementType {
@@ -92,13 +95,35 @@ export class Enemy extends Component {
         newPosition.x += move.x * this.speedX * deltaTime;
         newPosition.y += move.y * this.speedY * deltaTime;
 
+        if (move.x < 0) {
+            this.sprite.node.setScale(-1, 1, 1);
+        } else {
+            this.sprite.node.setScale(1, 1, 1);
+        }
+
         this.node.setWorldPosition(newPosition);
 
         if (0 < this.lifetimeLeft) {
             this.lifetimeLeft -= deltaTime;
             if (this.lifetimeLeft <= 0) {
                 this.lifetimeEndedEvent.trigger(this);
+            } else if (this.lifetimeLeft <= 2) {
+                this.animateEndOfLifetime();
             }
+        }
+    }
+
+    private async animateEndOfLifetime(): Promise<void> {
+        if (this.endOfLifetimeTriggered) return;
+
+        this.endOfLifetimeTriggered = true;
+
+        while (this.node.active) {
+            this.sprite.node.active = false;
+            await delay(200);
+
+            this.sprite.node.active = true;
+            await delay(200);
         }
     }
 
