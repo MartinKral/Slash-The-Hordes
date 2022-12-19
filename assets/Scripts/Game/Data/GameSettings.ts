@@ -99,6 +99,7 @@ export interface ISpawner {
 export class EnemySettings {
     public id = "";
     public moveType = "";
+    public graphicsType = "";
     public health = 0;
     public damage = 0;
     public speed = 0;

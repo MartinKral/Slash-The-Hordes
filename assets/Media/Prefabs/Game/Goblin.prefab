@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "Enemy1",
+    "_name": "Goblin",
     "_objFlags": 0,
     "_native": "",
     "data": {
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Enemy1",
+    "_name": "Goblin",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -78,7 +78,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 25,
-      "height": 26
+      "height": 28
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -113,7 +113,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "3f50fc78-d3ed-4ee3-bb28-519d4e5100ed@f9941",
+      "__uuid__": "33d89c47-02a5-4484-b8bf-7a1161ee44af@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -155,12 +155,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 6.9
+      "y": 0
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 27,
-      "height": 14.9
+      "height": 27.4
     },
     "_id": ""
   },

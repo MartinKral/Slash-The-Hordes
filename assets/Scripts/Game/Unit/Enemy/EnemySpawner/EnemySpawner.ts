@@ -4,6 +4,7 @@ import { Signal } from "../../../../Services/EventSystem/Signal";
 import { ObjectPool } from "../../../../Services/ObjectPool";
 import { EnemySettings } from "../../../Data/GameSettings";
 import { Enemy } from "../Enemy";
+import { EnemyGraphicsType } from "../EnemyGraphicsType";
 
 const { ccclass, property } = _decorator;
 
@@ -14,15 +15,18 @@ export class EnemySpawner extends Component {
     public enemyAddedEvent: Signal<Enemy> = new Signal<Enemy>();
     public enemyRemovedEvent: Signal<Enemy> = new Signal<Enemy>();
 
-    private enemyPool: ObjectPool<Enemy>;
-
+    private enemyGraphicsTypeToPool = new Map<EnemyGraphicsType, ObjectPool<Enemy>>();
     private targetNode: Node;
 
     private idToSettings = new Map<string, EnemySettings>();
 
     public init(targetNode: Node, enemiesSettings: EnemySettings[]): void {
         this.targetNode = targetNode;
-        this.enemyPool = new ObjectPool(this.enemies[0], this.node, 50, "Enemy");
+
+        for (const enemy of this.enemies) {
+            const enemyPool: ObjectPool<Enemy> = new ObjectPool(enemy, this.node, 50, "Enemy");
+            this.enemyGraphicsTypeToPool.set(<EnemyGraphicsType>enemy.name, enemyPool);
+        }
 
         for (const enemySettings of enemiesSettings) {
             this.idToSettings.set(enemySettings.id, enemySettings);
@@ -42,11 +46,13 @@ export class EnemySpawner extends Component {
             throw new Error("Does not have setting for enemy " + id);
         }
 
-        const enemy = this.enemyPool.borrow();
+        const enemySettings = this.idToSettings.get(id);
+
+        const enemy = this.enemyGraphicsTypeToPool.get(<EnemyGraphicsType>enemySettings.graphicsType).borrow();
         const spawnPosition = new Vec3();
         spawnPosition.x = this.targetNode.worldPosition.x + positionX;
         spawnPosition.y = this.targetNode.worldPosition.y + positionY;
-        enemy.setup(spawnPosition, this.idToSettings.get(id));
+        enemy.setup(spawnPosition, enemySettings);
 
         enemy.DeathEvent.on(this.returnEnemy, this);
         enemy.LifetimeEndedEvent.on(this.returnEnemy, this);
@@ -60,7 +66,8 @@ export class EnemySpawner extends Component {
         enemy.DeathEvent.off(this.returnEnemy);
         enemy.LifetimeEndedEvent.off(this.returnEnemy);
 
-        this.enemyPool.return(enemy);
+        console.log(enemy.name);
+        this.enemyGraphicsTypeToPool.get(<EnemyGraphicsType>enemy.node.name).return(enemy);
 
         this.enemyRemovedEvent.trigger(enemy);
     }

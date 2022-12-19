@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "Enemy3",
+    "_name": "Bat",
     "_objFlags": 0,
     "_native": "",
     "data": {
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Enemy3",
+    "_name": "Bat",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -77,8 +77,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 34,
-      "height": 33
+      "width": 25,
+      "height": 26
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -113,7 +113,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "af7fa4be-ec1d-48b4-ad35-5aa44db9438a@f9941",
+      "__uuid__": "3f50fc78-d3ed-4ee3-bb28-519d4e5100ed@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -155,12 +155,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": 6.9
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 35.4,
-      "height": 33.2
+      "width": 27,
+      "height": 14.9
     },
     "_id": ""
   },

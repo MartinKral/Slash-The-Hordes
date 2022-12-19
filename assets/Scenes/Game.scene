@@ -195,7 +195,7 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "startTime": 500,
+    "startTime": 0,
     "startXP": 10,
     "maxHpLevel": 0,
     "bonusDamageLevel": 0,
@@ -824,6 +824,14 @@
     "enemies": [
       {
         "__uuid__": "fc9a455d-1b5f-460e-96eb-7c0ebf07d3d0",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "29d85a71-476d-4a52-bfac-a43c53b616cb",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "6135fac4-6678-4e23-b655-b4ff7fb42026",
         "__expectedType__": "cc.Prefab"
       }
     ],

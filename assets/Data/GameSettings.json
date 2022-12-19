@@ -139,6 +139,7 @@
             {
                 "id": "BasicEnemy",
                 "moveType": "Follow",
+                "graphicsType": "Bat",
                 "health": 2,
                 "damage": 1,
                 "speed": 60,
@@ -149,6 +150,7 @@
             {
                 "id": "StandardEnemy",
                 "moveType": "Follow",
+                "graphicsType": "Goblin",
                 "health": 3,
                 "damage": 2,
                 "speed": 65,
@@ -159,6 +161,7 @@
             {
                 "id": "FastEnemy",
                 "moveType": "Follow",
+                "graphicsType": "Shark",
                 "health": 3,
                 "damage": 2,
                 "speed": 75,
@@ -169,6 +172,7 @@
             {
                 "id": "CircleEnemy",
                 "moveType": "Follow",
+                "graphicsType": "Bat",
                 "health": 4,
                 "damage": 1,
                 "speed": 25,
@@ -179,6 +183,7 @@
             {
                 "id": "CircleEnemyStandard",
                 "moveType": "Follow",
+                "graphicsType": "Goblin",
                 "health": 7,
                 "damage": 2,
                 "speed": 35,
@@ -189,6 +194,7 @@
             {
                 "id": "WaveEnemy",
                 "moveType": "Launch",
+                "graphicsType": "Shark",
                 "health": 1,
                 "damage": 2,
                 "speed": 390,
@@ -199,6 +205,7 @@
             {
                 "id": "WaveEnemyArmor",
                 "moveType": "Launch",
+                "graphicsType": "Bat",
                 "health": 5,
                 "damage": 3,
                 "speed": 70,
@@ -209,6 +216,7 @@
             {
                 "id": "WaveEnemyArmorFast",
                 "moveType": "Launch",
+                "graphicsType": "Goblin",
                 "health": 5,
                 "damage": 3,
                 "speed": 320,
@@ -219,6 +227,7 @@
             {
                 "id": "BasicBoss",
                 "moveType": "Follow",
+                "graphicsType": "Shark",
                 "health": 8,
                 "damage": 2,
                 "speed": 65,
@@ -229,6 +238,7 @@
             {
                 "id": "StandardBoss",
                 "moveType": "Follow",
+                "graphicsType": "Shark",
                 "health": 12,
                 "damage": 3,
                 "speed": 75,
@@ -239,6 +249,7 @@
             {
                 "id": "BasicCheetah",
                 "moveType": "PeriodicFollow",
+                "graphicsType": "Goblin",
                 "health": 4,
                 "damage": 1,
                 "speed": 120,
