@@ -65,6 +65,7 @@ export class Game extends Component {
         translationData: TranslationData,
         testValues?: TestValues
     ): Promise<GameResult> {
+        const gameResult = new GameResult();
         const metaUpgrades = new MetaUpgrades(userData.game.metaUpgrades, settings.metaUpgrades);
 
         this.virtualJoystic.init();
@@ -75,7 +76,7 @@ export class Game extends Component {
 
         this.player.init(multiInput, this.createPlayerData(settings.player, metaUpgrades));
 
-        this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay);
+        this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay, gameResult);
         new WeaponCollisionSystem(this.player.Weapon);
 
         this.enemyManager.init(this.player.node, settings.enemyManager);
@@ -128,11 +129,11 @@ export class Game extends Component {
 
         this.gamePauser.resume();
 
-        // while not dead
-        await delay(1000000);
+        while (this.player.Health.IsAlive) await delay(100);
         this.gamePauser.pause();
         Game.instance = null;
-        return { goldCoins: 1, score: Math.floor(this.timeAlive) };
+        gameResult.score = this.timeAlive;
+        return gameResult;
     }
 
     public update(deltaTime: number): void {

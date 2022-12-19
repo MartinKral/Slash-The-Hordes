@@ -24,16 +24,21 @@
       {
         "index": 6,
         "name": "ENEMY_PROJECTILE"
+      },
+      {
+        "index": 7,
+        "name": "GOLD"
       }
     ],
     "collisionMatrix": {
       "0": 0,
-      "1": 84,
+      "1": 212,
       "2": 42,
       "3": 4,
       "4": 2,
       "5": 4,
-      "6": 2
+      "6": 2,
+      "7": 2
     }
   },
   "general": {

@@ -1,6 +1,7 @@
-import { Component, Node, randomRange, Vec3, _decorator } from "cc";
+import { Component, Node, random, randomRange, Vec3, _decorator } from "cc";
 
 import { EnemyManagerSettings } from "../../Data/GameSettings";
+import { GoldSpawner } from "../../Gold/GoldSpawner";
 import { XPSpawner } from "../../XP/XPSpawner";
 import { Enemy } from "./Enemy";
 import { EnemyMovementType } from "./EnemyMovementType";
@@ -20,6 +21,7 @@ const { ccclass, property } = _decorator;
 export class EnemyManager extends Component {
     @property(EnemySpawner) private enemySpawner: EnemySpawner;
     @property(XPSpawner) private xpSpawner: XPSpawner;
+    @property(GoldSpawner) private goldSpawner: GoldSpawner;
 
     private movementTypeToMover: Map<EnemyMovementType, EnemyMover> = new Map<EnemyMovementType, EnemyMover>();
 
@@ -50,6 +52,7 @@ export class EnemyManager extends Component {
         this.movementTypeToMover.set(EnemyMovementType.PeriodicFollow, new PeriodicFollowTargetEnemyMover(targetNode, 5, 5));
 
         this.xpSpawner.init();
+        this.goldSpawner.init();
     }
 
     public gameTick(deltaTime: number): void {
@@ -71,6 +74,21 @@ export class EnemyManager extends Component {
             position.x += randomRange(-10, 10);
             position.y += randomRange(-10, 10);
             this.xpSpawner.spawnXp(position, 1);
+        }
+
+        if (0 < enemy.GoldReward) {
+            if (enemy.GoldReward < 1) {
+                if (random() < enemy.GoldReward) {
+                    this.goldSpawner.spawn(enemy.node.worldPosition);
+                }
+            } else {
+                for (let i = 0; i < enemy.GoldReward; i++) {
+                    const position: Vec3 = enemy.node.worldPosition;
+                    position.x += randomRange(-10, 10);
+                    position.y += randomRange(-10, 10);
+                    this.goldSpawner.spawn(position);
+                }
+            }
         }
     }
 

@@ -33,8 +33,8 @@ export class GameRunner {
         }
         AppRoot.Instance.SaveSystem.save(userData);
 
-        console.log("Gold  coins: " + result);
-        console.log("All gold coins: " + userData.game.goldCoins);
+        await delay(1000);
+        director.loadScene("Menu");
 
         this.isRunning = false;
     }

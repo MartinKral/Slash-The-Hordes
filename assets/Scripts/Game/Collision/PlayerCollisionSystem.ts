@@ -4,15 +4,16 @@ import { Player } from "../Unit/Player/Player";
 import { GameTimer } from "../../Services/GameTimer";
 import { XP } from "../XP/XP";
 import { Enemy } from "../Unit/Enemy/Enemy";
+import { Gold } from "../Gold/Gold";
+import { GameResult } from "../Game";
 
 export class PlayerCollisionSystem {
     private playerContacts: Collider2D[] = [];
     private collisionTimer: GameTimer;
-    private player: Player;
 
     private groupToResolver: Map<number, (collider: Collider2D) => void> = new Map<number, (collider: Collider2D) => void>();
 
-    public constructor(player: Player, collisionDelay: number) {
+    public constructor(private player: Player, collisionDelay: number, private gameResult: GameResult) {
         this.player = player;
 
         player.Collider.on(Contact2DType.BEGIN_CONTACT, this.onPlayerContactBegin, this);
@@ -22,6 +23,7 @@ export class PlayerCollisionSystem {
 
         this.groupToResolver.set(GroupType.ENEMY, this.resolveEnemyContact.bind(this));
         this.groupToResolver.set(GroupType.XP, this.resolveXpContact.bind(this));
+        this.groupToResolver.set(GroupType.GOLD, this.resolveGoldContact.bind(this));
     }
 
     public gameTick(deltaTime: number): void {
@@ -69,5 +71,13 @@ export class PlayerCollisionSystem {
         xp.pickup();
 
         console.log("Collided with xp: " + xp);
+    }
+
+    private resolveGoldContact(goldCollider: Collider2D): void {
+        const gold: Gold = goldCollider.node.getComponent(Gold);
+        gold.pickup();
+        this.gameResult.goldCoins++;
+
+        console.log("Collided with gold " + gold);
     }
 }

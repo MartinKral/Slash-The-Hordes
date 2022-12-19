@@ -66,6 +66,7 @@ export class UpgradesModalWindow extends ModalWindow<Empty, Empty> {
         const level = ++this.userData.game.metaUpgrades[this.typeToLevelKey.get(upgradeType)];
         this.typeToUpgradeUI.get(upgradeType).updateLevel(level);
 
+        this.goldCoinsLabel.string = this.userData.game.goldCoins.toString();
         AppRoot.Instance.SaveSystem.save(this.userData);
     }
 }

@@ -7,5 +7,6 @@ export enum GroupType {
     WEAPON = 1 << 3,
     XP = 1 << 4,
     PLAYER_PROJECTILE = 1 << 5,
-    ENEMY_PROJECTILE = 1 << 6
+    ENEMY_PROJECTILE = 1 << 6,
+    GOLD = 1 << 7
 }
