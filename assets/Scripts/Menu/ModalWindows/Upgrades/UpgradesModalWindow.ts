@@ -1,8 +1,8 @@
-import { instantiate, Label, Node, Prefab, _decorator } from "cc";
+import { instantiate, Label, Node, Prefab, TiledUserNodeData, _decorator } from "cc";
 import { AppRoot } from "../../../AppRoot/AppRoot";
 import { MetaUpgradeSettings } from "../../../Game/Data/GameSettings";
-import { GameData } from "../../../Game/Data/UserData";
-import { MetaUpgradeType } from "../../../Game/Upgrades/UpgradeType";
+import { UserData, GameData, MetaUpgradesData } from "../../../Game/Data/UserData";
+import { MetaUpgradeType, UpgradeType } from "../../../Game/Upgrades/UpgradeType";
 import { ModalWindow } from "../../../Services/ModalWindowSystem/ModalWindow";
 import { UpgradeUI } from "./UpgradeUI";
 
@@ -14,28 +14,59 @@ export class UpgradesModalWindow extends ModalWindow<Empty, Empty> {
     @property(Node) private upgradeButtonParent: Node;
     @property(Label) private goldCoinsLabel: Label;
 
-    private gameData: GameData;
+    private typeToLevel = new Map<MetaUpgradeType, number>();
+    private typeToCosts = new Map<MetaUpgradeType, number[]>();
+    private typeToLevelKey = new Map<MetaUpgradeType, keyof MetaUpgradesData>();
+    private typeToUpgradeUI = new Map<MetaUpgradeType, UpgradeUI>();
+
+    private userData: UserData;
 
     public setup(): void {
-        this.gameData = AppRoot.Instance.SaveSystem.load().game;
-
+        this.userData = AppRoot.Instance.SaveSystem.load();
         const settings = AppRoot.Instance.Settings.metaUpgrades;
-        const data = this.gameData.metaUpgrades;
 
-        this.createUpgradeButton(MetaUpgradeType.Health, settings.health, data.healthLevel);
-        this.createUpgradeButton(MetaUpgradeType.OverallDamage, settings.overallDamage, data.healthLevel);
-        this.createUpgradeButton(MetaUpgradeType.ProjectilePiercing, settings.projectilePiercing, data.healthLevel);
-        this.createUpgradeButton(MetaUpgradeType.MovementSpeed, settings.movementSpeed, data.healthLevel);
-        this.createUpgradeButton(MetaUpgradeType.XPGatherer, settings.xpGatherer, data.healthLevel);
-        this.createUpgradeButton(MetaUpgradeType.GoldGatherer, settings.goldGatherer, data.healthLevel);
+        this.createUpgradeButton(MetaUpgradeType.Health, settings.health, "healthLevel");
+        this.createUpgradeButton(MetaUpgradeType.OverallDamage, settings.overallDamage, "overallDamageLevel");
+        this.createUpgradeButton(MetaUpgradeType.ProjectilePiercing, settings.projectilePiercing, "projectilePiercingLevel");
+        this.createUpgradeButton(MetaUpgradeType.MovementSpeed, settings.movementSpeed, "movementSpeedLevel");
+        this.createUpgradeButton(MetaUpgradeType.XPGatherer, settings.xpGatherer, "xpGathererLevel");
+        this.createUpgradeButton(MetaUpgradeType.GoldGatherer, settings.goldGatherer, "goldGathererLevel");
 
-        this.goldCoinsLabel.string = this.gameData.goldCoins.toString();
+        this.goldCoinsLabel.string = this.userData.game.goldCoins.toString();
     }
 
-    private createUpgradeButton(upgradeType: MetaUpgradeType, upgradeSettings: MetaUpgradeSettings, level: number): void {
+    private createUpgradeButton<T extends keyof MetaUpgradesData>(
+        upgradeType: MetaUpgradeType,
+        upgradeSettings: MetaUpgradeSettings,
+        levelKey: T
+    ): void {
         const upgradeButton: Node = instantiate(this.upgradeButtonPrefab);
-        upgradeButton.getComponent(UpgradeUI).init(upgradeType, upgradeSettings, level, AppRoot.Instance.TranslationData);
+        const upgradeUI: UpgradeUI = upgradeButton.getComponent(UpgradeUI);
+
+        upgradeUI.init(upgradeType, upgradeSettings, this.userData.game.metaUpgrades[levelKey], AppRoot.Instance.TranslationData);
+        upgradeUI.InteractedEvent.on(this.tryUpgrade, this);
         upgradeButton.setParent(this.upgradeButtonParent);
+
+        this.typeToLevel.set(upgradeType, this.userData.game.metaUpgrades[levelKey]);
+        this.typeToCosts.set(upgradeType, upgradeSettings.costs);
+        this.typeToLevelKey.set(upgradeType, levelKey);
+        this.typeToUpgradeUI.set(upgradeType, upgradeUI);
+    }
+
+    private tryUpgrade(upgradeType: MetaUpgradeType): void {
+        console.log("Trying to upgrade " + upgradeType);
+
+        const costs: number[] = this.typeToCosts.get(upgradeType);
+        const currentLevel: number = this.typeToLevel.get(upgradeType);
+
+        if (costs.length <= currentLevel) return; // already max level
+        if (this.userData.game.goldCoins < costs[currentLevel]) return; // not enough gold
+
+        this.userData.game.goldCoins -= costs[currentLevel];
+        const level = ++this.userData.game.metaUpgrades[this.typeToLevelKey.get(upgradeType)];
+        this.typeToUpgradeUI.get(upgradeType).updateLevel(level);
+
+        AppRoot.Instance.SaveSystem.save(this.userData);
     }
 }
 

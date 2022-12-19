@@ -1,4 +1,4 @@
-import { _decorator, Component } from "cc";
+import { Component, _decorator } from "cc";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
 import { UIButton } from "../Services/UI/Button/UIButton";
 import { GameRunner } from "./GameRunner";

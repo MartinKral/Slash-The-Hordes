@@ -63,9 +63,9 @@
     "metaUpgrades": {
         "health": {
             "costs": [
-                5,
-                10,
-                15
+                0,
+                0,
+                0
             ],
             "bonuses": [
                 10,
@@ -75,9 +75,9 @@
         },
         "overallDamage": {
             "costs": [
-                6,
+                0,
                 10,
-                15
+                0
             ],
             "bonuses": [
                 1,
@@ -87,8 +87,8 @@
         },
         "projectilePiercing": {
             "costs": [
-                7,
-                10,
+                0,
+                0,
                 15
             ],
             "bonuses": [
@@ -99,9 +99,9 @@
         },
         "movementSpeed": {
             "costs": [
-                8,
-                10,
-                15
+                0,
+                0,
+                0
             ],
             "bonuses": [
                 10,

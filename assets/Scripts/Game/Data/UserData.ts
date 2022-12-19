@@ -12,7 +12,7 @@ export class GameData {
 
 export class MetaUpgradesData {
     public healthLevel = 0;
-    public overallDamageLevel = 2;
+    public overallDamageLevel = 0;
     public projectilePiercingLevel = 0;
     public movementSpeedLevel = 0;
     public xpGathererLevel = 0;

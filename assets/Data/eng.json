@@ -15,12 +15,12 @@
     "META_HEALTH_DESC": "Increases max health by {0}",
     "META_OVERALL_DAMAGE_TITLE": "OVERALL DAMAGE",
     "META_OVERALL_DAMAGE_DESC": "Increases overall damage by {0}",
-    "META_PROJECTILE_PIERCING_TITLE": "",
-    "META_PROJECTILE_PIERCING_DESC": "",
-    "META_MOVEMENT_SPEED_TITLE": "",
-    "META_MOVEMENT_SPEED_DESC": "",
-    "META_XP_GATHERER_TITLE": "",
-    "META_XP_GATHERER_DESC": "",
-    "META_GOLD_GATHERER_TITLE": "",
-    "META_GOLD_GATHERER_DESC": ""
+    "META_PROJECTILE_PIERCING_TITLE": "PROJECTILE PIERCING",
+    "META_PROJECTILE_PIERCING_DESC": "Projectiles pierce {0} times",
+    "META_MOVEMENT_SPEED_TITLE": "MOVEMENT SPEED",
+    "META_MOVEMENT_SPEED_DESC": "Increases movement speed",
+    "META_XP_GATHERER_TITLE": "XP GATHERER",
+    "META_XP_GATHERER_DESC": "Increases the amount of XP obtained by {0}",
+    "META_GOLD_GATHERER_TITLE": "GOLD GATHERER",
+    "META_GOLD_GATHERER_DESC": "Increases the amount of gold obtained by {0}"
 }
