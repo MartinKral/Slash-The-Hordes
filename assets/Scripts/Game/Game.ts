@@ -1,4 +1,5 @@
 import { Camera, Component, JsonAsset, KeyCode, Vec2, _decorator } from "cc";
+import { runInThisContext } from "vm";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
 import { delay } from "../Services/Utils/AsyncUtils";
 import { Background } from "./Background/Background";
@@ -13,6 +14,7 @@ import { MultiInput } from "./Input/MultiInput";
 import { VirtualJoystic } from "./Input/VirtualJoystic";
 import { GameModalLauncher } from "./ModalWIndows/GameModalLauncher";
 import { Pauser } from "./Pauser";
+import { TestValues } from "./TestGameRunner";
 import { GameUI } from "./UI/GameUI";
 import { EnemyManager } from "./Unit/Enemy/EnemyManager";
 import { MetaUpgrades } from "./Unit/MetaUpgrades/MetaUpgrades";
@@ -57,7 +59,12 @@ export class Game extends Component {
         this.gamePauser.pause();
     }
 
-    public async playGame(userData: UserData, settings: GameSettings, translationData: TranslationData): Promise<GameResult> {
+    public async playGame(
+        userData: UserData,
+        settings: GameSettings,
+        translationData: TranslationData,
+        testValues?: TestValues
+    ): Promise<GameResult> {
         const metaUpgrades = new MetaUpgrades(userData.game.metaUpgrades, settings.metaUpgrades);
 
         this.virtualJoystic.init();
@@ -113,6 +120,12 @@ export class Game extends Component {
 
         this.gameUI.init(this.player);
         this.background.init(this.player.node);
+
+        if (testValues) {
+            this.timeAlive += testValues.startTime;
+            this.player.Level.addXp(testValues.startXP);
+        }
+
         this.gamePauser.resume();
 
         // while not dead

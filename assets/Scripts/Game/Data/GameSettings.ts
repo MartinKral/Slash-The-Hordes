@@ -78,18 +78,22 @@ export class GeneralEnemySpawnerSettings {
     public cooldown = 0;
 }
 
-export class WaveEnemySpawnerSettings {
+export class WaveEnemySpawnerSettings implements ISpawner {
     public common = new GeneralEnemySpawnerSettings();
     public enemiesToSpawn = 0;
 }
 
-export class CircularEnemySpawnerSettings {
+export class CircularEnemySpawnerSettings implements ISpawner {
     public common = new GeneralEnemySpawnerSettings();
     public enemiesToSpawn = 0;
 }
 
-export class IndividualEnemySpawnerSettings {
+export class IndividualEnemySpawnerSettings implements ISpawner {
     public common = new GeneralEnemySpawnerSettings();
+}
+
+export interface ISpawner {
+    common: GeneralEnemySpawnerSettings;
 }
 
 export class EnemySettings {

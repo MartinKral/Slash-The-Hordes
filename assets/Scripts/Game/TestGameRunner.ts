@@ -1,13 +1,17 @@
-import { approx, CCInteger, Component, _decorator } from "cc";
+import { CCInteger, Component, _decorator } from "cc";
 import { AppRoot } from "../AppRoot/AppRoot";
 import { GameRunner } from "../Menu/GameRunner";
 import { delay } from "../Services/Utils/AsyncUtils";
+import { GameSettings, ISpawner } from "./Data/GameSettings";
 import { UserData } from "./Data/UserData";
 import { Game } from "./Game";
 const { ccclass, property } = _decorator;
 
 @ccclass("TestGameRunner")
 export class TestGameRunner extends Component {
+    @property(CCInteger) private startTime = 0;
+    @property(CCInteger) private startXP = 0;
+
     @property(CCInteger) private maxHpLevel = 0;
     @property(CCInteger) private bonusDamageLevel = 0;
     @property(CCInteger) private projectilePiercingLevel = 0;
@@ -30,6 +34,28 @@ export class TestGameRunner extends Component {
         testUserData.game.metaUpgrades.movementSpeedLevel = this.movementSpeedLevel;
         testUserData.game.metaUpgrades.xpGathererLevel = this.xpGathererLevel;
         testUserData.game.metaUpgrades.goldGathererLevel = this.goldGathererLevel;
-        Game.Instance.playGame(testUserData, AppRoot.Instance.Settings, AppRoot.Instance.TranslationData);
+
+        const settings = this.getTimeModifiedSettings(AppRoot.Instance.Settings);
+        Game.Instance.playGame(testUserData, settings, AppRoot.Instance.TranslationData, { startTime: this.startTime, startXP: this.startXP });
     }
+
+    private getTimeModifiedSettings(settings: GameSettings): GameSettings {
+        const spawners: ISpawner[] = [
+            ...settings.enemyManager.circularEnemySpawners,
+            ...settings.enemyManager.individualEnemySpawners,
+            ...settings.enemyManager.waveEnemySpawners
+        ];
+
+        for (const spawner of spawners) {
+            spawner.common.startDelay -= this.startTime;
+            spawner.common.stopDelay -= this.startTime;
+        }
+
+        return settings;
+    }
+}
+
+export class TestValues {
+    public startTime = 0;
+    public startXP = 0;
 }

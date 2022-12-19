@@ -40,5 +40,7 @@ export class UnitLevel {
         this.currentLevel++;
 
         this.levelUpEvent.trigger(this.currentLevel);
+
+        this.tryLevelUp();
     }
 }

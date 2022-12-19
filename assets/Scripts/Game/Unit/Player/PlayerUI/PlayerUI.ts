@@ -1,5 +1,5 @@
 import { Component, _decorator } from "cc";
-import { UnitHealth } from "../UnitHealth";
+import { UnitHealth } from "../../UnitHealth";
 import { PlayerHealthUI } from "./PlayerHealthUI";
 const { ccclass, property } = _decorator;
 
