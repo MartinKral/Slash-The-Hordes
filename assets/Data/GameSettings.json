@@ -55,8 +55,8 @@
     "upgrades": {
         "maxWeaponLengthUpgrades": 5,
         "maxWeaponDamageUpgrades": 10,
-        "maxHorizontalProjectileUpgrades": 0,
-        "maxDiagonalProjectileUpgrades": 0,
+        "maxHorizontalProjectileUpgrades": 5,
+        "maxDiagonalProjectileUpgrades": 5,
         "maxHaloProjectileUpgrades": 5,
         "maxRegenerationUpgrades": 5
     },
@@ -144,7 +144,7 @@
                 "damage": 1,
                 "speed": 60,
                 "lifetime": -1,
-                "xpReward": 0,
+                "xpReward": 1,
                 "goldReward": 0
             },
             {
@@ -155,7 +155,7 @@
                 "damage": 2,
                 "speed": 65,
                 "lifetime": -1,
-                "xpReward": 0,
+                "xpReward": 1,
                 "goldReward": 0.1
             },
             {
@@ -166,7 +166,7 @@
                 "damage": 2,
                 "speed": 75,
                 "lifetime": -1,
-                "xpReward": 0,
+                "xpReward": 1,
                 "goldReward": 0.1
             },
             {
@@ -177,7 +177,7 @@
                 "damage": 1,
                 "speed": 25,
                 "lifetime": 29,
-                "xpReward": 0,
+                "xpReward": 1,
                 "goldReward": 1
             },
             {
@@ -188,7 +188,7 @@
                 "damage": 2,
                 "speed": 35,
                 "lifetime": 27,
-                "xpReward": 0,
+                "xpReward": 1,
                 "goldReward": 2
             },
             {
@@ -199,7 +199,7 @@
                 "damage": 2,
                 "speed": 390,
                 "lifetime": 20,
-                "xpReward": 0,
+                "xpReward": 1,
                 "goldReward": 0.2
             },
             {
@@ -210,7 +210,7 @@
                 "damage": 3,
                 "speed": 70,
                 "lifetime": 30,
-                "xpReward": 0,
+                "xpReward": 1,
                 "goldReward": 1
             },
             {
@@ -221,7 +221,7 @@
                 "damage": 3,
                 "speed": 320,
                 "lifetime": 30,
-                "xpReward": 0,
+                "xpReward": 1,
                 "goldReward": 1
             },
             {
@@ -232,7 +232,7 @@
                 "damage": 2,
                 "speed": 65,
                 "lifetime": -1,
-                "xpReward": 0,
+                "xpReward": 1,
                 "goldReward": 3
             },
             {
@@ -254,7 +254,7 @@
                 "damage": 1,
                 "speed": 120,
                 "lifetime": -1,
-                "xpReward": 0,
+                "xpReward": 1,
                 "goldReward": 1
             }
         ],

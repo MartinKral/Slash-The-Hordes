@@ -1,7 +1,7 @@
-import { BoxCollider2D, Component, randomRange, Vec3, _decorator } from "cc";
-import { time } from "console";
+import { BoxCollider2D, Component, Material, randomRange, Sprite, Vec3, _decorator } from "cc";
 import { ISignal } from "../../../Services/EventSystem/ISignal";
 import { Signal } from "../../../Services/EventSystem/Signal";
+import { delay } from "../../../Services/Utils/AsyncUtils";
 import { EnemySettings } from "../../Data/GameSettings";
 import { UnitHealth } from "../UnitHealth";
 import { EnemyMovementType } from "./EnemyMovementType";
@@ -10,10 +10,14 @@ const { ccclass, property } = _decorator;
 
 @ccclass("Enemy")
 export class Enemy extends Component {
-    @property(BoxCollider2D) public collider: BoxCollider2D;
+    @property(BoxCollider2D) private collider: BoxCollider2D;
+    @property(Sprite) private sprite: Sprite;
+    @property(Material) private whiteMaterial: Material;
 
     private deathEvent: Signal<Enemy> = new Signal<Enemy>();
     private lifetimeEndedEvent: Signal<Enemy> = new Signal<Enemy>();
+
+    private defaultMaterial: Material;
 
     private movementType: EnemyMovementType;
     private health: UnitHealth;
@@ -26,6 +30,8 @@ export class Enemy extends Component {
     private goldReward: number;
 
     public setup(position: Vec3, settings: EnemySettings): void {
+        this.defaultMaterial = this.sprite.material;
+
         this.movementType = <EnemyMovementType>settings.moveType;
         this.health = new UnitHealth(settings.health);
         this.damage = settings.damage;
@@ -38,6 +44,8 @@ export class Enemy extends Component {
 
         this.node.setWorldPosition(position);
         this.node.active = true;
+
+        this.health.HealthPointsChangeEvent.on(this.animateHurt, this);
     }
 
     public get MovementType(): EnemyMovementType {
@@ -58,6 +66,14 @@ export class Enemy extends Component {
 
     public get DeathEvent(): ISignal<Enemy> {
         return this.deathEvent;
+    }
+
+    public get XPReward(): number {
+        return this.xpReward;
+    }
+
+    public get GoldReward(): number {
+        return this.goldReward;
     }
 
     public get LifetimeEndedEvent(): ISignal<Enemy> {
@@ -84,5 +100,11 @@ export class Enemy extends Component {
                 this.lifetimeEndedEvent.trigger(this);
             }
         }
+    }
+
+    private async animateHurt(): Promise<void> {
+        this.sprite.material = this.whiteMaterial;
+        await delay(100);
+        this.sprite.material = this.defaultMaterial;
     }
 }

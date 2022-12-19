@@ -182,6 +182,13 @@
     "collider": {
       "__id__": 6
     },
+    "sprite": {
+      "__id__": 4
+    },
+    "whiteMaterial": {
+      "__uuid__": "9cb17675-370b-48ed-bfa2-bb613a88af44",
+      "__expectedType__": "cc.Material"
+    },
     "_id": ""
   },
   {

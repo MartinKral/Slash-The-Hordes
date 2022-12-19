@@ -1,4 +1,5 @@
-import { Component, Node, _decorator } from "cc";
+import { Component, Node, randomRange, Vec3, _decorator } from "cc";
+
 import { EnemyManagerSettings } from "../../Data/GameSettings";
 import { XPSpawner } from "../../XP/XPSpawner";
 import { Enemy } from "./Enemy";
@@ -64,7 +65,13 @@ export class EnemyManager extends Component {
     private onEnemyDied(enemy: Enemy): void {
         enemy.DeathEvent.off(this.onEnemyDied);
         enemy.LifetimeEndedEvent.off(this.onEnemyLifetimeEnded);
-        this.xpSpawner.spawnXp(enemy.node.worldPosition, 1);
+
+        for (let index = 0; index < enemy.XPReward; index++) {
+            const position: Vec3 = enemy.node.worldPosition;
+            position.x += randomRange(-10, 10);
+            position.y += randomRange(-10, 10);
+            this.xpSpawner.spawnXp(position, 1);
+        }
     }
 
     private onEnemyLifetimeEnded(enemy: Enemy): void {
