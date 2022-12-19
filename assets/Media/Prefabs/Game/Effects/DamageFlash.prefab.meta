@@ -2,12 +2,12 @@
   "ver": "1.1.40",
   "importer": "prefab",
   "imported": true,
-  "uuid": "fc9a455d-1b5f-460e-96eb-7c0ebf07d3d0",
+  "uuid": "33559f93-a351-4249-a775-f8ee7f31714c",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "Enemy"
+    "syncNodeName": "DamageFlash"
   }
 }
