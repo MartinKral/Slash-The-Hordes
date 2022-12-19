@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.AnimationClip",
-    "_name": "Idle",
+    "_name": "DamageFlash",
     "_objFlags": 0,
     "__editorExtras__": {
       "embeddedPlayerGroups": []
@@ -11,7 +11,7 @@
     "speed": 1,
     "wrapMode": 2,
     "enableTrsBlending": false,
-    "_duration": 0.016666666666666666,
+    "_duration": 0.35,
     "_hash": 500763545,
     "_tracks": [
       {
@@ -56,13 +56,30 @@
   {
     "__type__": "cc.ObjectCurve",
     "_times": [
-      0
+      0,
+      0.08333333333333333,
+      0.16666666666666666,
+      0.25,
+      0.3333333333333333
     ],
     "_values": [
       {
-        "__uuid__": "a90012ec-a814-40d9-b762-783f28a178f9@f9941",
+        "__uuid__": "7305b241-5da9-475a-833b-ed59c991ccfc@f9941",
         "__expectedType__": "cc.SpriteFrame"
-      }
+      },
+      {
+        "__uuid__": "9c1bdd59-282f-4cf9-b35d-39b3a1805d16@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "5af0b097-e95d-4e19-b99a-153e2afbefb5@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "b0fcee1b-3aa4-4a65-a028-5a130fff02b5@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      null
     ]
   }
 ]
