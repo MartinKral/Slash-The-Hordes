@@ -1,11 +1,8 @@
-import { _decorator, Component, Node, Prefab, Vec2, Vec3 } from "cc";
+import { _decorator, Component, Prefab, Vec2, Vec3 } from "cc";
 import { ISignal } from "../../../../Services/EventSystem/ISignal";
 import { Signal } from "../../../../Services/EventSystem/Signal";
-import { GameTimer } from "../../../../Services/GameTimer";
 import { ObjectPool } from "../../../../Services/ObjectPool";
-import { delay } from "../../../../Services/Utils/AsyncUtils";
 import { getDegreeAngleFromDirection } from "../../../../Services/Utils/MathUtils";
-import { ProjectileLauncherSettings } from "../../../Data/GameSettings";
 import { IProjectileCollisionSignaler } from "../../../Projectile/IProjectileCollisionSignaler";
 import { Projectile } from "../../../Projectile/Projectile";
 import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
@@ -15,77 +12,47 @@ const { ccclass, property } = _decorator;
 export class ProjectileLauncher extends Component implements IProjectileCollisionSignaler {
     @property(Prefab) private projectilePrefab: Prefab;
     private projectileCollisionEvent: Signal<ProjectileCollision> = new Signal<ProjectileCollision>();
-    private projectileData: ProjectileData;
-    private projectilePool: ObjectPool<Projectile>;
-    private fireTimer: GameTimer;
+
+    private projectileDamage: number;
+    private projectilePierces: number;
     private projectileLifetime: number;
-    private speed: number;
-    private wavesToShoot: number;
-    private wavesDelayMs: number;
-    private cooldown: number;
+    private projectileSpeed: number;
+
+    private projectilePool: ObjectPool<Projectile>;
 
     private projectiles: Projectile[] = [];
     private directions: Vec2[] = [];
     private expireTimes: number[] = [];
     private currentTime = 0;
 
-    public get WavesToShoot(): number {
-        return this.wavesToShoot;
-    }
-
-    public set WavesToShoot(value: number) {
-        this.wavesToShoot = value;
-    }
-
-    public get Cooldown(): number {
-        return this.cooldown;
-    }
-
-    public set Cooldown(value: number) {
-        this.cooldown = value;
-        this.fireTimer = new GameTimer(this.cooldown);
-    }
-
     public get ProjectileCollisionEvent(): ISignal<ProjectileCollision> {
         return this.projectileCollisionEvent;
     }
 
-    public init(settings: ProjectileLauncherSettings, projectileData: ProjectileData): void {
-        this.projectileData = projectileData;
-        this.projectileLifetime = settings.projectileLifetime;
-        this.speed = settings.projectileSpeed;
-        this.wavesToShoot = settings.wavesToShoot;
-        this.wavesDelayMs = settings.wavesDelayMs;
-        this.cooldown = settings.cooldown;
+    public init(projectileLifetime: number, projectileSpeed: number, projectileDamage: number, projectilePierces: number): void {
+        this.projectileLifetime = projectileLifetime;
+        this.projectileSpeed = projectileSpeed;
+        this.projectileDamage = projectileDamage;
+        this.projectilePierces = projectilePierces;
 
         this.projectilePool = new ObjectPool<Projectile>(this.projectilePrefab, this.node, 6, "Projectile");
-        this.fireTimer = new GameTimer(this.cooldown);
     }
 
-    public gameTick(deltaTime: number, startPosition: Vec3, fireDirections: Vec2[]): void {
+    public gameTick(deltaTime: number): void {
         this.currentTime += deltaTime;
-        this.fireTimer.gameTick(deltaTime);
-        if (this.fireTimer.tryFinishPeriod()) {
-            this.fireProjectiles(startPosition, fireDirections);
-        }
-
         this.tryRemoveExpiredProjectiles();
         this.moveAllProjectiles(deltaTime);
     }
 
-    private async fireProjectiles(startPosition: Vec3, fireDirections: Vec2[]): Promise<void> {
-        for (let i = 0; i < this.wavesToShoot; i++) {
-            for (const direction of fireDirections) {
-                this.fireProjectile(startPosition, direction);
-            }
-
-            await delay(this.wavesDelayMs);
+    public fireProjectiles(startPosition: Vec3, fireDirections: Vec2[]): void {
+        for (const direction of fireDirections) {
+            this.fireProjectile(startPosition, direction);
         }
     }
 
     private fireProjectile(startPosition: Vec3, direction: Vec2): void {
         const projectile: Projectile = this.projectilePool.borrow();
-        projectile.init(this.projectileData.damage, this.projectileData.pierces, getDegreeAngleFromDirection(direction.x, direction.y));
+        projectile.init(this.projectileDamage, this.projectilePierces, getDegreeAngleFromDirection(direction.x, direction.y));
         projectile.node.setWorldPosition(startPosition);
         projectile.node.active = true;
         projectile.ContactBeginEvent.on(this.onProjectileCollision, this);
@@ -129,8 +96,8 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
     private moveAllProjectiles(deltaTime: number): void {
         for (let i = 0; i < this.projectiles.length; i++) {
             const newPosition: Vec3 = this.projectiles[i].node.worldPosition;
-            newPosition.x += this.directions[i].x * deltaTime * this.speed;
-            newPosition.y += this.directions[i].y * deltaTime * this.speed;
+            newPosition.x += this.directions[i].x * deltaTime * this.projectileSpeed;
+            newPosition.y += this.directions[i].y * deltaTime * this.projectileSpeed;
 
             this.projectiles[i].node.setWorldPosition(newPosition);
         }

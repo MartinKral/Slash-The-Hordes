@@ -1,5 +1,7 @@
 import { Node, Vec2 } from "cc";
 import { ISignal } from "../../../../Services/EventSystem/ISignal";
+import { GameTimer } from "../../../../Services/GameTimer";
+import { delay } from "../../../../Services/Utils/AsyncUtils";
 import { WaveLauncherSettings } from "../../../Data/GameSettings";
 import { IProjectileCollisionSignaler } from "../../../Projectile/IProjectileCollisionSignaler";
 import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
@@ -8,6 +10,9 @@ import { ProjectileData, ProjectileLauncher } from "./ProjectileLauncher";
 export class WaveProjectileLauncher implements IProjectileCollisionSignaler {
     private currentUpgrade = 0;
     private wavesToShootPerUpgrade = 0;
+    private fireTimer: GameTimer;
+    private wavesToShoot: number;
+    private wavesDelayMs: number;
 
     public constructor(
         private launcher: ProjectileLauncher,
@@ -17,7 +22,12 @@ export class WaveProjectileLauncher implements IProjectileCollisionSignaler {
         projectileData: ProjectileData
     ) {
         this.wavesToShootPerUpgrade = settings.wavesToShootPerUpgrade;
-        launcher.init(settings.launcher, projectileData);
+
+        this.fireTimer = new GameTimer(settings.launcher.cooldown);
+        this.wavesToShoot = settings.launcher.wavesToShoot;
+        this.wavesDelayMs = settings.launcher.wavesDelayMs;
+
+        launcher.init(settings.launcher.projectileLifetime, settings.launcher.projectileSpeed, projectileData.damage, projectileData.pierces);
     }
 
     public get ProjectileCollisionEvent(): ISignal<ProjectileCollision> {
@@ -27,11 +37,24 @@ export class WaveProjectileLauncher implements IProjectileCollisionSignaler {
     public gameTick(deltaTime: number): void {
         if (this.currentUpgrade == 0) return;
 
-        this.launcher.gameTick(deltaTime, this.playerNode.worldPosition, this.directions);
+        this.launcher.gameTick(deltaTime);
+        this.fireTimer.gameTick(deltaTime);
+
+        if (this.fireTimer.tryFinishPeriod()) {
+            this.fireProjectiles();
+        }
     }
 
     public upgrade(): void {
         this.currentUpgrade++;
-        this.launcher.WavesToShoot += this.wavesToShootPerUpgrade;
+        this.wavesToShoot += this.wavesToShootPerUpgrade;
+    }
+
+    private async fireProjectiles(): Promise<void> {
+        for (let i = 0; i < this.wavesToShoot; i++) {
+            this.launcher.fireProjectiles(this.playerNode.worldPosition, this.directions);
+
+            await delay(this.wavesDelayMs);
+        }
     }
 }
