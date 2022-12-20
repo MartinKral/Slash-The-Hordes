@@ -34,7 +34,7 @@ export class Player extends Component {
         this.speed = data.speed;
 
         this.weapon.init(data.strikeDelay, data.damage);
-        this.health.HealthPointsChangeEvent.on(this.animateHurt, this);
+        this.health.HealthPointsChangeEvent.on(this.animateHpChange, this);
         this.playerUI.init(this.health);
     }
 
@@ -94,8 +94,13 @@ export class Player extends Component {
         }
     }
 
-    private async animateHurt(): Promise<void> {
-        this.sprite.color = Color.RED;
+    private async animateHpChange(hpChange: number): Promise<void> {
+        if (hpChange < 0) {
+            this.sprite.color = Color.RED;
+        } else {
+            this.sprite.color = Color.GREEN;
+        }
+
         await delay(100);
         this.sprite.color = Color.WHITE;
     }

@@ -28,12 +28,12 @@ export class UnitHealth {
 
     public heal(points: number): void {
         this.healthPoints = Math.min(this.maxHealthPoints, this.healthPoints + points);
-        this.healthPointsChangeEvent.trigger(this.healthPoints);
+        this.healthPointsChangeEvent.trigger(points);
     }
 
     public damage(points: number): void {
         this.healthPoints -= points;
-        this.healthPointsChangeEvent.trigger(this.healthPoints);
+        this.healthPointsChangeEvent.trigger(-points);
     }
 
     public setMaxHealth(maxHealth: number): void {

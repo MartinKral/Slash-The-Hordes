@@ -1,5 +1,5 @@
 import { Component, ProgressBar, _decorator } from "cc";
-import { UnitHealth } from "../UnitHealth";
+import { UnitHealth } from "../../UnitHealth";
 const { ccclass, property } = _decorator;
 
 @ccclass("PlayerHealthUI")

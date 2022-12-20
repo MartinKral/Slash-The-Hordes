@@ -146,7 +146,7 @@
                 "lifetime": -1,
                 "xpReward": 1,
                 "goldReward": 0,
-                "healthPotionRewardChance": 0.5
+                "healthPotionRewardChance": 0.05
             },
             {
                 "id": "StandardEnemy",
@@ -496,6 +496,6 @@
         ]
     },
     "items": {
-        "healthPerPotion": 10
+        "healthPerPotion": 5
     }
 }
