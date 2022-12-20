@@ -79,7 +79,7 @@ export class Game extends Component {
 
         this.player.init(multiInput, this.createPlayerData(settings.player, metaUpgrades));
         this.enemyManager.init(this.player.node, settings.enemyManager);
-        this.itemManager.init(this.enemyManager, this.player, gameResult);
+        this.itemManager.init(this.enemyManager, this.player, gameResult, settings.items);
 
         this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay, this.itemManager);
         new WeaponCollisionSystem(this.player.Weapon);

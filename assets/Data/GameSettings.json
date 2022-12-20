@@ -145,7 +145,8 @@
                 "speed": 60,
                 "lifetime": -1,
                 "xpReward": 1,
-                "goldReward": 0
+                "goldReward": 0,
+                "healthPotionRewardChance": 0.5
             },
             {
                 "id": "StandardEnemy",
@@ -156,7 +157,8 @@
                 "speed": 65,
                 "lifetime": -1,
                 "xpReward": 1,
-                "goldReward": 0.1
+                "goldReward": 0.1,
+                "healthPotionRewardChance": 0
             },
             {
                 "id": "FastEnemy",
@@ -167,7 +169,8 @@
                 "speed": 75,
                 "lifetime": -1,
                 "xpReward": 1,
-                "goldReward": 0.1
+                "goldReward": 0.1,
+                "healthPotionRewardChance": 0
             },
             {
                 "id": "CircleEnemy",
@@ -178,7 +181,8 @@
                 "speed": 25,
                 "lifetime": 29,
                 "xpReward": 1,
-                "goldReward": 1
+                "goldReward": 1,
+                "healthPotionRewardChance": 0
             },
             {
                 "id": "CircleEnemyStandard",
@@ -189,7 +193,8 @@
                 "speed": 35,
                 "lifetime": 27,
                 "xpReward": 1,
-                "goldReward": 2
+                "goldReward": 2,
+                "healthPotionRewardChance": 0
             },
             {
                 "id": "WaveEnemy",
@@ -200,7 +205,8 @@
                 "speed": 390,
                 "lifetime": 20,
                 "xpReward": 1,
-                "goldReward": 0.2
+                "goldReward": 0.2,
+                "healthPotionRewardChance": 0
             },
             {
                 "id": "WaveEnemyArmor",
@@ -211,7 +217,8 @@
                 "speed": 70,
                 "lifetime": 30,
                 "xpReward": 1,
-                "goldReward": 1
+                "goldReward": 1,
+                "healthPotionRewardChance": 0
             },
             {
                 "id": "WaveEnemyArmorFast",
@@ -222,7 +229,8 @@
                 "speed": 320,
                 "lifetime": 30,
                 "xpReward": 1,
-                "goldReward": 1
+                "goldReward": 1,
+                "healthPotionRewardChance": 0
             },
             {
                 "id": "BasicBoss",
@@ -233,7 +241,8 @@
                 "speed": 65,
                 "lifetime": -1,
                 "xpReward": 1,
-                "goldReward": 3
+                "goldReward": 3,
+                "healthPotionRewardChance": 0
             },
             {
                 "id": "StandardBoss",
@@ -244,7 +253,8 @@
                 "speed": 75,
                 "lifetime": -1,
                 "xpReward": 2,
-                "goldReward": 5
+                "goldReward": 5,
+                "healthPotionRewardChance": 0
             },
             {
                 "id": "BasicCheetah",
@@ -255,7 +265,8 @@
                 "speed": 120,
                 "lifetime": -1,
                 "xpReward": 1,
-                "goldReward": 1
+                "goldReward": 1,
+                "healthPotionRewardChance": 0
             }
         ],
         "periodicFollowMovers": [
@@ -483,5 +494,8 @@
                 "enemiesToSpawn": 14
             }
         ]
+    },
+    "items": {
+        "healthPerPotion": 10
     }
 }

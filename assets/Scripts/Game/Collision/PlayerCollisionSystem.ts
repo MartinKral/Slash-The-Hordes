@@ -4,6 +4,7 @@ import { Signal } from "../../Services/EventSystem/Signal";
 import { GameTimer } from "../../Services/GameTimer";
 import { GroupType } from "../GroupType";
 import { Gold } from "../Items/Gold/Gold";
+import { HealthPotion } from "../Items/HealthPotion/HealthPotion";
 import { ItemManager } from "../Items/ItemManager";
 import { XP } from "../Items/XP/XP";
 import { Enemy } from "../Unit/Enemy/Enemy";
@@ -28,6 +29,7 @@ export class PlayerCollisionSystem {
         this.groupToResolver.set(GroupType.ENEMY, this.resolveEnemyContact.bind(this));
         this.groupToResolver.set(GroupType.XP, this.resolveXpContact.bind(this));
         this.groupToResolver.set(GroupType.GOLD, this.resolveGoldContact.bind(this));
+        this.groupToResolver.set(GroupType.HEALTH_POTION, this.resolveHealthPotionContact.bind(this));
     }
 
     public gameTick(deltaTime: number): void {
@@ -80,5 +82,9 @@ export class PlayerCollisionSystem {
 
     private resolveGoldContact(goldCollider: Collider2D): void {
         this.itemManager.pickupGold(goldCollider.node.getComponent(Gold));
+    }
+
+    private resolveHealthPotionContact(healthPotionCollider: Collider2D): void {
+        this.itemManager.pickupHealthPotion(healthPotionCollider.node.getComponent(HealthPotion));
     }
 }

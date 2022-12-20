@@ -3,6 +3,7 @@ export class GameSettings {
     public upgrades: UpgradeSettings = new UpgradeSettings();
     public metaUpgrades: MetaUpgradesSettings = new MetaUpgradesSettings();
     public enemyManager: EnemyManagerSettings = new EnemyManagerSettings();
+    public items: ItemSettings = new ItemSettings();
 }
 
 export class PlayerSettings {
@@ -111,6 +112,12 @@ export class EnemySettings {
     public damage = 0;
     public speed = 0;
     public lifetime = 0;
+
     public xpReward = 0;
     public goldReward = 0;
+    public healthPotionRewardChance = 0;
+}
+
+export class ItemSettings {
+    public healthPerPotion = 0;
 }
