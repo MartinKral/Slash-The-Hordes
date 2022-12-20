@@ -24,14 +24,10 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
     private wavesDelayMs: number;
     private cooldown: number;
 
-    private fireDirections: Vec2[];
-
     private projectiles: Projectile[] = [];
     private directions: Vec2[] = [];
     private expireTimes: number[] = [];
     private currentTime = 0;
-
-    private playerNode: Node;
 
     public get WavesToShoot(): number {
         return this.wavesToShoot;
@@ -54,7 +50,7 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
         return this.projectileCollisionEvent;
     }
 
-    public init(playerNode: Node, fireDirections: Vec2[], settings: ProjectileLauncherSettings, projectileData: ProjectileData): void {
+    public init(settings: ProjectileLauncherSettings, projectileData: ProjectileData): void {
         this.projectileData = projectileData;
         this.projectileLifetime = settings.projectileLifetime;
         this.speed = settings.projectileSpeed;
@@ -62,37 +58,35 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
         this.wavesDelayMs = settings.wavesDelayMs;
         this.cooldown = settings.cooldown;
 
-        this.playerNode = playerNode;
-        this.fireDirections = fireDirections;
         this.projectilePool = new ObjectPool<Projectile>(this.projectilePrefab, this.node, 6, "Projectile");
         this.fireTimer = new GameTimer(this.cooldown);
     }
 
-    public gameTick(deltaTime: number): void {
+    public gameTick(deltaTime: number, startPosition: Vec3, fireDirections: Vec2[]): void {
         this.currentTime += deltaTime;
         this.fireTimer.gameTick(deltaTime);
         if (this.fireTimer.tryFinishPeriod()) {
-            this.fireProjectiles();
+            this.fireProjectiles(startPosition, fireDirections);
         }
 
         this.tryRemoveExpiredProjectiles();
         this.moveAllProjectiles(deltaTime);
     }
 
-    private async fireProjectiles(): Promise<void> {
+    private async fireProjectiles(startPosition: Vec3, fireDirections: Vec2[]): Promise<void> {
         for (let i = 0; i < this.wavesToShoot; i++) {
-            for (const direction of this.fireDirections) {
-                this.fireProjectile(direction);
+            for (const direction of fireDirections) {
+                this.fireProjectile(startPosition, direction);
             }
 
             await delay(this.wavesDelayMs);
         }
     }
 
-    private fireProjectile(direction: Vec2): void {
+    private fireProjectile(startPosition: Vec3, direction: Vec2): void {
         const projectile: Projectile = this.projectilePool.borrow();
         projectile.init(this.projectileData.damage, this.projectileData.pierces, getDegreeAngleFromDirection(direction.x, direction.y));
-        projectile.node.setWorldPosition(this.playerNode.worldPosition);
+        projectile.node.setWorldPosition(startPosition);
         projectile.node.active = true;
         projectile.ContactBeginEvent.on(this.onProjectileCollision, this);
         projectile.PiercesDepletedEvent.on(this.onPiercesDepleted, this);

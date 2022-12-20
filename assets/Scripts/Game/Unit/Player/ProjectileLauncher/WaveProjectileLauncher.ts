@@ -11,13 +11,13 @@ export class WaveProjectileLauncher implements IProjectileCollisionSignaler {
 
     public constructor(
         private launcher: ProjectileLauncher,
-        playerNode: Node,
-        directions: Vec2[],
+        private playerNode: Node,
+        private directions: Vec2[],
         settings: WaveLauncherSettings,
         projectileData: ProjectileData
     ) {
         this.wavesToShootPerUpgrade = settings.wavesToShootPerUpgrade;
-        launcher.init(playerNode, directions, settings.launcher, projectileData);
+        launcher.init(settings.launcher, projectileData);
     }
 
     public get ProjectileCollisionEvent(): ISignal<ProjectileCollision> {
@@ -27,7 +27,7 @@ export class WaveProjectileLauncher implements IProjectileCollisionSignaler {
     public gameTick(deltaTime: number): void {
         if (this.currentUpgrade == 0) return;
 
-        this.launcher.gameTick(deltaTime);
+        this.launcher.gameTick(deltaTime, this.playerNode.worldPosition, this.directions);
     }
 
     public upgrade(): void {
