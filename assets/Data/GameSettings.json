@@ -36,8 +36,8 @@
             "launcher": {
                 "projectileLifetime": 3,
                 "projectileSpeed": 300,
-                "wavesToShoot": 1,
-                "wavesDelayMs": 100,
+                "wavesToShoot": 0,
+                "wavesDelayMs": 120,
                 "cooldown": 4
             }
         },
@@ -46,8 +46,8 @@
             "launcher": {
                 "projectileLifetime": 20,
                 "projectileSpeed": 300,
-                "wavesToShoot": 1,
-                "wavesDelayMs": 100,
+                "wavesToShoot": 0,
+                "wavesDelayMs": 200,
                 "cooldown": 4
             }
         }

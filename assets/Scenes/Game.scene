@@ -196,7 +196,7 @@
     "_enabled": true,
     "__prefab": null,
     "startTime": 0,
-    "startXP": 0,
+    "startXP": 100,
     "maxHpLevel": 0,
     "bonusDamageLevel": 0,
     "projectilePiercingLevel": 0,
