@@ -1,5 +1,4 @@
-import { Camera, Component, JsonAsset, KeyCode, Vec2, _decorator } from "cc";
-import { runInThisContext } from "vm";
+import { Camera, Component, KeyCode, Vec2, _decorator } from "cc";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
 import { delay } from "../Services/Utils/AsyncUtils";
 import { GameAudioAdapter } from "./Audio/GameAudioAdapter";
@@ -13,6 +12,7 @@ import { UserData } from "./Data/UserData";
 import { KeyboardInput } from "./Input/KeyboardInput";
 import { MultiInput } from "./Input/MultiInput";
 import { VirtualJoystic } from "./Input/VirtualJoystic";
+import { ItemManager } from "./Items/ItemManager";
 import { GameModalLauncher } from "./ModalWIndows/GameModalLauncher";
 import { Pauser } from "./Pauser";
 import { TestValues } from "./TestGameRunner";
@@ -36,6 +36,7 @@ export class Game extends Component {
     @property(ProjectileLauncher) private horizontalProjectileLauncherComponent: ProjectileLauncher;
     @property(ProjectileLauncher) private diagonalProjectileLauncherComponent: ProjectileLauncher;
     @property(EnemyManager) private enemyManager: EnemyManager;
+    @property(ItemManager) private itemManager: ItemManager;
     @property(Camera) private camera: Camera;
     @property(GameUI) private gameUI: GameUI;
     @property(Background) private background: Background;
@@ -77,11 +78,11 @@ export class Game extends Component {
         const multiInput: MultiInput = new MultiInput([this.virtualJoystic, wasd, arrowKeys]);
 
         this.player.init(multiInput, this.createPlayerData(settings.player, metaUpgrades));
-
-        this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay, gameResult);
-        new WeaponCollisionSystem(this.player.Weapon);
-
         this.enemyManager.init(this.player.node, settings.enemyManager);
+        this.itemManager.init(this.enemyManager, this.player, gameResult);
+
+        this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay, this.itemManager);
+        new WeaponCollisionSystem(this.player.Weapon);
 
         const projectileData = new ProjectileData();
         projectileData.damage = 1 + metaUpgrades.getUpgradeValue(MetaUpgradeType.OverallDamage);

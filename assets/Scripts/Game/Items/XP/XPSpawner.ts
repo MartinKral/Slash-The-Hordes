@@ -1,5 +1,6 @@
 import { Component, Prefab, Vec3, _decorator } from "cc";
-import { ObjectPool } from "../../Services/ObjectPool";
+import { ObjectPool } from "../../../Services/ObjectPool";
+
 import { XP } from "./XP";
 const { ccclass, property } = _decorator;
 
