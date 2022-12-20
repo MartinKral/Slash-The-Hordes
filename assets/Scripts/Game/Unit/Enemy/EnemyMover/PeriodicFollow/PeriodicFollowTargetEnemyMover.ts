@@ -1,6 +1,6 @@
 import { Node, Vec3 } from "cc";
-import { Enemy } from "../Enemy";
-import { EnemyMover } from "./EnemyMover";
+import { Enemy } from "../../Enemy";
+import { EnemyMover } from "../EnemyMover";
 
 export class PeriodicFollowTargetEnemyMover extends EnemyMover {
     private enemyToFollowState: Map<Enemy, EnemyFollowState> = new Map<Enemy, EnemyFollowState>();

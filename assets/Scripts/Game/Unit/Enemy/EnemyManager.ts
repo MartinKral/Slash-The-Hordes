@@ -3,9 +3,9 @@ import { ISignal } from "../../../Services/EventSystem/ISignal";
 import { EnemyManagerSettings } from "../../Data/GameSettings";
 import { Enemy } from "./Enemy";
 import { EnemyMovementType } from "./EnemyMovementType";
-import { EnemyMover } from "./EnemyMover/EnemyMover";
+import { IEnemyMover } from "./EnemyMover/EnemyMover";
 import { FollowTargetEnemyMover } from "./EnemyMover/FollowTargetEnemyMover";
-import { PeriodicFollowTargetEnemyMover } from "./EnemyMover/PeriodicFollowTargetEnemyMover";
+import { PeriodicFollowMovers } from "./EnemyMover/PeriodicFollow/PeriodicFollowMovers";
 import { WaveEnemyMover } from "./EnemyMover/WaveEnemyMover";
 import { CircularEnemySpawner } from "./EnemySpawner/CircularEnemySpawner";
 import { DelayedEnemySpawner } from "./EnemySpawner/DelayedEnemySpawner";
@@ -19,7 +19,7 @@ const { ccclass, property } = _decorator;
 export class EnemyManager extends Component {
     @property(EnemySpawner) private enemySpawner: EnemySpawner;
 
-    private movementTypeToMover: Map<EnemyMovementType, EnemyMover> = new Map<EnemyMovementType, EnemyMover>();
+    private movementTypeToMover: Map<EnemyMovementType, IEnemyMover> = new Map<EnemyMovementType, IEnemyMover>();
 
     private spawners: DelayedEnemySpawner[] = [];
 
@@ -45,7 +45,7 @@ export class EnemyManager extends Component {
 
         this.movementTypeToMover.set(EnemyMovementType.Follow, new FollowTargetEnemyMover(targetNode));
         this.movementTypeToMover.set(EnemyMovementType.Launch, new WaveEnemyMover(targetNode));
-        this.movementTypeToMover.set(EnemyMovementType.PeriodicFollow, new PeriodicFollowTargetEnemyMover(targetNode, 5, 5));
+        this.movementTypeToMover.set(EnemyMovementType.PeriodicFollow, new PeriodicFollowMovers(targetNode, settings.periodicFollowMovers));
     }
 
     public gameTick(deltaTime: number): void {
@@ -74,7 +74,7 @@ export class EnemyManager extends Component {
         this.getEnemyMover(enemy).removeEnemy(enemy);
     }
 
-    private getEnemyMover(enemy: Enemy): EnemyMover {
+    private getEnemyMover(enemy: Enemy): IEnemyMover {
         if (this.movementTypeToMover.has(enemy.MovementType)) {
             return this.movementTypeToMover.get(enemy.MovementType);
         }

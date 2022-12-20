@@ -18,6 +18,7 @@ export class Enemy extends Component {
     private deathEvent: Signal<Enemy> = new Signal<Enemy>();
     private lifetimeEndedEvent: Signal<Enemy> = new Signal<Enemy>();
 
+    private id: string;
     private movementType: EnemyMovementType;
     private health: UnitHealth;
     private damage: number;
@@ -31,6 +32,7 @@ export class Enemy extends Component {
     private endOfLifetimeTriggered = false;
 
     public setup(position: Vec3, settings: EnemySettings): void {
+        this.id = settings.id;
         this.movementType = <EnemyMovementType>settings.moveType;
         this.health = new UnitHealth(settings.health);
         this.damage = settings.damage;
@@ -46,6 +48,10 @@ export class Enemy extends Component {
 
         this.health.HealthPointsChangeEvent.on(this.animateHurt, this);
         this.endOfLifetimeTriggered = false;
+    }
+
+    public get Id(): string {
+        return this.id;
     }
 
     public get MovementType(): EnemyMovementType {

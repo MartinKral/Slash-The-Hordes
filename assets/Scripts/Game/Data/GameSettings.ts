@@ -66,9 +66,16 @@ export class MetaUpgradeSettings {
 
 export class EnemyManagerSettings {
     public enemies: EnemySettings[] = [new EnemySettings()];
+    public periodicFollowMovers: PeriodicFollowMoverSettings[] = [new PeriodicFollowMoverSettings()];
     public individualEnemySpawners: IndividualEnemySpawnerSettings[] = [new IndividualEnemySpawnerSettings()];
     public circularEnemySpawners: CircularEnemySpawnerSettings[] = [new CircularEnemySpawnerSettings()];
     public waveEnemySpawners: WaveEnemySpawnerSettings[] = [new WaveEnemySpawnerSettings()];
+}
+
+export class PeriodicFollowMoverSettings {
+    public enemyIdToAffect = "";
+    public followTime = 0;
+    public waitTime = 0;
 }
 
 export class GeneralEnemySpawnerSettings {

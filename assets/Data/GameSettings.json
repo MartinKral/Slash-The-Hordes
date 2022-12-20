@@ -258,6 +258,13 @@
                 "goldReward": 1
             }
         ],
+        "periodicFollowMovers": [
+            {
+                "enemyIdToAffect": "BasicCheetah",
+                "followTime": 3,
+                "waitTime": 5
+            }
+        ],
         "individualEnemySpawners": [
             {
                 "common": {

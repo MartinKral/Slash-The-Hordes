@@ -1,7 +1,7 @@
 import { Node } from "cc";
 import { Enemy } from "../Enemy";
 
-export abstract class EnemyMover {
+export abstract class EnemyMover implements IEnemyMover {
     protected targetNode: Node;
     protected enemies: Enemy[] = [];
 
@@ -20,4 +20,10 @@ export abstract class EnemyMover {
     }
 
     public abstract gameTick(deltaTime: number): void;
+}
+
+export interface IEnemyMover {
+    addEnemy(enemy: Enemy): void;
+    removeEnemy(enemy: Enemy): void;
+    gameTick(deltaTime: number): void;
 }
