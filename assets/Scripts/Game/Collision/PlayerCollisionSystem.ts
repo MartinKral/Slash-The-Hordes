@@ -1,11 +1,13 @@
-import { Collider2D, Contact2DType } from "cc";
-import { GroupType } from "../GroupType";
-import { Player } from "../Unit/Player/Player";
+import { Collider2D, Contact2DType, Node } from "cc";
+import { ISignal } from "../../Services/EventSystem/ISignal";
+import { Signal } from "../../Services/EventSystem/Signal";
 import { GameTimer } from "../../Services/GameTimer";
-import { XP } from "../XP/XP";
+import { GroupType } from "../GroupType";
+import { Gold } from "../Items/Gold/Gold";
+import { ItemManager } from "../Items/ItemManager";
+import { XP } from "../Items/XP/XP";
 import { Enemy } from "../Unit/Enemy/Enemy";
-import { Gold } from "../Gold/Gold";
-import { GameResult } from "../Game";
+import { Player } from "../Unit/Player/Player";
 
 export class PlayerCollisionSystem {
     private playerContacts: Collider2D[] = [];
@@ -13,7 +15,9 @@ export class PlayerCollisionSystem {
 
     private groupToResolver: Map<number, (collider: Collider2D) => void> = new Map<number, (collider: Collider2D) => void>();
 
-    public constructor(private player: Player, collisionDelay: number, private gameResult: GameResult) {
+    private itemPickedUpEvent = new Signal<Node>();
+
+    public constructor(private player: Player, collisionDelay: number, private itemManager: ItemManager) {
         this.player = player;
 
         player.Collider.on(Contact2DType.BEGIN_CONTACT, this.onPlayerContactBegin, this);
@@ -31,6 +35,10 @@ export class PlayerCollisionSystem {
         if (this.collisionTimer.tryFinishPeriod()) {
             this.resolveAllContacts();
         }
+    }
+
+    public get ItemPickedUpEvent(): ISignal<Node> {
+        return this.itemPickedUpEvent;
     }
 
     private onPlayerContactBegin(_selfCollider: Collider2D, otherCollider: Collider2D): void {
@@ -66,18 +74,11 @@ export class PlayerCollisionSystem {
     }
 
     private resolveXpContact(xpCollider: Collider2D): void {
-        const xp: XP = xpCollider.node.getComponent(XP);
-        this.player.Level.addXp(xp.Value);
-        xp.pickup();
-
-        console.log("Collided with xp: " + xp);
+        console.log("Collided with XP");
+        this.itemManager.pickupXP(xpCollider.node.getComponent(XP));
     }
 
     private resolveGoldContact(goldCollider: Collider2D): void {
-        const gold: Gold = goldCollider.node.getComponent(Gold);
-        gold.pickup();
-        this.gameResult.goldCoins++;
-
-        console.log("Collided with gold " + gold);
+        this.itemManager.pickupGold(goldCollider.node.getComponent(Gold));
     }
 }

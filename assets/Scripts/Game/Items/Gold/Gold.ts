@@ -1,6 +1,7 @@
 import { Component, Vec3, _decorator } from "cc";
-import { ISignal } from "../../Services/EventSystem/ISignal";
-import { Signal } from "../../Services/EventSystem/Signal";
+import { ISignal } from "../../../Services/EventSystem/ISignal";
+import { Signal } from "../../../Services/EventSystem/Signal";
+
 const { ccclass, property } = _decorator;
 
 @ccclass("Gold")

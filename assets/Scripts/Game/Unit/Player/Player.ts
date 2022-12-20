@@ -1,4 +1,5 @@
-import { Animation, Node, BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator, Details } from "cc";
+import { Animation, Node, BoxCollider2D, Collider2D, Component, Vec2, Vec3, _decorator, Details, Sprite, Color } from "cc";
+import { delay } from "../../../Services/Utils/AsyncUtils";
 import { IInput } from "../../Input/IInput";
 import { UnitHealth } from "../UnitHealth";
 import { UnitLevel } from "../UnitLevel";
@@ -15,6 +16,7 @@ export class Player extends Component {
     @property(Weapon) private weapon: Weapon;
     @property(Node) private playerGraphics: Node;
     @property(Animation) private animation: Animation;
+    @property(Sprite) private sprite: Sprite;
 
     private input: IInput;
     private health: UnitHealth;
@@ -32,7 +34,7 @@ export class Player extends Component {
         this.speed = data.speed;
 
         this.weapon.init(data.strikeDelay, data.damage);
-
+        this.health.HealthPointsChangeEvent.on(this.animateHurt, this);
         this.playerUI.init(this.health);
     }
 
@@ -90,6 +92,12 @@ export class Player extends Component {
                 this.animation.play("Idle");
             }
         }
+    }
+
+    private async animateHurt(): Promise<void> {
+        this.sprite.color = Color.RED;
+        await delay(100);
+        this.sprite.color = Color.WHITE;
     }
 }
 
