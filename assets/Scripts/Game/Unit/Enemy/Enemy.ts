@@ -12,12 +12,11 @@ const { ccclass, property } = _decorator;
 export class Enemy extends Component {
     @property(BoxCollider2D) private collider: BoxCollider2D;
     @property(Sprite) private sprite: Sprite;
+    @property(Material) private defaultMaterial: Material;
     @property(Material) private whiteMaterial: Material;
 
     private deathEvent: Signal<Enemy> = new Signal<Enemy>();
     private lifetimeEndedEvent: Signal<Enemy> = new Signal<Enemy>();
-
-    private defaultMaterial: Material;
 
     private movementType: EnemyMovementType;
     private health: UnitHealth;
@@ -32,8 +31,6 @@ export class Enemy extends Component {
     private endOfLifetimeTriggered = false;
 
     public setup(position: Vec3, settings: EnemySettings): void {
-        this.defaultMaterial = this.sprite.material;
-
         this.movementType = <EnemyMovementType>settings.moveType;
         this.health = new UnitHealth(settings.health);
         this.damage = settings.damage;

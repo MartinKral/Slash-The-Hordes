@@ -271,6 +271,10 @@
     "sprite": {
       "__id__": 5
     },
+    "defaultMaterial": {
+      "__uuid__": "fda095cb-831d-4601-ad94-846013963de8",
+      "__expectedType__": "cc.Material"
+    },
     "whiteMaterial": {
       "__uuid__": "9cb17675-370b-48ed-bfa2-bb613a88af44",
       "__expectedType__": "cc.Material"
