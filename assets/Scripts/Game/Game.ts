@@ -2,6 +2,7 @@ import { Camera, Component, JsonAsset, KeyCode, Vec2, _decorator } from "cc";
 import { runInThisContext } from "vm";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
 import { delay } from "../Services/Utils/AsyncUtils";
+import { GameAudioAdapter } from "./Audio/GameAudioAdapter";
 import { Background } from "./Background/Background";
 import { PlayerCollisionSystem } from "./Collision/PlayerCollisionSystem";
 import { PlayerProjectileCollisionSystem } from "./Collision/PlayerProjectileCollisionSystem";
@@ -39,6 +40,7 @@ export class Game extends Component {
     @property(GameUI) private gameUI: GameUI;
     @property(Background) private background: Background;
     @property(ModalWindowManager) private modalWindowManager: ModalWindowManager;
+    @property(GameAudioAdapter) private gameAudioAdapter: GameAudioAdapter;
 
     private playerCollisionSystem: PlayerCollisionSystem;
     private haloProjectileLauncher: HaloProjectileLauncher;
@@ -127,6 +129,7 @@ export class Game extends Component {
             this.player.Level.addXp(testValues.startXP);
         }
 
+        this.gameAudioAdapter.init(this.enemyManager);
         this.gamePauser.resume();
 
         while (this.player.Health.IsAlive) await delay(100);

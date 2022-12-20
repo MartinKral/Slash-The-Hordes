@@ -1,13 +1,13 @@
-import { _decorator, Component, Node, director, AudioSource, JsonAsset } from "cc";
+import { Component, director, JsonAsset, _decorator } from "cc";
 import { GameSettings } from "../Game/Data/GameSettings";
 import { TranslationData } from "../Game/Data/TranslationData";
+import { AudioPlayer } from "../Services/AudioPlayer/AudioPlayer";
 import { SaveSystem } from "./SaveSystem";
 const { ccclass, property } = _decorator;
 
 @ccclass("AppRoot")
 export class AppRoot extends Component {
-    @property(AudioSource) private soundSource: AudioSource;
-    @property(AudioSource) private musicSource: AudioSource;
+    @property(AudioPlayer) private audio: AudioPlayer;
     @property(JsonAsset) private settingsAsset: JsonAsset;
     @property(JsonAsset) private engTranslationAsset: JsonAsset;
 
@@ -16,6 +16,10 @@ export class AppRoot extends Component {
 
     public static get Instance(): AppRoot {
         return this.instance;
+    }
+
+    public get AudioPlayer(): AudioPlayer {
+        return this.audio;
     }
 
     public get SaveSystem(): SaveSystem {
@@ -42,5 +46,6 @@ export class AppRoot extends Component {
 
     private init(): void {
         this.saveSystem = new SaveSystem();
+        this.audio.init(1, 1);
     }
 }

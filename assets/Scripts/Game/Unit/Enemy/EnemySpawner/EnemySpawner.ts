@@ -12,8 +12,8 @@ const { ccclass, property } = _decorator;
 export class EnemySpawner extends Component {
     @property(Prefab) private enemies: Prefab[] = [];
 
-    public enemyAddedEvent: Signal<Enemy> = new Signal<Enemy>();
-    public enemyRemovedEvent: Signal<Enemy> = new Signal<Enemy>();
+    private enemyAddedEvent: Signal<Enemy> = new Signal<Enemy>();
+    private enemyRemovedEvent: Signal<Enemy> = new Signal<Enemy>();
 
     private enemyGraphicsTypeToPool = new Map<EnemyGraphicsType, ObjectPool<Enemy>>();
     private targetNode: Node;

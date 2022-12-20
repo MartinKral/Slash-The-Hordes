@@ -1,5 +1,5 @@
 import { Component, Node, random, randomRange, Vec3, _decorator } from "cc";
-
+import { ISignal } from "../../../Services/EventSystem/ISignal";
 import { EnemyManagerSettings } from "../../Data/GameSettings";
 import { GoldSpawner } from "../../Gold/GoldSpawner";
 import { XPSpawner } from "../../XP/XPSpawner";
@@ -30,7 +30,7 @@ export class EnemyManager extends Component {
     public init(targetNode: Node, settings: EnemyManagerSettings): void {
         this.enemySpawner.init(targetNode, settings.enemies);
         this.enemySpawner.EnemyAddedEvent.on(this.onEnemyAdded, this);
-        this.enemySpawner.enemyRemovedEvent.on(this.onRemoveEnemy, this);
+        this.enemySpawner.EnemyRemovedEvent.on(this.onEnemyRemoved, this);
 
         for (const individualSpawnerSettings of settings.individualEnemySpawners) {
             const individualSpawner = new IndividualEnemySpawner(this.enemySpawner, individualSpawnerSettings);
@@ -65,10 +65,25 @@ export class EnemyManager extends Component {
         }
     }
 
-    private onEnemyDied(enemy: Enemy): void {
-        enemy.DeathEvent.off(this.onEnemyDied);
-        enemy.LifetimeEndedEvent.off(this.onEnemyLifetimeEnded);
+    public get EnemyAddedEvent(): ISignal<Enemy> {
+        return this.enemySpawner.EnemyAddedEvent;
+    }
 
+    public get EnemyRemovedEvent(): ISignal<Enemy> {
+        return this.enemySpawner.EnemyRemovedEvent;
+    }
+
+    private onEnemyAdded(enemy: Enemy): void {
+        enemy.DeathEvent.on(this.onEnemyDied, this);
+        this.getEnemyMover(enemy).addEnemy(enemy);
+    }
+
+    private onEnemyRemoved(enemy: Enemy): void {
+        enemy.DeathEvent.off(this.onEnemyDied);
+        this.getEnemyMover(enemy).removeEnemy(enemy);
+    }
+
+    private onEnemyDied(enemy: Enemy): void {
         for (let index = 0; index < enemy.XPReward; index++) {
             const position: Vec3 = enemy.node.worldPosition;
             position.x += randomRange(-10, 10);
@@ -90,22 +105,6 @@ export class EnemyManager extends Component {
                 }
             }
         }
-    }
-
-    private onEnemyLifetimeEnded(enemy: Enemy): void {
-        enemy.DeathEvent.off(this.onEnemyDied);
-        enemy.LifetimeEndedEvent.off(this.onEnemyLifetimeEnded);
-    }
-
-    private onEnemyAdded(enemy: Enemy): void {
-        enemy.DeathEvent.on(this.onEnemyDied, this);
-        enemy.LifetimeEndedEvent.on(this.onEnemyLifetimeEnded, this);
-
-        this.getEnemyMover(enemy).addEnemy(enemy);
-    }
-
-    private onRemoveEnemy(enemy: Enemy): void {
-        this.getEnemyMover(enemy).removeEnemy(enemy);
     }
 
     private getEnemyMover(enemy: Enemy): EnemyMover {
