@@ -1,10 +1,12 @@
-import { Component, Vec3, _decorator } from "cc";
+import { Animation, Component, Vec3, _decorator } from "cc";
 import { ISignal } from "../../Services/EventSystem/ISignal";
 import { Signal } from "../../Services/EventSystem/Signal";
 const { ccclass, property } = _decorator;
 
 @ccclass("XP")
 export class XP extends Component {
+    @property(Animation) private animation: Animation;
+
     private pickUpEvent: Signal<XP> = new Signal<XP>();
     private value = 2;
 
@@ -12,6 +14,7 @@ export class XP extends Component {
         this.node.setWorldPosition(position);
         this.value = value;
         this.node.active = true;
+        this.animation.play("DropStart");
     }
 
     public get Value(): number {
