@@ -172,7 +172,7 @@
             {
                 "id": "CircleEnemy",
                 "moveType": "Follow",
-                "graphicsType": "Bat",
+                "graphicsType": "Skeleton",
                 "health": 4,
                 "damage": 1,
                 "speed": 25,
@@ -205,7 +205,7 @@
             {
                 "id": "WaveEnemyArmor",
                 "moveType": "Launch",
-                "graphicsType": "Bat",
+                "graphicsType": "Skeleton",
                 "health": 5,
                 "damage": 3,
                 "speed": 70,
