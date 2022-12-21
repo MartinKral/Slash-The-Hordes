@@ -135,6 +135,15 @@
         }
     },
     "enemyManager": {
+        "projectileLauncher1": {
+            "enemyIds": [
+                "BasicEnemy"
+            ],
+            "projectileLifetime": 10,
+            "projectileSpeed": 150,
+            "projectileDamage": 1,
+            "cooldown": 10
+        },
         "enemies": [
             {
                 "id": "BasicEnemy",

@@ -1,3 +1,5 @@
+import { EnemyProjectileLauncher } from "../Unit/Enemy/ProjectileLauncher.cs/EnemyProjectileLauncher";
+
 export class GameSettings {
     public player: PlayerSettings = new PlayerSettings();
     public upgrades: UpgradeSettings = new UpgradeSettings();
@@ -34,6 +36,14 @@ export class HaloLauncherSettings {
     public launcher = new ProjectileLauncherSettings();
 }
 
+export class EnemyLauncherSettings {
+    public enemyIds: string[] = [];
+    public projectileLifetime = 0;
+    public projectileSpeed = 0;
+    public projectileDamage = 0;
+    public cooldown = 0;
+}
+
 export class ProjectileLauncherSettings {
     public projectileLifetime = 0;
     public projectileSpeed = 0;
@@ -66,6 +76,7 @@ export class MetaUpgradeSettings {
 }
 
 export class EnemyManagerSettings {
+    public projectileLauncher1 = new EnemyLauncherSettings();
     public enemies: EnemySettings[] = [new EnemySettings()];
     public periodicFollowMovers: PeriodicFollowMoverSettings[] = [new PeriodicFollowMoverSettings()];
     public individualEnemySpawners: IndividualEnemySpawnerSettings[] = [new IndividualEnemySpawnerSettings()];

@@ -26,6 +26,7 @@ import { ProjectileData } from "./Unit/Player/ProjectileLauncher/ProjectileData"
 import { WaveProjectileLauncher } from "./Unit/Player/ProjectileLauncher/WaveProjectileLauncher";
 import { Upgrader } from "./Upgrades/Upgrader";
 import { MetaUpgradeType } from "./Upgrades/UpgradeType";
+import { EnemyProjectileLauncher } from "./Unit/Enemy/ProjectileLauncher.cs/EnemyProjectileLauncher";
 
 const { ccclass, property } = _decorator;
 
@@ -36,6 +37,7 @@ export class Game extends Component {
     @property(ProjectileLauncher) private haloProjectileLauncherComponent: ProjectileLauncher;
     @property(ProjectileLauncher) private horizontalProjectileLauncherComponent: ProjectileLauncher;
     @property(ProjectileLauncher) private diagonalProjectileLauncherComponent: ProjectileLauncher;
+    @property(ProjectileLauncher) private enemyProjectileLauncherComponent: ProjectileLauncher;
     @property(EnemyManager) private enemyManager: EnemyManager;
     @property(ItemManager) private itemManager: ItemManager;
     @property(Camera) private camera: Camera;
@@ -48,6 +50,8 @@ export class Game extends Component {
     private haloProjectileLauncher: HaloProjectileLauncher;
     private horizontalProjectileLauncher: WaveProjectileLauncher;
     private diagonalProjectileLauncher: WaveProjectileLauncher;
+
+    private enemyProjectileLauncher: EnemyProjectileLauncher;
 
     private gamePauser: Pauser = new Pauser();
 
@@ -112,6 +116,13 @@ export class Game extends Component {
             projectileData
         );
 
+        this.enemyProjectileLauncher = new EnemyProjectileLauncher(
+            this.enemyProjectileLauncherComponent,
+            this.player.node,
+            this.enemyManager,
+            settings.enemyManager.projectileLauncher1
+        );
+
         new PlayerProjectileCollisionSystem([this.haloProjectileLauncher, this.horizontalProjectileLauncher, this.diagonalProjectileLauncher]);
 
         const upgrader = new Upgrader(
@@ -150,6 +161,7 @@ export class Game extends Component {
         this.haloProjectileLauncher.gameTick(deltaTime);
         this.horizontalProjectileLauncher.gameTick(deltaTime);
         this.diagonalProjectileLauncher.gameTick(deltaTime);
+        this.enemyProjectileLauncher.gameTick(deltaTime);
         this.background.gameTick();
 
         this.timeAlive += deltaTime;

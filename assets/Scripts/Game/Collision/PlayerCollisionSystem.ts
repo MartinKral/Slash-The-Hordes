@@ -7,6 +7,7 @@ import { Gold } from "../Items/Gold/Gold";
 import { HealthPotion } from "../Items/HealthPotion/HealthPotion";
 import { ItemManager } from "../Items/ItemManager";
 import { XP } from "../Items/XP/XP";
+import { Projectile } from "../Projectile/Projectile";
 import { Enemy } from "../Unit/Enemy/Enemy";
 import { Player } from "../Unit/Player/Player";
 
@@ -27,6 +28,7 @@ export class PlayerCollisionSystem {
         this.collisionTimer = new GameTimer(collisionDelay);
 
         this.groupToResolver.set(GroupType.ENEMY, this.resolveEnemyContact.bind(this));
+        this.groupToResolver.set(GroupType.ENEMY_PROJECTILE, this.resolveEnemyProjectileContact.bind(this));
         this.groupToResolver.set(GroupType.XP, this.resolveXpContact.bind(this));
         this.groupToResolver.set(GroupType.GOLD, this.resolveGoldContact.bind(this));
         this.groupToResolver.set(GroupType.HEALTH_POTION, this.resolveHealthPotionContact.bind(this));
@@ -72,6 +74,15 @@ export class PlayerCollisionSystem {
     private resolveEnemyContact(enemyCollider: Collider2D): void {
         const damage: number = enemyCollider.node.getComponent(Enemy).Damage;
         console.log("Collided with enemy: Damage: " + damage);
+        this.player.Health.damage(damage);
+    }
+
+    private resolveEnemyProjectileContact(enemyCollider: Collider2D): void {
+        const projectile = enemyCollider.node.getComponent(Projectile);
+        const damage: number = projectile.Damage;
+        projectile.pierce();
+        console.log("Collided with enemy projectile: Damage: " + damage);
+
         this.player.Health.damage(damage);
     }
 

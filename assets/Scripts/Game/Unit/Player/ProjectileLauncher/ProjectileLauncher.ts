@@ -51,6 +51,7 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
     }
 
     private fireProjectile(startPosition: Vec3, direction: Vec2): void {
+        direction = direction.normalize();
         const projectile: Projectile = this.projectilePool.borrow();
         projectile.init(this.projectileDamage, this.projectilePierces, getDegreeAngleFromDirection(direction.x, direction.y));
         projectile.node.setWorldPosition(startPosition);
