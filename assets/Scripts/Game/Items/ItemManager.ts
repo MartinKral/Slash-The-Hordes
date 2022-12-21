@@ -1,4 +1,6 @@
 import { Component, random, randomRange, Vec3, _decorator } from "cc";
+import { ISignal } from "../../Services/EventSystem/ISignal";
+import { Signal } from "../../Services/EventSystem/Signal";
 import { ItemSettings } from "../Data/GameSettings";
 import { GameResult } from "../Game";
 import { Enemy } from "../Unit/Enemy/Enemy";
@@ -24,6 +26,8 @@ export class ItemManager extends Component {
     private gameResult: GameResult;
     private healthPerPotion: number;
 
+    private pickupEvent = new Signal<ItemType>();
+
     public init(enemyManager: EnemyManager, player: Player, gameResult: GameResult, settings: ItemSettings): void {
         this.player = player;
         this.gameResult = gameResult;
@@ -38,8 +42,13 @@ export class ItemManager extends Component {
         this.pickupEffectManager.init();
     }
 
+    public get PickupEvent(): ISignal<ItemType> {
+        return this.pickupEvent;
+    }
+
     public pickupXP(xp: XP): void {
         this.pickupEffectManager.showEffect(xp.node.worldPosition);
+        this.pickupEvent.trigger(ItemType.XP);
 
         this.player.Level.addXp(xp.Value);
         xp.pickup();
@@ -47,6 +56,7 @@ export class ItemManager extends Component {
 
     public pickupGold(gold: Gold): void {
         this.pickupEffectManager.showEffect(gold.node.worldPosition);
+        this.pickupEvent.trigger(ItemType.Gold);
 
         gold.pickup();
         this.gameResult.goldCoins++;
@@ -54,6 +64,7 @@ export class ItemManager extends Component {
 
     public pickupHealthPotion(healthPotion: HealthPotion): void {
         this.pickupEffectManager.showEffect(healthPotion.node.worldPosition);
+        this.pickupEvent.trigger(ItemType.HealthPotion);
 
         healthPotion.pickup();
         this.player.Health.heal(this.healthPerPotion);
@@ -109,4 +120,10 @@ export class ItemManager extends Component {
 
         return position;
     }
+}
+
+export enum ItemType {
+    XP,
+    Gold,
+    HealthPotion
 }

@@ -1,6 +1,7 @@
 import { Animation, AnimationState, Component, _decorator } from "cc";
+import { ISignal } from "../../../../Services/EventSystem/ISignal";
+import { Signal } from "../../../../Services/EventSystem/Signal";
 import { GameTimer } from "../../../../Services/GameTimer";
-import { WeaponSettings } from "../../../Data/GameSettings";
 
 import { UpgradableCollider } from "./UpgradableCollider";
 const { ccclass, property } = _decorator;
@@ -9,6 +10,8 @@ const { ccclass, property } = _decorator;
 export class Weapon extends Component {
     @property(Animation) private weaponAnimation: Animation;
     @property(UpgradableCollider) private upgradableCollider: UpgradableCollider;
+
+    private weaponStrikeEvent = new Signal<Weapon>();
 
     private strikeTimer: GameTimer;
     private strikeState: AnimationState;
@@ -33,6 +36,10 @@ export class Weapon extends Component {
         }
     }
 
+    public get WeaponStrikeEvent(): ISignal<Weapon> {
+        return this.weaponStrikeEvent;
+    }
+
     public get Collider(): UpgradableCollider {
         return this.upgradableCollider;
     }
@@ -51,6 +58,7 @@ export class Weapon extends Component {
     private strike(): void {
         this.node.active = true;
         this.weaponAnimation.play(this.strikeState.name);
+        this.weaponStrikeEvent.trigger(this);
     }
 
     private endStrike(): void {

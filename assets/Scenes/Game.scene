@@ -340,8 +340,32 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "music": {
+      "__uuid__": "0faecdcf-e5d6-4cc1-b3cf-3b2873f8ee62",
+      "__expectedType__": "cc.AudioClip"
+    },
     "enemyHit": {
-      "__uuid__": "c2afb64d-ffcf-4ad4-95b7-1ce1035a2166",
+      "__uuid__": "efed223f-7b17-47ad-b265-7a951ace6d85",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "weaponSwing": {
+      "__uuid__": "5ad08e27-4461-464a-ad19-8c933abf5a5d",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "xpPickup": {
+      "__uuid__": "6af287fc-820f-4e12-8b8f-858a5dd41d2c",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "goldPickup": {
+      "__uuid__": "580b2ceb-3daa-409b-b6c4-7d81c7182650",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "healthPotionPickup": {
+      "__uuid__": "b1564752-035d-4989-aed0-2c0684d8a0e9",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "levelUp": {
+      "__uuid__": "4bf29238-2767-4178-a74a-3c2857685265",
       "__expectedType__": "cc.AudioClip"
     },
     "_id": "8fIp3RG7RDK6FMarL5A96h"
@@ -1373,7 +1397,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -320,
-      "y": 479.9999999999999,
+      "y": 480,
       "z": -1000
     },
     "_lrot": {
@@ -3000,7 +3024,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 479.99999999999994,
+    "_orthoHeight": 480,
     "_near": 0,
     "_far": 2000,
     "_color": {

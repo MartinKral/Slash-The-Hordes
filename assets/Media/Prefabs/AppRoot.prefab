@@ -243,9 +243,12 @@
     "__prefab": {
       "__id__": 9
     },
-    "_clip": null,
+    "_clip": {
+      "__uuid__": "0faecdcf-e5d6-4cc1-b3cf-3b2873f8ee62",
+      "__expectedType__": "cc.AudioClip"
+    },
     "_loop": true,
-    "_playOnAwake": false,
+    "_playOnAwake": true,
     "_volume": 1,
     "_id": ""
   },
