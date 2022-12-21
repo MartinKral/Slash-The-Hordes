@@ -4,7 +4,8 @@ import { roundToOneDecimal } from "../../../../Services/Utils/MathUtils";
 import { HaloLauncherSettings } from "../../../Data/GameSettings";
 import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
 import { IProjectileCollisionSignaler } from "../../../Projectile/IProjectileCollisionSignaler";
-import { ProjectileData, ProjectileLauncher } from "./ProjectileLauncher";
+import { ProjectileLauncher } from "./ProjectileLauncher";
+import { ProjectileData } from "./ProjectileData";
 import { GameTimer } from "../../../../Services/GameTimer";
 
 export class HaloProjectileLauncher implements IProjectileCollisionSignaler {

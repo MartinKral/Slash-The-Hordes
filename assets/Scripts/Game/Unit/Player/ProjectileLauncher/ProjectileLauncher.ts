@@ -107,8 +107,3 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
         this.projectileCollisionEvent.trigger(projectlieCollision);
     }
 }
-
-export class ProjectileData {
-    public pierces = 0;
-    public damage = 0;
-}

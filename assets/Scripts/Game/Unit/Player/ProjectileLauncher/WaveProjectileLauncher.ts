@@ -5,7 +5,8 @@ import { delay } from "../../../../Services/Utils/AsyncUtils";
 import { WaveLauncherSettings } from "../../../Data/GameSettings";
 import { IProjectileCollisionSignaler } from "../../../Projectile/IProjectileCollisionSignaler";
 import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
-import { ProjectileData, ProjectileLauncher } from "./ProjectileLauncher";
+import { ProjectileLauncher } from "./ProjectileLauncher";
+import { ProjectileData } from "./ProjectileData";
 
 export class WaveProjectileLauncher implements IProjectileCollisionSignaler {
     private currentUpgrade = 0;
