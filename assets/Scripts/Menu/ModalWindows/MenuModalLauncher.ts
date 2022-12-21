@@ -7,4 +7,8 @@ export class MenuModalLauncher {
     public async openUpgradesWindow(): Promise<void> {
         await this.modalWindowManager.showModal(MenuModalWindowTypes.Upgrades, {});
     }
+
+    public async openAudioSettingsWindow(): Promise<void> {
+        await this.modalWindowManager.showModal(MenuModalWindowTypes.AudioSettings, {});
+    }
 }

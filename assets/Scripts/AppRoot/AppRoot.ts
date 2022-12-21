@@ -1,6 +1,7 @@
 import { Component, director, JsonAsset, _decorator } from "cc";
 import { GameSettings } from "../Game/Data/GameSettings";
 import { TranslationData } from "../Game/Data/TranslationData";
+import { UserData } from "../Game/Data/UserData";
 import { AudioPlayer } from "../Services/AudioPlayer/AudioPlayer";
 import { SaveSystem } from "./SaveSystem";
 const { ccclass, property } = _decorator;
@@ -14,6 +15,8 @@ export class AppRoot extends Component {
     private static instance: AppRoot;
     private saveSystem: SaveSystem;
 
+    private liveUserData: UserData;
+
     public static get Instance(): AppRoot {
         return this.instance;
     }
@@ -22,8 +25,8 @@ export class AppRoot extends Component {
         return this.audio;
     }
 
-    public get SaveSystem(): SaveSystem {
-        return this.saveSystem;
+    public get LiveUserData(): UserData {
+        return this.liveUserData;
     }
 
     public get Settings(): GameSettings {
@@ -32,6 +35,10 @@ export class AppRoot extends Component {
 
     public get TranslationData(): TranslationData {
         return <TranslationData>this.engTranslationAsset.json;
+    }
+
+    public saveUserData(): void {
+        this.saveSystem.save(this.liveUserData);
     }
 
     public start(): void {
@@ -46,6 +53,8 @@ export class AppRoot extends Component {
 
     private init(): void {
         this.saveSystem = new SaveSystem();
-        this.audio.init(1, 1);
+        this.liveUserData = this.saveSystem.load();
+
+        this.audio.init(this.LiveUserData.soundVolume, this.LiveUserData.musicVolume);
     }
 }

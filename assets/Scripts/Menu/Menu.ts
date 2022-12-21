@@ -10,6 +10,7 @@ const { ccclass, property } = _decorator;
 export class Menu extends Component {
     @property(UIButton) private playBtn: UIButton;
     @property(UIButton) private upgradeBtn: UIButton;
+    @property(UIButton) private audioSettingsBtn: UIButton;
     @property(ModalWindowManager) private modalWindowManager: ModalWindowManager;
 
     private menuModalLauncher: MenuModalLauncher;
@@ -17,6 +18,7 @@ export class Menu extends Component {
     public async start(): Promise<void> {
         this.playBtn.InteractedEvent.on(this.startGame, this);
         this.upgradeBtn.InteractedEvent.on(this.openUpgradesWindow, this);
+        this.audioSettingsBtn.InteractedEvent.on(this.openAudioSettingsWindow, this);
 
         this.menuModalLauncher = new MenuModalLauncher(this.modalWindowManager);
     }
@@ -27,5 +29,9 @@ export class Menu extends Component {
 
     private openUpgradesWindow(): void {
         this.menuModalLauncher.openUpgradesWindow();
+    }
+
+    private openAudioSettingsWindow(): void {
+        this.menuModalLauncher.openAudioSettingsWindow();
     }
 }

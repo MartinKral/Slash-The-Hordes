@@ -23,7 +23,7 @@ export class GameRunner {
     public async playGame(): Promise<void> {
         this.isRunning = true;
         director.loadScene("Game");
-        const userData: UserData = AppRoot.Instance.SaveSystem.load();
+        const userData: UserData = AppRoot.Instance.LiveUserData;
         while (Game.Instance == null) await delay(10);
         const result: GameResult = await Game.Instance.playGame(userData, AppRoot.Instance.Settings, AppRoot.Instance.TranslationData);
         userData.game.goldCoins += result.goldCoins;
@@ -31,9 +31,7 @@ export class GameRunner {
         if (userData.game.highscore < result.score) {
             userData.game.highscore = result.score;
         }
-        AppRoot.Instance.SaveSystem.save(userData);
-
-        await delay(1000);
+        AppRoot.Instance.saveUserData();
         director.loadScene("Menu");
 
         this.isRunning = false;

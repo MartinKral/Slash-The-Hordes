@@ -1,5 +1,8 @@
+import { MenuModalWindowTypes } from "../../Menu/ModalWindows/MenuModalWindowTypes";
+import { Empty } from "../../Menu/ModalWindows/Upgrades/UpgradesModalWindow";
 import { ModalWindowManager } from "../../Services/ModalWindowSystem/ModalWindowManager";
 import { TranslationData } from "../Data/TranslationData";
+import { Game } from "../Game";
 import { Pauser } from "../Pauser";
 import { LevelUpModalWindowParams } from "../UI/LevelUpWindow/LevelUpModalWindow";
 import { Player } from "../Unit/Player/Player";
@@ -26,5 +29,16 @@ export class GameModalLauncher {
         );
         this.gamePauser.resume();
         this.upgrader.upgradeSkill(skillToUpgrade);
+    }
+
+    public async showPauseModal(): Promise<void> {
+        this.gamePauser.pause();
+        const shouldExit = await this.modalWindowManager.showModal<ModalWindowManager, boolean>(GameModalWindowTypes.Pause, this.modalWindowManager);
+
+        if (shouldExit) {
+            Game.Instance.exitGame();
+        } else {
+            this.gamePauser.resume();
+        }
     }
 }

@@ -32,6 +32,8 @@ const { ccclass, property } = _decorator;
 
 @ccclass("Game")
 export class Game extends Component {
+    private static instance: Game;
+
     @property(VirtualJoystic) private virtualJoystic: VirtualJoystic;
     @property(Player) private player: Player;
     @property(ProjectileLauncher) private haloProjectileLauncherComponent: ProjectileLauncher;
@@ -54,8 +56,8 @@ export class Game extends Component {
     private enemyProjectileLauncher: EnemyProjectileLauncher;
 
     private gamePauser: Pauser = new Pauser();
+    private gameResult: GameResult;
 
-    private static instance: Game;
     private timeAlive = 0;
 
     public static get Instance(): Game {
@@ -73,7 +75,7 @@ export class Game extends Component {
         translationData: TranslationData,
         testValues?: TestValues
     ): Promise<GameResult> {
-        const gameResult = new GameResult();
+        this.gameResult = new GameResult();
         const metaUpgrades = new MetaUpgrades(userData.game.metaUpgrades, settings.metaUpgrades);
 
         this.virtualJoystic.init();
@@ -84,7 +86,7 @@ export class Game extends Component {
 
         this.player.init(multiInput, this.createPlayerData(settings.player, metaUpgrades));
         this.enemyManager.init(this.player.node, settings.enemyManager);
-        this.itemManager.init(this.enemyManager, this.player, gameResult, settings.items);
+        this.itemManager.init(this.enemyManager, this.player, this.gameResult, settings.items);
 
         this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay, this.itemManager);
         new WeaponCollisionSystem(this.player.Weapon);
@@ -132,9 +134,9 @@ export class Game extends Component {
             this.diagonalProjectileLauncher,
             settings.upgrades
         );
-        new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader, translationData);
+        const modalLauncher = new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader, translationData);
 
-        this.gameUI.init(this.player);
+        this.gameUI.init(this.player, modalLauncher);
         this.background.init(this.player.node);
 
         if (testValues) {
@@ -145,11 +147,18 @@ export class Game extends Component {
         this.gameAudioAdapter.init(this.enemyManager);
         this.gamePauser.resume();
 
-        while (this.player.Health.IsAlive) await delay(100);
+        while (!this.gameResult.hasExitManually && this.player.Health.IsAlive) await delay(100);
+        if (!this.gameResult.hasExitManually) {
+            await delay(1000);
+        }
         this.gamePauser.pause();
         Game.instance = null;
-        gameResult.score = this.timeAlive;
-        return gameResult;
+        this.gameResult.score = this.timeAlive;
+        return this.gameResult;
+    }
+
+    public exitGame(): void {
+        this.gameResult.hasExitManually = true;
     }
 
     public update(deltaTime: number): void {
@@ -188,6 +197,7 @@ export class Game extends Component {
 }
 
 export class GameResult {
+    public hasExitManually = false;
     public goldCoins = 0;
     public score = 0;
 }

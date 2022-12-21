@@ -22,7 +22,7 @@ export class UpgradesModalWindow extends ModalWindow<Empty, Empty> {
     private userData: UserData;
 
     public setup(): void {
-        this.userData = AppRoot.Instance.SaveSystem.load();
+        this.userData = AppRoot.Instance.LiveUserData;
         const settings = AppRoot.Instance.Settings.metaUpgrades;
 
         this.createUpgradeButton(MetaUpgradeType.Health, settings.health, "healthLevel");
@@ -67,7 +67,7 @@ export class UpgradesModalWindow extends ModalWindow<Empty, Empty> {
         this.typeToUpgradeUI.get(upgradeType).updateLevel(level);
 
         this.goldCoinsLabel.string = this.userData.game.goldCoins.toString();
-        AppRoot.Instance.SaveSystem.save(this.userData);
+        AppRoot.Instance.saveUserData;
     }
 }
 

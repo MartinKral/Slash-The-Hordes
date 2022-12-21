@@ -14,7 +14,7 @@ export class LevelUpSkill extends Component {
     public init(skillType: UpgradeType, translationData: TranslationData): void {
         this.skillType = skillType;
         this.skillTitle.string = `${translationData[`${skillType}_TITLE`]}`;
-        this.node.on(NodeEventType.MOUSE_DOWN, this.chooseSkill, this);
+        this.node.on(NodeEventType.TOUCH_START, this.chooseSkill, this);
     }
 
     public get ChooseSkillEvent(): ISignal<UpgradeType> {

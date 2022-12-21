@@ -11,6 +11,14 @@ export class AudioPlayer extends Component {
         this.setMusicVolume(musicVolume);
     }
 
+    public get SoundVolume(): number {
+        return this.soundSource.volume;
+    }
+
+    public get MusicVolume(): number {
+        return this.musicSource.volume;
+    }
+
     public setSoundVolume(volume: number): void {
         this.soundSource.volume = volume;
     }

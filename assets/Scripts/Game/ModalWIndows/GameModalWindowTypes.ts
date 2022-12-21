@@ -1,3 +1,4 @@
 export enum GameModalWindowTypes {
-    LevelUp = "LevelUpModalWindow"
+    LevelUp = "LevelUpModalWindow",
+    Pause = "PauseModalWindow"
 }
