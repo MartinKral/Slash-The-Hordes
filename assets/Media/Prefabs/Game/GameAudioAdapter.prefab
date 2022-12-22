@@ -1,0 +1,133 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "GameAudioAdapter",
+    "_objFlags": 0,
+    "_native": "",
+    "data": {
+      "__id__": 1
+    },
+    "optimizationPolicy": 0,
+    "persistent": false,
+    "asyncLoadAssets": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "GameAudioAdapter",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "_parent": null,
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 2
+      }
+    ],
+    "_prefab": {
+      "__id__": 4
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": -319.99999999999994,
+      "y": -479.99999999999994,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "eb842QdTMFOUJEdwMiA7AJN",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 3
+    },
+    "music": {
+      "__uuid__": "0faecdcf-e5d6-4cc1-b3cf-3b2873f8ee62",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "enemyHit": {
+      "__uuid__": "efed223f-7b17-47ad-b265-7a951ace6d85",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "playerHit": {
+      "__uuid__": "99fb12ce-b248-4560-85fd-c1a61689adf2",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "playerDeath": {
+      "__uuid__": "68ebed5f-544b-4337-a49c-d4ba32e8e6a2",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "weaponSwing": {
+      "__uuid__": "5ad08e27-4461-464a-ad19-8c933abf5a5d",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "xpPickup": {
+      "__uuid__": "6af287fc-820f-4e12-8b8f-858a5dd41d2c",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "goldPickup": {
+      "__uuid__": "580b2ceb-3daa-409b-b6c4-7d81c7182650",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "healthPotionPickup": {
+      "__uuid__": "b1564752-035d-4989-aed0-2c0684d8a0e9",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "levelUp": {
+      "__uuid__": "4bf29238-2767-4178-a74a-3c2857685265",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "horizontalProjectileLaunch": {
+      "__uuid__": "36c577cb-8a85-40a7-9390-455863dfef8f",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "diagonalProjectileLaunch": {
+      "__uuid__": "adeff7ed-6f7e-471b-8790-d0eb14e048f9",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "haloProjectileLaunch": {
+      "__uuid__": "a7b634e1-7842-402c-a2a9-4007435c9a4a",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "b2ILEwH8JJmYiJlSWbxV6z"
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "62B+OqAzROoon1s4L/Ur4W"
+  }
+]
