@@ -348,6 +348,14 @@
       "__uuid__": "efed223f-7b17-47ad-b265-7a951ace6d85",
       "__expectedType__": "cc.AudioClip"
     },
+    "playerHit": {
+      "__uuid__": "99fb12ce-b248-4560-85fd-c1a61689adf2",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "playerDeath": {
+      "__uuid__": "68ebed5f-544b-4337-a49c-d4ba32e8e6a2",
+      "__expectedType__": "cc.AudioClip"
+    },
     "weaponSwing": {
       "__uuid__": "5ad08e27-4461-464a-ad19-8c933abf5a5d",
       "__expectedType__": "cc.AudioClip"

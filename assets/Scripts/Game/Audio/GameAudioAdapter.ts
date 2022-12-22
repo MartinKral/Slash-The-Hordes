@@ -11,6 +11,8 @@ const { ccclass, property } = _decorator;
 export class GameAudioAdapter extends Component {
     @property(AudioClip) private music: AudioClip;
     @property(AudioClip) private enemyHit: AudioClip;
+    @property(AudioClip) private playerHit: AudioClip;
+    @property(AudioClip) private playerDeath: AudioClip;
     @property(AudioClip) private weaponSwing: AudioClip;
     @property(AudioClip) private xpPickup: AudioClip;
     @property(AudioClip) private goldPickup: AudioClip;
@@ -18,14 +20,17 @@ export class GameAudioAdapter extends Component {
     @property(AudioClip) private levelUp: AudioClip;
 
     private audioPlayer: AudioPlayer;
+    private player: Player;
 
     public init(player: Player, enemyManager: EnemyManager, itemManager: ItemManager): void {
         AppRoot.Instance.AudioPlayer.playMusic(this.music);
 
         this.audioPlayer = AppRoot.Instance.AudioPlayer;
+        this.player = player;
 
         player.Weapon.WeaponStrikeEvent.on(() => this.audioPlayer.playSound(this.weaponSwing), this);
         player.Level.LevelUpEvent.on(() => this.audioPlayer.playSound(this.levelUp), this);
+        player.Health.HealthPointsChangeEvent.on(this.tryPlayPlayerHitSound, this);
 
         itemManager.PickupEvent.on(this.playPickupItemSound, this);
 
@@ -39,6 +44,16 @@ export class GameAudioAdapter extends Component {
 
     private removeEnemyListeners(enemy: Enemy): void {
         enemy.Health.HealthPointsChangeEvent.off(this.playEnemyHitSound);
+    }
+
+    private tryPlayPlayerHitSound(healthChange: number): void {
+        if (healthChange < 0) {
+            this.audioPlayer.playSound(this.playerHit);
+        }
+
+        if (!this.player.Health.IsAlive) {
+            this.audioPlayer.playSound(this.playerDeath);
+        }
     }
 
     private playEnemyHitSound(): void {
