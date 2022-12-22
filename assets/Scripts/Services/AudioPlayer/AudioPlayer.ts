@@ -32,6 +32,7 @@ export class AudioPlayer extends Component {
     }
 
     public playMusic(clip: AudioClip): void {
+        this.musicSource.stop();
         this.musicSource.clip = clip;
         this.musicSource.play();
     }

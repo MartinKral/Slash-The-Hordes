@@ -65,6 +65,7 @@ export class AppRoot extends Component {
         const gameAssetsNode = instantiate(this.gameAssetsPrefab);
         gameAssetsNode.setParent(this.node);
         this.gameAssets = gameAssetsNode.getComponent(GameAssets);
+        this.gameAssets.init();
 
         this.audio.init(this.LiveUserData.soundVolume, this.LiveUserData.musicVolume);
     }

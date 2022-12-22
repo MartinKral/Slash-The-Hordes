@@ -10,6 +10,11 @@ export class GameAssets extends Component {
     @property(MetaUpgradeIcons) private metaUpgradeIcons: MetaUpgradeIcons;
     @property(AudioAssets) private audioAssets: AudioAssets;
 
+    public init(): void {
+        this.upgradeIcons.init();
+        this.metaUpgradeIcons.init();
+    }
+
     public get UpgradeIcons(): UpgradeIcons {
         return this.upgradeIcons;
     }

@@ -1,4 +1,5 @@
-import { Component, instantiate, Label, Node, Prefab, _decorator } from "cc";
+import { Component, instantiate, Label, Node, Prefab, Sprite, _decorator } from "cc";
+import { AppRoot } from "../../../AppRoot/AppRoot";
 import { MetaUpgradeSettings } from "../../../Game/Data/GameSettings";
 import { TranslationData } from "../../../Game/Data/TranslationData";
 import { MetaUpgradeType } from "../../../Game/Upgrades/UpgradeType";
@@ -17,6 +18,7 @@ export class UpgradeUI extends Component {
     @property(Label) private description: Label;
     @property(Label) private cost: Label;
     @property(Label) private maxLevel: Label;
+    @property(Sprite) private icon: Sprite;
 
     @property(UIButton) private uiButton: UIButton;
 
@@ -33,6 +35,7 @@ export class UpgradeUI extends Component {
         this.upgradeSettings = upgradeSettings;
         this.translationData = translationData;
 
+        this.icon.spriteFrame = AppRoot.Instance.GameAssets.MetaUpgradeIcons.getIcon(upgradeType);
         this.title.string = `${translationData[`${upgradeType}_TITLE`]}`;
         this.uiButton.InteractedEvent.on(() => this.interactedEvent.trigger(upgradeType), this);
 
