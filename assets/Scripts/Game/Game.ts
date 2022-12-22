@@ -144,7 +144,14 @@ export class Game extends Component {
             this.player.Level.addXp(testValues.startXP);
         }
 
-        this.gameAudioAdapter.init(this.player, this.enemyManager, this.itemManager);
+        this.gameAudioAdapter.init(
+            this.player,
+            this.enemyManager,
+            this.itemManager,
+            this.horizontalProjectileLauncher,
+            this.diagonalProjectileLauncher,
+            this.haloProjectileLauncher
+        );
         this.gamePauser.resume();
 
         while (!this.gameResult.hasExitManually && this.player.Health.IsAlive) await delay(100);

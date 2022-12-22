@@ -1,14 +1,15 @@
 import { Node, Vec2 } from "cc";
+import { Empty } from "../../../../Menu/ModalWindows/Upgrades/UpgradesModalWindow";
 import { ISignal } from "../../../../Services/EventSystem/ISignal";
 import { GameTimer } from "../../../../Services/GameTimer";
 import { delay } from "../../../../Services/Utils/AsyncUtils";
 import { WaveLauncherSettings } from "../../../Data/GameSettings";
-import { IProjectileCollisionSignaler } from "../../../Projectile/IProjectileCollisionSignaler";
+import { IProjectileLauncherSignaler } from "../../../Projectile/IProjectileLauncherSignaler";
 import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
-import { ProjectileLauncher } from "./ProjectileLauncher";
 import { ProjectileData } from "./ProjectileData";
+import { ProjectileLauncher } from "./ProjectileLauncher";
 
-export class WaveProjectileLauncher implements IProjectileCollisionSignaler {
+export class WaveProjectileLauncher implements IProjectileLauncherSignaler {
     private currentUpgrade = 0;
     private wavesToShootPerUpgrade = 0;
     private fireTimer: GameTimer;
@@ -33,6 +34,10 @@ export class WaveProjectileLauncher implements IProjectileCollisionSignaler {
 
     public get ProjectileCollisionEvent(): ISignal<ProjectileCollision> {
         return this.launcher.ProjectileCollisionEvent;
+    }
+
+    public get ProjectileLaunchedEvent(): ISignal {
+        return this.launcher.ProjectileLaunchedEvent;
     }
 
     public gameTick(deltaTime: number): void {

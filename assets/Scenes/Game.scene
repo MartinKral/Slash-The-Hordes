@@ -196,7 +196,7 @@
     "_enabled": true,
     "__prefab": null,
     "startTime": 0,
-    "startXP": 0,
+    "startXP": 300,
     "maxHpLevel": 0,
     "bonusDamageLevel": 0,
     "projectilePiercingLevel": 0,
@@ -374,6 +374,18 @@
     },
     "levelUp": {
       "__uuid__": "4bf29238-2767-4178-a74a-3c2857685265",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "horizontalProjectileLaunch": {
+      "__uuid__": "36c577cb-8a85-40a7-9390-455863dfef8f",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "diagonalProjectileLaunch": {
+      "__uuid__": "adeff7ed-6f7e-471b-8790-d0eb14e048f9",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "haloProjectileLaunch": {
+      "__uuid__": "a7b634e1-7842-402c-a2a9-4007435c9a4a",
       "__expectedType__": "cc.AudioClip"
     },
     "_id": "8fIp3RG7RDK6FMarL5A96h"

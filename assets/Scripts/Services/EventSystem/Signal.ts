@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ISignal } from "./ISignal";
 
-export class Signal<T> implements ISignal<T> {
+export class Signal<T = void> implements ISignal<T> {
     private handlers: ((data: T) => void)[] = [];
     private thisArgs: any[] = [];
 

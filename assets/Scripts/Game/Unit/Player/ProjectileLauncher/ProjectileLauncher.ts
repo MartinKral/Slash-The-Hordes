@@ -1,17 +1,19 @@
 import { _decorator, Component, Prefab, Vec2, Vec3 } from "cc";
+import { Empty } from "../../../../Menu/ModalWindows/Upgrades/UpgradesModalWindow";
 import { ISignal } from "../../../../Services/EventSystem/ISignal";
 import { Signal } from "../../../../Services/EventSystem/Signal";
 import { ObjectPool } from "../../../../Services/ObjectPool";
 import { getDegreeAngleFromDirection } from "../../../../Services/Utils/MathUtils";
-import { IProjectileCollisionSignaler } from "../../../Projectile/IProjectileCollisionSignaler";
+import { IProjectileLauncherSignaler } from "../../../Projectile/IProjectileLauncherSignaler";
 import { Projectile } from "../../../Projectile/Projectile";
 import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
 const { ccclass, property } = _decorator;
 
 @ccclass("ProjectileLauncher")
-export class ProjectileLauncher extends Component implements IProjectileCollisionSignaler {
+export class ProjectileLauncher extends Component implements IProjectileLauncherSignaler {
     @property(Prefab) private projectilePrefab: Prefab;
-    private projectileCollisionEvent: Signal<ProjectileCollision> = new Signal<ProjectileCollision>();
+    private projectileCollisionEvent = new Signal<ProjectileCollision>();
+    private projectileLauncehdEvent = new Signal();
 
     private projectileDamage: number;
     private projectilePierces: number;
@@ -27,6 +29,10 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
 
     public get ProjectileCollisionEvent(): ISignal<ProjectileCollision> {
         return this.projectileCollisionEvent;
+    }
+
+    public get ProjectileLaunchedEvent(): ISignal {
+        return this.projectileLauncehdEvent;
     }
 
     public init(projectileLifetime: number, projectileSpeed: number, projectileDamage: number, projectilePierces: number): void {
@@ -62,6 +68,8 @@ export class ProjectileLauncher extends Component implements IProjectileCollisio
         this.projectiles.push(projectile);
         this.directions.push(direction);
         this.expireTimes.push(this.currentTime + this.projectileLifetime);
+
+        this.projectileLauncehdEvent.trigger({});
     }
 
     private tryRemoveExpiredProjectiles(): void {

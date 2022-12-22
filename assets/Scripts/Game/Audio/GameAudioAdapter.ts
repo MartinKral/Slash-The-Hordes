@@ -5,6 +5,8 @@ import { ItemManager, ItemType } from "../Items/ItemManager";
 import { Enemy } from "../Unit/Enemy/Enemy";
 import { EnemyManager } from "../Unit/Enemy/EnemyManager";
 import { Player } from "../Unit/Player/Player";
+import { HaloProjectileLauncher } from "../Unit/Player/ProjectileLauncher/HaloProjectileLauncher";
+import { WaveProjectileLauncher } from "../Unit/Player/ProjectileLauncher/WaveProjectileLauncher";
 const { ccclass, property } = _decorator;
 
 @ccclass("GameAudioAdapter")
@@ -18,11 +20,21 @@ export class GameAudioAdapter extends Component {
     @property(AudioClip) private goldPickup: AudioClip;
     @property(AudioClip) private healthPotionPickup: AudioClip;
     @property(AudioClip) private levelUp: AudioClip;
+    @property(AudioClip) private horizontalProjectileLaunch: AudioClip;
+    @property(AudioClip) private diagonalProjectileLaunch: AudioClip;
+    @property(AudioClip) private haloProjectileLaunch: AudioClip;
 
     private audioPlayer: AudioPlayer;
     private player: Player;
 
-    public init(player: Player, enemyManager: EnemyManager, itemManager: ItemManager): void {
+    public init(
+        player: Player,
+        enemyManager: EnemyManager,
+        itemManager: ItemManager,
+        horizontalLauncher: WaveProjectileLauncher,
+        diagonalLauncher: WaveProjectileLauncher,
+        haloLauncher: HaloProjectileLauncher
+    ): void {
         AppRoot.Instance.AudioPlayer.playMusic(this.music);
 
         this.audioPlayer = AppRoot.Instance.AudioPlayer;
@@ -32,10 +44,14 @@ export class GameAudioAdapter extends Component {
         player.Level.LevelUpEvent.on(() => this.audioPlayer.playSound(this.levelUp), this);
         player.Health.HealthPointsChangeEvent.on(this.tryPlayPlayerHitSound, this);
 
-        itemManager.PickupEvent.on(this.playPickupItemSound, this);
-
         enemyManager.EnemyAddedEvent.on(this.addEnemyListeners, this);
         enemyManager.EnemyRemovedEvent.on(this.removeEnemyListeners, this);
+
+        itemManager.PickupEvent.on(this.playPickupItemSound, this);
+
+        horizontalLauncher.ProjectileLaunchedEvent.on(() => this.audioPlayer.playSound(this.horizontalProjectileLaunch), this);
+        diagonalLauncher.ProjectileLaunchedEvent.on(() => this.audioPlayer.playSound(this.diagonalProjectileLaunch), this);
+        haloLauncher.ProjectileLaunchedEvent.on(() => this.audioPlayer.playSound(this.haloProjectileLaunch), this);
     }
 
     private addEnemyListeners(enemy: Enemy): void {

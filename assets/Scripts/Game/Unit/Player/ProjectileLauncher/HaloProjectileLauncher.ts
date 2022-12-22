@@ -3,12 +3,13 @@ import { ISignal } from "../../../../Services/EventSystem/ISignal";
 import { roundToOneDecimal } from "../../../../Services/Utils/MathUtils";
 import { HaloLauncherSettings } from "../../../Data/GameSettings";
 import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
-import { IProjectileCollisionSignaler } from "../../../Projectile/IProjectileCollisionSignaler";
+import { IProjectileLauncherSignaler } from "../../../Projectile/IProjectileLauncherSignaler";
 import { ProjectileLauncher } from "./ProjectileLauncher";
 import { ProjectileData } from "./ProjectileData";
 import { GameTimer } from "../../../../Services/GameTimer";
+import { Empty } from "../../../../Menu/ModalWindows/Upgrades/UpgradesModalWindow";
 
-export class HaloProjectileLauncher implements IProjectileCollisionSignaler {
+export class HaloProjectileLauncher implements IProjectileLauncherSignaler {
     private currentUpgrade = 0;
     private defaultCooldown = 0;
     private cooldownDivisorPerUpgrade = 0;
@@ -37,6 +38,10 @@ export class HaloProjectileLauncher implements IProjectileCollisionSignaler {
 
     public get ProjectileCollisionEvent(): ISignal<ProjectileCollision> {
         return this.launcher.ProjectileCollisionEvent;
+    }
+
+    public get ProjectileLaunchedEvent(): ISignal {
+        return this.launcher.ProjectileLaunchedEvent;
     }
 
     public gameTick(deltaTime: number): void {
