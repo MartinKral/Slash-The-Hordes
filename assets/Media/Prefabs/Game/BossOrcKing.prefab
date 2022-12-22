@@ -306,7 +306,10 @@
         "__expectedType__": "cc.AnimationClip"
       }
     ],
-    "_defaultClip": null,
+    "_defaultClip": {
+      "__uuid__": "f5f4561e-514f-48db-940f-d534eb6a4073",
+      "__expectedType__": "cc.AnimationClip"
+    },
     "_id": ""
   },
   {
