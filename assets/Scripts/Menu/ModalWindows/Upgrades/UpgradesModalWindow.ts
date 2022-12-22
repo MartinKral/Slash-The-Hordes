@@ -1,8 +1,8 @@
-import { instantiate, Label, Node, Prefab, TiledUserNodeData, _decorator } from "cc";
+import { AudioClip, instantiate, Label, Node, Prefab, _decorator } from "cc";
 import { AppRoot } from "../../../AppRoot/AppRoot";
 import { MetaUpgradeSettings } from "../../../Game/Data/GameSettings";
-import { UserData, GameData, MetaUpgradesData } from "../../../Game/Data/UserData";
-import { MetaUpgradeType, UpgradeType } from "../../../Game/Upgrades/UpgradeType";
+import { MetaUpgradesData, UserData } from "../../../Game/Data/UserData";
+import { MetaUpgradeType } from "../../../Game/Upgrades/UpgradeType";
 import { ModalWindow } from "../../../Services/ModalWindowSystem/ModalWindow";
 import { UpgradeUI } from "./UpgradeUI";
 
@@ -13,6 +13,7 @@ export class UpgradesModalWindow extends ModalWindow<Empty, Empty> {
     @property(Prefab) private upgradeButtonPrefab: Prefab;
     @property(Node) private upgradeButtonParent: Node;
     @property(Label) private goldCoinsLabel: Label;
+    @property(AudioClip) private upgradeAudioClip: AudioClip;
 
     private typeToLevel = new Map<MetaUpgradeType, number>();
     private typeToCosts = new Map<MetaUpgradeType, number[]>();
@@ -62,12 +63,15 @@ export class UpgradesModalWindow extends ModalWindow<Empty, Empty> {
         if (costs.length <= currentLevel) return; // already max level
         if (this.userData.game.goldCoins < costs[currentLevel]) return; // not enough gold
 
+        AppRoot.Instance.AudioPlayer.playSound(this.upgradeAudioClip);
+
         this.userData.game.goldCoins -= costs[currentLevel];
         const level = ++this.userData.game.metaUpgrades[this.typeToLevelKey.get(upgradeType)];
         this.typeToUpgradeUI.get(upgradeType).updateLevel(level);
+        this.typeToLevel.set(upgradeType, level);
 
         this.goldCoinsLabel.string = this.userData.game.goldCoins.toString();
-        AppRoot.Instance.saveUserData;
+        AppRoot.Instance.saveUserData();
     }
 }
 

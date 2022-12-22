@@ -1,6 +1,6 @@
 export class UserData {
-    public soundVolume = 0;
-    public musicVolume = 0;
+    public soundVolume = 1;
+    public musicVolume = 1;
     public game = new GameData();
 }
 
