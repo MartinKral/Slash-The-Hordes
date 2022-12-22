@@ -244,7 +244,7 @@
             {
                 "id": "BasicBoss",
                 "moveType": "Follow",
-                "graphicsType": "Shark",
+                "graphicsType": "BossStoneGolem",
                 "health": 8,
                 "damage": 2,
                 "speed": 65,
@@ -256,7 +256,7 @@
             {
                 "id": "StandardBoss",
                 "moveType": "Follow",
-                "graphicsType": "Shark",
+                "graphicsType": "BossOrcKing",
                 "health": 12,
                 "damage": 3,
                 "speed": 75,
