@@ -1,4 +1,4 @@
-import { Camera, Component, KeyCode, Vec2, _decorator } from "cc";
+import { Camera, Component, KeyCode, Prefab, Vec2, _decorator } from "cc";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
 import { delay } from "../Services/Utils/AsyncUtils";
 import { GameAudioAdapter } from "./Audio/GameAudioAdapter";

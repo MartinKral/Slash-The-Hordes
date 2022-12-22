@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "AppRoot",
+    "_name": "GameDataHolders",
     "_objFlags": 0,
     "_native": "",
     "data": {
@@ -13,13 +13,19 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "AppRoot",
+    "_name": "GameDataHolders",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
     "_children": [
       {
         "__id__": 2
+      },
+      {
+        "__id__": 6
+      },
+      {
+        "__id__": 10
       }
     ],
     "_active": true,
@@ -61,19 +67,204 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "AudioPlayer",
+    "_name": "UpgradeIcons",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
     },
-    "_children": [
+    "_children": [],
+    "_active": true,
+    "_components": [
       {
         "__id__": 3
-      },
+      }
+    ],
+    "_prefab": {
+      "__id__": 5
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "c397biITvtFvqyVIZApPuax",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 4
+    },
+    "weaponLengthSprite": {
+      "__uuid__": "1ed8c850-646c-4883-97ae-022e97a5e58e@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "weaponDamageSprite": {
+      "__uuid__": "1ed8c850-646c-4883-97ae-022e97a5e58e@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "horizontalProjectileSprite": {
+      "__uuid__": "1ed8c850-646c-4883-97ae-022e97a5e58e@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "diagonalProjectileSprite": {
+      "__uuid__": "1ed8c850-646c-4883-97ae-022e97a5e58e@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "haloProjectileSprite": {
+      "__uuid__": "1ed8c850-646c-4883-97ae-022e97a5e58e@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "regenerationSprite": {
+      "__uuid__": "1ed8c850-646c-4883-97ae-022e97a5e58e@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "f3eS2Q2HFOqLgQhIz8PIlB"
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "7cBfYduKBCEapID2zGvDHQ"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "MetaUpgradeIcons",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
       {
         "__id__": 7
       }
     ],
+    "_prefab": {
+      "__id__": 9
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "b18fbEgJGZOJ6w+6tEMaD+0",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 6
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 8
+    },
+    "healthSprite": {
+      "__uuid__": "9bebe8fc-7ccd-4376-a6ff-f9e471b40fcb@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "overallDamageSprite": {
+      "__uuid__": "9bebe8fc-7ccd-4376-a6ff-f9e471b40fcb@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "projectilePiercingSprite": {
+      "__uuid__": "9bebe8fc-7ccd-4376-a6ff-f9e471b40fcb@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "movementSpeedSprite": {
+      "__uuid__": "9bebe8fc-7ccd-4376-a6ff-f9e471b40fcb@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "xpGathererSprite": {
+      "__uuid__": "9bebe8fc-7ccd-4376-a6ff-f9e471b40fcb@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "goldGathererSprite": {
+      "__uuid__": "9bebe8fc-7ccd-4376-a6ff-f9e471b40fcb@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "12FTj8QgpB/baWHKKi+uDt"
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "42ec+03JlFxoiK/zgq1zKF"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "AudioAssets",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
     "_active": true,
     "_components": [
       {
@@ -112,182 +303,25 @@
     "_id": ""
   },
   {
-    "__type__": "cc.Node",
-    "_name": "SoundSource",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 2
-    },
-    "_children": [],
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 4
-      }
-    ],
-    "_prefab": {
-      "__id__": 6
-    },
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_layer": 1073741824,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.AudioSource",
+    "__type__": "20793WnayxKkrU5an4AntLg",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 3
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 5
-    },
-    "_clip": null,
-    "_loop": false,
-    "_playOnAwake": false,
-    "_volume": 1,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "77UXuJEIdANaHvlgcFuOrx"
-  },
-  {
-    "__type__": "cc.PrefabInfo",
-    "root": {
-      "__id__": 1
-    },
-    "asset": {
-      "__id__": 0
-    },
-    "fileId": "1aDYMPapRFMLNmIBbTyeB7"
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "MusicSource",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 2
-    },
-    "_children": [],
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 8
-      }
-    ],
-    "_prefab": {
       "__id__": 10
-    },
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_layer": 1073741824,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.AudioSource",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 7
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 9
-    },
-    "_clip": {
-      "__uuid__": "0faecdcf-e5d6-4cc1-b3cf-3b2873f8ee62",
-      "__expectedType__": "cc.AudioClip"
-    },
-    "_loop": true,
-    "_playOnAwake": true,
-    "_volume": 1,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "833YOi7/5NN4grS+PV/a6t"
-  },
-  {
-    "__type__": "cc.PrefabInfo",
-    "root": {
-      "__id__": 1
-    },
-    "asset": {
-      "__id__": 0
-    },
-    "fileId": "cafhYAziVHcLDM7ubrqoeN"
-  },
-  {
-    "__type__": "958e24+jRZMdr5ue2HNRuRM",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 2
     },
     "_enabled": true,
     "__prefab": {
       "__id__": 12
     },
-    "soundSource": {
-      "__id__": 4
-    },
-    "musicSource": {
-      "__id__": 8
+    "buttonClick": {
+      "__uuid__": "c7a46a75-446c-476a-a46e-31cf8c642110",
+      "__expectedType__": "cc.AudioClip"
     },
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "16TD0T+m1B6qqSPgiaqN/U"
+    "fileId": "e35iJ9jQpCcLdydHmLEqsM"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -297,10 +331,10 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "5eL70HILtD6oNB7UetCf7j"
+    "fileId": "eeUoX6uztPs4nvlhOIzEiy"
   },
   {
-    "__type__": "4943dSvt9FBvLizJ1HhFOzg",
+    "__type__": "564e96LsN1Hzbs2aO5hhzLF",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -310,26 +344,20 @@
     "__prefab": {
       "__id__": 15
     },
-    "audio": {
+    "upgradeIcons": {
+      "__id__": 3
+    },
+    "metaUpgradeIcons": {
+      "__id__": 7
+    },
+    "audioAssets": {
       "__id__": 11
-    },
-    "settingsAsset": {
-      "__uuid__": "4a156ee8-535e-4443-8bf5-8b979a08d232",
-      "__expectedType__": "cc.JsonAsset"
-    },
-    "engTranslationAsset": {
-      "__uuid__": "7d43843c-0765-427c-9161-2fd9030369c8",
-      "__expectedType__": "cc.JsonAsset"
-    },
-    "gameAssetsPrefab": {
-      "__uuid__": "bc8c3fb4-28d9-472e-aa3d-947f8a7fa037",
-      "__expectedType__": "cc.Prefab"
     },
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "27BpfekuJFg5U8UHM0svbc"
+    "fileId": "84blFlifdOJIZL6azwkZFU"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -339,6 +367,6 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "f6TS0IBq9EGpNVBB7WXcF6"
+    "fileId": "74y1g3YJBFk4JiTAPJBtA2"
   }
 ]

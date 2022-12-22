@@ -1,5 +1,6 @@
-import { Component, director, JsonAsset, _decorator } from "cc";
+import { Component, director, instantiate, JsonAsset, Prefab, _decorator } from "cc";
 import { GameSettings } from "../Game/Data/GameSettings";
+import { GameAssets } from "../Game/Data/Assets/GameAssets";
 import { TranslationData } from "../Game/Data/TranslationData";
 import { UserData } from "../Game/Data/UserData";
 import { AudioPlayer } from "../Services/AudioPlayer/AudioPlayer";
@@ -11,11 +12,13 @@ export class AppRoot extends Component {
     @property(AudioPlayer) private audio: AudioPlayer;
     @property(JsonAsset) private settingsAsset: JsonAsset;
     @property(JsonAsset) private engTranslationAsset: JsonAsset;
+    @property(Prefab) private gameAssetsPrefab: Prefab;
 
     private static instance: AppRoot;
     private saveSystem: SaveSystem;
 
     private liveUserData: UserData;
+    private gameAssets: GameAssets;
 
     public static get Instance(): AppRoot {
         return this.instance;
@@ -23,6 +26,10 @@ export class AppRoot extends Component {
 
     public get AudioPlayer(): AudioPlayer {
         return this.audio;
+    }
+
+    public get GameAssets(): GameAssets {
+        return this.gameAssets;
     }
 
     public get LiveUserData(): UserData {
@@ -54,6 +61,10 @@ export class AppRoot extends Component {
     private init(): void {
         this.saveSystem = new SaveSystem();
         this.liveUserData = this.saveSystem.load();
+
+        const gameAssetsNode = instantiate(this.gameAssetsPrefab);
+        gameAssetsNode.setParent(this.node);
+        this.gameAssets = gameAssetsNode.getComponent(GameAssets);
 
         this.audio.init(this.LiveUserData.soundVolume, this.LiveUserData.musicVolume);
     }
