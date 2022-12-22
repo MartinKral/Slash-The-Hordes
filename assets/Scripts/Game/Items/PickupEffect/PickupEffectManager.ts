@@ -21,6 +21,6 @@ export class PickupEffectManager extends Component {
 
         await delay(450);
 
-        this.effectPool.return(effect);
+        this.effectPool?.return(effect);
     }
 }
