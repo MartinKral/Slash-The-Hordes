@@ -34,17 +34,17 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 140
-      },
-      {
         "__id__": 142
       },
       {
         "__id__": 144
+      },
+      {
+        "__id__": 146
       }
     ],
     "_prefab": {
-      "__id__": 146
+      "__id__": 148
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -2917,10 +2917,13 @@
     "_components": [
       {
         "__id__": 137
+      },
+      {
+        "__id__": 139
       }
     ],
     "_prefab": {
-      "__id__": 139
+      "__id__": 141
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -2962,7 +2965,7 @@
       "__id__": 138
     },
     "tag": 0,
-    "_group": 1,
+    "_group": 512,
     "_density": 1,
     "_sensor": false,
     "_friction": 0.2,
@@ -2978,6 +2981,26 @@
   {
     "__type__": "cc.CompPrefabInfo",
     "fileId": "2cKwIyAIBAm5fq0pDIOT0e"
+  },
+  {
+    "__type__": "05a1dLKkINNEa04GJK8DVCC",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 136
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 140
+    },
+    "collider": {
+      "__id__": 137
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "a2ie0T3ptE8L/Z7WvEgRs1"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -2998,7 +3021,7 @@
     },
     "_enabled": false,
     "__prefab": {
-      "__id__": 141
+      "__id__": 143
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -3025,16 +3048,19 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 143
+      "__id__": 145
     },
     "collider": {
-      "__id__": 144
+      "__id__": 146
     },
     "playerUI": {
       "__id__": 37
     },
     "weapon": {
       "__id__": 133
+    },
+    "magnet": {
+      "__id__": 139
     },
     "playerGraphics": {
       "__id__": 2
@@ -3060,7 +3086,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 145
+      "__id__": 147
     },
     "tag": 0,
     "_group": 2,

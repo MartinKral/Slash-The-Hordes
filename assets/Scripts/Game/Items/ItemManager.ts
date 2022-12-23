@@ -80,7 +80,9 @@ export class ItemManager extends Component {
         this.player.Health.heal(this.healthPerPotion);
     }
 
-    private activateMagnet(): void {}
+    private activateMagnet(): void {
+        this.player.Magnet.activate();
+    }
 
     private giveRandomSkill(): void {}
 

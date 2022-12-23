@@ -14,6 +14,7 @@ export class PlayerSettings {
     public speed = 0;
     public regenerationDelay = 0;
     public collisionDelay = 0;
+    public magnetDuration = 0;
     public weapon: WeaponSettings = new WeaponSettings();
     public haloLauncher: HaloLauncherSettings = new HaloLauncherSettings();
     public horizontalLauncher: WaveLauncherSettings = new WaveLauncherSettings();

@@ -16,6 +16,7 @@
         "speed": 100,
         "regenerationDelay": 5,
         "collisionDelay": 0.5,
+        "magnetDuration": 5,
         "weapon": {
             "strikeDelay": 2,
             "damage": 2

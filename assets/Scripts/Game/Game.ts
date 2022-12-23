@@ -3,6 +3,7 @@ import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowMan
 import { delay } from "../Services/Utils/AsyncUtils";
 import { GameAudioAdapter } from "./Audio/GameAudioAdapter";
 import { Background } from "./Background/Background";
+import { MagnetCollisionSystem } from "./Collision/MagnetCollisionSystem";
 import { PlayerCollisionSystem } from "./Collision/PlayerCollisionSystem";
 import { PlayerProjectileCollisionSystem } from "./Collision/PlayerProjectileCollisionSystem";
 import { WeaponCollisionSystem } from "./Collision/WeaponCollisionSystem";
@@ -12,6 +13,7 @@ import { UserData } from "./Data/UserData";
 import { KeyboardInput } from "./Input/KeyboardInput";
 import { MultiInput } from "./Input/MultiInput";
 import { VirtualJoystic } from "./Input/VirtualJoystic";
+import { ItemAttractor } from "./Items/ItemAttractor";
 import { ItemManager } from "./Items/ItemManager";
 import { GameModalLauncher } from "./ModalWIndows/GameModalLauncher";
 import { Pauser } from "./Pauser";
@@ -54,6 +56,8 @@ export class Game extends Component {
     private diagonalProjectileLauncher: WaveProjectileLauncher;
 
     private enemyProjectileLauncher: EnemyProjectileLauncher;
+
+    private itemAttractor: ItemAttractor;
 
     private gamePauser: Pauser = new Pauser();
     private gameResult: GameResult;
@@ -127,6 +131,9 @@ export class Game extends Component {
 
         new PlayerProjectileCollisionSystem([this.haloProjectileLauncher, this.horizontalProjectileLauncher, this.diagonalProjectileLauncher]);
 
+        this.itemAttractor = new ItemAttractor(this.player.node, 100);
+        new MagnetCollisionSystem(this.player.Magnet, this.itemAttractor);
+
         const upgrader = new Upgrader(
             this.player,
             this.horizontalProjectileLauncher,
@@ -178,6 +185,7 @@ export class Game extends Component {
         this.horizontalProjectileLauncher.gameTick(deltaTime);
         this.diagonalProjectileLauncher.gameTick(deltaTime);
         this.enemyProjectileLauncher.gameTick(deltaTime);
+        this.itemAttractor.gameTick(deltaTime);
         this.background.gameTick();
 
         this.timeAlive += deltaTime;
@@ -198,6 +206,8 @@ export class Game extends Component {
 
         playerData.damage = metaUpgrades.getUpgradeValue(MetaUpgradeType.OverallDamage) + settings.weapon.damage;
         playerData.strikeDelay = settings.weapon.strikeDelay;
+
+        playerData.magnetDuration = settings.magnetDuration;
 
         return playerData;
     }

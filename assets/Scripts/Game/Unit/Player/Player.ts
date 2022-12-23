@@ -3,6 +3,7 @@ import { delay } from "../../../Services/Utils/AsyncUtils";
 import { IInput } from "../../Input/IInput";
 import { UnitHealth } from "../UnitHealth";
 import { UnitLevel } from "../UnitLevel";
+import { Magnet } from "./Magnet";
 import { PlayerRegeneration } from "./PlayerRegeneration";
 import { PlayerUI } from "./PlayerUI/PlayerUI";
 import { Weapon } from "./Weapon/Weapon";
@@ -14,6 +15,7 @@ export class Player extends Component {
     @property(BoxCollider2D) private collider: BoxCollider2D;
     @property(PlayerUI) private playerUI: PlayerUI;
     @property(Weapon) private weapon: Weapon;
+    @property(Magnet) private magnet: Magnet;
     @property(Node) private playerGraphics: Node;
     @property(Animation) private animation: Animation;
     @property(Sprite) private sprite: Sprite;
@@ -34,6 +36,7 @@ export class Player extends Component {
         this.speed = data.speed;
 
         this.weapon.init(data.strikeDelay, data.damage);
+        this.magnet.init(data.magnetDuration);
         this.health.HealthPointsChangeEvent.on(this.animateHpChange, this);
         this.playerUI.init(this.health);
     }
@@ -50,6 +53,10 @@ export class Player extends Component {
         return this.weapon;
     }
 
+    public get Magnet(): Magnet {
+        return this.magnet;
+    }
+
     public get Regeneration(): PlayerRegeneration {
         return this.regeneration;
     }
@@ -61,6 +68,7 @@ export class Player extends Component {
     public gameTick(deltaTime: number): void {
         this.move(deltaTime);
         this.weapon.gameTick(deltaTime);
+        this.magnet.gameTick(deltaTime);
         this.regeneration.gameTick(deltaTime);
     }
 
@@ -117,4 +125,7 @@ export class PlayerData {
     // Weapon
     public strikeDelay = 0;
     public damage = 0;
+
+    // Magnet
+    public magnetDuration = 0;
 }
