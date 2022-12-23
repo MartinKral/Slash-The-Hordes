@@ -98,6 +98,14 @@
       "__uuid__": "b1564752-035d-4989-aed0-2c0684d8a0e9",
       "__expectedType__": "cc.AudioClip"
     },
+    "magnetPickup": {
+      "__uuid__": "a26cfab9-1d95-4f99-83bf-297696072f6c",
+      "__expectedType__": "cc.AudioClip"
+    },
+    "chestPickup": {
+      "__uuid__": "a26cfab9-1d95-4f99-83bf-297696072f6c",
+      "__expectedType__": "cc.AudioClip"
+    },
     "levelUp": {
       "__uuid__": "4bf29238-2767-4178-a74a-3c2857685265",
       "__expectedType__": "cc.AudioClip"

@@ -20,6 +20,8 @@ export class GameAudioAdapter extends Component {
     @property(AudioClip) private xpPickup: AudioClip;
     @property(AudioClip) private goldPickup: AudioClip;
     @property(AudioClip) private healthPotionPickup: AudioClip;
+    @property(AudioClip) private magnetPickup: AudioClip;
+    @property(AudioClip) private chestPickup: AudioClip;
     @property(AudioClip) private levelUp: AudioClip;
     @property(AudioClip) private horizontalProjectileLaunch: AudioClip;
     @property(AudioClip) private diagonalProjectileLaunch: AudioClip;
@@ -88,6 +90,12 @@ export class GameAudioAdapter extends Component {
                 break;
             case ItemType.HealthPotion:
                 clipToPlay = this.healthPotionPickup;
+                break;
+            case ItemType.Magnet:
+                clipToPlay = this.magnetPickup;
+                break;
+            case ItemType.Chest:
+                clipToPlay = this.chestPickup;
                 break;
             default:
                 break;

@@ -49,6 +49,8 @@ export class ItemManager extends Component {
         this.itemTypeToAction.set(ItemType.XP, this.addXP.bind(this));
         this.itemTypeToAction.set(ItemType.Gold, this.addGold.bind(this));
         this.itemTypeToAction.set(ItemType.HealthPotion, this.useHealthPotion.bind(this));
+        this.itemTypeToAction.set(ItemType.Magnet, this.activateMagnet.bind(this));
+        this.itemTypeToAction.set(ItemType.Chest, this.giveRandomSkill.bind(this));
     }
 
     public get PickupEvent(): ISignal<ItemType> {
@@ -78,6 +80,10 @@ export class ItemManager extends Component {
         this.player.Health.heal(this.healthPerPotion);
     }
 
+    private activateMagnet(): void {}
+
+    private giveRandomSkill(): void {}
+
     private addEnemyListeners(enemy: Enemy): void {
         enemy.DeathEvent.on(this.trySpawnItems, this);
     }
@@ -89,7 +95,9 @@ export class ItemManager extends Component {
     private trySpawnItems(enemy: Enemy): void {
         this.trySpawnXP(enemy);
         this.trySpawnGold(enemy);
-        this.trySpawnHealthPotion(enemy);
+        ItemManager.trySpawnOnce(enemy.HealthPotionRewardChance, this.healthPotionSpawner, this.getRandomPosition(enemy));
+        ItemManager.trySpawnOnce(enemy.MagnetRewardChance, this.magnetSpawner, this.getRandomPosition(enemy));
+        ItemManager.trySpawnOnce(enemy.ChestRewardChance, this.chestSpawner, this.getRandomPosition(enemy));
     }
 
     private trySpawnXP(enemy: Enemy): void {
@@ -112,19 +120,16 @@ export class ItemManager extends Component {
         }
     }
 
-    private trySpawnHealthPotion(enemy: Enemy): void {
-        if (enemy.HealthPotionRewardChance <= 0) return;
-
-        console.log("random: " + random() + " chance " + enemy.HealthPotionRewardChance);
-        if (random() < enemy.HealthPotionRewardChance) {
-            this.healthPotionSpawner.spawn(enemy.node.worldPosition);
+    private static trySpawnOnce(chance: number, itemSpawner: ItemSpawner, worldPosition: Vec3): void {
+        if (random() < chance) {
+            itemSpawner.spawn(worldPosition);
         }
     }
 
     private getRandomPosition(enemy: Enemy): Vec3 {
         const position: Vec3 = enemy.node.worldPosition;
-        position.x += randomRange(-10, 10);
-        position.y += randomRange(-10, 10);
+        position.x += randomRange(-15, 15);
+        position.y += randomRange(-15, 15);
 
         return position;
     }

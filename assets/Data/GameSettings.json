@@ -155,7 +155,9 @@
                 "lifetime": -1,
                 "xpReward": 1,
                 "goldReward": 0,
-                "healthPotionRewardChance": 0.05
+                "healthPotionRewardChance": 0.05,
+                "magnetRewardChance": 0.5,
+                "chestRewardChance": 0.5
             },
             {
                 "id": "StandardEnemy",
@@ -167,7 +169,9 @@
                 "lifetime": -1,
                 "xpReward": 1,
                 "goldReward": 0.1,
-                "healthPotionRewardChance": 0
+                "healthPotionRewardChance": 0,
+                "magnetRewardChance": 0,
+                "chestRewardChance": 0
             },
             {
                 "id": "FastEnemy",
@@ -179,7 +183,9 @@
                 "lifetime": -1,
                 "xpReward": 1,
                 "goldReward": 0.1,
-                "healthPotionRewardChance": 0
+                "healthPotionRewardChance": 0,
+                "magnetRewardChance": 0,
+                "chestRewardChance": 0
             },
             {
                 "id": "CircleEnemy",
@@ -191,7 +197,9 @@
                 "lifetime": 29,
                 "xpReward": 1,
                 "goldReward": 1,
-                "healthPotionRewardChance": 0
+                "healthPotionRewardChance": 0,
+                "magnetRewardChance": 0,
+                "chestRewardChance": 0
             },
             {
                 "id": "CircleEnemyStandard",
@@ -203,7 +211,9 @@
                 "lifetime": 27,
                 "xpReward": 1,
                 "goldReward": 2,
-                "healthPotionRewardChance": 0
+                "healthPotionRewardChance": 0,
+                "magnetRewardChance": 0,
+                "chestRewardChance": 0
             },
             {
                 "id": "WaveEnemy",
@@ -215,7 +225,9 @@
                 "lifetime": 20,
                 "xpReward": 1,
                 "goldReward": 0.2,
-                "healthPotionRewardChance": 0
+                "healthPotionRewardChance": 0,
+                "magnetRewardChance": 0,
+                "chestRewardChance": 0
             },
             {
                 "id": "WaveEnemyArmor",
@@ -227,7 +239,9 @@
                 "lifetime": 30,
                 "xpReward": 1,
                 "goldReward": 1,
-                "healthPotionRewardChance": 0
+                "healthPotionRewardChance": 0,
+                "magnetRewardChance": 0,
+                "chestRewardChance": 0
             },
             {
                 "id": "WaveEnemyArmorFast",
@@ -239,7 +253,9 @@
                 "lifetime": 30,
                 "xpReward": 1,
                 "goldReward": 1,
-                "healthPotionRewardChance": 0
+                "healthPotionRewardChance": 0,
+                "magnetRewardChance": 0,
+                "chestRewardChance": 0
             },
             {
                 "id": "BasicBoss",
@@ -251,7 +267,9 @@
                 "lifetime": -1,
                 "xpReward": 1,
                 "goldReward": 3,
-                "healthPotionRewardChance": 0
+                "healthPotionRewardChance": 0,
+                "magnetRewardChance": 0,
+                "chestRewardChance": 0
             },
             {
                 "id": "StandardBoss",
@@ -263,7 +281,9 @@
                 "lifetime": -1,
                 "xpReward": 2,
                 "goldReward": 5,
-                "healthPotionRewardChance": 0
+                "healthPotionRewardChance": 0,
+                "magnetRewardChance": 0,
+                "chestRewardChance": 0
             },
             {
                 "id": "BasicCheetah",
@@ -275,7 +295,9 @@
                 "lifetime": -1,
                 "xpReward": 1,
                 "goldReward": 1,
-                "healthPotionRewardChance": 0
+                "healthPotionRewardChance": 0,
+                "magnetRewardChance": 0,
+                "chestRewardChance": 0
             }
         ],
         "periodicFollowMovers": [

@@ -127,6 +127,8 @@ export class EnemySettings {
     public xpReward = 0;
     public goldReward = 0;
     public healthPotionRewardChance = 0;
+    public magnetRewardChance = 0;
+    public chestRewardChance = 0;
 }
 
 export class ItemSettings {

@@ -29,6 +29,8 @@ export class Enemy extends Component {
     private xpReward: number;
     private goldReward: number;
     private healthPotionRewardChance: number;
+    private magnetRewardChance: number;
+    private chestRewardChance: number;
 
     private endOfLifetimeTriggered = false;
 
@@ -44,6 +46,8 @@ export class Enemy extends Component {
         this.xpReward = settings.xpReward;
         this.goldReward = settings.goldReward;
         this.healthPotionRewardChance = settings.healthPotionRewardChance;
+        this.magnetRewardChance = settings.magnetRewardChance;
+        this.chestRewardChance = settings.chestRewardChance;
 
         this.node.setWorldPosition(position);
         this.node.active = true;
@@ -86,6 +90,14 @@ export class Enemy extends Component {
 
     public get HealthPotionRewardChance(): number {
         return this.healthPotionRewardChance;
+    }
+
+    public get MagnetRewardChance(): number {
+        return this.magnetRewardChance;
+    }
+
+    public get ChestRewardChance(): number {
+        return this.chestRewardChance;
     }
 
     public get LifetimeEndedEvent(): ISignal<Enemy> {
