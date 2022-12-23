@@ -430,34 +430,6 @@
     "fileId": "2eO+M9deJI1KYyU2Otv4xD"
   },
   {
-    "__type__": "f7ac68qK+pC7LXQWJdgAYVs",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 21
-    },
-    "animation": {
-      "__id__": 15
-    },
-    "testField": "",
-    "skillPrefab": {
-      "__uuid__": "5dccf426-aeb0-4b4e-9e1c-ae9fd74dcf7a",
-      "__expectedType__": "cc.Prefab"
-    },
-    "skillParent": {
-      "__id__": 9
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "2f6poVi1pJKJ3WzVB7L/Nq"
-  },
-  {
     "__type__": "cc.Widget",
     "_name": "",
     "_objFlags": 0,
@@ -467,7 +439,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 23
+      "__id__": 21
     },
     "_alignFlags": 45,
     "_target": null,
@@ -494,6 +466,35 @@
     "fileId": "67Ws0zREFMYKNYvOHw9C0b"
   },
   {
+    "__type__": "f7ac68qK+pC7LXQWJdgAYVs",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 23
+    },
+    "animation": {
+      "__id__": 15
+    },
+    "closeButton": null,
+    "backgroundCloseButton": null,
+    "skillPrefab": {
+      "__uuid__": "5dccf426-aeb0-4b4e-9e1c-ae9fd74dcf7a",
+      "__expectedType__": "cc.Prefab"
+    },
+    "skillParent": {
+      "__id__": 9
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "00cUXISL9FB7Ezx2pI9k4V"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
@@ -502,31 +503,6 @@
       "__id__": 0
     },
     "fileId": "32U/bJCUBDlaQxxGFNXZTu",
-    "targetOverrides": [
-      {
-        "__id__": 25
-      }
-    ]
-  },
-  {
-    "__type__": "cc.TargetOverrideInfo",
-    "source": {
-      "__id__": 20
-    },
-    "sourceInfo": null,
-    "propertyPath": [
-      "skills",
-      "2"
-    ],
-    "target": null,
-    "targetInfo": {
-      "__id__": 26
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "8fXLBTR/JKgZXZPA29Dci3"
-    ]
+    "targetOverrides": []
   }
 ]

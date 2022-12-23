@@ -15,7 +15,7 @@
       },
       {
         "index": 4,
-        "name": "XP"
+        "name": "ITEM"
       },
       {
         "index": 5,
@@ -26,12 +26,8 @@
         "name": "ENEMY_PROJECTILE"
       },
       {
-        "index": 7,
-        "name": "GOLD"
-      },
-      {
-        "index": 8,
-        "name": "HEALTH_POTION"
+        "index": 9,
+        "name": "MAGNET_RANGE"
       }
     ],
     "collisionMatrix": {
@@ -43,7 +39,8 @@
       "5": 4,
       "6": 2,
       "7": 2,
-      "8": 2
+      "8": 2,
+      "9": 0
     }
   },
   "general": {

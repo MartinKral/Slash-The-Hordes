@@ -348,7 +348,7 @@
       "__id__": 17
     },
     "tag": 0,
-    "_group": 128,
+    "_group": 16,
     "_density": 1,
     "_sensor": false,
     "_friction": 0.2,
@@ -370,7 +370,7 @@
     "fileId": "67joCa7ptP34A+uWLWHsEf"
   },
   {
-    "__type__": "41f67AOEYRMTLXwNf7CG9iO",
+    "__type__": "724bauqfhVH0YWsXug16uHL",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -380,11 +380,12 @@
     "__prefab": {
       "__id__": 19
     },
+    "itemType": 1,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "08V7VtIFBG1bgEhFLO5GoU"
+    "fileId": "9eg+N94AJL7qX1hwDoulo4"
   },
   {
     "__type__": "cc.PrefabInfo",

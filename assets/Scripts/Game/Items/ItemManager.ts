@@ -6,20 +6,20 @@ import { GameResult } from "../Game";
 import { Enemy } from "../Unit/Enemy/Enemy";
 import { EnemyManager } from "../Unit/Enemy/EnemyManager";
 import { Player } from "../Unit/Player/Player";
-import { Gold } from "./Gold/Gold";
-import { GoldSpawner } from "./Gold/GoldSpawner";
-import { HealthPotion } from "./HealthPotion/HealthPotion";
-import { HealthPotionSpawner } from "./HealthPotion/HealthPotionSpawner";
+import { Item } from "./Item";
+import { ItemSpawner } from "./ItemSpawner";
+import { ItemType } from "./ItemType";
 import { PickupEffectManager } from "./PickupEffect/PickupEffectManager";
-import { XP } from "./XP/XP";
-import { XPSpawner } from "./XP/XPSpawner";
+
 const { ccclass, property } = _decorator;
 
 @ccclass("ItemManager")
 export class ItemManager extends Component {
-    @property(XPSpawner) private xpSpawner: XPSpawner;
-    @property(GoldSpawner) private goldSpawner: GoldSpawner;
-    @property(HealthPotionSpawner) private healthPotionSpawner: HealthPotionSpawner;
+    @property(ItemSpawner) private xpSpawner: ItemSpawner;
+    @property(ItemSpawner) private goldSpawner: ItemSpawner;
+    @property(ItemSpawner) private healthPotionSpawner: ItemSpawner;
+    @property(ItemSpawner) private magnetSpawner: ItemSpawner;
+    @property(ItemSpawner) private chestSpawner: ItemSpawner;
     @property(PickupEffectManager) private pickupEffectManager: PickupEffectManager;
 
     private player: Player;
@@ -27,6 +27,8 @@ export class ItemManager extends Component {
     private healthPerPotion: number;
 
     private pickupEvent = new Signal<ItemType>();
+
+    private itemTypeToAction = new Map<ItemType, () => void>();
 
     public init(enemyManager: EnemyManager, player: Player, gameResult: GameResult, settings: ItemSettings): void {
         this.player = player;
@@ -39,34 +41,40 @@ export class ItemManager extends Component {
         this.xpSpawner.init();
         this.goldSpawner.init();
         this.healthPotionSpawner.init();
+        this.magnetSpawner.init();
+        this.chestSpawner.init();
+
         this.pickupEffectManager.init();
+
+        this.itemTypeToAction.set(ItemType.XP, this.addXP.bind(this));
+        this.itemTypeToAction.set(ItemType.Gold, this.addGold.bind(this));
+        this.itemTypeToAction.set(ItemType.HealthPotion, this.useHealthPotion.bind(this));
     }
 
     public get PickupEvent(): ISignal<ItemType> {
         return this.pickupEvent;
     }
 
-    public pickupXP(xp: XP): void {
-        this.pickupEffectManager.showEffect(xp.node.worldPosition);
-        this.pickupEvent.trigger(ItemType.XP);
+    public pickupItem(item: Item): void {
+        if (!this.itemTypeToAction.has(item.ItemType)) throw new Error("Does not have behaviour set for " + item.ItemType);
 
-        this.player.Level.addXp(xp.Value);
-        xp.pickup();
+        this.pickupEffectManager.showEffect(item.node.worldPosition);
+        this.pickupEvent.trigger(item.ItemType);
+
+        this.itemTypeToAction.get(item.ItemType)();
+
+        item.pickup();
     }
 
-    public pickupGold(gold: Gold): void {
-        this.pickupEffectManager.showEffect(gold.node.worldPosition);
-        this.pickupEvent.trigger(ItemType.Gold);
+    private addXP(): void {
+        this.player.Level.addXp(1);
+    }
 
-        gold.pickup();
+    private addGold(): void {
         this.gameResult.goldCoins++;
     }
 
-    public pickupHealthPotion(healthPotion: HealthPotion): void {
-        this.pickupEffectManager.showEffect(healthPotion.node.worldPosition);
-        this.pickupEvent.trigger(ItemType.HealthPotion);
-
-        healthPotion.pickup();
+    private useHealthPotion(): void {
         this.player.Health.heal(this.healthPerPotion);
     }
 
@@ -86,7 +94,7 @@ export class ItemManager extends Component {
 
     private trySpawnXP(enemy: Enemy): void {
         for (let index = 0; index < enemy.XPReward; index++) {
-            this.xpSpawner.spawnXp(this.getRandomPosition(enemy), 1);
+            this.xpSpawner.spawn(this.getRandomPosition(enemy));
         }
     }
 
@@ -120,10 +128,4 @@ export class ItemManager extends Component {
 
         return position;
     }
-}
-
-export enum ItemType {
-    XP,
-    Gold,
-    HealthPotion
 }

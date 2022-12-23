@@ -3,10 +3,8 @@ import { ISignal } from "../../Services/EventSystem/ISignal";
 import { Signal } from "../../Services/EventSystem/Signal";
 import { GameTimer } from "../../Services/GameTimer";
 import { GroupType } from "../GroupType";
-import { Gold } from "../Items/Gold/Gold";
-import { HealthPotion } from "../Items/HealthPotion/HealthPotion";
+import { Item } from "../Items/Item";
 import { ItemManager } from "../Items/ItemManager";
-import { XP } from "../Items/XP/XP";
 import { Projectile } from "../Projectile/Projectile";
 import { Enemy } from "../Unit/Enemy/Enemy";
 import { Player } from "../Unit/Player/Player";
@@ -29,9 +27,7 @@ export class PlayerCollisionSystem {
 
         this.groupToResolver.set(GroupType.ENEMY, this.resolveEnemyContact.bind(this));
         this.groupToResolver.set(GroupType.ENEMY_PROJECTILE, this.resolveEnemyProjectileContact.bind(this));
-        this.groupToResolver.set(GroupType.XP, this.resolveXpContact.bind(this));
-        this.groupToResolver.set(GroupType.GOLD, this.resolveGoldContact.bind(this));
-        this.groupToResolver.set(GroupType.HEALTH_POTION, this.resolveHealthPotionContact.bind(this));
+        this.groupToResolver.set(GroupType.ITEM, this.resolveItemContact.bind(this));
     }
 
     public gameTick(deltaTime: number): void {
@@ -86,16 +82,8 @@ export class PlayerCollisionSystem {
         this.player.Health.damage(damage);
     }
 
-    private resolveXpContact(xpCollider: Collider2D): void {
-        console.log("Collided with XP");
-        this.itemManager.pickupXP(xpCollider.node.getComponent(XP));
-    }
-
-    private resolveGoldContact(goldCollider: Collider2D): void {
-        this.itemManager.pickupGold(goldCollider.node.getComponent(Gold));
-    }
-
-    private resolveHealthPotionContact(healthPotionCollider: Collider2D): void {
-        this.itemManager.pickupHealthPotion(healthPotionCollider.node.getComponent(HealthPotion));
+    private resolveItemContact(xpCollider: Collider2D): void {
+        console.log("Collided with item");
+        this.itemManager.pickupItem(xpCollider.node.getComponent(Item));
     }
 }

@@ -26,22 +26,25 @@
       },
       {
         "__id__": 40
+      },
+      {
+        "__id__": 136
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 136
-      },
-      {
-        "__id__": 138
-      },
-      {
         "__id__": 140
+      },
+      {
+        "__id__": 142
+      },
+      {
+        "__id__": 144
       }
     ],
     "_prefab": {
-      "__id__": 142
+      "__id__": 146
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -2903,6 +2906,90 @@
     "fileId": "c6aL8FlztEHJ6sRFCXQnge"
   },
   {
+    "__type__": "cc.Node",
+    "_name": "Magnet",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 137
+      }
+    ],
+    "_prefab": {
+      "__id__": 139
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CircleCollider2D",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 136
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 138
+    },
+    "tag": 0,
+    "_group": 1,
+    "_density": 1,
+    "_sensor": false,
+    "_friction": 0.2,
+    "_restitution": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_radius": 260,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "2cKwIyAIBAm5fq0pDIOT0e"
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "aec1+SeS9G0b8TjOixk1ws"
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
@@ -2911,7 +2998,7 @@
     },
     "_enabled": false,
     "__prefab": {
-      "__id__": 137
+      "__id__": 141
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -2938,10 +3025,10 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 139
+      "__id__": 143
     },
     "collider": {
-      "__id__": 140
+      "__id__": 144
     },
     "playerUI": {
       "__id__": 37
@@ -2973,7 +3060,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 141
+      "__id__": 145
     },
     "tag": 0,
     "_group": 2,

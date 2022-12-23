@@ -1,7 +1,8 @@
 import { _decorator, Component, Node, AudioClip } from "cc";
 import { AppRoot } from "../../AppRoot/AppRoot";
 import { AudioPlayer } from "../../Services/AudioPlayer/AudioPlayer";
-import { ItemManager, ItemType } from "../Items/ItemManager";
+import { ItemManager } from "../Items/ItemManager";
+import { ItemType } from "../Items/ItemType";
 import { Enemy } from "../Unit/Enemy/Enemy";
 import { EnemyManager } from "../Unit/Enemy/EnemyManager";
 import { Player } from "../Unit/Player/Player";
