@@ -122,27 +122,27 @@
       "__id__": 4
     },
     "weaponLengthSprite": {
-      "__uuid__": "b017bce9-7fe6-493f-ab49-00e7437ea9f4@f9941",
+      "__uuid__": "0a20c0cb-ee23-4246-93da-97119344704c@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "weaponDamageSprite": {
-      "__uuid__": "45fab733-6761-4a5d-841b-6250eef6c7ce@f9941",
+      "__uuid__": "3ffbc566-7fce-49b3-bf29-23b16d145771@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "horizontalProjectileSprite": {
-      "__uuid__": "f9df62cd-f950-4d93-9068-1ca5d7c686d8@f9941",
+      "__uuid__": "3e05fc75-7045-420a-a0f7-d8637e82d1d8@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "diagonalProjectileSprite": {
-      "__uuid__": "d774cdba-847d-4c90-85c1-ff924a316912@f9941",
+      "__uuid__": "1cbec3b6-021c-4d42-b0ad-3674afaeacb2@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "haloProjectileSprite": {
-      "__uuid__": "d774cdba-847d-4c90-85c1-ff924a316912@f9941",
+      "__uuid__": "c6411100-460a-4d59-86af-b8e605af9bf8@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "regenerationSprite": {
-      "__uuid__": "c3becb65-4bc9-4fc6-a284-fa99d2580995@f9941",
+      "__uuid__": "44ededde-1391-431d-8ef6-b6bc568ed530@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": ""
@@ -218,27 +218,27 @@
       "__id__": 8
     },
     "healthSprite": {
-      "__uuid__": "b017bce9-7fe6-493f-ab49-00e7437ea9f4@f9941",
+      "__uuid__": "57772561-adbc-4901-916b-cf37dee2a974@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "overallDamageSprite": {
-      "__uuid__": "45fab733-6761-4a5d-841b-6250eef6c7ce@f9941",
+      "__uuid__": "f3c44489-5362-4cb4-b93c-3d410b82f41b@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "projectilePiercingSprite": {
-      "__uuid__": "d774cdba-847d-4c90-85c1-ff924a316912@f9941",
+      "__uuid__": "f32826b8-ca19-4f99-9ee2-99a18ace7326@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "movementSpeedSprite": {
-      "__uuid__": "c3becb65-4bc9-4fc6-a284-fa99d2580995@f9941",
+      "__uuid__": "e8af1ce2-ae4b-463d-bec4-6a7431e9e2b1@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "xpGathererSprite": {
-      "__uuid__": "d774cdba-847d-4c90-85c1-ff924a316912@f9941",
+      "__uuid__": "d9da770f-92eb-4ec5-8510-b207bc7b36af@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "goldGathererSprite": {
-      "__uuid__": "d774cdba-847d-4c90-85c1-ff924a316912@f9941",
+      "__uuid__": "10f20a6c-e745-4b3a-884a-8ee945d1086c@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_id": ""

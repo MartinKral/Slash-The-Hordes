@@ -2,7 +2,7 @@
   "ver": "1.0.25",
   "importer": "image",
   "imported": true,
-  "uuid": "44ededde-1391-431d-8ef6-b6bc568ed530",
+  "uuid": "1242574c-fc1d-431a-8608-0bdaaf5b5abe",
   "files": [
     ".json",
     ".png"
@@ -10,8 +10,8 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "44ededde-1391-431d-8ef6-b6bc568ed530@6c48a",
-      "displayName": "Regeneration",
+      "uuid": "1242574c-fc1d-431a-8608-0bdaaf5b5abe@6c48a",
+      "displayName": "ThrowAxe",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "44ededde-1391-431d-8ef6-b6bc568ed530",
+        "imageUuidOrDatabaseUri": "1242574c-fc1d-431a-8608-0bdaaf5b5abe",
         "visible": false
       },
       "ver": "1.0.22",
@@ -34,8 +34,8 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "44ededde-1391-431d-8ef6-b6bc568ed530@f9941",
-      "displayName": "Regeneration",
+      "uuid": "1242574c-fc1d-431a-8608-0bdaaf5b5abe@f9941",
+      "displayName": "ThrowAxe",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
@@ -114,7 +114,7 @@
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "44ededde-1391-431d-8ef6-b6bc568ed530@6c48a",
+        "imageUuidOrDatabaseUri": "1242574c-fc1d-431a-8608-0bdaaf5b5abe@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.11",
@@ -129,6 +129,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "44ededde-1391-431d-8ef6-b6bc568ed530@f9941"
+    "redirect": "1242574c-fc1d-431a-8608-0bdaaf5b5abe@f9941"
   }
 }
