@@ -2,7 +2,7 @@
   "ver": "1.0.25",
   "importer": "image",
   "imported": true,
-  "uuid": "44ededde-1391-431d-8ef6-b6bc568ed530",
+  "uuid": "57772561-adbc-4901-916b-cf37dee2a974",
   "files": [
     ".json",
     ".png"
@@ -10,8 +10,8 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "44ededde-1391-431d-8ef6-b6bc568ed530@6c48a",
-      "displayName": "Regeneration",
+      "uuid": "57772561-adbc-4901-916b-cf37dee2a974@6c48a",
+      "displayName": "Health",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "44ededde-1391-431d-8ef6-b6bc568ed530",
+        "imageUuidOrDatabaseUri": "57772561-adbc-4901-916b-cf37dee2a974",
         "visible": false
       },
       "ver": "1.0.22",
@@ -34,8 +34,8 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "44ededde-1391-431d-8ef6-b6bc568ed530@f9941",
-      "displayName": "Regeneration",
+      "uuid": "57772561-adbc-4901-916b-cf37dee2a974@f9941",
+      "displayName": "Health",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
@@ -114,7 +114,7 @@
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "44ededde-1391-431d-8ef6-b6bc568ed530@6c48a",
+        "imageUuidOrDatabaseUri": "57772561-adbc-4901-916b-cf37dee2a974@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.11",
@@ -129,6 +129,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "44ededde-1391-431d-8ef6-b6bc568ed530@f9941"
+    "redirect": "57772561-adbc-4901-916b-cf37dee2a974@f9941"
   }
 }
