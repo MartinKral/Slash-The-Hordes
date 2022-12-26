@@ -31,7 +31,7 @@
       }
     },
     "_channel": {
-      "__id__": 4
+      "__id__": 5
     }
   },
   {
@@ -40,8 +40,15 @@
       {
         "__id__": 3
       },
+      {
+        "__id__": 4
+      },
       "spriteFrame"
     ]
+  },
+  {
+    "__type__": "cc.animation.HierarchyPath",
+    "path": "Graphics"
   },
   {
     "__type__": "cc.animation.ComponentPath",
@@ -50,7 +57,7 @@
   {
     "__type__": "cc.animation.Channel",
     "_curve": {
-      "__id__": 5
+      "__id__": 6
     }
   },
   {
@@ -64,23 +71,23 @@
     ],
     "_values": [
       {
-        "__uuid__": "3d470257-0eba-4a39-8504-5420e4e28ca8@f9941",
+        "__uuid__": "13ab4ee6-598f-4e64-bb35-fa05b31a39a2@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "a90012ec-a814-40d9-b762-783f28a178f9@f9941",
+        "__uuid__": "f493103e-8d7a-4cc1-852c-88166f9e574a@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "95e93202-1072-40a8-ae22-3e5ee3678956@f9941",
+        "__uuid__": "43fcced8-dc7a-4707-9309-8314a61106b2@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "b30d5701-543f-4f35-a6f8-bc94f6af437f@f9941",
+        "__uuid__": "2d411019-c224-4fc9-8f0d-bbba22e2e918@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "b30d5701-543f-4f35-a6f8-bc94f6af437f@f9941",
+        "__uuid__": "2d411019-c224-4fc9-8f0d-bbba22e2e918@f9941",
         "__expectedType__": "cc.SpriteFrame"
       }
     ]
