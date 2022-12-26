@@ -77,7 +77,8 @@ export class MetaUpgradeSettings {
 }
 
 export class EnemyManagerSettings {
-    public projectileLauncher1 = new EnemyLauncherSettings();
+    public axeLauncher = new EnemyLauncherSettings();
+    public magicOrbLauncher = new EnemyLauncherSettings();
     public enemies: EnemySettings[] = [new EnemySettings()];
     public periodicFollowMovers: PeriodicFollowMoverSettings[] = [new PeriodicFollowMoverSettings()];
     public individualEnemySpawners: IndividualEnemySpawnerSettings[] = [new IndividualEnemySpawnerSettings()];

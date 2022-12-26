@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "DarkRavenProjectile",
+    "_name": "AxeProjectile",
     "_objFlags": 0,
     "_native": "",
     "data": {
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "DarkRavenProjectile",
+    "_name": "AxeProjectile",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -129,8 +129,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 10,
-      "height": 10
+      "width": 13,
+      "height": 12
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -165,7 +165,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "df98c917-8411-4d1d-bf93-d925d82d95c2@f9941",
+      "__uuid__": "578c22c1-1ec1-45d6-bebd-1885e20306c2@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -236,7 +236,7 @@
       "__id__": 11
     },
     "tag": 0,
-    "_group": 4,
+    "_group": 64,
     "_density": 1,
     "_sensor": false,
     "_friction": 0.2,
@@ -248,8 +248,8 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 8,
-      "height": 8
+      "width": 12.6,
+      "height": 12.6
     },
     "_id": ""
   },
@@ -302,12 +302,12 @@
     "playOnLoad": true,
     "_clips": [
       {
-        "__uuid__": "9ce874cd-925c-475a-9b6f-1b2ae3af9bf2",
+        "__uuid__": "163baebe-455e-407d-9cd9-480b1cfffa2c",
         "__expectedType__": "cc.AnimationClip"
       }
     ],
     "_defaultClip": {
-      "__uuid__": "9ce874cd-925c-475a-9b6f-1b2ae3af9bf2",
+      "__uuid__": "163baebe-455e-407d-9cd9-480b1cfffa2c",
       "__expectedType__": "cc.AnimationClip"
     },
     "_id": ""

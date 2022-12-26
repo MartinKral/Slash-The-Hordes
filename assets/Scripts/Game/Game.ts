@@ -41,7 +41,8 @@ export class Game extends Component {
     @property(ProjectileLauncher) private haloProjectileLauncherComponent: ProjectileLauncher;
     @property(ProjectileLauncher) private horizontalProjectileLauncherComponent: ProjectileLauncher;
     @property(ProjectileLauncher) private diagonalProjectileLauncherComponent: ProjectileLauncher;
-    @property(ProjectileLauncher) private enemyProjectileLauncherComponent: ProjectileLauncher;
+    @property(ProjectileLauncher) private enemyAxeProjectileLauncherComponent: ProjectileLauncher;
+    @property(ProjectileLauncher) private enemyMagicOrbProjectileLauncherComponent: ProjectileLauncher;
     @property(EnemyManager) private enemyManager: EnemyManager;
     @property(ItemManager) private itemManager: ItemManager;
     @property(Camera) private camera: Camera;
@@ -55,7 +56,8 @@ export class Game extends Component {
     private horizontalProjectileLauncher: WaveProjectileLauncher;
     private diagonalProjectileLauncher: WaveProjectileLauncher;
 
-    private enemyProjectileLauncher: EnemyProjectileLauncher;
+    private enemyAxeProjectileLauncher: EnemyProjectileLauncher;
+    private enemyMagicOrbProjectileLauncher: EnemyProjectileLauncher;
 
     private itemAttractor: ItemAttractor;
 
@@ -122,11 +124,18 @@ export class Game extends Component {
             projectileData
         );
 
-        this.enemyProjectileLauncher = new EnemyProjectileLauncher(
-            this.enemyProjectileLauncherComponent,
+        this.enemyAxeProjectileLauncher = new EnemyProjectileLauncher(
+            this.enemyAxeProjectileLauncherComponent,
             this.player.node,
             this.enemyManager,
-            settings.enemyManager.projectileLauncher1
+            settings.enemyManager.axeLauncher
+        );
+
+        this.enemyMagicOrbProjectileLauncher = new EnemyProjectileLauncher(
+            this.enemyMagicOrbProjectileLauncherComponent,
+            this.player.node,
+            this.enemyManager,
+            settings.enemyManager.magicOrbLauncher
         );
 
         new PlayerProjectileCollisionSystem([this.haloProjectileLauncher, this.horizontalProjectileLauncher, this.diagonalProjectileLauncher]);
@@ -184,7 +193,8 @@ export class Game extends Component {
         this.haloProjectileLauncher.gameTick(deltaTime);
         this.horizontalProjectileLauncher.gameTick(deltaTime);
         this.diagonalProjectileLauncher.gameTick(deltaTime);
-        this.enemyProjectileLauncher.gameTick(deltaTime);
+        this.enemyAxeProjectileLauncher.gameTick(deltaTime);
+        this.enemyMagicOrbProjectileLauncher.gameTick(deltaTime);
         this.itemAttractor.gameTick(deltaTime);
         this.background.gameTick();
 
