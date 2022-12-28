@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.AnimationClip",
-    "_name": "Move",
+    "_name": "Hit",
     "_objFlags": 0,
     "__editorExtras__": {
       "embeddedPlayerGroups": []
@@ -9,9 +9,9 @@
     "_native": "",
     "sample": 60,
     "speed": 1,
-    "wrapMode": 2,
+    "wrapMode": 1,
     "enableTrsBlending": false,
-    "_duration": 1.25,
+    "_duration": 1.2,
     "_hash": 500763545,
     "_tracks": [
       {
@@ -67,40 +67,40 @@
     "__type__": "cc.ObjectCurve",
     "_times": [
       0,
-      0.26666666666666666,
-      0.4666666666666667,
-      0.6666666666666666,
-      0.8666666666666667,
-      1.0666666666666667,
-      1.2333333333333334
+      0.21666666666666667,
+      0.4,
+      0.6,
+      0.8,
+      1,
+      1.1833333333333333
     ],
     "_values": [
       {
-        "__uuid__": "d609c5a5-5c06-45ba-8934-34a42df5ceca@f9941",
+        "__uuid__": "471a1da9-6633-4ffd-9b5c-efac9386a700@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "e658fd40-f4e5-4d89-84b1-310180f4b7de@f9941",
+        "__uuid__": "de5a98ef-d691-4098-85c5-e9aa4e7e668e@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "4ce10baf-806b-4417-bc79-9ee731dfb1ca@f9941",
+        "__uuid__": "a0c16acb-da88-490e-b211-a8ef2ec8ec99@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "3f662b5e-e9d1-42b3-8a07-c280956e6fe0@f9941",
+        "__uuid__": "b8d4be13-42af-433d-9370-fe50522b6a5b@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "5aab8ada-5346-4d53-a88c-978b9f4f159b@f9941",
+        "__uuid__": "21cd5850-691c-4b44-a529-9241f4fdf8b9@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "814f0ac2-bf60-40a6-aa3e-16c91750f7b6@f9941",
+        "__uuid__": "e72c20fa-5e36-44b6-918b-a904d7bf0a0f@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "814f0ac2-bf60-40a6-aa3e-16c91750f7b6@f9941",
+        "__uuid__": "e72c20fa-5e36-44b6-918b-a904d7bf0a0f@f9941",
         "__expectedType__": "cc.SpriteFrame"
       }
     ]
@@ -158,15 +158,12 @@
         "__type__": "cc.RealKeyframeValue",
         "interpolationMode": 0,
         "tangentWeightMode": 0,
-        "value": 0,
+        "value": 8,
         "rightTangent": 0,
         "rightTangentWeight": 1,
         "leftTangent": 0,
         "leftTangentWeight": 1,
-        "easingMethod": 0,
-        "__editorExtras__": {
-          "tangentMode": 0
-        }
+        "easingMethod": 0
       }
     ],
     "preExtrapolation": 1,
@@ -193,10 +190,7 @@
         "rightTangentWeight": 1,
         "leftTangent": 0,
         "leftTangentWeight": 1,
-        "easingMethod": 0,
-        "__editorExtras__": {
-          "tangentMode": 0
-        }
+        "easingMethod": 0
       }
     ],
     "preExtrapolation": 1,
@@ -223,10 +217,7 @@
         "rightTangentWeight": 1,
         "leftTangent": 0,
         "leftTangentWeight": 1,
-        "easingMethod": 0,
-        "__editorExtras__": {
-          "tangentMode": 0
-        }
+        "easingMethod": 0
       }
     ],
     "preExtrapolation": 1,
