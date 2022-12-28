@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.AnimationClip",
-    "_name": "Idle",
+    "_name": "Die",
     "_objFlags": 0,
     "__editorExtras__": {
       "embeddedPlayerGroups": []
@@ -9,9 +9,9 @@
     "_native": "",
     "sample": 60,
     "speed": 1,
-    "wrapMode": 2,
+    "wrapMode": 1,
     "enableTrsBlending": false,
-    "_duration": 0.5666666666666667,
+    "_duration": 1.35,
     "_hash": 500763545,
     "_tracks": [
       {
@@ -57,20 +57,25 @@
     "__type__": "cc.ObjectCurve",
     "_times": [
       0,
-      0.26666666666666666,
-      0.55
+      0.2,
+      1.0333333333333334,
+      1.3333333333333333
     ],
     "_values": [
       {
-        "__uuid__": "bc785375-c815-4c14-901e-dad73bc8e8a0@f9941",
+        "__uuid__": "d24e6250-9d2f-41ee-9eac-36f5e17f5bfb@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "e4a1ac61-6db7-4e19-9f2e-6733ed0a6ca5@f9941",
+        "__uuid__": "346961fb-92d2-469c-ac96-743af47a2344@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
-        "__uuid__": "e4a1ac61-6db7-4e19-9f2e-6733ed0a6ca5@f9941",
+        "__uuid__": "bbd6cbee-3efd-40ca-a391-17bd5ecb4c61@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bbd6cbee-3efd-40ca-a391-17bd5ecb4c61@f9941",
         "__expectedType__": "cc.SpriteFrame"
       }
     ]

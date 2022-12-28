@@ -139,7 +139,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 64,
-      "height": 80
+      "height": 64
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -219,12 +219,13 @@
       {
         "__uuid__": "5bf4b24f-2ebc-43ad-8f59-97e486d05c0c",
         "__expectedType__": "cc.AnimationClip"
+      },
+      {
+        "__uuid__": "98f0d9d0-db04-4af8-b77d-a448a96f9b80",
+        "__expectedType__": "cc.AnimationClip"
       }
     ],
-    "_defaultClip": {
-      "__uuid__": "4cc17fff-7876-4922-b371-2fe1cec77c14",
-      "__expectedType__": "cc.AnimationClip"
-    },
+    "_defaultClip": null,
     "_id": ""
   },
   {
@@ -3019,14 +3020,14 @@
     "node": {
       "__id__": 1
     },
-    "_enabled": false,
+    "_enabled": true,
     "__prefab": {
       "__id__": 143
     },
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 64,
-      "height": 80
+      "height": 64
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -3096,13 +3097,13 @@
     "_restitution": 0,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": 0.3,
+      "y": 2.1
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 48,
-      "height": 60
+      "width": 37.3,
+      "height": 49.9
     },
     "_id": ""
   },

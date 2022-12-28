@@ -2,7 +2,7 @@
   "ver": "1.0.25",
   "importer": "image",
   "imported": true,
-  "uuid": "95e93202-1072-40a8-ae22-3e5ee3678956",
+  "uuid": "346961fb-92d2-469c-ac96-743af47a2344",
   "files": [
     ".json",
     ".png"
@@ -10,8 +10,8 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "95e93202-1072-40a8-ae22-3e5ee3678956@6c48a",
-      "displayName": "PlWarriorMove02",
+      "uuid": "346961fb-92d2-469c-ac96-743af47a2344@6c48a",
+      "displayName": "PlWarriorDie01",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "95e93202-1072-40a8-ae22-3e5ee3678956",
+        "imageUuidOrDatabaseUri": "346961fb-92d2-469c-ac96-743af47a2344",
         "visible": false
       },
       "ver": "1.0.22",
@@ -34,8 +34,8 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "95e93202-1072-40a8-ae22-3e5ee3678956@f9941",
-      "displayName": "PlWarriorMove02",
+      "uuid": "346961fb-92d2-469c-ac96-743af47a2344@f9941",
+      "displayName": "PlWarriorDie01",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
@@ -55,7 +55,7 @@
         "borderLeft": 0,
         "borderRight": 0,
         "packable": true,
-        "pixelsToUnit": 50,
+        "pixelsToUnit": 100,
         "pivotX": 0.5,
         "pivotY": 0.5,
         "meshType": 0,
@@ -114,9 +114,8 @@
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "95e93202-1072-40a8-ae22-3e5ee3678956@6c48a",
-        "atlasUuid": "",
-        "mipfilter": "none"
+        "imageUuidOrDatabaseUri": "346961fb-92d2-469c-ac96-743af47a2344@6c48a",
+        "atlasUuid": ""
       },
       "ver": "1.0.11",
       "imported": true,
@@ -130,7 +129,7 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "95e93202-1072-40a8-ae22-3e5ee3678956@f9941",
+    "redirect": "346961fb-92d2-469c-ac96-743af47a2344@f9941",
     "flipVertical": false
   }
 }
