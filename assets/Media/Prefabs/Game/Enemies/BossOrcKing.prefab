@@ -178,7 +178,7 @@
     },
     "_fillStart": 0,
     "_fillRange": 0,
-    "_isTrimmedMode": true,
+    "_isTrimmedMode": false,
     "_useGrayscale": false,
     "_atlas": null,
     "_id": ""
@@ -303,6 +303,10 @@
     "_clips": [
       {
         "__uuid__": "f5f4561e-514f-48db-940f-d534eb6a4073",
+        "__expectedType__": "cc.AnimationClip"
+      },
+      {
+        "__uuid__": "d48ae5c8-636c-4246-ab09-2deab0d37587",
         "__expectedType__": "cc.AnimationClip"
       }
     ],
