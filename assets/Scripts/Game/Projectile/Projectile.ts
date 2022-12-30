@@ -15,7 +15,7 @@ export class Projectile extends Component {
     private piercesLeft = 0;
     private damage = 0;
 
-    public init(damage: number, pierces: number, angle: number): void {
+    public setup(damage: number, pierces: number, angle: number): void {
         this.piercesLeft = pierces;
         this.damage = damage;
 

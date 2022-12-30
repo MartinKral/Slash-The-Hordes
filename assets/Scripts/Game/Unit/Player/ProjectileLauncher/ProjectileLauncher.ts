@@ -13,7 +13,7 @@ const { ccclass, property } = _decorator;
 export class ProjectileLauncher extends Component implements IProjectileLauncherSignaler {
     @property(Prefab) private projectilePrefab: Prefab;
     private projectileCollisionEvent = new Signal<ProjectileCollision>();
-    private projectileLauncehdEvent = new Signal();
+    private projectileLaunchedEvent = new Signal();
 
     private projectileDamage: number;
     private projectilePierces: number;
@@ -32,7 +32,7 @@ export class ProjectileLauncher extends Component implements IProjectileLauncher
     }
 
     public get ProjectileLaunchedEvent(): ISignal {
-        return this.projectileLauncehdEvent;
+        return this.projectileLaunchedEvent;
     }
 
     public init(projectileLifetime: number, projectileSpeed: number, projectileDamage: number, projectilePierces: number): void {
@@ -61,7 +61,7 @@ export class ProjectileLauncher extends Component implements IProjectileLauncher
     private fireProjectile(startPosition: Vec3, direction: Vec2): void {
         direction = direction.normalize();
         const projectile: Projectile = this.projectilePool.borrow();
-        projectile.init(this.projectileDamage, this.projectilePierces, getDegreeAngleFromDirection(direction.x, direction.y));
+        projectile.setup(this.projectileDamage, this.projectilePierces, getDegreeAngleFromDirection(direction.x, direction.y));
         projectile.node.setWorldPosition(startPosition);
         projectile.node.active = true;
         projectile.ContactBeginEvent.on(this.onProjectileCollision, this);
@@ -71,7 +71,7 @@ export class ProjectileLauncher extends Component implements IProjectileLauncher
         this.directions.push(direction);
         this.expireTimes.push(this.currentTime + this.projectileLifetime);
 
-        this.projectileLauncehdEvent.trigger({});
+        this.projectileLaunchedEvent.trigger();
     }
 
     private tryRemoveExpiredProjectiles(): void {
