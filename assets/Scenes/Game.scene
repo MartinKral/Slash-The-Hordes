@@ -31,7 +31,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 124
+      "__id__": 120
     },
     "_id": "cffa5b19-2043-4cef-8221-1a10ab7a2c1f"
   },
@@ -266,7 +266,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 319.99999999999994,
-      "y": 479.99999999999994,
+      "y": 480.00000000000006,
       "z": 0
     },
     "_lrot": {
@@ -1636,7 +1636,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -320,
-      "y": 479.9999999999999,
+      "y": 480.0000000000001,
       "z": -1000
     },
     "_lrot": {
@@ -3388,7 +3388,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 479.99999999999994,
+    "_orthoHeight": 480.00000000000006,
     "_near": 0,
     "_far": 2000,
     "_color": {
@@ -3467,8 +3467,8 @@
     "_target": null,
     "_left": -5.684341886080802e-14,
     "_right": 0,
-    "_top": 0,
-    "_bottom": -5.684341886080802e-14,
+    "_top": 1.1368683772161603e-13,
+    "_bottom": 5.684341886080802e-14,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,
@@ -3535,14 +3535,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "fileId": "cffa5b19-2043-4cef-8221-1a10ab7a2c1f",
-    "targetOverrides": [
-      {
-        "__id__": 120
-      },
-      {
-        "__id__": 122
-      }
-    ],
+    "targetOverrides": [],
     "nestedPrefabInstanceRoots": [
       {
         "__id__": 2
@@ -3556,65 +3549,21 @@
     ]
   },
   {
-    "__type__": "cc.TargetOverrideInfo",
-    "source": {
-      "__id__": 118
-    },
-    "sourceInfo": null,
-    "propertyPath": [
-      "player"
-    ],
-    "target": {
-      "__id__": 34
-    },
-    "targetInfo": {
-      "__id__": 121
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "73GtzRGABId6PSqMhTW/3T"
-    ]
-  },
-  {
-    "__type__": "cc.TargetOverrideInfo",
-    "source": {
-      "__id__": 118
-    },
-    "sourceInfo": null,
-    "propertyPath": [
-      "gameAudioAdapter"
-    ],
-    "target": {
-      "__id__": 13
-    },
-    "targetInfo": {
-      "__id__": 123
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "b2ILEwH8JJmYiJlSWbxV6z"
-    ]
-  },
-  {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 125
+      "__id__": 121
     },
     "shadows": {
-      "__id__": 126
+      "__id__": 122
     },
     "_skybox": {
-      "__id__": 127
+      "__id__": 123
     },
     "fog": {
-      "__id__": 128
+      "__id__": 124
     },
     "octree": {
-      "__id__": 129
+      "__id__": 125
     }
   },
   {
