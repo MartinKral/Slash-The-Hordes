@@ -47,9 +47,9 @@
         "trimX": 0,
         "trimY": 0,
         "width": 32,
-        "height": 40,
+        "height": 32,
         "rawWidth": 32,
-        "rawHeight": 40,
+        "rawHeight": 32,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
@@ -62,16 +62,16 @@
         "vertices": {
           "rawPosition": [
             -16,
-            -20,
+            -16,
             0,
             16,
-            -20,
+            -16,
             0,
             -16,
-            20,
+            16,
             0,
             16,
-            20,
+            16,
             0
           ],
           "indexes": [
@@ -84,9 +84,9 @@
           ],
           "uv": [
             0,
-            40,
             32,
-            40,
+            32,
+            32,
             0,
             0,
             32,
@@ -104,18 +104,19 @@
           ],
           "minPos": [
             -16,
-            -20,
+            -16,
             0
           ],
           "maxPos": [
             16,
-            20,
+            16,
             0
           ]
         },
         "isUuid": true,
         "imageUuidOrDatabaseUri": "a90012ec-a814-40d9-b762-783f28a178f9@6c48a",
-        "atlasUuid": ""
+        "atlasUuid": "",
+        "mipfilter": "none"
       },
       "ver": "1.0.11",
       "imported": true,
@@ -129,6 +130,7 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "a90012ec-a814-40d9-b762-783f28a178f9@f9941"
+    "redirect": "a90012ec-a814-40d9-b762-783f28a178f9@f9941",
+    "flipVertical": false
   }
 }
