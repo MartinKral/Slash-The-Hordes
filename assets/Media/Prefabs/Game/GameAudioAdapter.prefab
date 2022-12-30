@@ -71,11 +71,11 @@
       "__expectedType__": "cc.AudioClip"
     },
     "enemyHit": {
-      "__uuid__": "efed223f-7b17-47ad-b265-7a951ace6d85",
+      "__uuid__": "41d1d0d3-b915-46cc-bdaa-ac443d0b8dd8",
       "__expectedType__": "cc.AudioClip"
     },
     "playerHit": {
-      "__uuid__": "99fb12ce-b248-4560-85fd-c1a61689adf2",
+      "__uuid__": "94356aff-2a75-43b2-8258-4f18b3006ef6",
       "__expectedType__": "cc.AudioClip"
     },
     "playerDeath": {
@@ -83,7 +83,7 @@
       "__expectedType__": "cc.AudioClip"
     },
     "weaponSwing": {
-      "__uuid__": "5ad08e27-4461-464a-ad19-8c933abf5a5d",
+      "__uuid__": "2ca33a43-08af-44e8-ac28-28e051838892",
       "__expectedType__": "cc.AudioClip"
     },
     "xpPickup": {
@@ -99,7 +99,7 @@
       "__expectedType__": "cc.AudioClip"
     },
     "magnetPickup": {
-      "__uuid__": "a26cfab9-1d95-4f99-83bf-297696072f6c",
+      "__uuid__": "baf95420-77c5-4747-80ed-6f05b14e8777",
       "__expectedType__": "cc.AudioClip"
     },
     "chestPickup": {
@@ -115,7 +115,7 @@
       "__expectedType__": "cc.AudioClip"
     },
     "diagonalProjectileLaunch": {
-      "__uuid__": "adeff7ed-6f7e-471b-8790-d0eb14e048f9",
+      "__uuid__": "72661b76-bef4-4ed8-9cb6-dd38d839f1b9",
       "__expectedType__": "cc.AudioClip"
     },
     "haloProjectileLaunch": {
