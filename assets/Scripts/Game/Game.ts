@@ -1,6 +1,7 @@
 import { Camera, Component, KeyCode, Prefab, Vec2, _decorator } from "cc";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
 import { delay } from "../Services/Utils/AsyncUtils";
+import { OpenCloseAnimator } from "../Utils/OpenCloseAnimator";
 import { GameAudioAdapter } from "./Audio/GameAudioAdapter";
 import { Background } from "./Background/Background";
 import { MagnetCollisionSystem } from "./Collision/MagnetCollisionSystem";
@@ -50,6 +51,7 @@ export class Game extends Component {
     @property(Background) private background: Background;
     @property(ModalWindowManager) private modalWindowManager: ModalWindowManager;
     @property(GameAudioAdapter) private gameAudioAdapter: GameAudioAdapter;
+    @property(OpenCloseAnimator) private screenFader: OpenCloseAnimator;
 
     private playerCollisionSystem: PlayerCollisionSystem;
     private haloProjectileLauncher: HaloProjectileLauncher;
@@ -73,6 +75,9 @@ export class Game extends Component {
     public start(): void {
         Game.instance = this;
         this.gamePauser.pause();
+
+        this.screenFader.init();
+        this.screenFader.node.active = true;
     }
 
     public async playGame(
@@ -169,6 +174,7 @@ export class Game extends Component {
             this.haloProjectileLauncher
         );
         this.gamePauser.resume();
+        this.screenFader.playClose();
 
         while (!this.gameResult.hasExitManually && this.player.Health.IsAlive) await delay(100);
         if (!this.gameResult.hasExitManually) {

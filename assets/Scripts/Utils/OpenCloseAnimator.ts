@@ -12,8 +12,7 @@ export class OpenCloseAnimator extends Component {
     private openDuration = 0;
     private closeDuration = 0;
 
-    public start(): void {
-        this.node.active = false;
+    public init(): void {
         this.openDuration = this.animation.getState(this.openStateName).duration;
         this.closeDuration = this.animation.getState(this.closeStateName).duration;
     }
@@ -21,13 +20,13 @@ export class OpenCloseAnimator extends Component {
     public async playOpen(): Promise<void> {
         this.node.active = true;
         this.animation.play(this.openStateName);
-        await delay(this.openDuration);
+        await delay(this.openDuration * 1000);
     }
 
     public async playClose(): Promise<void> {
         this.node.active = true;
-        this.animation.play(this.openStateName);
-        await delay(this.closeDuration);
+        this.animation.play(this.closeStateName);
+        await delay(this.closeDuration * 1000);
         this.node.active = false;
     }
 }

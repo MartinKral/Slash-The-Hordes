@@ -11,7 +11,7 @@
     "speed": 1,
     "wrapMode": 1,
     "enableTrsBlending": false,
-    "_duration": 0.3333333333333333,
+    "_duration": 1,
     "_hash": 500763545,
     "_tracks": [
       {
@@ -68,7 +68,7 @@
     "__type__": "cc.RealCurve",
     "_times": [
       0,
-      0.3333333333333333
+      1
     ],
     "_values": [
       {
@@ -113,7 +113,7 @@
     "__type__": "cc.RealCurve",
     "_times": [
       0,
-      0.3333333333333333
+      1
     ],
     "_values": [
       {
@@ -158,7 +158,7 @@
     "__type__": "cc.RealCurve",
     "_times": [
       0,
-      0.3333333333333333
+      1
     ],
     "_values": [
       {
@@ -203,7 +203,7 @@
     "__type__": "cc.RealCurve",
     "_times": [
       0,
-      0.3333333333333333
+      1
     ],
     "_values": [
       {

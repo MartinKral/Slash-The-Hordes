@@ -1,6 +1,7 @@
 import { Component, _decorator } from "cc";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
 import { UIButton } from "../Services/UI/Button/UIButton";
+import { OpenCloseAnimator } from "../Utils/OpenCloseAnimator";
 import { GameRunner } from "./GameRunner";
 import { MenuModalLauncher } from "./ModalWindows/MenuModalLauncher";
 
@@ -12,6 +13,7 @@ export class Menu extends Component {
     @property(UIButton) private upgradeBtn: UIButton;
     @property(UIButton) private audioSettingsBtn: UIButton;
     @property(ModalWindowManager) private modalWindowManager: ModalWindowManager;
+    @property(OpenCloseAnimator) private screenFader: OpenCloseAnimator;
 
     private menuModalLauncher: MenuModalLauncher;
 
@@ -21,9 +23,13 @@ export class Menu extends Component {
         this.audioSettingsBtn.InteractedEvent.on(this.openAudioSettingsWindow, this);
 
         this.menuModalLauncher = new MenuModalLauncher(this.modalWindowManager);
+
+        this.screenFader.init();
+        this.screenFader.node.active = false;
     }
 
     private startGame(): void {
+        this.screenFader.playOpen();
         GameRunner.Instance.playGame();
     }
 

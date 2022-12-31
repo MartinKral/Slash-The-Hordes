@@ -42,8 +42,6 @@ export class ProjectileLauncher extends Component implements IProjectileLauncher
         this.projectilePierces = projectilePierces;
 
         this.projectilePool = new ObjectPool<Projectile>(this.projectilePrefab, this.node, 6, "Projectile");
-
-        console.log("DAMAGE " + JSON.stringify((<Projectile>this.projectilePrefab.data).Damage));
     }
 
     public gameTick(deltaTime: number): void {
