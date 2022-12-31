@@ -471,7 +471,7 @@
         "individualEnemySpawners": [
             {
                 "common": {
-                    "enemyId": "BasicEnemy",
+                    "enemyId": "BasicBoss",
                     "startDelay": 0,
                     "stopDelay": 59,
                     "cooldown": 1
