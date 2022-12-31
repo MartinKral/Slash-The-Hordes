@@ -118,7 +118,7 @@ export class Enemy extends Component {
 
         if (move.x < 0) {
             this.sprite.node.setScale(-1, 1, 1);
-        } else {
+        } else if (0 < move.x) {
             this.sprite.node.setScale(1, 1, 1);
         }
 

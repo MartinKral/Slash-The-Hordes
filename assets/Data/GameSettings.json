@@ -151,7 +151,7 @@
             "projectileLifetime": 8,
             "projectileSpeed": 140,
             "projectileDamage": 4,
-            "cooldown": 2.5
+            "cooldown": 3.67
         },
         "magicOrbLauncher": {
             "enemyIds": [],
@@ -464,16 +464,16 @@
             },
             {
                 "enemyIdToAffect": "SiegeEnemyRanged",
-                "followTime": 4,
-                "waitTime": 4
+                "followTime": 3,
+                "waitTime": 0.67
             }
         ],
         "individualEnemySpawners": [
             {
                 "common": {
-                    "enemyId": "BasicEnemy",
+                    "enemyId": "SiegeEnemyRanged",
                     "startDelay": 0,
-                    "stopDelay": 59,
+                    "stopDelay": 2,
                     "cooldown": 1
                 }
             },
