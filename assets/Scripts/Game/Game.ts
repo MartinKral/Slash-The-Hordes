@@ -1,4 +1,4 @@
-import { Canvas, Component, KeyCode, Vec2, _decorator } from "cc";
+import { Canvas, Component, KeyCode, Vec2, _decorator, Node } from "cc";
 import { AppRoot } from "../AppRoot/AppRoot";
 import { requireAppRootAsync } from "../AppRoot/AppRootUtils";
 import { delay } from "../Services/Utils/AsyncUtils";
@@ -50,6 +50,7 @@ export class Game extends Component {
     @property(Canvas) private gameCanvas: Canvas;
     @property(Background) private background: Background;
     @property(GameAudioAdapter) private gameAudioAdapter: GameAudioAdapter;
+    @property(Node) private blackScreen: Node;
 
     private playerCollisionSystem: PlayerCollisionSystem;
     private haloProjectileLauncher: HaloProjectileLauncher;
@@ -70,11 +71,8 @@ export class Game extends Component {
         return this.instance;
     }
 
-    public async start(): Promise<void> {
+    public start(): void {
         this.gamePauser.pause();
-        this.node.active = false; // make sure that nothing is rendered until the app root is ready
-        await requireAppRootAsync();
-        this.node.active = true;
         Game.instance = this;
     }
 
@@ -84,6 +82,7 @@ export class Game extends Component {
         translationData: TranslationData,
         testValues?: TestValues
     ): Promise<GameResult> {
+        await requireAppRootAsync();
         this.gameCanvas.cameraComponent = AppRoot.Instance.MainCamera;
 
         this.gameResult = new GameResult();
@@ -174,15 +173,18 @@ export class Game extends Component {
             this.haloProjectileLauncher
         );
         this.gamePauser.resume();
+        this.blackScreen.active = false;
         AppRoot.Instance.ScreenFader.playClose();
 
         while (!this.gameResult.hasExitManually && this.player.Health.IsAlive) await delay(100);
-        if (!this.gameResult.hasExitManually) {
-            await delay(1000);
-        }
         this.gamePauser.pause();
         Game.instance = null;
         this.gameResult.score = this.timeAlive;
+
+        if (!this.gameResult.hasExitManually) {
+            await delay(2000);
+        }
+
         return this.gameResult;
     }
 

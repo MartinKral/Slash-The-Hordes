@@ -60,6 +60,8 @@ export class PlayerCollisionSystem {
     }
 
     private resolveContact(otherCollider: Collider2D): void {
+        if (!this.player.Health.IsAlive) return;
+
         if (this.groupToResolver.has(otherCollider.group)) {
             this.groupToResolver.get(otherCollider.group)(otherCollider);
         } else {

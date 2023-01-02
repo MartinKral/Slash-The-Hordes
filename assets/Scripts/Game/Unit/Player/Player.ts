@@ -73,6 +73,8 @@ export class Player extends Component {
     }
 
     private move(deltaTime: number): void {
+        if (!this.health.IsAlive) return;
+
         const movement: Vec2 = this.input.getAxis();
         if (!movement.equals(Vec2.ZERO)) {
             movement.x *= deltaTime * this.speed;
@@ -111,6 +113,10 @@ export class Player extends Component {
 
         await delay(100);
         this.sprite.color = Color.WHITE;
+
+        if (!this.health.IsAlive) {
+            this.animation.play("Die");
+        }
     }
 }
 
