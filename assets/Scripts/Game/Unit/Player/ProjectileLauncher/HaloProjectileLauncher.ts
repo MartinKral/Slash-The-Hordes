@@ -1,13 +1,13 @@
-import { Vec2, Node } from "cc";
+import { Node, Vec2 } from "cc";
 import { ISignal } from "../../../../Services/EventSystem/ISignal";
+import { Signal } from "../../../../Services/EventSystem/Signal";
+import { GameTimer } from "../../../../Services/GameTimer";
 import { roundToOneDecimal } from "../../../../Services/Utils/MathUtils";
 import { HaloLauncherSettings } from "../../../Data/GameSettings";
-import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
 import { IProjectileLauncherSignaler } from "../../../Projectile/IProjectileLauncherSignaler";
-import { ProjectileLauncher } from "./ProjectileLauncher";
+import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
 import { ProjectileData } from "./ProjectileData";
-import { GameTimer } from "../../../../Services/GameTimer";
-import { Empty } from "../../../../Menu/ModalWindows/Upgrades/UpgradesModalWindow";
+import { ProjectileLauncher } from "./ProjectileLauncher";
 
 export class HaloProjectileLauncher implements IProjectileLauncherSignaler {
     private currentUpgrade = 0;
@@ -15,6 +15,8 @@ export class HaloProjectileLauncher implements IProjectileLauncherSignaler {
     private cooldownDivisorPerUpgrade = 0;
     private directions: Vec2[] = [];
     private fireTimer = new GameTimer(0);
+
+    private projectilesLaunchedEvent = new Signal();
 
     public constructor(
         private launcher: ProjectileLauncher,
@@ -44,6 +46,10 @@ export class HaloProjectileLauncher implements IProjectileLauncherSignaler {
         return this.launcher.ProjectileLaunchedEvent;
     }
 
+    public get ProjectilesLaunchedEvent(): ISignal {
+        return this.projectilesLaunchedEvent;
+    }
+
     public gameTick(deltaTime: number): void {
         if (this.currentUpgrade == 0) return;
 
@@ -52,6 +58,7 @@ export class HaloProjectileLauncher implements IProjectileLauncherSignaler {
 
         if (this.fireTimer.tryFinishPeriod()) {
             this.launcher.fireProjectiles(this.playerNode.worldPosition, this.directions);
+            this.projectilesLaunchedEvent.trigger();
         }
     }
 

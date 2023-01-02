@@ -54,7 +54,7 @@ export class GameAudioAdapter extends Component {
 
         horizontalLauncher.ProjectileLaunchedEvent.on(() => this.audioPlayer.playSound(this.horizontalProjectileLaunch), this);
         diagonalLauncher.ProjectileLaunchedEvent.on(() => this.audioPlayer.playSound(this.diagonalProjectileLaunch), this);
-        haloLauncher.ProjectileLaunchedEvent.on(() => this.audioPlayer.playSound(this.haloProjectileLaunch), this);
+        haloLauncher.ProjectilesLaunchedEvent.on(() => this.audioPlayer.playSound(this.haloProjectileLaunch), this);
     }
 
     private addEnemyListeners(enemy: Enemy): void {
