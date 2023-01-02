@@ -2867,7 +2867,7 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "maxDistance": 50,
+    "maxDistance": 20,
     "knob": {
       "__id__": 95
     },
