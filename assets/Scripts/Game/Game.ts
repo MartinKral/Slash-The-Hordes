@@ -1,7 +1,7 @@
-import { Camera, Component, KeyCode, Prefab, Vec2, _decorator } from "cc";
-import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
+import { Canvas, Component, KeyCode, Vec2, _decorator } from "cc";
+import { AppRoot } from "../AppRoot/AppRoot";
+import { requireAppRootAsync } from "../AppRoot/AppRootUtils";
 import { delay } from "../Services/Utils/AsyncUtils";
-import { OpenCloseAnimator } from "../Utils/OpenCloseAnimator";
 import { GameAudioAdapter } from "./Audio/GameAudioAdapter";
 import { Background } from "./Background/Background";
 import { MagnetCollisionSystem } from "./Collision/MagnetCollisionSystem";
@@ -46,12 +46,10 @@ export class Game extends Component {
     @property(ProjectileLauncher) private enemyMagicOrbProjectileLauncherComponent: ProjectileLauncher;
     @property(EnemyManager) private enemyManager: EnemyManager;
     @property(ItemManager) private itemManager: ItemManager;
-    @property(Camera) private camera: Camera;
     @property(GameUI) private gameUI: GameUI;
+    @property(Canvas) private gameCanvas: Canvas;
     @property(Background) private background: Background;
-    @property(ModalWindowManager) private modalWindowManager: ModalWindowManager;
     @property(GameAudioAdapter) private gameAudioAdapter: GameAudioAdapter;
-    @property(OpenCloseAnimator) private screenFader: OpenCloseAnimator;
 
     private playerCollisionSystem: PlayerCollisionSystem;
     private haloProjectileLauncher: HaloProjectileLauncher;
@@ -72,12 +70,12 @@ export class Game extends Component {
         return this.instance;
     }
 
-    public start(): void {
-        Game.instance = this;
+    public async start(): Promise<void> {
         this.gamePauser.pause();
-
-        this.screenFader.init();
-        this.screenFader.node.active = true;
+        this.node.active = false; // make sure that nothing is rendered until the app root is ready
+        await requireAppRootAsync();
+        this.node.active = true;
+        Game.instance = this;
     }
 
     public async playGame(
@@ -86,6 +84,8 @@ export class Game extends Component {
         translationData: TranslationData,
         testValues?: TestValues
     ): Promise<GameResult> {
+        this.gameCanvas.cameraComponent = AppRoot.Instance.MainCamera;
+
         this.gameResult = new GameResult();
         const metaUpgrades = new MetaUpgrades(userData.game.metaUpgrades, settings.metaUpgrades);
 
@@ -154,7 +154,7 @@ export class Game extends Component {
             this.diagonalProjectileLauncher,
             settings.upgrades
         );
-        const modalLauncher = new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader, translationData);
+        const modalLauncher = new GameModalLauncher(AppRoot.Instance.ModalWindowManager, this.player, this.gamePauser, upgrader, translationData);
 
         this.itemManager.init(this.enemyManager, this.player, this.gameResult, modalLauncher, settings.items);
         this.gameUI.init(this.player, modalLauncher);
@@ -174,7 +174,7 @@ export class Game extends Component {
             this.haloProjectileLauncher
         );
         this.gamePauser.resume();
-        this.screenFader.playClose();
+        AppRoot.Instance.ScreenFader.playClose();
 
         while (!this.gameResult.hasExitManually && this.player.Health.IsAlive) await delay(100);
         if (!this.gameResult.hasExitManually) {
@@ -207,7 +207,8 @@ export class Game extends Component {
         this.timeAlive += deltaTime;
         this.gameUI.updateTimeAlive(this.timeAlive);
 
-        this.camera.node.worldPosition = this.player.node.worldPosition;
+        AppRoot.Instance.MainCamera.node.setWorldPosition(this.player.node.worldPosition);
+        this.gameUI.node.setWorldPosition(this.player.node.worldPosition);
     }
 
     private createPlayerData(settings: PlayerSettings, metaUpgrades: MetaUpgrades): PlayerData {

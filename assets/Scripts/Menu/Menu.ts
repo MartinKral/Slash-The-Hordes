@@ -1,4 +1,6 @@
-import { Component, _decorator } from "cc";
+import { Canvas, Component, _decorator } from "cc";
+import { AppRoot } from "../AppRoot/AppRoot";
+import { requireAppRootAsync } from "../AppRoot/AppRootUtils";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
 import { UIButton } from "../Services/UI/Button/UIButton";
 import { OpenCloseAnimator } from "../Utils/OpenCloseAnimator";
@@ -12,24 +14,23 @@ export class Menu extends Component {
     @property(UIButton) private playBtn: UIButton;
     @property(UIButton) private upgradeBtn: UIButton;
     @property(UIButton) private audioSettingsBtn: UIButton;
-    @property(ModalWindowManager) private modalWindowManager: ModalWindowManager;
-    @property(OpenCloseAnimator) private screenFader: OpenCloseAnimator;
+    @property(Canvas) private menuCanvas: Canvas;
 
     private menuModalLauncher: MenuModalLauncher;
 
     public async start(): Promise<void> {
+        requireAppRootAsync();
+        this.menuCanvas.cameraComponent = AppRoot.Instance.MainCamera;
+
         this.playBtn.InteractedEvent.on(this.startGame, this);
         this.upgradeBtn.InteractedEvent.on(this.openUpgradesWindow, this);
         this.audioSettingsBtn.InteractedEvent.on(this.openAudioSettingsWindow, this);
 
-        this.menuModalLauncher = new MenuModalLauncher(this.modalWindowManager);
-
-        this.screenFader.init();
-        this.screenFader.node.active = false;
+        this.menuModalLauncher = new MenuModalLauncher(AppRoot.Instance.ModalWindowManager);
     }
 
     private startGame(): void {
-        this.screenFader.playOpen();
+        AppRoot.Instance.ScreenFader.playOpen();
         GameRunner.Instance.playGame();
     }
 

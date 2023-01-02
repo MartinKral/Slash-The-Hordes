@@ -1,10 +1,12 @@
-import { Component, director, instantiate, JsonAsset, Prefab, _decorator } from "cc";
+import { Camera, Component, director, instantiate, JsonAsset, Prefab, _decorator } from "cc";
 import { GameSettings } from "../Game/Data/GameSettings";
 import { GameAssets } from "../Game/Data/Assets/GameAssets";
 import { TranslationData } from "../Game/Data/TranslationData";
 import { UserData } from "../Game/Data/UserData";
 import { AudioPlayer } from "../Services/AudioPlayer/AudioPlayer";
 import { SaveSystem } from "./SaveSystem";
+import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
+import { OpenCloseAnimator } from "../Utils/OpenCloseAnimator";
 const { ccclass, property } = _decorator;
 
 @ccclass("AppRoot")
@@ -13,6 +15,9 @@ export class AppRoot extends Component {
     @property(JsonAsset) private settingsAsset: JsonAsset;
     @property(JsonAsset) private engTranslationAsset: JsonAsset;
     @property(Prefab) private gameAssetsPrefab: Prefab;
+    @property(Camera) private mainCamera: Camera;
+    @property(ModalWindowManager) private modalWindowManager: ModalWindowManager;
+    @property(OpenCloseAnimator) private screenFader: OpenCloseAnimator;
 
     private static instance: AppRoot;
     private saveSystem: SaveSystem;
@@ -44,6 +49,18 @@ export class AppRoot extends Component {
         return <TranslationData>this.engTranslationAsset.json;
     }
 
+    public get ModalWindowManager(): ModalWindowManager {
+        return this.modalWindowManager;
+    }
+
+    public get MainCamera(): Camera {
+        return this.mainCamera;
+    }
+
+    public get ScreenFader(): OpenCloseAnimator {
+        return this.screenFader;
+    }
+
     public saveUserData(): void {
         this.saveSystem.save(this.liveUserData);
     }
@@ -54,7 +71,7 @@ export class AppRoot extends Component {
             director.addPersistRootNode(this.node);
             this.init();
         } else {
-            this.destroy();
+            this.node.destroy();
         }
     }
 
@@ -68,5 +85,8 @@ export class AppRoot extends Component {
         this.gameAssets.init();
 
         this.audio.init(this.LiveUserData.soundVolume, this.LiveUserData.musicVolume);
+
+        this.screenFader.init();
+        this.screenFader.node.active = false;
     }
 }
