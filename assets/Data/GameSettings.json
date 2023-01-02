@@ -72,9 +72,9 @@
   "metaUpgrades": {
     "health": {
       "costs": [
+        10,
         20,
-        30,
-        40
+        30
       ],
       "bonuses": [
         10,
@@ -109,8 +109,8 @@
     "movementSpeed": {
       "costs": [
         10,
-        20,
-        30
+        30,
+        50
       ],
       "bonuses": [
         10,
@@ -120,9 +120,9 @@
     },
     "xpGatherer": {
       "costs": [
+        10,
         20,
-        30,
-        40
+        30
       ],
       "bonuses": [
         0.1,
@@ -151,7 +151,7 @@
       ],
       "projectileLifetime": 8,
       "projectileSpeed": 140,
-      "projectileDamage": 2,
+      "projectileDamage": 1,
       "cooldown": 3.67
     },
     "magicOrbLauncher": {
@@ -162,7 +162,7 @@
       ],
       "projectileLifetime": 9,
       "projectileSpeed": 120,
-      "projectileDamage": 2,
+      "projectileDamage": 1,
       "cooldown": 4
     },
     "enemies": [
@@ -248,7 +248,7 @@
         "goldReward": 0.2,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.02,
-        "chestRewardChance": 0.01
+        "chestRewardChance": 0
       },
       {
         "id": "HarderEnemy",
@@ -262,7 +262,7 @@
         "goldReward": 0.2,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.02,
-        "chestRewardChance": 0.01
+        "chestRewardChance": 0
       },
       {
         "id": "HardestEnemy",
@@ -284,7 +284,7 @@
         "graphicsType": "Runner",
         "health": 26,
         "damage": 2,
-        "speed": 135,
+        "speed": 133,
         "lifetime": -1,
         "xpReward": 1,
         "goldReward": 0.3,
@@ -304,7 +304,7 @@
         "goldReward": 0.3,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0,
-        "chestRewardChance": 0.01
+        "chestRewardChance": 0
       },
       {
         "id": "SiegeEnemyMelee",
@@ -331,7 +331,7 @@
         "xpReward": 1,
         "goldReward": 0.5,
         "healthPotionRewardChance": 0.02,
-        "magnetRewardChance": 0,
+        "magnetRewardChance": 0.01,
         "chestRewardChance": 0.01
       },
       {
@@ -346,7 +346,7 @@
         "goldReward": 0.5,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.01,
-        "chestRewardChance": 0.01
+        "chestRewardChance": 0
       },
       {
         "id": "BatEnemy",
@@ -472,7 +472,7 @@
         "goldReward": 0.4,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
-        "chestRewardChance": 0.01
+        "chestRewardChance": 0
       },
       {
         "id": "WaveEnemyArmorBlitz",
@@ -486,7 +486,7 @@
         "goldReward": 0.5,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
-        "chestRewardChance": 0.01
+        "chestRewardChance": 0
       },
       {
         "id": "WaveEnemyDeath",
@@ -500,7 +500,7 @@
         "goldReward": 0.7,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
-        "chestRewardChance": 0.01
+        "chestRewardChance": 0
       },
       {
         "id": "WaveEnemyArmorMarch",
@@ -514,35 +514,35 @@
         "goldReward": 0.6,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
-        "chestRewardChance": 0.01
+        "chestRewardChance": 0
       },
       {
         "id": "BasicBoss",
         "moveType": "Follow",
         "graphicsType": "BossStoneGolem",
-        "health": 8,
+        "health": 11,
         "damage": 2,
-        "speed": 70,
+        "speed": 95,
         "lifetime": -1,
         "xpReward": 1,
         "goldReward": 2,
         "healthPotionRewardChance": 0.1,
         "magnetRewardChance": 0.1,
-        "chestRewardChance": 0.1
+        "chestRewardChance": 0
       },
       {
         "id": "StandardBoss",
         "moveType": "Follow",
         "graphicsType": "BossOrcKing",
-        "health": 12,
+        "health": 16,
         "damage": 3,
-        "speed": 80,
+        "speed": 102,
         "lifetime": -1,
         "xpReward": 2,
-        "goldReward": 3,
+        "goldReward": 2,
         "healthPotionRewardChance": 0.2,
         "magnetRewardChance": 0.1,
-        "chestRewardChance": 0.1
+        "chestRewardChance": 0
       },
       {
         "id": "HardBoss",
@@ -550,7 +550,7 @@
         "graphicsType": "BossOrcKing",
         "health": 20,
         "damage": 4,
-        "speed": 90,
+        "speed": 110,
         "lifetime": -1,
         "xpReward": 2,
         "goldReward": 5,
@@ -564,21 +564,21 @@
         "graphicsType": "BossStoneGolem",
         "health": 30,
         "damage": 4,
-        "speed": 105,
+        "speed": 115,
         "lifetime": -1,
         "xpReward": 3,
         "goldReward": 7,
         "healthPotionRewardChance": 0.2,
         "magnetRewardChance": 0.1,
-        "chestRewardChance": 0
+        "chestRewardChance": 0.1
       },
       {
         "id": "HardestBoss",
         "moveType": "Follow",
         "graphicsType": "BossOrcKing",
-        "health": 35,
+        "health": 40,
         "damage": 4,
-        "speed": 115,
+        "speed": 125,
         "lifetime": -1,
         "xpReward": 5,
         "goldReward": 8,
@@ -606,7 +606,7 @@
         "graphicsType": "Barbarian",
         "health": 4,
         "damage": 1,
-        "speed": 85,
+        "speed": 80,
         "lifetime": -1,
         "xpReward": 1,
         "goldReward": 0.1,
@@ -620,7 +620,7 @@
         "graphicsType": "DarkRaven",
         "health": 9,
         "damage": 2,
-        "speed": 85,
+        "speed": 90,
         "lifetime": -1,
         "xpReward": 1,
         "goldReward": 0.1,
@@ -666,7 +666,7 @@
       {
         "enemyIdToAffect": "StandardCheetah",
         "followTime": 3,
-        "waitTime": 3
+        "waitTime": 2
       },
       {
         "enemyIdToAffect": "SiegeEnemyRanged",
@@ -822,7 +822,7 @@
         "common": {
           "enemyId": "HardestEnemy",
           "startDelay": 1001,
-          "stopDelay": 1230,
+          "stopDelay": 1210,
           "cooldown": 0.8
         }
       },
@@ -830,16 +830,16 @@
         "common": {
           "enemyId": "HardestEnemy",
           "startDelay": 1175,
-          "stopDelay": 1230,
-          "cooldown": 0.4
+          "stopDelay": 1290,
+          "cooldown": 0.6
         }
       },
       {
         "common": {
           "enemyId": "EndEnemy",
           "startDelay": 1175,
-          "stopDelay": 1260,
-          "cooldown": 0.4
+          "stopDelay": 1290,
+          "cooldown": 0.5
         }
       },
       {
@@ -1090,7 +1090,43 @@
           "stopDelay": 303,
           "cooldown": 2
         },
-        "enemiesToSpawn": 8
+        "enemiesToSpawn": 4
+      },
+      {
+        "common": {
+          "enemyId": "FinalBoss",
+          "startDelay": 1190,
+          "stopDelay": 1299,
+          "cooldown": 8
+        },
+        "enemiesToSpawn": 3
+      },
+      {
+        "common": {
+          "enemyId": "EndEnemy",
+          "startDelay": 1190,
+          "stopDelay": 1299,
+          "cooldown": 7
+        },
+        "enemiesToSpawn": 6
+      },
+      {
+        "common": {
+          "enemyId": "SiegeEnemyRanged",
+          "startDelay": 1190,
+          "stopDelay": 1300,
+          "cooldown": 20
+        },
+        "enemiesToSpawn": 16
+      },
+      {
+        "common": {
+          "enemyId": "EndEnemy",
+          "startDelay": 1190,
+          "stopDelay": 1299,
+          "cooldown": 5
+        },
+        "enemiesToSpawn": 6
       },
       {
         "common": {
