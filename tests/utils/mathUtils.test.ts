@@ -8,8 +8,7 @@ const testCases: { x: number; y: number; expectedAngle: number }[] = [
 
 for (const testCase of testCases) {
     test(`returns correct degree angle for direction [X: ${testCase.x} , Y: ${testCase.y}] (${testCase.expectedAngle} degrees)`, () => {
-        let angle = getDegreeAngleFromDirection(testCase.x, testCase.y);
-        if (angle < 0) angle += 360;
+        const angle = getDegreeAngleFromDirection(testCase.x, testCase.y);
 
         expect(angle).toBe(testCase.expectedAngle);
     });
