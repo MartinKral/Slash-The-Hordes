@@ -174,7 +174,7 @@
         "damage": 1,
         "speed": 60,
         "lifetime": -1,
-        "xpReward": 1,
+        "xpReward": 0.9,
         "goldReward": 0,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
@@ -217,7 +217,7 @@
         "speed": 90,
         "lifetime": -1,
         "xpReward": 1,
-        "goldReward": 0.3,
+        "goldReward": 0.15,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0
@@ -231,7 +231,7 @@
         "speed": 70,
         "lifetime": -1,
         "xpReward": 1,
-        "goldReward": 0.2,
+        "goldReward": 0.1,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.02,
         "chestRewardChance": 0
@@ -245,7 +245,7 @@
         "speed": 75,
         "lifetime": -1,
         "xpReward": 1,
-        "goldReward": 0.2,
+        "goldReward": 0.1,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.02,
         "chestRewardChance": 0
@@ -259,7 +259,7 @@
         "speed": 80,
         "lifetime": -1,
         "xpReward": 1,
-        "goldReward": 0.2,
+        "goldReward": 0.1,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.02,
         "chestRewardChance": 0
@@ -273,7 +273,7 @@
         "speed": 95,
         "lifetime": -1,
         "xpReward": 1,
-        "goldReward": 0.3,
+        "goldReward": 0.15,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0.01
@@ -287,7 +287,7 @@
         "speed": 133,
         "lifetime": -1,
         "xpReward": 1,
-        "goldReward": 0.3,
+        "goldReward": 0.15,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0.01
@@ -301,7 +301,7 @@
         "speed": 60,
         "lifetime": -1,
         "xpReward": 1,
-        "goldReward": 0.3,
+        "goldReward": 0.15,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0,
         "chestRewardChance": 0
@@ -315,7 +315,7 @@
         "speed": 70,
         "lifetime": -1,
         "xpReward": 1,
-        "goldReward": 0.4,
+        "goldReward": 0.2,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0,
         "chestRewardChance": 0.01
@@ -329,7 +329,7 @@
         "speed": 80,
         "lifetime": -1,
         "xpReward": 1,
-        "goldReward": 0.5,
+        "goldReward": 0.2,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0.01
@@ -343,7 +343,7 @@
         "speed": 90,
         "lifetime": -1,
         "xpReward": 1,
-        "goldReward": 0.5,
+        "goldReward": 0.2,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0
@@ -371,7 +371,7 @@
         "speed": 22,
         "lifetime": 27,
         "xpReward": 1,
-        "goldReward": 0.3,
+        "goldReward": 0.15,
         "healthPotionRewardChance": 0.05,
         "magnetRewardChance": 0.05,
         "chestRewardChance": 0
@@ -385,7 +385,7 @@
         "speed": 35,
         "lifetime": 27,
         "xpReward": 1,
-        "goldReward": 0.4,
+        "goldReward": 0.15,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.02,
         "chestRewardChance": 0
@@ -399,7 +399,7 @@
         "speed": 30,
         "lifetime": 27,
         "xpReward": 1,
-        "goldReward": 0.5,
+        "goldReward": 0.2,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0
@@ -413,7 +413,7 @@
         "speed": 60,
         "lifetime": 26,
         "xpReward": 1,
-        "goldReward": 0.6,
+        "goldReward": 0.2,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0
@@ -427,7 +427,7 @@
         "speed": 25,
         "lifetime": 27,
         "xpReward": 1,
-        "goldReward": 0.6,
+        "goldReward": 0.2,
         "healthPotionRewardChance": 0.02,
         "magnetRewardChance": 0.02,
         "chestRewardChance": 0
@@ -441,7 +441,7 @@
         "speed": 370,
         "lifetime": 20,
         "xpReward": 1,
-        "goldReward": 0.2,
+        "goldReward": 0.15,
         "healthPotionRewardChance": 0,
         "magnetRewardChance": 0,
         "chestRewardChance": 0
@@ -455,7 +455,7 @@
         "speed": 70,
         "lifetime": 30,
         "xpReward": 1,
-        "goldReward": 0.3,
+        "goldReward": 0.15,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0,
         "chestRewardChance": 0.01
@@ -469,7 +469,7 @@
         "speed": 320,
         "lifetime": 30,
         "xpReward": 1,
-        "goldReward": 0.4,
+        "goldReward": 0.15,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0
@@ -483,7 +483,7 @@
         "speed": 340,
         "lifetime": 24,
         "xpReward": 1,
-        "goldReward": 0.5,
+        "goldReward": 0.2,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0
@@ -497,7 +497,7 @@
         "speed": 400,
         "lifetime": 27,
         "xpReward": 1,
-        "goldReward": 0.7,
+        "goldReward": 0.3,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0
@@ -511,7 +511,7 @@
         "speed": 170,
         "lifetime": 30,
         "xpReward": 1,
-        "goldReward": 0.6,
+        "goldReward": 0.3,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0
@@ -553,7 +553,7 @@
         "speed": 110,
         "lifetime": -1,
         "xpReward": 2,
-        "goldReward": 5,
+        "goldReward": 4,
         "healthPotionRewardChance": 0.2,
         "magnetRewardChance": 0.1,
         "chestRewardChance": 0.1
@@ -567,7 +567,7 @@
         "speed": 115,
         "lifetime": -1,
         "xpReward": 3,
-        "goldReward": 7,
+        "goldReward": 5,
         "healthPotionRewardChance": 0.2,
         "magnetRewardChance": 0.1,
         "chestRewardChance": 0.1
@@ -581,7 +581,7 @@
         "speed": 125,
         "lifetime": -1,
         "xpReward": 5,
-        "goldReward": 8,
+        "goldReward": 6,
         "healthPotionRewardChance": 0.3,
         "magnetRewardChance": 0.2,
         "chestRewardChance": 0.1
@@ -637,7 +637,7 @@
         "speed": 120,
         "lifetime": -1,
         "xpReward": 0.5,
-        "goldReward": 1,
+        "goldReward": 0.15,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0
@@ -651,7 +651,7 @@
         "speed": 130,
         "lifetime": -1,
         "xpReward": 1,
-        "goldReward": 0.2,
+        "goldReward": 0.15,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0
