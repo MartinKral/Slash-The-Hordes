@@ -473,7 +473,7 @@
                 "common": {
                     "enemyId": "BasicEnemy",
                     "startDelay": 0,
-                    "stopDelay": 100,
+                    "stopDelay": 60,
                     "cooldown": 1
                 }
             },
