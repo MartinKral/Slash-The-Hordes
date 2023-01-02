@@ -67,7 +67,7 @@
       "__id__": 3
     },
     "music": {
-      "__uuid__": "0faecdcf-e5d6-4cc1-b3cf-3b2873f8ee62",
+      "__uuid__": "50cb41a8-d6e7-4938-ac3c-f44f68f8bcac",
       "__expectedType__": "cc.AudioClip"
     },
     "enemyHit": {
@@ -79,7 +79,7 @@
       "__expectedType__": "cc.AudioClip"
     },
     "playerDeath": {
-      "__uuid__": "68ebed5f-544b-4337-a49c-d4ba32e8e6a2",
+      "__uuid__": "e24d1743-95d5-4d10-a76e-2fbb0d093957",
       "__expectedType__": "cc.AudioClip"
     },
     "weaponSwing": {
@@ -87,7 +87,7 @@
       "__expectedType__": "cc.AudioClip"
     },
     "xpPickup": {
-      "__uuid__": "6af287fc-820f-4e12-8b8f-858a5dd41d2c",
+      "__uuid__": "ff242c51-6ab4-4735-bf4c-dd9af2b6847a",
       "__expectedType__": "cc.AudioClip"
     },
     "goldPickup": {
@@ -95,7 +95,7 @@
       "__expectedType__": "cc.AudioClip"
     },
     "healthPotionPickup": {
-      "__uuid__": "b1564752-035d-4989-aed0-2c0684d8a0e9",
+      "__uuid__": "ab4e2b21-da3e-45a7-b5df-455bcd830779",
       "__expectedType__": "cc.AudioClip"
     },
     "magnetPickup": {
@@ -103,15 +103,15 @@
       "__expectedType__": "cc.AudioClip"
     },
     "chestPickup": {
-      "__uuid__": "a26cfab9-1d95-4f99-83bf-297696072f6c",
+      "__uuid__": "e21ed27e-1fdc-43a1-b22d-fda9d9b8f67c",
       "__expectedType__": "cc.AudioClip"
     },
     "levelUp": {
-      "__uuid__": "4bf29238-2767-4178-a74a-3c2857685265",
+      "__uuid__": "e5439679-87a6-49e2-b623-83314ecdda68",
       "__expectedType__": "cc.AudioClip"
     },
     "horizontalProjectileLaunch": {
-      "__uuid__": "36c577cb-8a85-40a7-9390-455863dfef8f",
+      "__uuid__": "2cdf2e52-ca81-493b-a694-3a746f06a99d",
       "__expectedType__": "cc.AudioClip"
     },
     "diagonalProjectileLaunch": {
@@ -119,7 +119,7 @@
       "__expectedType__": "cc.AudioClip"
     },
     "haloProjectileLaunch": {
-      "__uuid__": "a7b634e1-7842-402c-a2a9-4007435c9a4a",
+      "__uuid__": "1ae98f55-3a82-4303-8e43-a350d4ad47be",
       "__expectedType__": "cc.AudioClip"
     },
     "_id": ""
