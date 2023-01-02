@@ -1,4 +1,4 @@
-import { Canvas, Component, _decorator } from "cc";
+import { Canvas, Component, Label, _decorator } from "cc";
 import { AppRoot } from "../AppRoot/AppRoot";
 import { requireAppRootAsync } from "../AppRoot/AppRootUtils";
 import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
@@ -15,6 +15,7 @@ export class Menu extends Component {
     @property(UIButton) private upgradeBtn: UIButton;
     @property(UIButton) private audioSettingsBtn: UIButton;
     @property(Canvas) private menuCanvas: Canvas;
+    @property(Label) private highscoreLabel: Label;
 
     private menuModalLauncher: MenuModalLauncher;
 
@@ -27,6 +28,8 @@ export class Menu extends Component {
         this.audioSettingsBtn.InteractedEvent.on(this.openAudioSettingsWindow, this);
 
         this.menuModalLauncher = new MenuModalLauncher(AppRoot.Instance.ModalWindowManager);
+
+        this.highscoreLabel.string = `Highscore: ${Math.floor(AppRoot.Instance.LiveUserData.game.highscore)}`;
     }
 
     private startGame(): void {
