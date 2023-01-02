@@ -97,7 +97,6 @@ export class Game extends Component {
 
         this.player.init(multiInput, this.createPlayerData(settings.player, metaUpgrades));
         this.enemyManager.init(this.player.node, settings.enemyManager);
-        this.itemManager.init(this.enemyManager, this.player, this.gameResult, settings.items);
 
         this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay, this.itemManager);
         new WeaponCollisionSystem(this.player.Weapon);
@@ -157,6 +156,7 @@ export class Game extends Component {
         );
         const modalLauncher = new GameModalLauncher(this.modalWindowManager, this.player, this.gamePauser, upgrader, translationData);
 
+        this.itemManager.init(this.enemyManager, this.player, this.gameResult, modalLauncher, settings.items);
         this.gameUI.init(this.player, modalLauncher);
         this.background.init(this.player.node);
 

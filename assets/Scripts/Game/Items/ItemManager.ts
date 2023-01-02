@@ -3,6 +3,7 @@ import { ISignal } from "../../Services/EventSystem/ISignal";
 import { Signal } from "../../Services/EventSystem/Signal";
 import { ItemSettings } from "../Data/GameSettings";
 import { GameResult } from "../Game";
+import { GameModalLauncher } from "../ModalWIndows/GameModalLauncher";
 import { Enemy } from "../Unit/Enemy/Enemy";
 import { EnemyManager } from "../Unit/Enemy/EnemyManager";
 import { Player } from "../Unit/Player/Player";
@@ -24,15 +25,17 @@ export class ItemManager extends Component {
 
     private player: Player;
     private gameResult: GameResult;
+    private modalLauncher: GameModalLauncher;
     private healthPerPotion: number;
 
     private pickupEvent = new Signal<ItemType>();
 
     private itemTypeToAction = new Map<ItemType, () => void>();
 
-    public init(enemyManager: EnemyManager, player: Player, gameResult: GameResult, settings: ItemSettings): void {
+    public init(enemyManager: EnemyManager, player: Player, gameResult: GameResult, modalLauncher: GameModalLauncher, settings: ItemSettings): void {
         this.player = player;
         this.gameResult = gameResult;
+        this.modalLauncher = modalLauncher;
         this.healthPerPotion = settings.healthPerPotion;
 
         enemyManager.EnemyAddedEvent.on(this.addEnemyListeners, this);
@@ -50,7 +53,7 @@ export class ItemManager extends Component {
         this.itemTypeToAction.set(ItemType.Gold, this.addGold.bind(this));
         this.itemTypeToAction.set(ItemType.HealthPotion, this.useHealthPotion.bind(this));
         this.itemTypeToAction.set(ItemType.Magnet, this.activateMagnet.bind(this));
-        this.itemTypeToAction.set(ItemType.Chest, this.giveRandomSkill.bind(this));
+        this.itemTypeToAction.set(ItemType.Chest, this.openChest.bind(this));
     }
 
     public get PickupEvent(): ISignal<ItemType> {
@@ -84,7 +87,9 @@ export class ItemManager extends Component {
         this.player.Magnet.activate();
     }
 
-    private giveRandomSkill(): void {}
+    private openChest(): void {
+        this.modalLauncher.showChestModal();
+    }
 
     private addEnemyListeners(enemy: Enemy): void {
         enemy.DeathEvent.on(this.trySpawnItems, this);

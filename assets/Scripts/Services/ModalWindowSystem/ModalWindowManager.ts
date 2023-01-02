@@ -12,7 +12,6 @@ export class ModalWindowManager extends Component {
         windowNode.setParent(this.node);
 
         const modalWindow: ModalWindow<TParams, TResult> = <ModalWindow<TParams, TResult>>windowNode.getComponent(name);
-
         const result: TResult = await modalWindow.runAsync(params);
         windowNode.destroy();
 

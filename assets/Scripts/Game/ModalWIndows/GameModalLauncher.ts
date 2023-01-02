@@ -27,8 +27,18 @@ export class GameModalLauncher {
             GameModalWindowTypes.LevelUp,
             { availableUpgrades: Array.from(this.upgrader.getAvailableUpgrades()), translationData: this.translationData }
         );
-        this.gamePauser.resume();
         this.upgrader.upgradeSkill(skillToUpgrade);
+        this.gamePauser.resume();
+    }
+
+    public async showChestModal(): Promise<void> {
+        this.gamePauser.pause();
+        const skillToUpgrade: UpgradeType = await this.modalWindowManager.showModal<LevelUpModalWindowParams, UpgradeType>(
+            GameModalWindowTypes.Chest,
+            { availableUpgrades: Array.from(this.upgrader.getAvailableUpgrades()), translationData: this.translationData }
+        );
+        this.upgrader.upgradeSkill(skillToUpgrade);
+        this.gamePauser.resume();
     }
 
     public async showPauseModal(): Promise<void> {
