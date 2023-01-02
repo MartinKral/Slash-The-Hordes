@@ -143,7 +143,7 @@ export class Enemy extends Component {
             this.sprite.node.active = false;
             await delay(200);
 
-            if (this.sprite == null) break;
+            if (this.sprite == null) break; // exit scene
 
             this.sprite.node.active = true;
             await delay(200);

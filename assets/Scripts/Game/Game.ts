@@ -20,6 +20,7 @@ import { GameModalLauncher } from "./ModalWIndows/GameModalLauncher";
 import { Pauser } from "./Pauser";
 import { TestValues } from "./TestGameRunner";
 import { GameUI } from "./UI/GameUI";
+import { EnemyDeathEffectSpawner } from "./Unit/Enemy/EnemyDeathEffectSpawner/EnemyDeathEffectSpawner";
 import { EnemyManager } from "./Unit/Enemy/EnemyManager";
 import { EnemyProjectileLauncher } from "./Unit/Enemy/ProjectileLauncher.cs/EnemyProjectileLauncher";
 import { MetaUpgrades } from "./Unit/MetaUpgrades/MetaUpgrades";
@@ -45,6 +46,7 @@ export class Game extends Component {
     @property(ProjectileLauncher) private enemyAxeProjectileLauncherComponent: ProjectileLauncher;
     @property(ProjectileLauncher) private enemyMagicOrbProjectileLauncherComponent: ProjectileLauncher;
     @property(EnemyManager) private enemyManager: EnemyManager;
+    @property(EnemyDeathEffectSpawner) private deathEffectSpawner: EnemyDeathEffectSpawner;
     @property(ItemManager) private itemManager: ItemManager;
     @property(GameUI) private gameUI: GameUI;
     @property(Canvas) private gameCanvas: Canvas;
@@ -96,6 +98,7 @@ export class Game extends Component {
 
         this.player.init(multiInput, this.createPlayerData(settings.player, metaUpgrades));
         this.enemyManager.init(this.player.node, settings.enemyManager);
+        this.deathEffectSpawner.init(this.enemyManager);
 
         this.playerCollisionSystem = new PlayerCollisionSystem(this.player, settings.player.collisionDelay, this.itemManager);
         new WeaponCollisionSystem(this.player.Weapon);
