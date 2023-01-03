@@ -73,8 +73,8 @@
     "health": {
       "costs": [
         10,
-        20,
-        30
+        30,
+        50
       ],
       "bonuses": [
         10,
@@ -85,8 +85,8 @@
     "overallDamage": {
       "costs": [
         20,
-        30,
-        40
+        40,
+        70
       ],
       "bonuses": [
         0.5,
@@ -97,8 +97,8 @@
     "projectilePiercing": {
       "costs": [
         50,
-        100,
-        150
+        120,
+        200
       ],
       "bonuses": [
         1,
@@ -108,9 +108,9 @@
     },
     "movementSpeed": {
       "costs": [
-        10,
-        30,
-        50
+        20,
+        50,
+        100
       ],
       "bonuses": [
         10,
@@ -121,8 +121,8 @@
     "xpGatherer": {
       "costs": [
         10,
-        20,
-        30
+        30,
+        50
       ],
       "bonuses": [
         0.1,
@@ -132,9 +132,9 @@
     },
     "goldGatherer": {
       "costs": [
-        10,
         20,
-        30
+        40,
+        70
       ],
       "bonuses": [
         0.1,
@@ -327,7 +327,7 @@
         "health": 30,
         "damage": 2,
         "speed": 80,
-        "lifetime": -1,
+        "lifetime": 27,
         "xpReward": 1,
         "goldReward": 0.2,
         "healthPotionRewardChance": 0.02,
@@ -354,7 +354,7 @@
         "graphicsType": "Bat",
         "health": 5,
         "damage": 1,
-        "speed": 115,
+        "speed": 120,
         "lifetime": -1,
         "xpReward": 1,
         "goldReward": 0.1,
@@ -422,7 +422,7 @@
         "id": "CircleEnemyDark",
         "moveType": "Follow",
         "graphicsType": "DarkRaven",
-        "health": 20,
+        "health": 19,
         "damage": 2,
         "speed": 25,
         "lifetime": 27,
@@ -506,7 +506,7 @@
         "id": "WaveEnemyArmorMarch",
         "moveType": "Launch",
         "graphicsType": "Skeleton",
-        "health": 14,
+        "health": 16,
         "damage": 2,
         "speed": 170,
         "lifetime": 30,
@@ -520,9 +520,9 @@
         "id": "BasicBoss",
         "moveType": "Follow",
         "graphicsType": "BossStoneGolem",
-        "health": 11,
+        "health": 12,
         "damage": 2,
-        "speed": 95,
+        "speed": 98,
         "lifetime": -1,
         "xpReward": 1,
         "goldReward": 2,
@@ -534,9 +534,9 @@
         "id": "StandardBoss",
         "moveType": "Follow",
         "graphicsType": "BossOrcKing",
-        "health": 16,
+        "health": 18,
         "damage": 3,
-        "speed": 102,
+        "speed": 106,
         "lifetime": -1,
         "xpReward": 2,
         "goldReward": 2,
@@ -548,9 +548,9 @@
         "id": "HardBoss",
         "moveType": "Follow",
         "graphicsType": "BossOrcKing",
-        "health": 20,
+        "health": 24,
         "damage": 4,
-        "speed": 110,
+        "speed": 113,
         "lifetime": -1,
         "xpReward": 2,
         "goldReward": 4,
@@ -562,9 +562,9 @@
         "id": "HarderBoss",
         "moveType": "Follow",
         "graphicsType": "BossStoneGolem",
-        "health": 30,
+        "health": 32,
         "damage": 4,
-        "speed": 115,
+        "speed": 120,
         "lifetime": -1,
         "xpReward": 3,
         "goldReward": 5,
@@ -576,9 +576,9 @@
         "id": "HardestBoss",
         "moveType": "Follow",
         "graphicsType": "BossOrcKing",
-        "health": 40,
+        "health": 42,
         "damage": 4,
-        "speed": 125,
+        "speed": 130,
         "lifetime": -1,
         "xpReward": 5,
         "goldReward": 6,
@@ -592,7 +592,7 @@
         "graphicsType": "BossStoneGolem",
         "health": 50,
         "damage": 5,
-        "speed": 130,
+        "speed": 133,
         "lifetime": -1,
         "xpReward": 10,
         "goldReward": 10,
@@ -1027,7 +1027,7 @@
           "stopDelay": 1100,
           "cooldown": 50
         },
-        "enemiesToSpawn": 30
+        "enemiesToSpawn": 20
       },
       {
         "common": {
