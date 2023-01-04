@@ -139,7 +139,7 @@ export class Enemy extends Component {
 
         this.endOfLifetimeTriggered = true;
 
-        while (this.node.active) {
+        while (this.node?.active) {
             this.sprite.node.active = false;
             await delay(200);
 
