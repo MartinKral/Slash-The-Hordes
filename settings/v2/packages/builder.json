@@ -2,13 +2,13 @@
   "splash-setting": {
     "totalTime": 2000,
     "displayWatermark": false,
-    "url": "project://assets/Media/Images/Game/UI/Y8Logo.png",
+    "url": "project://assets/Media/Images/Game/UI/Y8LogoSplash.png",
     "clearColor": {
       "x": 0,
       "y": 0,
       "z": 0,
       "w": 1
     },
-    "displayRatio": 0.05
+    "displayRatio": 0.1
   }
 }
