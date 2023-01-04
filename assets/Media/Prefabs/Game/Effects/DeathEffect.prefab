@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "DamageFlash",
+    "_name": "DeathEffect",
     "_objFlags": 0,
     "_native": "",
     "data": {
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "DamageFlash",
+    "_name": "DeathEffect",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -28,10 +28,13 @@
       },
       {
         "__id__": 6
+      },
+      {
+        "__id__": 8
       }
     ],
     "_prefab": {
-      "__id__": 8
+      "__id__": 10
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -162,6 +165,26 @@
   {
     "__type__": "cc.CompPrefabInfo",
     "fileId": "3ag4rexLNJW6A/sp6OpwZ8"
+  },
+  {
+    "__type__": "213a9aw7AxJUZPp4rSYoD+B",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 9
+    },
+    "animation": {
+      "__id__": 6
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "85y4e2eRBItKLP5t7xinqV"
   },
   {
     "__type__": "cc.PrefabInfo",

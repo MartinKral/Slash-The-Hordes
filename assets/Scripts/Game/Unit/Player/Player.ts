@@ -91,9 +91,9 @@ export class Player extends Component {
                 this.animation.play("Move");
             }
 
-            if (movement.x <= 0) {
+            if (movement.x < 0) {
                 this.playerGraphics.setScale(new Vec3(1, 1, 1));
-            } else {
+            } else if (0 < movement.x) {
                 this.playerGraphics.setScale(new Vec3(-1, 1, 1));
             }
         } else {

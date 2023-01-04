@@ -8,5 +8,7 @@ export function randomPositiveOrNegative(): number {
 
 export function getDegreeAngleFromDirection(x: number, y: number): number {
     const radianAngle = Math.atan2(y, x);
-    return (radianAngle / Math.PI) * 180;
+    const angle = (radianAngle / Math.PI) * 180;
+
+    return angle < 0 ? angle + 360 : angle;
 }
