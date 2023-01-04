@@ -67,59 +67,59 @@
       "__id__": 3
     },
     "music": {
-      "__uuid__": "50cb41a8-d6e7-4938-ac3c-f44f68f8bcac",
+      "__uuid__": "aceed48f-96ea-4a01-ba0e-a0b546ee0dee",
       "__expectedType__": "cc.AudioClip"
     },
     "enemyHit": {
-      "__uuid__": "41d1d0d3-b915-46cc-bdaa-ac443d0b8dd8",
+      "__uuid__": "a1c5a9be-2370-49e9-b676-67a67ef0557f",
       "__expectedType__": "cc.AudioClip"
     },
     "playerHit": {
-      "__uuid__": "94356aff-2a75-43b2-8258-4f18b3006ef6",
+      "__uuid__": "37dd21e3-6fb1-49e7-b894-0261e6c6aa34",
       "__expectedType__": "cc.AudioClip"
     },
     "playerDeath": {
-      "__uuid__": "e24d1743-95d5-4d10-a76e-2fbb0d093957",
+      "__uuid__": "71e5ed19-6702-4075-8104-50be828838c9",
       "__expectedType__": "cc.AudioClip"
     },
     "weaponSwing": {
-      "__uuid__": "2ca33a43-08af-44e8-ac28-28e051838892",
+      "__uuid__": "74f8d16f-bbf3-4497-977f-e8328bd66378",
       "__expectedType__": "cc.AudioClip"
     },
     "xpPickup": {
-      "__uuid__": "ff242c51-6ab4-4735-bf4c-dd9af2b6847a",
+      "__uuid__": "0b2fdc47-ea30-4569-8bfa-893a28c0f99e",
       "__expectedType__": "cc.AudioClip"
     },
     "goldPickup": {
-      "__uuid__": "580b2ceb-3daa-409b-b6c4-7d81c7182650",
+      "__uuid__": "265510e3-77da-49b8-be5f-93605a70aed2",
       "__expectedType__": "cc.AudioClip"
     },
     "healthPotionPickup": {
-      "__uuid__": "ab4e2b21-da3e-45a7-b5df-455bcd830779",
+      "__uuid__": "ad6eb940-f1cf-4b2b-b965-fa3893da3e9c",
       "__expectedType__": "cc.AudioClip"
     },
     "magnetPickup": {
-      "__uuid__": "baf95420-77c5-4747-80ed-6f05b14e8777",
+      "__uuid__": "bcdb843b-2958-4fb4-af84-84adb90cf357",
       "__expectedType__": "cc.AudioClip"
     },
     "chestPickup": {
-      "__uuid__": "e21ed27e-1fdc-43a1-b22d-fda9d9b8f67c",
+      "__uuid__": "7cd20211-eda0-4a59-8285-375fc6652503",
       "__expectedType__": "cc.AudioClip"
     },
     "levelUp": {
-      "__uuid__": "e5439679-87a6-49e2-b623-83314ecdda68",
+      "__uuid__": "ad47d413-ab14-492d-b81f-4de244288c35",
       "__expectedType__": "cc.AudioClip"
     },
     "horizontalProjectileLaunch": {
-      "__uuid__": "2cdf2e52-ca81-493b-a694-3a746f06a99d",
+      "__uuid__": "17984bfa-ef0a-4389-9748-e7c383f1527b",
       "__expectedType__": "cc.AudioClip"
     },
     "diagonalProjectileLaunch": {
-      "__uuid__": "72661b76-bef4-4ed8-9cb6-dd38d839f1b9",
+      "__uuid__": "8cf975c5-5e51-4b53-88c3-b345e8531f9b",
       "__expectedType__": "cc.AudioClip"
     },
     "haloProjectileLaunch": {
-      "__uuid__": "1ae98f55-3a82-4303-8e43-a350d4ad47be",
+      "__uuid__": "18c2252a-a748-470f-8088-15d2d21094d5",
       "__expectedType__": "cc.AudioClip"
     },
     "_id": ""
