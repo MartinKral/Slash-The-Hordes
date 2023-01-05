@@ -8,6 +8,7 @@ Open sourced with the courtesy of [Y8.com](https://www.y8.com)
 
 
 ## Useful(?) bits: 
+- [Object pool](https://github.com/MartinKral/Slash-The-Hordes/blob/master/assets/Scripts/Services/ObjectPool.ts)
 - [Modal window system](https://github.com/MartinKral/SlashTheHordes/tree/master/assets/Scripts/Services/ModalWindowSystem) ([Example usage](https://github.com/MartinKral/SlashTheHordes/blob/master/assets/Scripts/Game/ModalWIndows/ChestModalWindow.ts))
 - [Event System](https://github.com/MartinKral/SlashTheHordes/tree/master/assets/Scripts/Services/EventSystem) 
 
