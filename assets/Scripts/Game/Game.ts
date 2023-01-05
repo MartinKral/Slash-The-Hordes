@@ -78,12 +78,52 @@ export class Game extends Component {
         Game.instance = this;
     }
 
-    public async playGame(
-        userData: UserData,
-        settings: GameSettings,
-        translationData: TranslationData,
-        testValues?: TestValues
-    ): Promise<GameResult> {
+    public async play(userData: UserData, settings: GameSettings, translationData: TranslationData, testValues?: TestValues): Promise<GameResult> {
+        await this.setup(userData, settings, translationData, testValues);
+
+        this.gamePauser.resume();
+        this.blackScreen.active = false;
+        AppRoot.Instance.ScreenFader.playClose();
+
+        while (!this.gameResult.hasExitManually && this.player.Health.IsAlive) await delay(100);
+
+        this.gamePauser.pause();
+        Game.instance = null;
+        this.gameResult.score = this.timeAlive;
+
+        if (!this.gameResult.hasExitManually) {
+            await delay(2000);
+        }
+
+        return this.gameResult;
+    }
+
+    public exitGame(): void {
+        this.gameResult.hasExitManually = true;
+    }
+
+    public update(deltaTime: number): void {
+        if (this.gamePauser.IsPaused) return;
+
+        this.player.gameTick(deltaTime);
+        this.playerCollisionSystem.gameTick(deltaTime);
+        this.enemyManager.gameTick(deltaTime);
+        this.haloProjectileLauncher.gameTick(deltaTime);
+        this.horizontalProjectileLauncher.gameTick(deltaTime);
+        this.diagonalProjectileLauncher.gameTick(deltaTime);
+        this.enemyAxeProjectileLauncher.gameTick(deltaTime);
+        this.enemyMagicOrbProjectileLauncher.gameTick(deltaTime);
+        this.itemAttractor.gameTick(deltaTime);
+        this.background.gameTick();
+
+        this.timeAlive += deltaTime;
+        this.gameUI.updateTimeAlive(this.timeAlive);
+
+        AppRoot.Instance.MainCamera.node.setWorldPosition(this.player.node.worldPosition);
+        this.gameUI.node.setWorldPosition(this.player.node.worldPosition);
+    }
+
+    private async setup(userData: UserData, settings: GameSettings, translationData: TranslationData, testValues: TestValues): Promise<void> {
         await requireAppRootAsync();
         this.gameCanvas.cameraComponent = AppRoot.Instance.MainCamera;
 
@@ -175,45 +215,6 @@ export class Game extends Component {
             this.diagonalProjectileLauncher,
             this.haloProjectileLauncher
         );
-        this.gamePauser.resume();
-        this.blackScreen.active = false;
-        AppRoot.Instance.ScreenFader.playClose();
-
-        while (!this.gameResult.hasExitManually && this.player.Health.IsAlive) await delay(100);
-        this.gamePauser.pause();
-        Game.instance = null;
-        this.gameResult.score = this.timeAlive;
-
-        if (!this.gameResult.hasExitManually) {
-            await delay(2000);
-        }
-
-        return this.gameResult;
-    }
-
-    public exitGame(): void {
-        this.gameResult.hasExitManually = true;
-    }
-
-    public update(deltaTime: number): void {
-        if (this.gamePauser.IsPaused) return;
-
-        this.player.gameTick(deltaTime);
-        this.playerCollisionSystem.gameTick(deltaTime);
-        this.enemyManager.gameTick(deltaTime);
-        this.haloProjectileLauncher.gameTick(deltaTime);
-        this.horizontalProjectileLauncher.gameTick(deltaTime);
-        this.diagonalProjectileLauncher.gameTick(deltaTime);
-        this.enemyAxeProjectileLauncher.gameTick(deltaTime);
-        this.enemyMagicOrbProjectileLauncher.gameTick(deltaTime);
-        this.itemAttractor.gameTick(deltaTime);
-        this.background.gameTick();
-
-        this.timeAlive += deltaTime;
-        this.gameUI.updateTimeAlive(this.timeAlive);
-
-        AppRoot.Instance.MainCamera.node.setWorldPosition(this.player.node.worldPosition);
-        this.gameUI.node.setWorldPosition(this.player.node.worldPosition);
     }
 
     private createPlayerData(settings: PlayerSettings, metaUpgrades: MetaUpgrades): PlayerData {

@@ -25,7 +25,7 @@ export class GameRunner {
         director.loadScene("Game");
         const userData: UserData = AppRoot.Instance.LiveUserData;
         while (Game.Instance == null) await delay(10);
-        const result: GameResult = await Game.Instance.playGame(userData, AppRoot.Instance.Settings, AppRoot.Instance.TranslationData);
+        const result: GameResult = await Game.Instance.play(userData, AppRoot.Instance.Settings, AppRoot.Instance.TranslationData);
         userData.game.goldCoins += result.goldCoins;
 
         if (userData.game.highscore < result.score) {

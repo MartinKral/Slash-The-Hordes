@@ -36,7 +36,7 @@ export class TestGameRunner extends Component {
         testUserData.game.metaUpgrades.goldGathererLevel = this.goldGathererLevel;
 
         const settings = this.getTimeModifiedSettings(AppRoot.Instance.Settings);
-        Game.Instance.playGame(testUserData, settings, AppRoot.Instance.TranslationData, { startTime: this.startTime, startXP: this.startXP });
+        Game.Instance.play(testUserData, settings, AppRoot.Instance.TranslationData, { startTime: this.startTime, startXP: this.startXP });
     }
 
     private getTimeModifiedSettings(settings: GameSettings): GameSettings {
