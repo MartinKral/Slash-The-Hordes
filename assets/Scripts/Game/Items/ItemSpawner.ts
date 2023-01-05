@@ -19,8 +19,8 @@ export class ItemSpawner extends Component {
         item.PickupEvent.on(this.return, this);
     }
 
-    private return(gold: Item): void {
-        gold.PickupEvent.off(this.return);
-        this.itemPool.return(gold);
+    private return(item: Item): void {
+        item.PickupEvent.off(this.return);
+        this.itemPool.return(item);
     }
 }
