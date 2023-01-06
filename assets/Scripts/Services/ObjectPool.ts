@@ -12,7 +12,7 @@ export class ObjectPool<T extends Component> {
         this.componentName = componentName;
 
         for (let i = 0; i < defaultPoolCount; i++) {
-            this.pooledObjects.push(this.createNew());
+            this.createNew();
         }
     }
 
