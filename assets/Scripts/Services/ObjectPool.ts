@@ -54,7 +54,7 @@ class PooledObject<T extends Component> {
         this.instancedNode = instantiate(prefab);
         this.instancedComponent = <T>this.instancedNode.getComponent(componentName);
         if (this.instancedComponent == null) {
-            console.log("Object " + prefab.name + " does not have component " + componentName);
+            console.error("Object " + prefab.name + " does not have component " + componentName);
         }
 
         this.clear();
