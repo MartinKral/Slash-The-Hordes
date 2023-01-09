@@ -1,11 +1,11 @@
 import { Node, Vec2 } from "cc";
-import { Empty } from "../../../../Menu/ModalWindows/Upgrades/UpgradesModalWindow";
-import { ISignal } from "../../../../Services/EventSystem/ISignal";
-import { GameTimer } from "../../../../Services/GameTimer";
-import { delay } from "../../../../Services/Utils/AsyncUtils";
-import { WaveLauncherSettings } from "../../../Data/GameSettings";
-import { IProjectileLauncherSignaler } from "../../../Projectile/IProjectileLauncherSignaler";
-import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
+import { Empty } from "../../../Menu/ModalWindows/Upgrades/UpgradesModalWindow";
+import { ISignal } from "../../../Services/EventSystem/ISignal";
+import { GameTimer } from "../../../Services/GameTimer";
+import { delay } from "../../../Services/Utils/AsyncUtils";
+import { WaveLauncherSettings } from "../../Data/GameSettings";
+import { IProjectileLauncherSignaler } from "../IProjectileLauncherSignaler";
+import { ProjectileCollision } from "../ProjectileCollision";
 import { ProjectileData } from "./ProjectileData";
 import { ProjectileLauncher } from "./ProjectileLauncher";
 

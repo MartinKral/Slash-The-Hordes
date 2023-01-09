@@ -1,12 +1,12 @@
 import { _decorator, Component, Prefab, Vec2, Vec3 } from "cc";
-import { Empty } from "../../../../Menu/ModalWindows/Upgrades/UpgradesModalWindow";
-import { ISignal } from "../../../../Services/EventSystem/ISignal";
-import { Signal } from "../../../../Services/EventSystem/Signal";
-import { ObjectPool } from "../../../../Services/ObjectPool";
-import { getDegreeAngleFromDirection } from "../../../../Services/Utils/MathUtils";
-import { IProjectileLauncherSignaler } from "../../../Projectile/IProjectileLauncherSignaler";
-import { Projectile } from "../../../Projectile/Projectile";
-import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
+import { Empty } from "../../../Menu/ModalWindows/Upgrades/UpgradesModalWindow";
+import { ISignal } from "../../../Services/EventSystem/ISignal";
+import { Signal } from "../../../Services/EventSystem/Signal";
+import { ObjectPool } from "../../../Services/ObjectPool";
+import { getDegreeAngleFromDirection } from "../../../Services/Utils/MathUtils";
+import { IProjectileLauncherSignaler } from "../IProjectileLauncherSignaler";
+import { Projectile } from "../Projectile";
+import { ProjectileCollision } from "../ProjectileCollision";
 const { ccclass, property } = _decorator;
 
 @ccclass("ProjectileLauncher")

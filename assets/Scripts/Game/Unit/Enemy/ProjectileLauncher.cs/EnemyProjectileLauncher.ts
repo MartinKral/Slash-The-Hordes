@@ -1,7 +1,7 @@
 import { Vec3, Node, Vec2 } from "cc";
 import { GameTimer } from "../../../../Services/GameTimer";
 import { EnemyLauncherSettings } from "../../../Data/GameSettings";
-import { ProjectileLauncher } from "../../Player/ProjectileLauncher/ProjectileLauncher";
+import { ProjectileLauncher } from "../../../Projectile/ProjectileLauncher/ProjectileLauncher";
 import { Enemy } from "../Enemy";
 import { EnemyManager } from "../EnemyManager";
 

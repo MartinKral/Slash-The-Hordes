@@ -6,8 +6,8 @@ import { ItemType } from "../Items/ItemType";
 import { Enemy } from "../Unit/Enemy/Enemy";
 import { EnemyManager } from "../Unit/Enemy/EnemyManager";
 import { Player } from "../Unit/Player/Player";
-import { HaloProjectileLauncher } from "../Unit/Player/ProjectileLauncher/HaloProjectileLauncher";
-import { WaveProjectileLauncher } from "../Unit/Player/ProjectileLauncher/WaveProjectileLauncher";
+import { HaloProjectileLauncher } from "../Projectile/ProjectileLauncher/HaloProjectileLauncher";
+import { WaveProjectileLauncher } from "../Projectile/ProjectileLauncher/WaveProjectileLauncher";
 const { ccclass, property } = _decorator;
 
 @ccclass("GameAudioAdapter")

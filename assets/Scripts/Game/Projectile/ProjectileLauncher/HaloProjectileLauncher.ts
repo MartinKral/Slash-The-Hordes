@@ -1,11 +1,11 @@
 import { Node, Vec2 } from "cc";
-import { ISignal } from "../../../../Services/EventSystem/ISignal";
-import { Signal } from "../../../../Services/EventSystem/Signal";
-import { GameTimer } from "../../../../Services/GameTimer";
-import { roundToOneDecimal } from "../../../../Services/Utils/MathUtils";
-import { HaloLauncherSettings } from "../../../Data/GameSettings";
-import { IProjectileLauncherSignaler } from "../../../Projectile/IProjectileLauncherSignaler";
-import { ProjectileCollision } from "../../../Projectile/ProjectileCollision";
+import { ISignal } from "../../../Services/EventSystem/ISignal";
+import { Signal } from "../../../Services/EventSystem/Signal";
+import { GameTimer } from "../../../Services/GameTimer";
+import { roundToOneDecimal } from "../../../Services/Utils/MathUtils";
+import { HaloLauncherSettings } from "../../Data/GameSettings";
+import { IProjectileLauncherSignaler } from "../IProjectileLauncherSignaler";
+import { ProjectileCollision } from "../ProjectileCollision";
 import { ProjectileData } from "./ProjectileData";
 import { ProjectileLauncher } from "./ProjectileLauncher";
 

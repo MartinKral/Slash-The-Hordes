@@ -1,7 +1,7 @@
 import { UpgradeSettings } from "../Data/GameSettings";
 import { Player } from "../Unit/Player/Player";
-import { HaloProjectileLauncher } from "../Unit/Player/ProjectileLauncher/HaloProjectileLauncher";
-import { WaveProjectileLauncher } from "../Unit/Player/ProjectileLauncher/WaveProjectileLauncher";
+import { HaloProjectileLauncher } from "../Projectile/ProjectileLauncher/HaloProjectileLauncher";
+import { WaveProjectileLauncher } from "../Projectile/ProjectileLauncher/WaveProjectileLauncher";
 import { UpgradeType } from "./UpgradeType";
 
 export class Upgrader {

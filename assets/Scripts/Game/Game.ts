@@ -25,10 +25,10 @@ import { EnemyManager } from "./Unit/Enemy/EnemyManager";
 import { EnemyProjectileLauncher } from "./Unit/Enemy/ProjectileLauncher.cs/EnemyProjectileLauncher";
 import { MetaUpgrades } from "./Unit/MetaUpgrades/MetaUpgrades";
 import { Player, PlayerData } from "./Unit/Player/Player";
-import { HaloProjectileLauncher } from "./Unit/Player/ProjectileLauncher/HaloProjectileLauncher";
-import { ProjectileData } from "./Unit/Player/ProjectileLauncher/ProjectileData";
-import { ProjectileLauncher } from "./Unit/Player/ProjectileLauncher/ProjectileLauncher";
-import { WaveProjectileLauncher } from "./Unit/Player/ProjectileLauncher/WaveProjectileLauncher";
+import { HaloProjectileLauncher } from "./Projectile/ProjectileLauncher/HaloProjectileLauncher";
+import { ProjectileData } from "./Projectile/ProjectileLauncher/ProjectileData";
+import { ProjectileLauncher } from "./Projectile/ProjectileLauncher/ProjectileLauncher";
+import { WaveProjectileLauncher } from "./Projectile/ProjectileLauncher/WaveProjectileLauncher";
 import { Upgrader } from "./Upgrades/Upgrader";
 import { MetaUpgradeType } from "./Upgrades/UpgradeType";
 
