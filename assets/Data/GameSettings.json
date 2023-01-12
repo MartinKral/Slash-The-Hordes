@@ -183,7 +183,7 @@
       {
         "id": "BasicEnemySkeleton",
         "moveType": "Follow",
-        "graphicsType": "Goblin",
+        "graphicsType": "Skeleton",
         "health": 4,
         "damage": 1,
         "speed": 60,
@@ -648,7 +648,7 @@
         "graphicsType": "Barbarian",
         "health": 4,
         "damage": 1,
-        "speed": 80,
+        "speed": 70,
         "lifetime": -1,
         "xpReward": 1,
         "goldReward": 0.1,
@@ -751,7 +751,7 @@
       {
         "common": {
           "enemyId": "BasicEnemySkeleton",
-          "startDelay": 85,
+          "startDelay": 82,
           "stopDelay": 90,
           "cooldown": 1
         }
@@ -768,6 +768,14 @@
         "common": {
           "enemyId": "BasicEnemy",
           "startDelay": 61,
+          "stopDelay": 83,
+          "cooldown": 0.9
+        }
+      },
+      {
+        "common": {
+          "enemyId": "BasicEnemy",
+          "startDelay": 89,
           "stopDelay": 120,
           "cooldown": 0.9
         }
