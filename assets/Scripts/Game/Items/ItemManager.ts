@@ -64,9 +64,8 @@ export class ItemManager extends Component {
         if (!this.itemTypeToAction.has(item.ItemType)) throw new Error("Does not have behaviour set for " + item.ItemType);
 
         this.pickupEffectManager.showEffect(item.node.worldPosition);
-        this.pickupEvent.trigger(item.ItemType);
-
         this.itemTypeToAction.get(item.ItemType)();
+        this.pickupEvent.trigger(item.ItemType);
 
         item.pickup();
     }

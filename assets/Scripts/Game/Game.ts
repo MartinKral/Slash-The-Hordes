@@ -76,6 +76,7 @@ export class Game extends Component {
     public start(): void {
         this.gamePauser.pause();
         Game.instance = this;
+        this.blackScreen.active = true;
     }
 
     public async play(userData: UserData, settings: GameSettings, translationData: TranslationData, testValues?: TestValues): Promise<GameResult> {
@@ -206,7 +207,7 @@ export class Game extends Component {
         const modalLauncher = new GameModalLauncher(AppRoot.Instance.ModalWindowManager, this.player, this.gamePauser, upgrader, translationData);
 
         this.itemManager.init(this.enemyManager, this.player, this.gameResult, modalLauncher, settings.items);
-        this.gameUI.init(this.player, modalLauncher);
+        this.gameUI.init(this.player, modalLauncher, this.itemManager, this.gameResult);
         this.background.init(this.player.node);
 
         if (testValues) {
