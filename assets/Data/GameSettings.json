@@ -96,8 +96,8 @@
     },
     "projectilePiercing": {
       "costs": [
-        50,
-        120,
+        30,
+        100,
         200
       ],
       "bonuses": [
@@ -132,9 +132,9 @@
     },
     "goldGatherer": {
       "costs": [
-        20,
-        40,
-        70
+        10,
+        30,
+        50
       ],
       "bonuses": [
         0.1,
@@ -175,7 +175,7 @@
         "speed": 60,
         "lifetime": -1,
         "xpReward": 0.9,
-        "goldReward": 0,
+        "goldReward": 0.11,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
         "chestRewardChance": 0
@@ -192,6 +192,20 @@
         "goldReward": 0.1,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0.01,
+        "chestRewardChance": 0
+      },
+      {
+        "id": "TreasureEnemy",
+        "moveType": "Launch",
+        "graphicsType": "Goblin",
+        "health": 4,
+        "damage": 1,
+        "speed": 50,
+        "lifetime": 25,
+        "xpReward": 1,
+        "goldReward": 1,
+        "healthPotionRewardChance": 0.02,
+        "magnetRewardChance": 0.02,
         "chestRewardChance": 0
       },
       {
@@ -369,7 +383,7 @@
         "health": 4,
         "damage": 1,
         "speed": 22,
-        "lifetime": 27,
+        "lifetime": 25,
         "xpReward": 1,
         "goldReward": 0.15,
         "healthPotionRewardChance": 0.05,
@@ -438,7 +452,7 @@
         "graphicsType": "Shark",
         "health": 1,
         "damage": 1,
-        "speed": 370,
+        "speed": 360,
         "lifetime": 20,
         "xpReward": 1,
         "goldReward": 0.15,
@@ -455,7 +469,7 @@
         "speed": 70,
         "lifetime": 30,
         "xpReward": 1,
-        "goldReward": 0.15,
+        "goldReward": 0.2,
         "healthPotionRewardChance": 0.01,
         "magnetRewardChance": 0,
         "chestRewardChance": 0.01
@@ -696,6 +710,14 @@
           "startDelay": 0,
           "stopDelay": 59,
           "cooldown": 1
+        }
+      },
+      {
+        "common": {
+          "enemyId": "BasicEnemy",
+          "startDelay": 0,
+          "stopDelay": 0.2,
+          "cooldown": 0.1
         }
       },
       {
@@ -955,7 +977,7 @@
           "stopDelay": 130,
           "cooldown": 45
         },
-        "enemiesToSpawn": 38
+        "enemiesToSpawn": 36
       },
       {
         "common": {
@@ -1143,10 +1165,10 @@
         "common": {
           "enemyId": "WaveEnemy",
           "startDelay": 1,
-          "stopDelay": 201,
-          "cooldown": 25
+          "stopDelay": 210,
+          "cooldown": 27
         },
-        "enemiesToSpawn": 8
+        "enemiesToSpawn": 7
       },
       {
         "common": {
@@ -1162,9 +1184,9 @@
           "enemyId": "WaveEnemyArmor",
           "startDelay": 1,
           "stopDelay": 199,
-          "cooldown": 50
+          "cooldown": 48
         },
-        "enemiesToSpawn": 8
+        "enemiesToSpawn": 6
       },
       {
         "common": {
@@ -1192,6 +1214,15 @@
           "cooldown": 30
         },
         "enemiesToSpawn": 12
+      },
+      {
+        "common": {
+          "enemyId": "TreasureEnemy",
+          "startDelay": 0,
+          "stopDelay": 50,
+          "cooldown": 10
+        },
+        "enemiesToSpawn": 1
       },
       {
         "common": {
