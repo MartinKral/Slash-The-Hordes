@@ -14,6 +14,8 @@ export class Menu extends Component {
     @property(UIButton) private playBtn: UIButton;
     @property(UIButton) private upgradeBtn: UIButton;
     @property(Node) private upgradeAvailableIndicator: Node;
+    @property(Node) private goldCounter: Node;
+    @property(Label) private goldLabel: Label;
     @property(UIButton) private audioSettingsBtn: UIButton;
     @property(Canvas) private menuCanvas: Canvas;
     @property(Label) private highscoreLabel: Label;
@@ -32,11 +34,15 @@ export class Menu extends Component {
 
         this.highscoreLabel.string = `Highscore: ${Math.floor(AppRoot.Instance.LiveUserData.game.highscore)}`;
 
-        this.updateUpgradeIndicator();
+        this.updateGoldIndicators();
     }
 
-    private updateUpgradeIndicator(): void {
+    private updateGoldIndicators(): void {
         this.upgradeAvailableIndicator.active = this.isUpgradeAffordable();
+
+        const goldCoins = AppRoot.Instance.LiveUserData.game.goldCoins;
+        this.goldCounter.active = 0 < goldCoins;
+        this.goldLabel.string = goldCoins.toString();
     }
 
     private isUpgradeAffordable(): boolean {
@@ -69,7 +75,7 @@ export class Menu extends Component {
 
     private async openUpgradesWindow(): Promise<void> {
         await this.menuModalLauncher.openUpgradesWindow();
-        this.updateUpgradeIndicator();
+        this.updateGoldIndicators();
     }
 
     private openAudioSettingsWindow(): void {
