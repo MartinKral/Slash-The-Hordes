@@ -1,4 +1,4 @@
-import { Canvas, Component, KeyCode, Vec2, _decorator, Node } from "cc";
+import { Canvas, Component, KeyCode, Vec2, _decorator, Node, approx } from "cc";
 import { AppRoot } from "../AppRoot/AppRoot";
 import { requireAppRootAsync } from "../AppRoot/AppRootUtils";
 import { delay } from "../Services/Utils/AsyncUtils";
@@ -81,6 +81,8 @@ export class Game extends Component {
     public async play(userData: UserData, settings: GameSettings, translationData: TranslationData, testValues?: TestValues): Promise<GameResult> {
         await this.setup(userData, settings, translationData, testValues);
 
+        AppRoot.Instance.Analytics.gameStart();
+
         this.gamePauser.resume();
         this.blackScreen.active = false;
         AppRoot.Instance.ScreenFader.playClose();
@@ -92,7 +94,12 @@ export class Game extends Component {
         this.gameResult.score = this.timeAlive;
 
         if (!this.gameResult.hasExitManually) {
+            AppRoot.Instance.Analytics.goldPerRun(this.gameResult.goldCoins);
+            AppRoot.Instance.Analytics.gameEnd(this.gameResult.score);
+
             await delay(2000);
+        } else {
+            AppRoot.Instance.Analytics.gameExit(this.timeAlive);
         }
 
         return this.gameResult;
