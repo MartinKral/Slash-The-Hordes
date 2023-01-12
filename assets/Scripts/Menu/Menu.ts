@@ -1,9 +1,9 @@
-import { Canvas, Component, Label, _decorator } from "cc";
+import { approx, Canvas, Component, Label, Node, _decorator } from "cc";
 import { AppRoot } from "../AppRoot/AppRoot";
 import { requireAppRootAsync } from "../AppRoot/AppRootUtils";
-import { ModalWindowManager } from "../Services/ModalWindowSystem/ModalWindowManager";
+import { MetaUpgradeSettings } from "../Game/Data/GameSettings";
+import { MetaUpgradesData } from "../Game/Data/UserData";
 import { UIButton } from "../Services/UI/Button/UIButton";
-import { OpenCloseAnimator } from "../Utils/OpenCloseAnimator";
 import { GameRunner } from "./GameRunner";
 import { MenuModalLauncher } from "./ModalWindows/MenuModalLauncher";
 
@@ -13,6 +13,7 @@ const { ccclass, property } = _decorator;
 export class Menu extends Component {
     @property(UIButton) private playBtn: UIButton;
     @property(UIButton) private upgradeBtn: UIButton;
+    @property(Node) private upgradeAvailableIndicator: Node;
     @property(UIButton) private audioSettingsBtn: UIButton;
     @property(Canvas) private menuCanvas: Canvas;
     @property(Label) private highscoreLabel: Label;
@@ -30,6 +31,35 @@ export class Menu extends Component {
         this.menuModalLauncher = new MenuModalLauncher(AppRoot.Instance.ModalWindowManager);
 
         this.highscoreLabel.string = `Highscore: ${Math.floor(AppRoot.Instance.LiveUserData.game.highscore)}`;
+
+        this.updateUpgradeIndicator();
+    }
+
+    private updateUpgradeIndicator(): void {
+        this.upgradeAvailableIndicator.active = this.isUpgradeAffordable();
+    }
+
+    private isUpgradeAffordable(): boolean {
+        const goldCoins: number = AppRoot.Instance.LiveUserData.game.goldCoins;
+        const metaUpgrades: MetaUpgradesData = AppRoot.Instance.LiveUserData.game.metaUpgrades;
+
+        const metaUpgradesSettings = AppRoot.Instance.Settings.metaUpgrades;
+
+        const costs: number[] = [];
+        this.tryPushLowestCost(metaUpgrades.goldGathererLevel, metaUpgradesSettings.goldGatherer, costs);
+        this.tryPushLowestCost(metaUpgrades.healthLevel, metaUpgradesSettings.health, costs);
+        this.tryPushLowestCost(metaUpgrades.movementSpeedLevel, metaUpgradesSettings.movementSpeed, costs);
+        this.tryPushLowestCost(metaUpgrades.overallDamageLevel, metaUpgradesSettings.overallDamage, costs);
+        this.tryPushLowestCost(metaUpgrades.projectilePiercingLevel, metaUpgradesSettings.projectilePiercing, costs);
+        this.tryPushLowestCost(metaUpgrades.xpGathererLevel, metaUpgradesSettings.xpGatherer, costs);
+
+        return 0 < costs.length ? Math.min(...costs) <= goldCoins : false;
+    }
+
+    private tryPushLowestCost(upgradeLevel: number, metaUpgradeSettings: MetaUpgradeSettings, costs: number[]): void {
+        if (upgradeLevel < metaUpgradeSettings.costs.length) {
+            costs.push(metaUpgradeSettings.costs[upgradeLevel]);
+        }
     }
 
     private startGame(): void {
@@ -37,8 +67,9 @@ export class Menu extends Component {
         GameRunner.Instance.playGame();
     }
 
-    private openUpgradesWindow(): void {
-        this.menuModalLauncher.openUpgradesWindow();
+    private async openUpgradesWindow(): Promise<void> {
+        await this.menuModalLauncher.openUpgradesWindow();
+        this.updateUpgradeIndicator();
     }
 
     private openAudioSettingsWindow(): void {
