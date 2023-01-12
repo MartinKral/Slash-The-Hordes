@@ -181,6 +181,20 @@
         "chestRewardChance": 0
       },
       {
+        "id": "BasicEnemySkeleton",
+        "moveType": "Follow",
+        "graphicsType": "Goblin",
+        "health": 4,
+        "damage": 1,
+        "speed": 60,
+        "lifetime": -1,
+        "xpReward": 1,
+        "goldReward": 0.1,
+        "healthPotionRewardChance": 0.01,
+        "magnetRewardChance": 0.01,
+        "chestRewardChance": 0
+      },
+      {
         "id": "StandardEnemy",
         "moveType": "Follow",
         "graphicsType": "Goblin",
@@ -383,9 +397,23 @@
         "health": 4,
         "damage": 1,
         "speed": 22,
-        "lifetime": 25,
+        "lifetime": 27,
         "xpReward": 1,
         "goldReward": 0.15,
+        "healthPotionRewardChance": 0.05,
+        "magnetRewardChance": 0.05,
+        "chestRewardChance": 0
+      },
+      {
+        "id": "CircleEnemyBat",
+        "moveType": "Follow",
+        "graphicsType": "Bat",
+        "health": 2,
+        "damage": 1,
+        "speed": 22,
+        "lifetime": 25,
+        "xpReward": 1,
+        "goldReward": 0.10,
         "healthPotionRewardChance": 0.05,
         "magnetRewardChance": 0.05,
         "chestRewardChance": 0
@@ -452,7 +480,7 @@
         "graphicsType": "Shark",
         "health": 1,
         "damage": 1,
-        "speed": 360,
+        "speed": 350,
         "lifetime": 20,
         "xpReward": 1,
         "goldReward": 0.15,
@@ -534,9 +562,9 @@
         "id": "BasicBoss",
         "moveType": "Follow",
         "graphicsType": "BossStoneGolem",
-        "health": 14,
+        "health": 12,
         "damage": 2,
-        "speed": 99,
+        "speed": 95,
         "lifetime": -1,
         "xpReward": 1,
         "goldReward": 2,
@@ -718,6 +746,14 @@
           "startDelay": 0,
           "stopDelay": 0.2,
           "cooldown": 0.1
+        }
+      },
+      {
+        "common": {
+          "enemyId": "BasicEnemySkeleton",
+          "startDelay": 85,
+          "stopDelay": 90,
+          "cooldown": 1
         }
       },
       {
@@ -972,12 +1008,21 @@
     "circularEnemySpawners": [
       {
         "common": {
-          "enemyId": "CircleEnemy",
+          "enemyId": "CircleEnemyBat",
           "startDelay": 1,
+          "stopDelay": 47,
+          "cooldown": 45
+        },
+        "enemiesToSpawn": 34
+      },
+      {
+        "common": {
+          "enemyId": "CircleEnemy",
+          "startDelay": 40,
           "stopDelay": 130,
           "cooldown": 45
         },
-        "enemiesToSpawn": 36
+        "enemiesToSpawn": 34
       },
       {
         "common": {
@@ -986,16 +1031,16 @@
           "stopDelay": 122,
           "cooldown": 60
         },
-        "enemiesToSpawn": 6
+        "enemiesToSpawn": 5
       },
       {
         "common": {
           "enemyId": "Hunter",
-          "startDelay": 110,
-          "stopDelay": 112,
-          "cooldown": 1
+          "startDelay": 111,
+          "stopDelay": 113,
+          "cooldown": 1.5
         },
-        "enemiesToSpawn": 6
+        "enemiesToSpawn": 4
       },
       {
         "common": {
