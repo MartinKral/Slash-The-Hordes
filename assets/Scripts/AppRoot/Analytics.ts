@@ -36,9 +36,9 @@ export class Analytics {
 }
 
 enum EventName {
-    TOTAL_TIME = "Minutes_total",
-    GOLD_PER_RUN = "Gold_per_run",
-    GAMES_PER_SESSION = "Games_per_session",
-    GAME_TIME = "Game_time_seconds",
-    GAME_EXIT = "Game_exit"
+    TOTAL_TIME = "Minutes_total_v0.1",
+    GOLD_PER_RUN = "Gold_per_run_v0.1",
+    GAMES_PER_SESSION = "Games_per_session_v0.1",
+    GAME_TIME = "Game_time_seconds_v0.1",
+    GAME_EXIT = "Game_exit_v0.1"
 }
