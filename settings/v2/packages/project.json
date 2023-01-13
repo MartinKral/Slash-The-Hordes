@@ -45,8 +45,8 @@
   },
   "general": {
     "designResolution": {
-      "width": 640,
-      "height": 960,
+      "width": 510,
+      "height": 680,
       "fitHeight": true
     }
   }
