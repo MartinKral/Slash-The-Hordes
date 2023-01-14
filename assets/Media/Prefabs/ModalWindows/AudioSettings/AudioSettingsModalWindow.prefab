@@ -480,7 +480,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -19.18,
+      "y": -18.332,
       "z": 0
     },
     "_lrot": {
@@ -492,8 +492,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.5,
+      "y": 0.5,
       "z": 1
     },
     "_layer": 33554432,
@@ -518,7 +518,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 138.57,
+      "width": 256.63,
       "height": 20
     },
     "_anchorPoint": {
@@ -548,26 +548,26 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 133,
-      "g": 153,
-      "b": 177,
+      "r": 193,
+      "g": 221,
+      "b": 253,
       "a": 255
     },
-    "_string": "Audio Settings",
+    "_string": "AUDIO SETTINGS",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 58,
+    "_fontSize": 58,
     "_fontFamily": "Arial",
     "_lineHeight": 20,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "c96b42a9-d20d-4c59-8e99-8ed749a715c8",
+      "__uuid__": "65390837-3108-471e-819a-b0be70a7692f",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
-    "_spacingX": 0,
+    "_spacingX": 0.5,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -612,7 +612,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -18.342,
+      "y": -17.494,
       "z": 0
     },
     "_lrot": {
@@ -624,8 +624,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.5,
+      "y": 0.5,
       "z": 1
     },
     "_layer": 33554432,
@@ -650,7 +650,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 138.57,
+      "width": 256.63,
       "height": 20
     },
     "_anchorPoint": {
@@ -680,26 +680,26 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 25,
-      "g": 29,
-      "b": 43,
+      "r": 40,
+      "g": 57,
+      "b": 84,
       "a": 255
     },
-    "_string": "Audio Settings",
+    "_string": "AUDIO SETTINGS",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 58,
+    "_fontSize": 58,
     "_fontFamily": "Arial",
     "_lineHeight": 20,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "c96b42a9-d20d-4c59-8e99-8ed749a715c8",
+      "__uuid__": "65390837-3108-471e-819a-b0be70a7692f",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
-    "_spacingX": 0,
+    "_spacingX": 0.5,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -1767,8 +1767,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.5,
+      "y": 0.5,
       "z": 1
     },
     "_layer": 33554432,
@@ -1793,7 +1793,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 95.43,
+      "width": 208,
       "height": 20
     },
     "_anchorPoint": {
@@ -1828,21 +1828,21 @@
       "b": 231,
       "a": 255
     },
-    "_string": "sound voume",
+    "_string": "Sound voume",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 16,
-    "_fontSize": 16,
+    "_actualFontSize": 58,
+    "_fontSize": 58,
     "_fontFamily": "Arial",
     "_lineHeight": 20,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "c96b42a9-d20d-4c59-8e99-8ed749a715c8",
+      "__uuid__": "65390837-3108-471e-819a-b0be70a7692f",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
-    "_spacingX": 0,
+    "_spacingX": 0.5,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -2440,8 +2440,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.5,
+      "y": 0.5,
       "z": 1
     },
     "_layer": 33554432,
@@ -2466,7 +2466,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 90.29,
+      "width": 198.03,
       "height": 20
     },
     "_anchorPoint": {
@@ -2504,18 +2504,18 @@
     "_string": "Music voume",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 16,
-    "_fontSize": 16,
+    "_actualFontSize": 58,
+    "_fontSize": 58,
     "_fontFamily": "Arial",
     "_lineHeight": 20,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "c96b42a9-d20d-4c59-8e99-8ed749a715c8",
+      "__uuid__": "65390837-3108-471e-819a-b0be70a7692f",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
-    "_spacingX": 0,
+    "_spacingX": 0.5,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -3126,8 +3126,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.5,
+      "y": 0.5,
       "z": 1
     },
     "_layer": 33554432,
@@ -3152,7 +3152,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 22.14,
+      "width": 38.97,
       "height": 20
     },
     "_anchorPoint": {
@@ -3190,14 +3190,14 @@
     "_string": "OK",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 58,
+    "_fontSize": 58,
     "_fontFamily": "Arial",
     "_lineHeight": 20,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "c96b42a9-d20d-4c59-8e99-8ed749a715c8",
+      "__uuid__": "65390837-3108-471e-819a-b0be70a7692f",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,

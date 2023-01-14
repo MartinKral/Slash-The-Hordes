@@ -1097,7 +1097,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 118.46,
+      "width": 250,
       "height": 37.2
     },
     "_anchorPoint": {
@@ -1127,26 +1127,26 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 25,
-      "g": 29,
-      "b": 43,
+      "r": 40,
+      "g": 57,
+      "b": 84,
       "a": 255
     },
     "_string": "Increase health",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 18,
-    "_fontSize": 18,
+    "_actualFontSize": 58,
+    "_fontSize": 58,
     "_fontFamily": "Arial",
     "_lineHeight": 18,
     "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "c96b42a9-d20d-4c59-8e99-8ed749a715c8",
+      "__uuid__": "65390837-3108-471e-819a-b0be70a7692f",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
-    "_spacingX": 0,
+    "_spacingX": 0.5,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -2297,7 +2297,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -185.024,
+      "y": -180.236,
       "z": 0
     },
     "_lrot": {
@@ -2335,7 +2335,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 117.86,
+      "width": 250,
       "height": 36
     },
     "_anchorPoint": {
@@ -2370,21 +2370,21 @@
       "b": 192,
       "a": 255
     },
-    "_string": "Increase healthwefwef",
+    "_string": "Increase healthwefwef uiopup",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 12,
-    "_fontSize": 12,
+    "_actualFontSize": 38,
+    "_fontSize": 38,
     "_fontFamily": "Arial",
-    "_lineHeight": 12,
+    "_lineHeight": 18,
     "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "c96b42a9-d20d-4c59-8e99-8ed749a715c8",
+      "__uuid__": "65390837-3108-471e-819a-b0be70a7692f",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
-    "_spacingX": 0,
+    "_spacingX": 0.5,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
