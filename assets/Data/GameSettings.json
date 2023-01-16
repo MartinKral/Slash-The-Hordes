@@ -414,7 +414,7 @@
         "lifetime": 25,
         "xpReward": 1,
         "goldReward": 0.10,
-        "healthPotionRewardChance": 0.05,
+        "healthPotionRewardChance": 0.07,
         "magnetRewardChance": 0.05,
         "chestRewardChance": 0
       },
@@ -480,12 +480,12 @@
         "graphicsType": "Shark",
         "health": 1,
         "damage": 1,
-        "speed": 350,
+        "speed": 300,
         "lifetime": 20,
         "xpReward": 1,
         "goldReward": 0.15,
-        "healthPotionRewardChance": 0,
-        "magnetRewardChance": 0,
+        "healthPotionRewardChance": 0.02,
+        "magnetRewardChance": 0.01,
         "chestRewardChance": 0
       },
       {
@@ -568,7 +568,7 @@
         "lifetime": -1,
         "xpReward": 1,
         "goldReward": 2,
-        "healthPotionRewardChance": 0.1,
+        "healthPotionRewardChance": 1,
         "magnetRewardChance": 0.1,
         "chestRewardChance": 0
       },
@@ -582,7 +582,7 @@
         "lifetime": -1,
         "xpReward": 2,
         "goldReward": 2,
-        "healthPotionRewardChance": 0.2,
+        "healthPotionRewardChance": 0.3,
         "magnetRewardChance": 0.1,
         "chestRewardChance": 0
       },
@@ -1021,7 +1021,7 @@
           "stopDelay": 47,
           "cooldown": 45
         },
-        "enemiesToSpawn": 34
+        "enemiesToSpawn": 30
       },
       {
         "common": {
@@ -1030,7 +1030,7 @@
           "stopDelay": 130,
           "cooldown": 45
         },
-        "enemiesToSpawn": 34
+        "enemiesToSpawn": 32
       },
       {
         "common": {
@@ -1218,8 +1218,26 @@
         "common": {
           "enemyId": "WaveEnemy",
           "startDelay": 1,
-          "stopDelay": 210,
+          "stopDelay": 50,
           "cooldown": 27
+        },
+        "enemiesToSpawn": 5
+      },
+      {
+        "common": {
+          "enemyId": "WaveEnemy",
+          "startDelay": 23,
+          "stopDelay": 75,
+          "cooldown": 50
+        },
+        "enemiesToSpawn": 5
+      },
+      {
+        "common": {
+          "enemyId": "WaveEnemy",
+          "startDelay": 100,
+          "stopDelay": 200,
+          "cooldown": 35
         },
         "enemiesToSpawn": 7
       },
@@ -1239,7 +1257,7 @@
           "stopDelay": 199,
           "cooldown": 48
         },
-        "enemiesToSpawn": 6
+        "enemiesToSpawn": 4
       },
       {
         "common": {

@@ -165,7 +165,7 @@ export class Game extends Component {
         this.horizontalProjectileLauncher = new WaveProjectileLauncher(
             this.horizontalProjectileLauncherComponent,
             this.player.node,
-            [new Vec2(-1, 0), new Vec2(1, 0)],
+            [new Vec2(0, 1), new Vec2(0, -1)],
             settings.player.horizontalLauncher,
             projectileData
         );
