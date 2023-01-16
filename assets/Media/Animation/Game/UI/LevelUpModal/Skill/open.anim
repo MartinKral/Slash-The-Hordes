@@ -11,7 +11,7 @@
     "speed": 1,
     "wrapMode": 1,
     "enableTrsBlending": false,
-    "_duration": 0.5,
+    "_duration": 0.55,
     "_hash": 500763545,
     "_tracks": [
       {
@@ -75,30 +75,45 @@
     "__type__": "cc.RealCurve",
     "_times": [
       0,
-      0.5
+      0.4,
+      0.55
     ],
     "_values": [
       {
         "__type__": "cc.RealKeyframeValue",
-        "interpolationMode": 0,
-        "tangentWeightMode": 0,
+        "interpolationMode": 2,
+        "tangentWeightMode": 2,
         "value": -1000,
-        "rightTangent": 0,
-        "rightTangentWeight": 1,
+        "rightTangent": 4627.599999999999,
+        "rightTangentWeight": 462.7600108048807,
         "leftTangent": 0,
         "leftTangentWeight": 1,
         "easingMethod": 0
       },
       {
         "__type__": "cc.RealKeyframeValue",
-        "interpolationMode": 0,
-        "tangentWeightMode": 0,
+        "interpolationMode": 2,
+        "tangentWeightMode": 3,
+        "value": 6,
+        "rightTangent": -3.3333333333333357,
+        "rightTangentWeight": 0.25056735621385345,
+        "leftTangent": 228.63636363636394,
+        "leftTangentWeight": 50.300481111018286,
+        "easingMethod": 0
+      },
+      {
+        "__type__": "cc.RealKeyframeValue",
+        "interpolationMode": 2,
+        "tangentWeightMode": 1,
         "value": 0,
         "rightTangent": 0,
         "rightTangentWeight": 1,
-        "leftTangent": 0,
-        "leftTangentWeight": 1,
-        "easingMethod": 0
+        "leftTangent": -3.3333333333333357,
+        "leftTangentWeight": 0.25056735621385345,
+        "easingMethod": 0,
+        "__editorExtras__": {
+          "tangentMode": 0
+        }
       }
     ],
     "preExtrapolation": 1,

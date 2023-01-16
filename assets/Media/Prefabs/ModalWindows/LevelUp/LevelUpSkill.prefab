@@ -104,7 +104,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -7.74,
+      "y": -15,
       "z": 0
     },
     "_lrot": {
@@ -156,7 +156,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 15,
+      "y": 18,
       "z": 0
     },
     "_lrot": {
@@ -242,7 +242,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 86,
+      "width": 84,
       "height": 28
     },
     "_anchorPoint": {
@@ -405,7 +405,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 78,
-      "height": 110
+      "height": 120
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -495,7 +495,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 51.138,
+      "y": 51.816,
       "z": 0
     },
     "_lrot": {
@@ -533,8 +533,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 118.46,
-      "height": 37.2
+      "width": 120,
+      "height": 36
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -563,26 +563,26 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 25,
-      "g": 29,
-      "b": 43,
+      "r": 40,
+      "g": 57,
+      "b": 84,
       "a": 255
     },
-    "_string": "Increase health",
+    "_string": "Regeneration health",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 18,
-    "_fontSize": 18,
+    "_actualFontSize": 28,
+    "_fontSize": 28,
     "_fontFamily": "Arial",
     "_lineHeight": 18,
     "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "c96b42a9-d20d-4c59-8e99-8ed749a715c8",
+      "__uuid__": "65390837-3108-471e-819a-b0be70a7692f",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
-    "_spacingX": 0,
+    "_spacingX": 0.5,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -627,7 +627,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -24.948,
+      "y": -31.835,
       "z": 0
     },
     "_lrot": {
@@ -759,7 +759,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -81.138,
+      "y": -87.083,
       "z": 0
     },
     "_lrot": {
@@ -797,8 +797,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 117.86,
-      "height": 36
+      "width": 130,
+      "height": 63.6
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -832,21 +832,21 @@
       "b": 192,
       "a": 255
     },
-    "_string": "Increase healthwefwef",
+    "_string": "Increase healthwefwef r678g uiouiouiouio",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 12,
-    "_fontSize": 12,
+    "_actualFontSize": 28,
+    "_fontSize": 28,
     "_fontFamily": "Arial",
-    "_lineHeight": 12,
+    "_lineHeight": 16,
     "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "c96b42a9-d20d-4c59-8e99-8ed749a715c8",
+      "__uuid__": "65390837-3108-471e-819a-b0be70a7692f",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
-    "_spacingX": 0,
+    "_spacingX": 0.5,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
