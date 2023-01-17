@@ -20,7 +20,7 @@ export class LevelUpModalWindow extends ModalWindow<LevelUpModalWindowParams, Up
         if (this.maxUpgradesToPick < shuffledAvailableUpgrades.length) {
             shuffledAvailableUpgrades.length = this.maxUpgradesToPick;
         }
-        const xPositions: number[] = [-180, 0, 180];
+        const xPositions: number[] = [-172, 0, 172];
         await delay(300);
         for (let i = 0; i < shuffledAvailableUpgrades.length; i++) {
             await delay(500);
