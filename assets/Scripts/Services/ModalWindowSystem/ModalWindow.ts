@@ -12,16 +12,19 @@ export abstract class ModalWindow<TParam, TResult> extends Component {
     private result: TResult;
     private isDismissed = false;
 
+    private openAnimationName = "open";
+    private closeAnimationName = "close";
+
     public async runAsync(params?: TParam): Promise<TResult> {
         this.closeButton?.InteractedEvent.on(() => this.dismiss(), this);
         this.backgroundCloseButton?.InteractedEvent.on(() => this.dismiss(), this);
 
         this.setup(params);
-        this.animation?.play("open");
+        this.animation?.play(this.openAnimationName);
         while (!this.isDismissed) await delay(100);
-        this.animation?.play("close");
+        this.animation?.play(this.closeAnimationName);
 
-        await delay(500);
+        await delay(this.getCloseAnimationTime() * 1000);
         return this.result;
     }
 
@@ -30,5 +33,14 @@ export abstract class ModalWindow<TParam, TResult> extends Component {
     protected dismiss(result?: TResult): void {
         this.result = result;
         this.isDismissed = true;
+    }
+
+    private getCloseAnimationTime(): number {
+        const state = this.animation?.getState(this.closeAnimationName);
+        if (state != null) {
+            return state.duration;
+        }
+
+        return 0;
     }
 }
