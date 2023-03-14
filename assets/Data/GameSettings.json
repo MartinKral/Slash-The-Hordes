@@ -888,7 +888,7 @@
         "common": {
           "enemyId": "HardestEnemy",
           "startDelay": 1001,
-          "stopDelay": 1210,
+          "stopDelay": -1,
           "cooldown": 0.8
         }
       },
@@ -896,7 +896,7 @@
         "common": {
           "enemyId": "HardestEnemy",
           "startDelay": 1175,
-          "stopDelay": 1290,
+          "stopDelay": -1,
           "cooldown": 0.6
         }
       },
@@ -904,7 +904,7 @@
         "common": {
           "enemyId": "EndEnemy",
           "startDelay": 1175,
-          "stopDelay": 1290,
+          "stopDelay": -1,
           "cooldown": 0.5
         }
       },
@@ -1099,7 +1099,7 @@
         "common": {
           "enemyId": "SiegeEnemyRanged",
           "startDelay": 800,
-          "stopDelay": 1100,
+          "stopDelay": -1,
           "cooldown": 50
         },
         "enemiesToSpawn": 20
@@ -1153,7 +1153,7 @@
         "common": {
           "enemyId": "CircleEnemySkelePrison",
           "startDelay": 900,
-          "stopDelay": 1230,
+          "stopDelay": -1,
           "cooldown": 45
         },
         "enemiesToSpawn": 40
@@ -1171,7 +1171,7 @@
         "common": {
           "enemyId": "FinalBoss",
           "startDelay": 1190,
-          "stopDelay": 1299,
+          "stopDelay": -1,
           "cooldown": 8
         },
         "enemiesToSpawn": 3
@@ -1180,7 +1180,7 @@
         "common": {
           "enemyId": "EndEnemy",
           "startDelay": 1190,
-          "stopDelay": 1299,
+          "stopDelay": -1,
           "cooldown": 7
         },
         "enemiesToSpawn": 6
@@ -1189,7 +1189,7 @@
         "common": {
           "enemyId": "SiegeEnemyRanged",
           "startDelay": 1190,
-          "stopDelay": 1300,
+          "stopDelay": -1,
           "cooldown": 20
         },
         "enemiesToSpawn": 16
@@ -1198,7 +1198,7 @@
         "common": {
           "enemyId": "EndEnemy",
           "startDelay": 1190,
-          "stopDelay": 1299,
+          "stopDelay": -1,
           "cooldown": 5
         },
         "enemiesToSpawn": 6
@@ -1299,7 +1299,7 @@
         "common": {
           "enemyId": "WaveEnemyDeath",
           "startDelay": 900,
-          "stopDelay": 1231,
+          "stopDelay": -1,
           "cooldown": 30
         },
         "enemiesToSpawn": 14
