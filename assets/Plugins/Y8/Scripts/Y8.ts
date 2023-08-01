@@ -1,11 +1,11 @@
-import { Component, _decorator } from "cc";
+import { Component, _decorator, CCString} from "cc";
 import { Y8API } from "./Y8def";
 
 const { ccclass, property } = _decorator;
 
 @ccclass("Y8")
 export class Y8 extends Component {
-    @property(String) private appId = "ENTER APP ID";
+    @property(CCString) private appId = "ENTER APP ID";
 
     public init(): Promise<void> {
         return new Promise<void>((resolve) => {
