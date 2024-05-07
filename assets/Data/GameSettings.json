@@ -1,6 +1,6 @@
 {
   "player": {
-    "defaultHP": 50,
+    "defaultHP": 5000,
     "requiredXP": [
       10,
       20,
