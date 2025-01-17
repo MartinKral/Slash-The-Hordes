@@ -1,7 +1,7 @@
 Open sourced with the courtesy of [Y8.com](https://www.y8.com)
 
 # Slash The Hordes
-#### A rougelite game, heavily inspired by [Vampire Survivors](https://poncle.itch.io/vampire-survivors)
+#### A rougelite game, made in Cocos Creator (3.8.5) heavily inspired by [Vampire Survivors](https://poncle.itch.io/vampire-survivors)
 
 
 ### [Play Slash the Hordes on Y8](https://www.y8.com/games/slash_the_hordes)
