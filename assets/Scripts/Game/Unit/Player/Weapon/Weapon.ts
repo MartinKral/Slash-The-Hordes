@@ -16,11 +16,13 @@ export class Weapon extends Component {
     private strikeTimer: GameTimer;
     private strikeState: AnimationState;
     private damage: number;
+    private playerDirectionX: number;
 
     public init(strikeDelay: number, damage: number): void {
         this.strikeTimer = new GameTimer(strikeDelay);
         this.damage = damage;
         this.node.active = false;
+        this.setWeaponDirection();
 
         this.weaponAnimation.on(Animation.EventType.FINISHED, this.endStrike, this);
         this.strikeState = this.weaponAnimation.getState(this.weaponAnimation.clips[0].name);
@@ -34,6 +36,11 @@ export class Weapon extends Component {
         if (this.strikeTimer.tryFinishPeriod()) {
             this.strike();
         }
+    }
+
+    private setWeaponDirection(){
+        this.playerDirectionX = this.node.parent.getChildByName("PlayerGraphics").scale.x;
+        this.node.setScale(this.playerDirectionX,1,1);
     }
 
     public get WeaponStrikeEvent(): ISignal<Weapon> {
@@ -57,6 +64,7 @@ export class Weapon extends Component {
 
     private strike(): void {
         this.node.active = true;
+        this.setWeaponDirection();
         this.weaponAnimation.play(this.strikeState.name);
         this.weaponStrikeEvent.trigger(this);
     }
