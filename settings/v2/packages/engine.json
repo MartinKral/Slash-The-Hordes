@@ -1,214 +1,231 @@
 {
-  "__version__": "1.0.10",
+  "__version__": "1.0.12",
   "modules": {
-    "cache": {
-      "base": {
-        "_value": true
-      },
-      "gfx-webgl": {
-        "_value": true
-      },
-      "gfx-webgl2": {
-        "_value": true
-      },
-      "gfx-webgpu": {
-        "_value": false
-      },
-      "animation": {
-        "_value": true
-      },
-      "skeletal-animation": {
-        "_value": true
-      },
-      "3d": {
-        "_value": false
-      },
-      "meshopt": {
-        "_value": false
-      },
-      "2d": {
-        "_value": true
-      },
-      "xr": {
-        "_value": true
-      },
-      "ui": {
-        "_value": true
-      },
-      "particle": {
-        "_value": false
-      },
-      "physics": {
-        "_value": false,
-        "_option": "physics-ammo",
-        "_flags": {
+    "graphics": {
+      "pipeline": "legacy-pipeline"
+    },
+    "configs": {
+      "migrationsConfig": {
+        "name": "Migrated Configuration",
+        "cache": {
+          "base": {
+            "_value": true
+          },
+          "gfx-webgl": {
+            "_value": true
+          },
+          "gfx-webgl2": {
+            "_value": true
+          },
+          "gfx-webgpu": {
+            "_value": false
+          },
+          "animation": {
+            "_value": true
+          },
+          "skeletal-animation": {
+            "_value": true
+          },
+          "3d": {
+            "_value": false
+          },
+          "meshopt": {
+            "_value": false
+          },
+          "2d": {
+            "_value": true
+          },
+          "xr": {
+            "_value": true
+          },
+          "rich-text": {
+            "_value": true
+          },
+          "mask": {
+            "_value": true
+          },
+          "graphics": {
+            "_value": true
+          },
+          "ui-skew": {
+            "_value": false
+          },
+          "affine-transform": {
+            "_value": true
+          },
+          "ui": {
+            "_value": true
+          },
+          "particle": {
+            "_value": false
+          },
+          "physics": {
+            "_value": false,
+            "_option": "physics-ammo"
+          },
           "physics-ammo": {
-            "LOAD_BULLET_MANUALLY": false
+            "_value": false,
+            "_flags": {
+              "LOAD_BULLET_MANUALLY": false
+            }
+          },
+          "physics-cannon": {
+            "_value": false
           },
           "physics-physx": {
-            "LOAD_PHYSX_MANUALLY": false
-          }
-        }
-      },
-      "physics-ammo": {
-        "_value": false,
-        "_flags": {
-          "physics-ammo": {
-            "LOAD_BULLET_MANUALLY": false
-          }
-        }
-      },
-      "physics-cannon": {
-        "_value": false
-      },
-      "physics-physx": {
-        "_value": false,
-        "_flags": {
-          "physics-physx": {
-            "LOAD_PHYSX_MANUALLY": false
-          }
-        }
-      },
-      "physics-builtin": {
-        "_value": false
-      },
-      "physics-2d": {
-        "_value": true,
-        "_option": "physics-2d-builtin",
-        "_flags": {
+            "_value": false,
+            "_flags": {
+              "LOAD_PHYSX_MANUALLY": false
+            }
+          },
+          "physics-builtin": {
+            "_value": false
+          },
+          "physics-2d": {
+            "_value": true,
+            "_option": "physics-2d-builtin"
+          },
+          "physics-2d-box2d": {
+            "_value": false
+          },
           "physics-2d-box2d-wasm": {
-            "LOAD_BOX2D_MANUALLY": false
-          }
-        }
-      },
-      "physics-2d-box2d": {
-        "_value": false
-      },
-      "physics-2d-box2d-wasm": {
-        "_value": false,
-        "_flags": {
-          "physics-2d-box2d-wasm": {
-            "LOAD_BOX2D_MANUALLY": false
-          }
-        }
-      },
-      "physics-2d-builtin": {
-        "_value": false
-      },
-      "intersection-2d": {
-        "_value": true
-      },
-      "primitive": {
-        "_value": false
-      },
-      "profiler": {
-        "_value": true
-      },
-      "occlusion-query": {
-        "_value": false
-      },
-      "geometry-renderer": {
-        "_value": false
-      },
-      "debug-renderer": {
-        "_value": false
-      },
-      "particle-2d": {
-        "_value": true
-      },
-      "audio": {
-        "_value": true
-      },
-      "video": {
-        "_value": true
-      },
-      "webview": {
-        "_value": true
-      },
-      "tween": {
-        "_value": true
-      },
-      "websocket": {
-        "_value": true
-      },
-      "websocket-server": {
-        "_value": false
-      },
-      "terrain": {
-        "_value": false
-      },
-      "light-probe": {
-        "_value": true
-      },
-      "tiled-map": {
-        "_value": true
-      },
-      "vendor-google": {
-        "_value": false
-      },
-      "spine": {
-        "_value": true,
-        "_flags": {
+            "_value": false,
+            "_flags": {
+              "LOAD_BOX2D_MANUALLY": false
+            }
+          },
+          "physics-2d-builtin": {
+            "_value": false
+          },
+          "physics-2d-box2d-jsb": {
+            "_value": false
+          },
+          "intersection-2d": {
+            "_value": true
+          },
+          "primitive": {
+            "_value": false
+          },
+          "profiler": {
+            "_value": true
+          },
+          "occlusion-query": {
+            "_value": false
+          },
+          "geometry-renderer": {
+            "_value": false
+          },
+          "debug-renderer": {
+            "_value": false
+          },
+          "particle-2d": {
+            "_value": true
+          },
+          "audio": {
+            "_value": true
+          },
+          "video": {
+            "_value": true
+          },
+          "webview": {
+            "_value": true
+          },
+          "tween": {
+            "_value": true
+          },
+          "websocket": {
+            "_value": true
+          },
+          "websocket-server": {
+            "_value": false
+          },
+          "terrain": {
+            "_value": false
+          },
+          "light-probe": {
+            "_value": true
+          },
+          "tiled-map": {
+            "_value": true
+          },
+          "vendor-google": {
+            "_value": false
+          },
           "spine": {
-            "LOAD_SPINE_MANUALLY": false
+            "_value": true,
+            "_option": "spine-3.8"
+          },
+          "spine-3.8": {
+            "_value": true,
+            "_flags": {
+              "LOAD_SPINE_MANUALLY": false
+            }
+          },
+          "spine-4.2": {
+            "_value": false,
+            "_flags": {
+              "LOAD_SPINE_MANUALLY": false
+            }
+          },
+          "dragon-bones": {
+            "_value": true
+          },
+          "marionette": {
+            "_value": true
+          },
+          "procedural-animation": {
+            "_value": false
+          },
+          "custom-pipeline-post-process": {
+            "_value": false
+          },
+          "render-pipeline": {
+            "_value": true,
+            "_option": "legacy-pipeline"
+          },
+          "custom-pipeline": {
+            "_value": true
+          },
+          "legacy-pipeline": {
+            "_value": false
           }
+        },
+        "flags": {},
+        "includeModules": [
+          "2d",
+          "affine-transform",
+          "animation",
+          "audio",
+          "base",
+          "dragon-bones",
+          "gfx-webgl",
+          "gfx-webgl2",
+          "graphics",
+          "intersection-2d",
+          "legacy-pipeline",
+          "light-probe",
+          "marionette",
+          "mask",
+          "particle-2d",
+          "physics-2d-builtin",
+          "profiler",
+          "rich-text",
+          "skeletal-animation",
+          "spine-3.8",
+          "tiled-map",
+          "tween",
+          "ui",
+          "video",
+          "websocket",
+          "webview",
+          "xr"
+        ],
+        "noDeprecatedFeatures": {
+          "value": false,
+          "version": ""
         }
-      },
-      "dragon-bones": {
-        "_value": true
-      },
-      "marionette": {
-        "_value": true
-      },
-      "procedural-animation": {
-        "_value": false
-      },
-      "custom-pipeline-post-process": {
-        "_value": false
-      },
-      "render-pipeline": {
-        "_value": true,
-        "_option": "legacy-pipeline"
-      },
-      "custom-pipeline": {
-        "_value": true
-      },
-      "legacy-pipeline": {
-        "_value": false
-      },
-      "graphics": {
-        "_value": true
       }
     },
-    "includeModules": [
-      "2d",
-      "animation",
-      "audio",
-      "base",
-      "dragon-bones",
-      "gfx-webgl",
-      "gfx-webgl2",
-      "intersection-2d",
-      "legacy-pipeline",
-      "light-probe",
-      "marionette",
-      "particle-2d",
-      "physics-2d-builtin",
-      "profiler",
-      "skeletal-animation",
-      "spine",
-      "tiled-map",
-      "tween",
-      "ui",
-      "video",
-      "websocket",
-      "webview",
-      "xr"
-    ],
-    "noDeprecatedFeatures": {
-      "value": false,
-      "version": ""
-    },
-    "flags": {}
+    "globalConfigKey": "migrationsConfig"
   }
 }
