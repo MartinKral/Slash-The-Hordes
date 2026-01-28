@@ -3,7 +3,7 @@
   "uuid": "44d41970-47e0-4ec4-84a9-e2884a9f7957",
   "version": "3.6.2",
   "creator": {
-    "version": "3.8.6"
+    "version": "3.8.8"
   },
   "scripts": {
     "prettier-format": "prettier --config .prettierrc.json assets/Scripts/*.ts --write",

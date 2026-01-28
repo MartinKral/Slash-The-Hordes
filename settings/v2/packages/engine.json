@@ -35,8 +35,8 @@
           "2d": {
             "_value": true
           },
-          "xr": {
-            "_value": true
+          "sorting-2d": {
+            "_value": false
           },
           "rich-text": {
             "_value": true
@@ -188,6 +188,9 @@
           },
           "legacy-pipeline": {
             "_value": false
+          },
+          "xr": {
+            "_value": true
           }
         },
         "flags": {},
